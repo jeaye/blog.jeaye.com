@@ -1,7 +1,16 @@
 {% include head.html %}
 
-<h1>{{ page.title }}</h1>
+<h3 class="position"><span class="title">{{ page.title }}</span></h3>
+<div class="where-when">
+  <div itemscope itemtype="http://schema.org/PostalAddress">Singapore</div>
+  <div itemscope itemtype="http://schema.org/Event">August 2014 &ndash; March 2015</div>
+</div>
+<div class="description">
 
 {{ content }}
+
+</div>
+</section>
+<hr />
 
 {% include foot.html %}
