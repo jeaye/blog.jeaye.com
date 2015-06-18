@@ -1,0 +1,15 @@
+{% include header.html %}
+
+<h3 class="position"><span class="title">{{ page.title }}</span></h3>
+<div style="float: right;">
+  <div>{{ page.date | date: "%B %d, %Y" }}</div>
+</div>
+<div class="description">
+
+{{ content }}
+
+</div>
+</section>
+<hr />
+
+{% include footer.html %}

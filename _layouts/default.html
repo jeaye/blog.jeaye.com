@@ -12,7 +12,7 @@
 </section>
 <hr />
 
-<div class="relatedPosts">
+<div class="related_posts">
   <h3>Related posts</h3>
   <ul>
     <li>
@@ -35,7 +35,7 @@
 
       {% if same_count >= 1 %}
         <div>
-          <h4><a href="{{ post.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
+          <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
         </div>
       {% endif %}
     {% endfor %}
