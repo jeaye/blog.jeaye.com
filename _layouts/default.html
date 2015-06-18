@@ -2,16 +2,14 @@
 
 {% include post_list.html %}
 
-<section id="main" style="float: left; margin: 0; padding: 0; display: inline;">
+<div id="main" style="float: left; margin: 0; padding: 0; display: inline;">
   <h3><span>{{ page.title }}</span></h3>
   <div style="float: right;">
     <div>{{ page.date | date: "%B %d, %Y" }}</div>
   </div>
-  <div>
 
   {{ content }}
 
-  </div>
   <hr />
 
   <div>
@@ -42,6 +40,6 @@
       {% endfor %}
     </ul>
   </div>
-</section>
+</div>
 
 {% include footer.html %}
