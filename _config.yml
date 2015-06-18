@@ -7,4 +7,5 @@ defaults:
       author: "jeaye"
       layout: "default"
 
+permalink: pretty
 resource_url: "http://jeaye.com"
