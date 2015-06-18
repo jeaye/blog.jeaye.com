@@ -12,4 +12,35 @@
 </section>
 <hr />
 
+<div class="relatedPosts">
+  <h3>Related posts</h3>
+  <ul>
+    <li>
+    {% for p in site.posts %}
+
+      {% if p.title == page.title %}
+        {% continue %}
+      {% endif %}
+
+      {% assign same_count = 0 %}
+      {% assign common_tags = '' %}
+
+      {% for tag in p.tags %}
+        {% if page.tags contains tag %}
+          {% assign same_count = same_count | plus: 1 %}
+          {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+          {% assign common_tags = common_tags | append: tagmarkup %}
+        {% endif %}
+      {% endfor %}
+
+      {% if same_count >= 1 %}
+        <div>
+          <h4><a href="{{ post.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </li>
+  </ul>
+</div>
+
 {% include footer.html %}
