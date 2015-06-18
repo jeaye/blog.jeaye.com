@@ -2,44 +2,46 @@
 
 {% include post_list.html %}
 
-<h3 class="position"><span class="title">{{ page.title }}</span></h3>
-<div style="float: right;">
-  <div>{{ page.date | date: "%B %d, %Y" }}</div>
-</div>
-<div class="description">
+<section id="main" style="float: left; margin: 0; padding: 0; display: inline;">
+  <h3><span>{{ page.title }}</span></h3>
+  <div style="float: right;">
+    <div>{{ page.date | date: "%B %d, %Y" }}</div>
+  </div>
+  <div>
 
-{{ content }}
+  {{ content }}
 
-</div>
-<hr />
+  </div>
+  <hr />
 
-<div class="related_posts">
-  <h3>Related posts</h3>
-  <ul>
-    {% for p in site.posts %}
+  <div>
+    <h3>Related posts</h3>
+    <ul>
+      {% for p in site.posts %}
 
-      {% if p.title == page.title %}
-        {% continue %}
-      {% endif %}
+        {% if p.title == page.title %}
+          {% continue %}
+        {% endif %}
 
-      {% assign same_count = 0 %}
-      {% assign common_tags = '' %}
+        {% assign same_count = 0 %}
+        {% assign common_tags = '' %}
 
-      {% for tag in p.tags %}
-        {% if page.tags contains tag %}
-          {% assign same_count = same_count | plus: 1 %}
-          {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
-          {% assign common_tags = common_tags | append: tagmarkup %}
+        {% for tag in p.tags %}
+          {% if page.tags contains tag %}
+            {% assign same_count = same_count | plus: 1 %}
+            {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+            {% assign common_tags = common_tags | append: tagmarkup %}
+          {% endif %}
+        {% endfor %}
+
+        {% if same_count >= 1 %}
+          <li>
+            <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
+          </li>
         {% endif %}
       {% endfor %}
-
-      {% if same_count >= 1 %}
-        <li>
-          <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</div>
+    </ul>
+  </div>
+</section>
 
 {% include footer.html %}

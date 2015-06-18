@@ -1,9 +1,9 @@
 ---
 layout: index
 ---
-<ul>
+<article>
   {% for post in site.posts %}
-    <li>
+    <section>
       <div style="float: right;">
         <div>{{ post.date | date: "%B %d, %Y" }}</div>
       </div>
@@ -11,6 +11,6 @@ layout: index
         <a href="{{ post.url }}">{{ post.title }}</a>
       </h3>
       {{ post.excerpt }}
-    </li>
+    </section>
   {% endfor %}
-</ul>
+</article>
