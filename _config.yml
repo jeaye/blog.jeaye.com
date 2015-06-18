@@ -8,4 +8,5 @@ defaults:
       layout: "default"
 
 permalink: pretty
+url: "http://blog.jeaye.com"
 resource_url: "http://jeaye.com"
