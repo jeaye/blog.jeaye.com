@@ -4,6 +4,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      author: "Mr. Hyde"
+      author: "jeaye"
       layout: "default"
-      resource_url: "http://jeaye.com"
+
+resource_url: "http://jeaye.com"
