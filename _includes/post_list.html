@@ -1,0 +1,9 @@
+<aside id="summary" class="col-md-4 clearfix" style="height: 100pc; width: 10pc; margin-left: 0; padding-left: 0;">
+<ul style="padding-left: 0; margin-left: 0;">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+</aside>
