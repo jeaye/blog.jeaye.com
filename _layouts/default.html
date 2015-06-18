@@ -15,7 +15,6 @@
 <div class="related_posts">
   <h3>Related posts</h3>
   <ul>
-    <li>
     {% for p in site.posts %}
 
       {% if p.title == page.title %}
@@ -34,12 +33,11 @@
       {% endfor %}
 
       {% if same_count >= 1 %}
-        <div>
+        <li>
           <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
-        </div>
+        </li>
       {% endif %}
     {% endfor %}
-    </li>
   </ul>
 </div>
 
