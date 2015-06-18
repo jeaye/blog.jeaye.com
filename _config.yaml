@@ -1,0 +1,9 @@
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: "Mr. Hyde"
+      layout: "default"
+      resource_url: "http://jeaye.com"
