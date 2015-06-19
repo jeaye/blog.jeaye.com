@@ -2,11 +2,8 @@
 
 {% include post_list.html %}
 
-<div id="main" style="float: left; margin: 0; padding: 0; display: inline;">
+<div id="content">
   <h3><span>{{ page.title }}</span></h3>
-  <div style="float: right;">
-    <div>{{ page.date | date: "%B %d, %Y" }}</div>
-  </div>
 
   {{ content }}
 
