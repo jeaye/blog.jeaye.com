@@ -33,3 +33,15 @@ body, html
   width: 80%;
   float: left;
 }
+
+.post_date
+{
+  float: right;
+}
+
+.post_list
+{
+  padding: 0;
+  margin: 0;
+  list-style-position: inside;
+}
