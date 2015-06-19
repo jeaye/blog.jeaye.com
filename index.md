@@ -5,7 +5,7 @@ layout: index
   {% for post in site.posts %}
     <section>
       <div class="post_date">
-        <div>{{ post.date | date: "%B %d, %Y" }}</div>
+        {{ post.date | date: "%B %d, %Y" }}
       </div>
       <h3>
         <a href="{{ post.url }}">{{ post.title }}</a>

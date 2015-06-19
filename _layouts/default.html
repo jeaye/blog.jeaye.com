@@ -3,12 +3,16 @@
 {% include post_list.html %}
 
 <div id="content">
-  <h3><span>{{ page.title }}</span></h3>
-  <div class="post_date">
-    <div>{{ page.date | date: "%B %d, %Y" }}</div>
-  </div>
+  <article>
+    <section>
+      <div class="post_date">
+        {{ page.date | date: "%B %d, %Y" }}
+      </div>
+      <h3>{{ page.title }}</h3>
 
-  {{ content }}
+      {{ content }}
+    </section>
+  </article>
 
   <hr />
 
