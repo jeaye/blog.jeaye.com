@@ -1,0 +1,35 @@
+body, html
+{
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+#wrapper
+{
+  width: 1000px;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#header
+{
+  /*background-color: #422;*/
+  width: 1000px;
+}
+
+#nav
+{
+  /*background-color: #999;*/
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+#content
+{
+  /*background-color: #363;*/
+  width: 80%;
+  float: left;
+}
