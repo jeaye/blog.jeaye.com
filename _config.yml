@@ -17,3 +17,6 @@ defaults:
 permalink: pretty
 url: "http://blog.jeaye.com"
 resource_url: "http://jeaye.com"
+
+markdown: redcarpet
+extensions: [fenced_code_blocks]
