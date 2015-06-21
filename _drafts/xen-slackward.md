@@ -154,22 +154,31 @@ There are two files which need to be patched, as shown below:
 ## Bringing it together
 Given these patches, the only task remaining was to tie them together into a working Slackbuild script. Since some sources are only extracted once one tries to build them, the tools need to be built in two steps: try first, patch, then try again. Such is life (and my impatience).
 
+I found that there were some issues with the existing Slackbuild, as it was using incorrect paths during install (see the diff below). Also, I've had no issues adding `-j8` to each of these `make` commands, which has made my life much easier.
+
 The resulting `xen.Slackbuild.sbopkg` patch:
 ```patch
---- xen.SlackBuild	2015-03-22 16:38:08.000000000 +0800
-+++ xen.SlackBuild.sbopkg	2015-06-21 22:20:12.391990560 +0800
-@@ -132,6 +132,10 @@
+--- xen.SlackBuild.sbopkg.orig	2015-06-21 23:32:03.247735702 +0800
++++ xen.SlackBuild.sbopkg	2015-06-21 23:29:54.094743338 +0800
+@@ -132,21 +132,36 @@
    --docdir=/usr/doc/$PRGNAM-$VERSION \
    --build=$ARCH-slackware-linux
  
+-make install-xen \
 +# XXX: Add GCC5 support
 +patch -p1 <$CWD/patches/stack.patch
 +patch -p1 <$CWD/patches/subscript.patch
 +
- make install-xen \
++make -j8 install-xen \
    docdir=/usr/doc/$PRGNAM-$VERSION \
    DOCDIR=/usr/doc/$PRGNAM-$VERSION \
-@@ -144,7 +148,18 @@
+   mandir=/usr/man \
+   MANDIR=/usr/man \
+   DESTDIR=$PKG
+ 
+-make install-tools \
++make -j8 install-tools \
+   docdir=/usr/doc/$PRGNAM-$VERSION \
    DOCDIR=/usr/doc/$PRGNAM-$VERSION \
    mandir=/usr/man \
    MANDIR=/usr/man \
@@ -180,26 +189,42 @@ The resulting `xen.Slackbuild.sbopkg` patch:
 +patch -p0 <$CWD/patches/ath9k.patch
 +patch -p0 <$CWD/patches/ath9k2.patch
 +
-+make install-tools \
++make -j8 install-tools \
 +  docdir=/usr/doc/$PRGNAM-$VERSION \
 +  DOCDIR=/usr/doc/$PRGNAM-$VERSION \
 +  mandir=/usr/man \
 +  MANDIR=/usr/man \
 +  DESTDIR=$PKG || true
  
- make install-stubdom \
+-make install-stubdom \
++make -j8 install-stubdom \
    docdir=/usr/doc/$PRGNAM-$VERSION \
-```
-
-For those without `texinfo` installed, the following will error (my suggestion is to just install texinfo):
-
-```patch
-WARNING: `makeinfo' is missing on your system.  You should only need it if
-         you modified a `.texi' or `.texinfo' file, or any other file
-         indirectly affecting the aspect of the manual.  The spurious
-         call might also be the consequence of using a buggy `make' (AIX,
-         DU, IRIX).  You might want to install the `Texinfo' package or
-         the `GNU make' package.  Grab either from any GNU archive site.
+   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
+   mandir=/usr/man \
+@@ -163,17 +178,18 @@
+ # Remove useless symlinks in boot/
+ find $PKG/boot/ -type l -a -name "xen-*" -exec rm -f {} \; 2>/dev/null || true
+ 
+-# Move from SYSV to BSD init scripts
+-mv $PKG/etc/rc.d/init.d/xen-watchdog $PKG/etc/rc.d/rc.xen-watchdog.new
+-mv $PKG/etc/rc.d/init.d/xencommons $PKG/etc/rc.d/rc.xencommons.new
+-mv $PKG/etc/rc.d/init.d/xendomains $PKG/etc/rc.d/rc.xendomains.new
++# Move from SYSV to BSD init scripts XXX
++mkdir -p $PKG/etc/rc.d
++mv $PKG/etc/init.d/xen-watchdog $PKG/etc/rc.d/rc.xen-watchdog.new
++mv $PKG/etc/init.d/xencommons $PKG/etc/rc.d/rc.xencommons.new
++mv $PKG/etc/init.d/xendomains $PKG/etc/rc.d/rc.xendomains.new
+ 
+ # Put udev rules files in the right place
+ mkdir -p $PKG/lib/udev/rules.d
+ mv $PKG/etc/udev/rules.d/xen*.rules $PKG/lib/udev/rules.d/
+ 
+ # Remove empty directories
+-rmdir $PKG/etc/{rc.d/init.d,udev/rules.d,udev}
++rmdir $PKG/etc/{init.d,udev/rules.d,udev}
+ 
+ # Append .new to config files
+ for i in $PKG/etc/xen/*.conf ; do mv $i $i.new ; done
 ```
 
 Now that Xen is installed, getting my spare nVidia (GeForce 670MX) card to work with pass-through VGA on a running Dom0 is likely to prove much more challenging.
