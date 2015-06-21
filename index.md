@@ -2,6 +2,7 @@
 layout: index
 title: Jeaye | Blog
 ---
+
 <article>
   {% for post in site.posts %}
     <section>
