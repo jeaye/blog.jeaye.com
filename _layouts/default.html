@@ -17,32 +17,42 @@
   <hr />
 
   <div>
-    <h3>Related posts</h3>
-    <ul>
-      {% for p in site.posts %}
+    {% assign total_count = 0 %}
+    {% assign total_html = 0 %}
 
-        {% if p.title == page.title %}
-          {% continue %}
+    {% for p in site.posts %}
+
+      {% if p.title == page.title %}
+        {% continue %}
+      {% endif %}
+
+      {% assign same_count = 0 %}
+      {% assign common_tags = '' %}
+
+      {% for tag in p.tags %}
+        {% if page.tags contains tag %}
+          {% assign same_count = same_count | plus: 1 %}
+          {% assign total_count = total_count | plus: 1 %}
+          {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+          {% assign common_tags = common_tags | append: tagmarkup %}
         {% endif %}
+      {% endfor %}
 
-        {% assign same_count = 0 %}
-        {% assign common_tags = '' %}
-
-        {% for tag in p.tags %}
-          {% if page.tags contains tag %}
-            {% assign same_count = same_count | plus: 1 %}
-            {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
-            {% assign common_tags = common_tags | append: tagmarkup %}
-          {% endif %}
-        {% endfor %}
-
-        {% if same_count >= 1 %}
+      {% if same_count >= 1 %}
+        {% capture total_html %}
           <li>
             <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
           </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+        {% endcapture %}
+      {% endif %}
+    {% endfor %}
+
+    {% if total_count >= 1 %}
+      <h3>Related posts</h3>
+      <ul>
+        {{ total_html }}
+      </ul>
+    {% endif %}
   </div>
 </div>
 
