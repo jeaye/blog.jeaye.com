@@ -16,7 +16,7 @@ symbols.c:23:61: error: array subscript is above array bounds [-Werror=array-bou
 #define symbols_address(n) (SYMBOLS_ORIGIN + symbols_offsets[n])
 ```
 
-Which, as I found in the [AUR comments](https://aur.archlinux.org/packages/xen/?comments=all), is solved with a quick patch (`patches/subscript.patch`):
+Which, as I found in the [AUR comments](https://aur.archlinux.org/packages/xen/?comments=all), was solved with a quick patch (`patches/subscript.patch`):
 
 ```diff
 --- a/xen/common/symbols.c.orig	2015-01-12 17:53:24.000000000 +0100
