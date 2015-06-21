@@ -4,7 +4,7 @@ tags: [linux, slackware, xen]
 ---
 
 #### Preface
-My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. I require the latest GCC 5.1, for work with C++14, the latest Vim, for use of [color_coded](https://github.com/jeaye/color_coded), and the ABI incompatibilities that follow have led me down a winding path.
+My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. I require the latest GCC 5.1, for work with C++14, the latest Vim, for use with [color_coded](https://github.com/jeaye/color_coded), and the ABI incompatibilities that follow have led me down a winding path.
 
 #### How
 When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I used [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copied `xen.Slackbuild` to `xen.Slackbuild.sbopkg` in `/var/lib/sbopkg/SBo/14.1/system/xen`. Once such a file exists, sbopkg will prompt me to use it while compiling.
