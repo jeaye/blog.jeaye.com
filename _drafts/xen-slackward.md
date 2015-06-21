@@ -3,10 +3,10 @@ title: Running Xen on Slackware 14.1 with GCC 5.1
 tags: [linux, slackware, xen]
 ---
 
-## Preface
+#### Preface
 My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. The reason I'd put myself through this is not only my love for Slackware, but also my need for GCC 5.1, which is not part of Slackware 14.1. Due to the ABI changes in the newer GCC, as well as many other changes, the existing Slackbuilds may not compile and may not work with the stock Slackware setup. As a result, I need to manually patch many packages.
 
-## How
+#### How
 When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I use [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copy `/var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild` to ` /var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild.sbopkg`. Once such a file exists, sbopkg will prompt me to use it while compiling.
 
 The first issue was as follows:
@@ -151,7 +151,7 @@ There are two files which need to be patched, as shown below:
                                 chan->channel,
 ```
 
-## Bringing it together
+#### Bringing it together
 Given these patches, the only task remaining was to tie them together into a working Slackbuild script. Since some sources are only extracted once one tries to build them, the tools need to be built in two steps: try first, patch, then try again. Such is life (and my impatience).
 
 I found that there were some issues with the existing Slackbuild, as it was using incorrect paths during install (see the diff below). Also, I've had no issues adding `-j8` to each of these `make` commands, which has made my life much easier.

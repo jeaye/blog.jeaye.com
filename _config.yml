@@ -6,6 +6,13 @@ defaults:
     values:
       author: "jeaye"
       layout: "default"
+  -
+    scope:
+      path: ""
+      type: "drafts"
+    values:
+      author: "jeaye"
+      layout: "default"
 
 permalink: pretty
 url: "http://blog.jeaye.com"
