@@ -19,4 +19,4 @@ url: "http://blog.jeaye.com"
 resource_url: "http://jeaye.com"
 
 markdown: redcarpet
-pygments: true
+highlighter: pygments

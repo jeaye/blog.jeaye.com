@@ -10,6 +10,7 @@ My Slackware setup is unique, since, unlike most Slackers, I've compiled my enti
 When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I use [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copy `/var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild` to ` /var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild.sbopkg`. Once such a file exists, sbopkg will prompt me to use it while compiling.
 
 The first issue was as follows:
+
 ```text
 symbols.c:23:61: error: array subscript is above array bounds [-Werror=array-bounds]
 #define symbols_address(n) (SYMBOLS_ORIGIN + symbols_offsets[n])
@@ -17,7 +18,7 @@ symbols.c:23:61: error: array subscript is above array bounds [-Werror=array-bou
 
 Which, as I found in the [AUR comments](https://aur.archlinux.org/packages/xen/?comments=all), is solved with a quick patch (`patches/subscript.patch`):
 
-```patch
+```diff
 --- a/xen/common/symbols.c.orig	2015-01-12 17:53:24.000000000 +0100
 +++ b/xen/common/symbols.c	2015-05-24 18:47:56.186578687 +0200
 @@ -19,7 +19,7 @@
@@ -39,7 +40,8 @@ undefined reference to `usb_mouse_command'
 ```
 
 The patch is as follows (`patches/stack.patch`):
-```patch
+
+```diff
 --- a/tools/firmware/seabios-dir-remote/src/kbd.c
 +++ b/tools/firmware/seabios-dir-remote/src/kbd.c
 @@ -11,7 +11,7 @@
@@ -104,7 +106,8 @@ drivers/net/ath/ath9k/ath9k_ar9003_phy.c:1016:14: error: logical not is only app
 There are two files which need to be patched, as shown below:
 
 `patches/ath9k.patch`
-```patch
+
+```diff
 --- tools/firmware/etherboot/ipxe/src/drivers/net/ath/ath9k/ath9k_ar9003_phy.c  2015-06-21 22:01:02.701058530 +0800
 +++ tools/firmware/etherboot/ipxe/src/drivers/net/ath/ath9k/ath9k_ar9003_phy.c  2015-06-21 22:01:27.499057064 +0800
 @@ -859,7 +859,7 @@
@@ -128,7 +131,8 @@ There are two files which need to be patched, as shown below:
 ```
 
 `patches/ath9k2.patch`
-```patch
+
+```diff
 --- tools/firmware/etherboot/ipxe/src/drivers/net/ath/ath9k/ath9k_ar5008_phy.c.orig     2011-12-11 03:28:04.000000000 +0100
 +++ tools/firmware/etherboot/ipxe/src/drivers/net/ath/ath9k/ath9k_ar5008_phy.c  2015-05-25 11:14:30.732759966 +0200
 @@ -1141,7 +1141,7 @@
@@ -157,7 +161,8 @@ Given these patches, the only task remaining was to tie them together into a wor
 I found that there were some issues with the existing Slackbuild, as it was using incorrect paths during install (see the diff below). Also, I've had no issues adding `-j8` to each of these `make` commands, which has made my life much easier.
 
 The resulting `xen.Slackbuild.sbopkg` patch:
-```patch
+
+```diff
 --- xen.SlackBuild.sbopkg.orig	2015-06-21 23:32:03.247735702 +0800
 +++ xen.SlackBuild.sbopkg	2015-06-21 23:29:54.094743338 +0800
 @@ -132,21 +132,36 @@
