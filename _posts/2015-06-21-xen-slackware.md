@@ -7,7 +7,7 @@ tags: [linux, slackware, xen]
 My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. The reason I'd put myself through this is not only my love for Slackware, but also my need for GCC 5.1, which is not part of Slackware 14.1. Due to the ABI changes in the newer GCC, as well as many other changes, the existing Slackbuilds may not compile and may not work with the stock Slackware setup. As a result, I need to manually patch many packages.
 
 #### How
-When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I use [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copy `/var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild` to ` /var/lib/sbopkg/SBo/14.1/system/xen/xen.Slackbuild.sbopkg`. Once such a file exists, sbopkg will prompt me to use it while compiling.
+When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I used [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copied `xen.Slackbuild` to `xen.Slackbuild.sbopkg` in `/var/lib/sbopkg/SBo/14.1/system/xen`. Once such a file exists, sbopkg will prompt me to use it while compiling.
 
 The first issue was as follows:
 
