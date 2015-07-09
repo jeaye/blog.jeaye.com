@@ -138,6 +138,39 @@ Use (O)riginal/(L)ocal, see (D)iff, or (C)ancel?:
 
 Of course, we can use the original, or our version (local), or even view the diff. To use our modified version, we'd submit "L" here. When upgrading SBo packages, you'll need to manually diff the original with your local version to see what has changed; at the very least, the `VERSION` will have changed.
 
+### Updating
+sbopkg supports two forms of updating.
+
+1. Updating sbopkg itself
+2. Updating installed SBo packages
+
+For the former, you can simply run:
+
+```bash
+# Think of 'u' as 'upgrade'
+> sbopkg -u
+```
+
+For the latter, which is arguably more common, simply run:
+
+```bash
+# Think of 'c' as 'check for updates'
+> sbopkg -c
+
+# Example output
+Listing installed SBo repository for Slackware 14.1 packages and flagging
+potential updates...
+
+webkitgtk3:
+  POTENTIAL UPDATE
+  Installed version:  webkitgtk3-2.4.8-x86_64-1_SBo
+  Repo version:  webkitgtk3-2.4.9-x86_64-1_SBo
+
+Potential update list complete.
+```
+
+**NOTE:** The `sbopkg -c` command does *not* update the packages; it just checks for updates. To update an outdated package, just install it again, using `sbopkg -i`.
+
 ### Uninstalling
 When you're ready to uninstall a package which was installed via sbopkg, just use the normal Slackware tools. That is, if we want to get rid of `ioquake3` and it dependencies, we'll do:
 
