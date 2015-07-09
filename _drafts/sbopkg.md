@@ -15,7 +15,7 @@ After navigating to [the SBo download page](http://sbopkg.org/downloads.php) and
 ```
 
 ### Initial run
-sbopkg, by default, always needs to be run as root. The first time you start using sbopkg, you may be promped with a choice to create the proper directories. For me, that often looks something like:
+sbopkg, by default, always needs to be run as root. The first time you start using sbopkg, you may be prompted with a choice to create the proper directories. For me, that often looks something like:
 
 ```
 The following directories do not exist:
@@ -30,7 +30,7 @@ abort to edit your config files or pass different flags.
 (C)reate or (A)bort?:
 ```
 
-This is because I `rm -rf /tmp/*` in `/etc/rc.d/rc.local_shutdown`; you can configure your sbopkg in `/etc/sbopkg/sbopkg.conf`. The defaults have always felt sane to me.
+This is because I run `rm -rf /tmp/*` in `/etc/rc.d/rc.local_shutdown`; you can configure your sbopkg in `/etc/sbopkg/sbopkg.conf`. The defaults have always felt sane to me.
 
 ### Syncing
 To sync sbopkg with the remote SBo, simply run:
