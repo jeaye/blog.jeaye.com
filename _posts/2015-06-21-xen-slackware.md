@@ -3,7 +3,6 @@ title: Running Xen on Slackware 14.1 with GCC 5.1
 tags: [linux, slackware, xen]
 ---
 
-#### Preface
 My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. I require the latest GCC 5.1, for work with C++14, the latest Vim, for use with [color_coded](https://github.com/jeaye/color_coded), and the ABI incompatibilities that follow have led me down a winding path.
 
 #### How
