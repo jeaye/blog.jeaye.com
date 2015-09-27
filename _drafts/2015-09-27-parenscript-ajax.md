@@ -73,3 +73,33 @@ After restarting the server, we can now test out this new page.
 ```bash
 curl "http://localhost:8080/repl"
 ```
+
+### Setting up a remote API
+To have our server start responding to queries, we'll begin integrating smackjack into our source. To start, we need an AJAX processor operating at a specific URI.
+
+```lisp
+(defparameter *ajax-processor*
+  (make-instance 'ajax-processor :server-uri "/repl-api"))
+```
+
+After that, we can register remote functions with it using smackjack's `defun-ajax` macro. We'll start with a simple echo function.
+
+```lisp
+(defun-ajax echo (data) (*ajax-processor*)
+  (concatenate 'string "echo: " data))
+```
+
+The last thing we need to do, in order for us to access our remote functions through hunchentoot, is integrate the AJAX handler with hunchentoot's dispatch table.
+
+```lisp
+(setq *dispatch-table* (list 'dispatch-easy-handlers
+                             (create-ajax-dispatcher *ajax-processor*)))
+```
+
+Now we can test the server!
+
+```bash
+curl 'http://localhost:8080/repl-api/ECHO?data="testing!"'
+```
+
+**NOTE:** The capitalization of `ECHO` here and the quoting of the `data` value is very deliberate. This is also something that many examples/tutorials will get wrong.
