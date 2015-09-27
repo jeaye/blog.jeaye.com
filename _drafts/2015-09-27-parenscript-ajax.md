@@ -31,7 +31,7 @@ After that, we'll define a package for our application. In my case, it's `:jank-
 ```
 
 ### Starting the server
-At this point, we can tell hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far.
+At this point, we can tell Hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far.
 
 ```lisp
 (defparameter *server*
@@ -39,7 +39,7 @@ At this point, we can tell hunchentoot to start up. It won't do much, but it'll 
 ```
 
 TODO: talk about dispatch-table
-**NOTE:** Many hunchentoot examples and tutorials will use `'acceptor` instead of `'easy-acceptor`. Do *not* do this unless you know what you're doing. Nothing will work.
+**NOTE:** Many Hunchentoot examples and tutorials will use `'acceptor` instead of `'easy-acceptor`. Do *not* do this unless you know what you're doing. Nothing will work.
 
 Now we can try connecting to the server, either through our browser, or simply via curl.
 
@@ -50,14 +50,14 @@ curl "http://localhost:8080/"
 If all is working well, you should get a simple page back saying something like "Welcome to Hunchentoot!" We can now start adding some custom pages.
 
 ### Adding custom pages
-Before we jump into using cl-who with hunchentoot, we need to tell parenscript how to escape its strings when embedded in cl-who.
+Before we jump into using cl-who with Hunchentoot, we need to tell Parenscript how to escape its strings when embedded in cl-who.
 
 ```lisp
-; Allow cl-who and parenscript to work together
+; Allow cl-who and Parenscript to work together
 (setf *js-string-delimiter* #\")
 ```
 
-Now we can define a custom route using hunchentoot's `define-easy-handler` macro.
+Now we can define a custom route using Hunchentoot's `define-easy-handler` macro.
 
 ```lisp
 (define-easy-handler (repl :uri "/repl") ()
@@ -67,7 +67,7 @@ Now we can define a custom route using hunchentoot's `define-easy-handler` macro
         (:h2 "Jank REPL")))))
 ```
 
-This macro will setup routing for us, requiring no extra hunchentoot code. As you can see, we use cl-who here to build html into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
+This macro will setup routing for us, requiring no extra Hunchentoot code. As you can see, we use cl-who here to build html into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
 
 After restarting the server, we can now test out this new page.
 
@@ -90,7 +90,7 @@ After that, we can register remote functions with it using SmackJack's `defun-aj
   (concatenate 'string "echo: " data))
 ```
 
-The last thing we need to do, in order for us to access our remote functions through hunchentoot, is integrate the AJAX handler with hunchentoot's dispatch table.
+The last thing we need to do, in order for us to access our remote functions through Hunchentoot, is integrate the AJAX handler with Hunchentoot's dispatch table.
 
 ```lisp
 (setq *dispatch-table* (list 'dispatch-easy-handlers
@@ -142,7 +142,7 @@ Let's see how that looks:
                    "Submit!"))))))
 ```
 
-This is quite a bit larger than our previous `/repl` hunchentoot handler, but the pieces are quite simple. First, we see we're generating SmackJack's prologue. We need to use cl-who's `str` function to marshal Common Lisp strings into the HTML generation. Aside from that, we're defining a script tag with some Parenscript, denoted by `ps`.
+This is quite a bit larger than our previous `/repl` Hunchentoot handler, but the pieces are quite simple. First, we see we're generating SmackJack's prologue. We need to use cl-who's `str` function to marshal Common Lisp strings into the HTML generation. Aside from that, we're defining a script tag with some Parenscript, denoted by `ps`.
 
 As mentioned before, we have two Parenscript functions. One handles the initial event and the other handles the callback from the server. I'll point out a couple of subtle bits which other examples and tutorials get wrong.
 
