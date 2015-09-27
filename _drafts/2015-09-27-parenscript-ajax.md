@@ -20,3 +20,28 @@ We'll just use [quicklisp](TODO) to install these for us.
 ```lisp
 (ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
 ```
+
+### Package
+After that, we'll define a package for our application. In my case, it's `:jank-repl`.
+
+```lisp
+(defpackage :jank-repl
+  (:use :cl :hunchentoot :cl-who :parenscript :smackjack))
+(in-package :jank-repl)
+```
+
+### Starting the server
+At this point, we can tell hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far.
+
+```lisp
+(defparameter *server*
+  (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
+```
+
+Now we can try connecting to the server, either through our browser, or simply via curl.
+
+```bash
+curl "http://localhost:8080/"
+```
+
+If all is working well, you should get a simple page back saying something like "Welcome to Hunchentoot!" We can now start adding some custom pages.
