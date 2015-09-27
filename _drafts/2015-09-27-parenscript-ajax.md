@@ -38,7 +38,7 @@ At this point, we can tell hunchentoot to start up. It won't do much, but it'll 
   (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
 ```
 
-TODO: mention 'acceptor bug
+**NOTE:** Many hunchentoot examples and tutorials will use `'acceptor` instead of `'easy-acceptor`. Do *not* do this unless you know what you're doing. Nothing will work.
 
 Now we can try connecting to the server, either through our browser, or simply via curl.
 
