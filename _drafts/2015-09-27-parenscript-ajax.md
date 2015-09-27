@@ -146,5 +146,72 @@ This is quite a bit larger than our previous `/repl` Hunchentoot handler, but th
 
 As mentioned before, we have two Parenscript functions. One handles the initial event and the other handles the callback from the server. I'll point out a couple of subtle bits which other examples and tutorials get wrong.
 
-1. We use `chain` to access nested functions within JavaScript objects
+1. We use `chain` to access nested functions within Parenscript objects
 2. We use `ps-inline` to generate JavaScript prefixed with "javascript:"
+
+Now navigate to http://localhost:8080/repl and jot something into the text box. When you click the submit button, you'll contact the server. Once the server's reply comes back, your window  will be alerted with the response.
+
+### Wrapping up
+The full source for this can fit comfortably under 50 lines, which is great, considering it's both the front end and back end logic. However, the state of documentation for these projects, most of which have been stale for a matter of years, is very unfortunate. Even a matter of 50 lines can prove to be several hours of head pain.
+
+Of course, this isn't quite a REPL yet, but all of the necessary glue work between the client and server is entirely done. Now it's just a matter of cleaning up the UI and implementing the backend logic.
+
+The full source is shown below, as well as some references I used while piecing this together.
+
+### Full source
+
+```lisp
+(ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
+
+(defpackage :jank-repl
+  (:use :cl :hunchentoot :cl-who :parenscript :smackjack))
+(in-package :jank-repl)
+
+; Allow cl-who and parenscript to work together
+(setf *js-string-delimiter* #\")
+
+(defparameter *ajax-processor*
+  (make-instance 'ajax-processor :server-uri "/repl-api"))
+
+(defun-ajax echo (data) (*ajax-processor* :callback-data :response-text)
+  (concatenate 'string "echo: " data))
+
+(define-easy-handler (repl :uri "/repl") ()
+  (with-html-output-to-string (s)
+    (:html
+      (:head
+        (:title "Jank REPL")
+        (str (generate-prologue *ajax-processor*))
+        (:script :type "text/javascript"
+          (str
+            (ps
+              (defun callback (response)
+                (alert response))
+
+              (defun on-click ()
+                (chain smackjack (echo (chain document
+                                              (get-element-by-id "data")
+                                              value)
+                                       callback)))))))
+      (:body
+        (:p
+          (:input :id "data" :type "text"))
+        (:p
+          (:button :type "button"
+                   :onclick (ps-inline (on-click))
+                   "Submit!"))))))
+
+(defparameter *server*
+  (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
+
+(setq *dispatch-table* (list 'dispatch-easy-handlers
+                             (create-ajax-dispatcher *ajax-processor*)))
+```
+
+### References
+Note that *many* of these are out of date. Compare the usages you find with what's shown above to have a higher chance of bringing in working code.
+
+- [Official Parenscript tutorial](https://common-lisp.net/project/parenscript/tutorial.html)
+- [Other Parenscript tutorial](http://vitovan.com/lispweb3.html)
+- [Parenscript tips](http://www.cliki.net/ParenscriptTipsAndTricks)
+- [SmackJack Demo](https://github.com/aarvid/SmackJack/blob/master/demo/demo.lisp)
