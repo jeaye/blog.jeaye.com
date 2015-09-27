@@ -38,6 +38,8 @@ At this point, we can tell hunchentoot to start up. It won't do much, but it'll 
   (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
 ```
 
+TODO: mention 'acceptor bug
+
 Now we can try connecting to the server, either through our browser, or simply via curl.
 
 ```bash
@@ -45,3 +47,29 @@ curl "http://localhost:8080/"
 ```
 
 If all is working well, you should get a simple page back saying something like "Welcome to Hunchentoot!" We can now start adding some custom pages.
+
+### Adding custom pages
+Before we jump into using cl-who with hunchentoot, we need to tell parenscript how to escape its strings when embedded in cl-who.
+
+```lisp
+; Allow cl-who and parenscript to work together
+(setf *js-string-delimiter* #\")
+```
+
+Now we can define a custom route using hunchentoot's `define-easy-handler` macro.
+
+```lisp
+(define-easy-handler (repl :uri "/repl") ()
+  (with-html-output-to-string (s)
+    (:html
+     (:body
+      (:h2 "Jank REPL")))))
+```
+
+This macro will setup routing for us, requiring no extra hunchentoot code. As you can see, we use cl-who here to build html into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
+
+After restarting the server, we can now test out this new page.
+
+```bash
+curl "http://localhost:8080/repl"
+```
