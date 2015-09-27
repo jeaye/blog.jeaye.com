@@ -38,6 +38,7 @@ At this point, we can tell hunchentoot to start up. It won't do much, but it'll 
   (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
 ```
 
+TODO: talk about dispatch-table
 **NOTE:** Many hunchentoot examples and tutorials will use `'acceptor` instead of `'easy-acceptor`. Do *not* do this unless you know what you're doing. Nothing will work.
 
 Now we can try connecting to the server, either through our browser, or simply via curl.
@@ -62,8 +63,8 @@ Now we can define a custom route using hunchentoot's `define-easy-handler` macro
 (define-easy-handler (repl :uri "/repl") ()
   (with-html-output-to-string (s)
     (:html
-     (:body
-      (:h2 "Jank REPL")))))
+      (:body
+        (:h2 "Jank REPL")))))
 ```
 
 This macro will setup routing for us, requiring no extra hunchentoot code. As you can see, we use cl-who here to build html into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
@@ -75,17 +76,17 @@ curl "http://localhost:8080/repl"
 ```
 
 ### Setting up a remote API
-To have our server start responding to queries, we'll begin integrating smackjack into our source. To start, we need an AJAX processor operating at a specific URI.
+To have our server start responding to queries, we'll begin integrating SmackJack into our source. To start, we need an AJAX processor operating at a specific URI.
 
 ```lisp
 (defparameter *ajax-processor*
   (make-instance 'ajax-processor :server-uri "/repl-api"))
 ```
 
-After that, we can register remote functions with it using smackjack's `defun-ajax` macro. We'll start with a simple echo function.
+After that, we can register remote functions with it using SmackJack's `defun-ajax` macro. We'll start with a simple echo function. The `:callback-data` can be various types, from text to JSON, to XML. For now, we'll just echo text.
 
 ```lisp
-(defun-ajax echo (data) (*ajax-processor*)
+(defun-ajax echo (data) (*ajax-processor* :callback-data :response-text)
   (concatenate 'string "echo: " data))
 ```
 
@@ -103,3 +104,47 @@ curl 'http://localhost:8080/repl-api/ECHO?data="testing!"'
 ```
 
 **NOTE:** The capitalization of `ECHO` here and the quoting of the `data` value is very deliberate. This is also something that many examples/tutorials will get wrong.
+
+### Calling from Parenscript
+The last thing we have to do is call our server from the client. We'll spice up our REPL page to have some Parenscript and we'll use the echo server with SmackJack to reply to the client.
+
+In order to access our AJAX functions from Parenscript, we need to bring in SmackJack's prologue, which is just a generated dump of JavaScript wrappers. Aside from that, we'll need to define a two Parenscript functions.
+
+1. Something to call when an event on the page happens; it calls into SmackJack
+2. A callback for when we hear back from the server
+
+Let's see how that looks:
+
+```lisp
+(define-easy-handler (repl :uri "/repl") ()
+  (with-html-output-to-string (s)
+    (:html
+      (:head
+        (:title "Jank REPL")
+        (str (generate-prologue *ajax-processor*))
+        (:script :type "text/javascript"
+          (str
+            (ps
+              (defun callback (response)
+                (alert response))
+
+              (defun on-click ()
+                (chain smackjack (echo (chain document
+                                              (get-element-by-id "data")
+                                              value)
+                                       callback)))))))
+      (:body
+        (:p
+          (:input :id "data" :type "text"))
+        (:p
+          (:button :type "button"
+                   :onclick (ps-inline (on-click))
+                   "Submit!"))))))
+```
+
+This is quite a bit larger than our previous `/repl` hunchentoot handler, but the pieces are quite simple. First, we see we're generating SmackJack's prologue. We need to use cl-who's `str` function to marshal Common Lisp strings into the HTML generation. Aside from that, we're defining a script tag with some Parenscript, denoted by `ps`.
+
+As mentioned before, we have two Parenscript functions. One handles the initial event and the other handles the callback from the server. I'll point out a couple of subtle bits which other examples and tutorials get wrong.
+
+1. We use `chain` to access nested functions within JavaScript objects
+2. We use `ps-inline` to generate JavaScript prefixed with "javascript:"
