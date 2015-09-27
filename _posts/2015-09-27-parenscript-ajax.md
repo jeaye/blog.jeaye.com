@@ -5,7 +5,7 @@ tags: [lisp, parenscript, ajax, tutorial]
 
 When looking to make full-stack web applications in lisp, Common Lisp and Parenscript are just as capable as Clojure and Clojurescript, if only less documented. As I wanted to make a web-based REPL for [jank](https://github.com/jeaye/jank), my statically-typed functional programming language, I evaluated both the Clojure and Common Lisp stacks and, ultimately, decided on Common Lisp.
 
-The goal of this post is not to compare the Common Lisp and Clojure stacks, but is, instead, to offer an updated introduction to actually getting the Common Lisp stack running. Unfortunately, *every single* example and tutorial I've found on the topic has *something* incorrect. The minimal scope of this post, hopefully, will maximize its portability.
+The goal of this post is not to compare the Common Lisp and Clojure stacks, but is, instead, to offer an updated introduction to actually getting the Common Lisp stack running. Unfortunately, *every single* example and tutorial I've found on the topic has *something* incorrect. The minimal scope of this post, hopefully, will maximize its portability and longevity.
 
 ### Dependencies
 To begin with, we'll sort out our dependencies. This was tested using SBCL 1.2.15.79-c2708da on Slackware 14.1 x86_64, but it should have no issues elsewhere.
@@ -13,7 +13,7 @@ To begin with, we'll sort out our dependencies. This was tested using SBCL 1.2.1
 1. [parenscript](https://common-lisp.net/project/parenscript/) (a set of macros for turning Common Lisp into Javascript)
 2. [hunchentoot](http://weitz.de/hunchentoot/) (a pure Common Lisp web server)
 3. [cl-who](http://weitz.de/cl-who/) (a DSL for building HTML, compatible with Parenscript)
-4. [smackjack](https://github.com/aarvid/SmackJack) (an AJAX library used for contacting the server)
+4. [smackjack](https://github.com/aarvid/SmackJack) (an AJAX library we'll use from Parenscript)
 
 We'll just use [quicklisp](https://www.quicklisp.org/beta/) to install these for us.
 
