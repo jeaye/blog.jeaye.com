@@ -31,12 +31,14 @@ After that, we'll define a package for our application. In my case, it's `:jank-
 ```
 
 ### Starting the server
-At this point, we can tell Hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far. We specify the `'easy-acceptor` so that Hunchentoot will detect our custom routes later on, automatically. Different acceptors can be added to a global `*dispatch-table*`, which we'll see later.
+At this point, we can tell Hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far.
 
 ```lisp
 (defparameter *server*
   (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
 ```
+
+We specify the `'easy-acceptor` so that Hunchentoot will detect our custom routes later on, automatically. Different acceptors can be added to a global `*dispatch-table*`, which we'll see later.
 
 **NOTE:** Many Hunchentoot examples and tutorials will use `'acceptor` instead of `'easy-acceptor`. Do *not* do this unless you know what you're doing. Nothing will work.
 
