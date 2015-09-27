@@ -68,7 +68,7 @@ Now we can define a custom route using Hunchentoot's `define-easy-handler` macro
         (:h2 "Jank REPL")))))
 ```
 
-This macro will setup routing for us, requiring no extra Hunchentoot code. As you can see, we use cl-who here to build html into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
+This macro will setup routing for us, requiring no extra Hunchentoot code. As you can see, we use cl-who here to build HTML into a string. The return value of this handler is the html (or other content, if desired) of the webpage.
 
 After restarting the server, we can now test out this new page.
 
@@ -107,14 +107,14 @@ curl 'http://localhost:8080/repl-api/ECHO?data="testing!"'
 **NOTE:** The capitalization of `ECHO` here and the quoting of the `data` value is very deliberate. This is also something that many examples/tutorials will get wrong.
 
 ### Calling from Parenscript
-The last thing we have to do is call our server from the client. We'll spice up our REPL page to have some Parenscript and we'll use the echo server with SmackJack to reply to the client.
+Finally, we need to call our server from the client. We'll spice up our REPL page to have some Parenscript and we'll use the echo server with SmackJack to reply to the client.
 
 In order to access our AJAX functions from Parenscript, we need to bring in SmackJack's prologue, which is just a generated dump of JavaScript wrappers. Aside from that, we'll need to define a two Parenscript functions.
 
 1. Something to call when an event on the page happens; it calls into SmackJack
 2. A callback for when we hear back from the server
 
-Let's see how that looks:
+Let's see how that looks, replacing our old call to `define-easy-handler`:
 
 ```lisp
 (define-easy-handler (repl :uri "/repl") ()
@@ -128,7 +128,6 @@ Let's see how that looks:
             (ps
               (defun callback (response)
                 (alert response))
-
               (defun on-click ()
                 (chain smackjack (echo (chain document
                                               (get-element-by-id "data")
@@ -150,14 +149,14 @@ As mentioned before, we have two Parenscript functions. One handles the initial 
 1. We use `chain` to access nested functions within Parenscript objects
 2. We use `ps-inline` to generate JavaScript prefixed with "javascript:"
 
-Now navigate to http://localhost:8080/repl and jot something into the text box. When you click the submit button, you'll contact the server. Once the server's reply comes back, your window  will be alerted with the response.
+Now navigate to [http://localhost:8080/repl](http://localhost:8080/repl) and jot something into the text box. When you click the submit button, you'll contact the server. Once the server's reply comes back, your window  will be alerted with the response.
 
 ### Wrapping up
-The full source for this can fit comfortably under 50 lines, which is great, considering it's both the front end and back end logic. However, the state of documentation for these projects, most of which have been stale for a matter of years, is very unfortunate. Even a matter of 50 lines can prove to be several hours of head pain.
+The full source for this can fit comfortably under 50 lines, which is great, considering it's both the front end and back end logic. However, the state of documentation for these projects, most of which have been stale for a matter of years, is very unfortunate. Even a matter of 50 lines can prove to be several hours of pain.
 
 Of course, this isn't quite a REPL yet, but all of the necessary glue work between the client and server is entirely done. Now it's just a matter of cleaning up the UI and implementing the backend logic.
 
-The full source is shown below, as well as some references I used while piecing this together.
+The full echo client/server source is shown below, as well as some references I used while piecing this together.
 
 ### Full source
 
@@ -188,7 +187,6 @@ The full source is shown below, as well as some references I used while piecing 
             (ps
               (defun callback (response)
                 (alert response))
-
               (defun on-click ()
                 (chain smackjack (echo (chain document
                                               (get-element-by-id "data")
