@@ -24,6 +24,11 @@ guixsd
   based on nix
   uses scheme/guile
 
+YCM and color_coded
+  need to access libraries
+    lua boost sdl etc
+  they're not available
+
 manpath fucked?
 
 bash becomes slow
