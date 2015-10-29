@@ -28,12 +28,8 @@ YCM and color_coded
   need to access libraries
     lua boost sdl etc
   they're not available
-
-manpath fucked?
-
-bash becomes slow
-
-firefox slow startup
+  need to generate configs with nix
+    not fucking portable
 
 awful documentation
 
@@ -43,6 +39,8 @@ can't just build software
   vim plugins don't work
 
 to where does it install?
+  ~/.nix-profile
+  /nix store
 
 no startx
   need a DM
