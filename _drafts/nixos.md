@@ -74,7 +74,7 @@ files.
 Once you're in a NixOS machine, you can change your configs and then just run
 `nixos-rebuild switch` and Nix will realize everything you described, even if it
 means building a new kernel, bringing in new software, dependencies, upgrading
-something, or completely removing large portions of the system.
+something, or performing big changes like switching from KDE to GNOME.
 
 An example of just how simple something like a kernel upgrade can be: [this
 commit upgrades my machine to Linux
@@ -150,24 +150,23 @@ drawbacks.
     I need to put up with some DM. Worse, the default NixOS DM, Slim, is
     abandoned and lacks common functionality like reading `~/.xinitrc`.
 
-guixsd
-  more strict on free software
-  less mature
-  based on nix
-  uses scheme/guile
+* Hard to debug
 
-YCM and color_coded
-  need to access libraries
-    lua boost sdl etc
-  they're not available
-  need to generate configs with nix
-    not fucking portable
+  * Due to how foreign and opaque the NixOS file system is, with symbolic links
+    up the wazoo, finding out why a program isn't running is very difficult.
 
-can't just build software
-  need nix expressions
-  not good for developing C++ apps
-  vim plugins don't work
+### Summary
+I would absolutely consider using NixOS for a non-development machine. I'm very
+much considering moving http://jeaye.com from DigitalOcean to Linode, which will
+allow me to use NixOS. Being able to describe complex setups like a postfix +
+dovecot mail server, for example, using Nix files and being able to reproduce
+that machine once written would really give me some peace of mind as a
+administrator.
 
-to where does it install?
-  ~/.nix-profile
-  /nix store
+For those interested, there is also a newer project,
+[GuixSD](https://en.wikipedia.org/wiki/Guix_System_Distribution), which uses
+Guix, a fork of Nix. GuidSD tries to accomplish very similar tasks as NixOS; the
+key difference is the use of Scheme instead of Nix's purely functional language.
+From what I've read, GuixSD is much younger and supports fewer packages.
+Furthermore, since it's part of the GNU project, you can expect that it would be
+very partial toward free software.
