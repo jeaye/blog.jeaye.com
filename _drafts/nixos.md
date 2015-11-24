@@ -5,12 +5,15 @@ tags: [linux, nixos, review]
 
 NixOS is a novel Linux distribution started in 2003; it's built upon the [Nix
 package manger](https://en.wikipedia.org/wiki/Nix_package_manager) which
-provides a functional, declarative approach to package management. NixOS takes
-the direction of Nix and continues further to allow control over the entire OS,
-from the file system to various services like SSH and HTTP, using the same
-declarative syntax. This means an entire NixOS setup, including all services,
-packages installed, and even configurations, can be represented in
-Nix configuration files and, potentially, stored some place like Github.
+provides a [functional, declarative
+approach](https://en.wikipedia.org/wiki/NixOS#Declarative_system_configuration_model)
+to package management. NixOS takes the direction of Nix, which can run on any
+Unix-like distro (including OS X), and continues further to
+allow control over the entire OS, from the file system to various services like
+SSH and HTTP, using the same declarative syntax. This means an entire NixOS
+setup, including all services, packages installed, and even configurations, can
+be represented in Nix configuration files and, potentially, stored some place
+like Github.
 
 Similar to how software like
 [PlayOnLinux](https://en.wikipedia.org/wiki/PlayOnLinux) works, where each
@@ -20,7 +23,8 @@ completely revised approach to storing both binaries and libraries in the Linux
 file system. In functional programming terms, the typical file system of
 a Linux machine is global, mutable state. Everything lives in one place, either
 `/usr` or `/usr/local` or similar. This means it's very difficult to, for
-example, have several versions of the same library installed at once.
+example, have several versions of the same library installed at once. It's also
+difficult to atomically upgrade and revert entire states of the file system.
 
 As a novel way of avoiding [dependency
 hell](https://en.wikipedia.org/wiki/Dependency_hell), Nix stores all installed
@@ -52,9 +56,8 @@ etc; all of this is described within these configuration files. The nice thing
 about declarative configuration is that you describe *how the system should look
 when it's ready* not *how it should get there*.
 
-
 #### Describing a NixOS system
-As I said before, if you're doing it right, everything you need is in the form
+If you're doing it right, everything you need is in the form
 of Nix files. We can start with [describing
 GRUB](https://github.com/jeaye/nix-files/blob/master/grub.nix), instead of using
 the typical grub commands and mutating `/etc/grub.d` and `/boot/grub/`. After
@@ -84,8 +87,8 @@ other machines you've setup.
 
 ### My thoughts
 Though it may sound like I'm just trying to sell NixOS here, I'm not actually
-using it anymore (was on Slackware, but I put Arch on after NixOS). Why not?
-First, I want to say more about what I love with regard to Nix and NixOS.
+using it anymore. Why not?  First, I want to say more about what I love with
+regard to Nix and NixOS.
 
 * Easy install of any packaged software (steam, skype, etc)
 
@@ -95,17 +98,20 @@ First, I want to say more about what I love with regard to Nix and NixOS.
 
 * Seemingly large changes, like a kernel update are often a one-liner
 * Your entire system is stored in configuration files which can easily be put
-  onto Github or similar
+  onto Github
 
   * Once you describe a machine, you can replicate it anywhere. If you lose that
     machine, the configs will bring you back to where you need to be.
 
-* Upgrades are atomic and you can rollback any changes. By default, when you
-  tell NixOS to realize your configs, it takes a snapshot of your current
-  configs and updates GRUB so you can even choose previous setups at boot.
+* Upgrades are atomic and you can rollback any changes
 
-* Installation is a breeze; I installed NixOS from my existing Slackware
-  install.
+  * By default, when you tell NixOS to realize your configs, it takes a snapshot
+    of your current configs and updates GRUB so you can even choose previous
+    setups at boot.
+
+* Installation is a breeze
+
+  * I installed NixOS from my existing Slackware install!
 
 * The IRC channel on Freenode, #nixos, is quite active and helpful
 
