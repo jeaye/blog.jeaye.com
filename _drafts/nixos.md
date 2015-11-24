@@ -3,6 +3,15 @@ title: My experience with NixOS
 tags: [linux, nixos, review]
 ---
 
+NixOS is a novel Linux distribution started in 2003; it's built upon the [Nix
+package manger](https://en.wikipedia.org/wiki/Nix_package_manager) which
+provides a functional, declarative approach to package management. NixOS takes
+the direction of Nix and continues further to allow control over the entire OS,
+from the file system to various services like SSH and HTTP, using the same
+declarative syntax. This means an entire NixOS setup, including all services,
+packages installed, and even configurations, can be represented in
+Nix configuration files and, potentially, stored some place like Github.
+
 good:
 
 easy install of steam/skype/etc
