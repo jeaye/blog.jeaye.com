@@ -48,7 +48,9 @@ some examples.
 [My Nix files](https://github.com/jeaye/nix-files) describe the setup I was
 building, which is my "desktop" workstation where I do primarily C++ and Clojure
 development. I use Vim, watch movies with mplayer, listen to music with cmus,
-etc; all of this is described within these configuration files.
+etc; all of this is described within these configuration files. The nice thing
+about declarative configuration is that you describe *how the system should look
+when it's ready* not *how it should get there*.
 
 
 #### Describing a NixOS system
@@ -80,18 +82,32 @@ commit upgrades my machine to Linux
 No longer should you have to waste time reconfiguring machines to be similar to
 other machines you've setup.
 
-good:
+### My thoughts
+Though it may sound like I'm just trying to sell NixOS here, I'm not actually
+using it anymore (was on Slackware, but I put Arch on after NixOS). Why not?
+First, I want to say more about what I love with regard to Nix and NixOS.
 
-easy install of steam/skype/etc
-  dep management
+* Easy install of any packaged software (steam, skype, etc)
 
-upgrade a kernel with 1 line change
+  * By just describing that the package should be installed, in your Nix files,
+    and telling Nix to realize what you described, you can completely rework
+    your system
 
-keep it all on github
+* Seemingly large changes, like a kernel update are often a one-liner
+* Your entire system is stored in configuration files which can easily be put
+  onto Github or similar
 
-grub allows selecting previous
+  * Once you describe a machine, you can replicate it anywhere. If you lose that
+    machine, the configs will bring you back to where you need to be.
 
-can install from linux
+* Upgrades are atomic and you can rollback any changes. By default, when you
+  tell NixOS to realize your configs, it takes a snapshot of your current
+  configs and updates GRUB so you can even choose previous setups at boot.
+
+* Installation is a breeze; I installed NixOS from my existing Slackware
+  install.
+
+* The IRC channel on Freenode, #nixos, is quite active and helpful
 
 bad:
 
