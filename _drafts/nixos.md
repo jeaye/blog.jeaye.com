@@ -109,12 +109,46 @@ First, I want to say more about what I love with regard to Nix and NixOS.
 
 * The IRC channel on Freenode, #nixos, is quite active and helpful
 
-bad:
+With all of that said, I found that NixOS isn't suitable for my development
+workstation. I spent a great deal of time compiling software which has various
+dependencies. In NixOS, in order for those dependencies to be available, one
+needs to use `nix-shell` with some Nix file which describes the dependencies of
+that shell (boost, SDL, etc). Along with that, compiling arbitrary software
+which functions as a plugin of Nix-packaged software can be a real pain in the
+ass (namely Vim plugins with compiled components). Here are some noted
+drawbacks.
 
-nix-shell
-  can't change PS1?
-  needed to build anything sane
-  ldd errors still
+* nix-shell is needed to build anything sane
+
+  * One needs to describe every single package which is required, otherwise
+    NixOS won't have them linked into the current environment. Unfortunately,
+    even in they are linked in, I still ran into a plethora of issues with
+    software like CMake not being able to find the right packages. This was my
+    biggest issue.
+
+* The documentation is either awful or nonexistent
+
+  * NixOS isn't that new, but it really only has a manual. Unfortunately, the
+    manual doesn't even cover all of the aspects. Some are in the man pages,
+    others exist in various blogs, and others are only in the minds of those
+    dwelling on IRC. Getting going with NixOS is a difficult experience; trying
+    to use NixOS for anything other than exactly what's intended is also going
+    to be painful.
+
+* nixpkgs is, often times, the only useful resource
+
+  * Due to the complete lack of useful documentation on various packages, one
+    typically needs to browse [nixpkgs](https://github.com/NixOS/nixpkgs) in
+    order to know the configuration options which are actually allowed for a
+    given package.
+
+* There is no startx
+
+  * On both Slackware and Arch, I boot into multi-user mode and manually run
+    `startx` when I'm ready for a graphical session. This is impossible in
+    NixOS, due to there being no `startx`. A small annoyance, sure, but it means
+    I need to put up with some DM. Worse, the default NixOS DM, Slim, is
+    abandoned and lacks common functionality like reading `~/.xinitrc`.
 
 guixsd
   more strict on free software
@@ -129,8 +163,6 @@ YCM and color_coded
   need to generate configs with nix
     not fucking portable
 
-awful documentation
-
 can't just build software
   need nix expressions
   not good for developing C++ apps
@@ -139,8 +171,3 @@ can't just build software
 to where does it install?
   ~/.nix-profile
   /nix store
-
-no startx
-  need a DM
-  default DM doesn't read .xinit
-    is no longer active
