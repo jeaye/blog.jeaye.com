@@ -1,3 +1,8 @@
+---
+title: My experience with NixOS
+tags: [linux, nixos, review]
+---
+
 good:
 
 easy install of steam/skype/etc
