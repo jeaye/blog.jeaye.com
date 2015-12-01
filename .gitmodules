@@ -1,0 +1,3 @@
+[submodule "lib/jeaye.com"]
+	path = lib/jeaye.com
+	url = https://github.com/jeaye/jeaye.com.git

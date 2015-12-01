@@ -20,3 +20,5 @@ resource_url: "http://jeaye.com"
 
 markdown: redcarpet
 highlighter: pygments
+exclude: [.bundle, vendor, lib]
+includes_dir: ./lib/jeaye.com/_includes
