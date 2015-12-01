@@ -15,8 +15,10 @@ defaults:
       layout: "default"
 
 permalink: pretty
-url: "http://blog.jeaye.com"
+url: "http://jeaye.com"
+blog_url: "http://blog.jeaye.com"
 resource_url: "http://jeaye.com"
+# TODO: Remove ^
 
 markdown: redcarpet
 highlighter: pygments
