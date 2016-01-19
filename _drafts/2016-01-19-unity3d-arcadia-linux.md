@@ -38,3 +38,13 @@ $ su - -c "$PWD/unity-editor-installer-5.3.1f1+20160106.sh"
 The dependencies can also be found in the [release thread](http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/) and are left to you to figure out.
 
 #### Issues on startup
+There's an existing issue where Unity, once installed, requires some directories
+which it's apparently unable to create. To be safe, before running Unity, you
+should run:
+
+```bash
+$ mkdir -p ~/.local/share/unity3d/Unity
+```
+
+Also, don't forget to install `npm`, which crept up on me silently. Unity won't
+complain about not having it, the start screen just won't show anything.
