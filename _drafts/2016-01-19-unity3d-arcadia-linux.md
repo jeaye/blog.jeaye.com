@@ -30,7 +30,7 @@ sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/linux_suid
 
 ```bash
 $ wget http://download.unity3d.com/download_unity/linux/unity-editor-installer-5.3.1f1+20160106.sh
-$ chmod +x unity-editor-installer-5.3.1f1+20160106.sh
+$ chmod +x ./unity-editor-installer-5.3.1f1+20160106.sh
 $ su - -c "$PWD/unity-editor-installer-5.3.1f1+20160106.sh"
 <enter root password>
 ```
@@ -61,7 +61,7 @@ From here, continue on with your normal Unity workflow
 and report all bugs, crashes, etc to the [Unity
 forums](http://forum.unity3d.com/forums/linux-editor-support-feedback-experimental.93/).
 
-#### What is Arcadia?
+### What is Arcadia?
 [Arcadia](https://github.com/arcadia-unity/Arcadia) is a new project which
 integrates [Clojure CLR](http://clojure.org/about/clojureclr) (Clojure on .NET)
 with Unity. This allows not only for writing Unity components, logic, etc in
@@ -135,18 +135,18 @@ resizing, parenting, destroying, adding or removing components, etc.
 #### Naming Clojure files
 One aspect on which I want to touch is just how finicky Arcadia can be with
 namespacing and file paths. If my project is called ninjakitten and my file is
-called milk.clj, the patch should be as follows `Assets/ninjakitten/milk.clj`
-and the corresponding Clojure namespace should be:
+called milk.clj, the path should be `Assets/ninjakitten/milk.clj` and the
+corresponding Clojure namespace should be:
 
 ```clojure
 (ns ninjakitten.milk
   (:use arcadia.core)
   (:import [UnityEngine]))
-``
+```
 
 #### Helpful Arcadia resources
 Arcadia has a [Gittr channel](https://gitter.im/arcadia-unity/Arcadia), a
 [mailing list](https://groups.google.com/forum/#!forum/arcadia-unity), and an
 IRC channel on Freenode: `#arcadiaunity` Aside from that, there are a couple of
-great demos on Youtube [here](https://www.youtube.com/watch?v=tBvNIJzlWEI) and
+great demos on Youtube, [here](https://www.youtube.com/watch?v=tBvNIJzlWEI) and
 [here](https://www.youtube.com/watch?v=zmmdYyAQhmM).
