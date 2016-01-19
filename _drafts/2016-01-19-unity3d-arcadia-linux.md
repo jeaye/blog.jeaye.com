@@ -131,3 +131,22 @@ user=> (Selection/objects)
 
 With this sequence, I could do any number of operations, from renaming,
 resizing, parenting, destroying, adding or removing components, etc.
+
+#### Naming Clojure files
+One aspect on which I want to touch is just how finicky Arcadia can be with
+namespacing and file paths. If my project is called ninjakitten and my file is
+called milk.clj, the patch should be as follows `Assets/ninjakitten/milk.clj`
+and the corresponding Clojure namespace should be:
+
+```clojure
+(ns ninjakitten.milk
+  (:use arcadia.core)
+  (:import [UnityEngine]))
+``
+
+#### Helpful Arcadia resources
+Arcadia has a [Gittr channel](https://gitter.im/arcadia-unity/Arcadia), a
+[mailing list](https://groups.google.com/forum/#!forum/arcadia-unity), and an
+IRC channel on Freenode: `#arcadiaunity` Aside from that, there are a couple of
+great demos on Youtube [here](https://www.youtube.com/watch?v=tBvNIJzlWEI) and
+[here](https://www.youtube.com/watch?v=zmmdYyAQhmM).
