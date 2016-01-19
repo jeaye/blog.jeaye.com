@@ -37,7 +37,6 @@ sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/linux_suid
 $ wget http://download.unity3d.com/download_unity/linux/unity-editor-installer-5.3.1f1+20160106.sh
 $ chmod +x ./unity-editor-installer-5.3.1f1+20160106.sh
 $ su - -c "$PWD/unity-editor-installer-5.3.1f1+20160106.sh"
-<enter root password>
 ```
 
 The dependencies can also be found in the [release thread](http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/) and are left to you to figure out.
@@ -79,7 +78,7 @@ project.
 
 ```bash
 $ cd ~/projects/my-unity-game/Assets
-$ git clone https://github.com/arcadia-unity/Arcadia.git
+$ git clone -b develop https://github.com/arcadia-unity/Arcadia.git
 ```
 
 If things don't work out of the box, you can take a look at their provided
@@ -152,6 +151,6 @@ corresponding Clojure namespace should be:
 #### Helpful Arcadia resources
 Arcadia has a [Gittr channel](https://gitter.im/arcadia-unity/Arcadia), a
 [mailing list](https://groups.google.com/forum/#!forum/arcadia-unity), and an
-IRC channel on Freenode: `#arcadiaunity` Aside from that, there are a couple of
+IRC channel on Freenode `#arcadiaunity`. Aside from that, there are a couple of
 great demos on Youtube, [here](https://www.youtube.com/watch?v=tBvNIJzlWEI) and
 [here](https://www.youtube.com/watch?v=zmmdYyAQhmM).
