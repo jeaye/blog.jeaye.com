@@ -21,7 +21,7 @@ thread](http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-
 and navigate to the last post. If you're on a Debian-based distribution, you'll
 be happy to just find a deb you can install. For the rest of us, there's an
 awkwardly unconventional shell script we can run, which also comes with some
-binary data embedded in it. Fair warning.
+binary data embedded in it (~1GB in size). Fair warning.
 
 You should pull down the latest; the commands below are what I used and there
 may be a newer version for you. Note that, if you read the script, root is
@@ -48,3 +48,15 @@ $ mkdir -p ~/.local/share/unity3d/Unity
 
 Also, don't forget to install `npm`, which crept up on me silently. Unity won't
 complain about not having it, the start screen just won't show anything.
+
+#### Running Unity
+Assuming all went well, you should be able to start up Unity, sign in, and
+create some new projects.
+
+```bash
+$ ./unity-editor-5.3.1f1/Editor/Unity
+```
+
+From here, continue on with your normal Unity workflow
+and report all bugs, crashes, etc to the [Unity
+forums](http://forum.unity3d.com/forums/linux-editor-support-feedback-experimental.93/).
