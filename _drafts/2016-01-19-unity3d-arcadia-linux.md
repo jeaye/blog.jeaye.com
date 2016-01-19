@@ -60,3 +60,27 @@ $ ./unity-editor-5.3.1f1/Editor/Unity
 From here, continue on with your normal Unity workflow
 and report all bugs, crashes, etc to the [Unity
 forums](http://forum.unity3d.com/forums/linux-editor-support-feedback-experimental.93/).
+
+#### What is Arcadia?
+[Arcadia](https://github.com/arcadia-unity/Arcadia) is a new project which
+integrates [Clojure CLR](http://clojure.org/about/clojureclr) (Clojure on .NET)
+with Unity. This allows not only for writing Unity components, logic, etc in
+Clojure, it also allows for integrating a Clojure REPL into the Unity editor for
+programmatic manipulation of the scene. We'll see, briefly, what I mean.
+
+#### Installing Arcadia
+To install Arcadia, just clone it into the `Assets` directory of your current
+project.
+
+```bash
+$ cd ~/projects/my-unity-game/Assets
+$ git clone https://github.com/arcadia-unity/Arcadia.git
+```
+
+If things don't work out of the box, you can take a look at their provided
+[Getting
+Started](https://github.com/arcadia-unity/Arcadia/wiki/getting-started) wiki
+page.
+
+#### Using the REPL
+
