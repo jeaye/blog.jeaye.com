@@ -83,4 +83,51 @@ Started](https://github.com/arcadia-unity/Arcadia/wiki/getting-started) wiki
 page.
 
 #### Using the REPL
+Once Arcadia is installed, we can spin up a Clojure REPL and try interacting
+with the Unity editor.
 
+```bash
+$ cd ~/projects/my-unity-game
+$ ruby ./Assets/Arcadia/Editor/repl-client.rb
+```
+
+Once you're in the REPL, we can verify everything is sane.
+
+```clojure
+user=> (+ 1 41)
+42
+```
+
+Now let's interact with the Unity editor.
+
+```clojure
+user=> (def cube (create-primitive :cube))
+#'user/cube
+```
+
+If you look back into the Unity window, you'll find that the cube you created is
+now part of the scene. This means you can use Clojure, in a REPL, to
+programmatically manipulate your scene before even running the game. A possible
+use for this would be creating procedural content before hand, instead of at
+run-time.
+
+Perhaps the most useful aspect of the REPL here is how it can automate work for
+you, which would otherwise involve the mouse in the editor. I can select any
+object in the scene, with my mouse, and then move over to the REPL can gain
+access to it.
+
+```clojure
+user=> (import Selection)
+user=> (Selection/activeObject)
+#<GameObject Plane (UnityEngine.GameObject)>
+```
+
+If I select multiple objects, I can get a sequence of all of them in Clojure.
+
+```clojure
+user=> (Selection/objects)
+(#<GameObject Plane (UnityEngine.GameObject)> #<GameObject Water (UnityEngine.GameObject)>)
+```
+
+With this sequence, I could do any number of operations, from renaming,
+resizing, parenting, destroying, adding or removing components, etc.
