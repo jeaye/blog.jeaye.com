@@ -16,3 +16,25 @@ two GTX 670MX cards. This should work on just about any distro, but you should
 be sure to use the latest graphics drivers you can; Unity is undoubtedly heavy.
 
 ### Installing Unity3D
+To get going, hop on over to the [release
+thread](http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/)
+and navigate to the last post. If you're on a Debian-based distribution, you'll
+be happy to just find a deb you can install. For the rest of us, there's an
+awkwardly unconventional shell script we can run, which also comes with some
+binary data embedded in it. Fair warning.
+
+You should pull down the latest; the commands below are what I used and there
+may be a newer version for you. Note that, if you read the script, root is
+required for the use of a [chromium suid
+sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/linux_suid_sandbox.md). Fair warning.
+
+```bash
+$ wget http://download.unity3d.com/download_unity/linux/unity-editor-installer-5.3.1f1+20160106.sh
+$ chmod +x unity-editor-installer-5.3.1f1+20160106.sh
+$ su - -c "$PWD/unity-editor-installer-5.3.1f1+20160106.sh"
+<enter root password>
+```
+
+The dependencies can also be found in the [release thread](http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/) and are left to you to figure out.
+
+#### Issues on startup
