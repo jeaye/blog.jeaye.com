@@ -18,7 +18,6 @@ permalink: pretty
 url: "http://jeaye.com"
 blog_url: "http://blog.jeaye.com"
 
-markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
 exclude: [.bundle, vendor, lib]
 includes_dir: ./lib/jeaye.com/_includes
