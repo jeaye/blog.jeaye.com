@@ -20,4 +20,4 @@ blog_url: "http://blog.jeaye.com"
 
 highlighter: rouge
 exclude: [.bundle, vendor, lib]
-includes_dir: ./_includes/jeaye.com/_includes
+includes_dir: _includes
