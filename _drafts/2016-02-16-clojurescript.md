@@ -6,8 +6,8 @@ tags: [clojure, clojurescript, minify, optimize, javascript]
 [ClojureScript](https://github.com/clojure/clojurescript) uses the [Google
 Closure](https://developers.google.com/closure/?csw=1) compiler, which not only
 mangles and minifies code, but also inlines functions and removes dead code.
-Still, every extra KB your application weighs is distributed to every user who
-wants to download it. So how can we make it even smaller?
+Still, every extra KB in your application is distributed to every user who
+wants to use it. So how can we make it even smaller?
 
 When looking to shrink the client-side source for
 [safepaste](https://safepaste.org/), a security-conscious paste site, I looked a
@@ -38,6 +38,15 @@ $ ./node_modules/uglify-js/uglifyjs --screw-ie8 -c -m -- main.js
 It contains a slew of parameters, many with a number of their own options, but
 the above will get you as far as 20%, in my tests, on already-optimized
 ClojureScript code.
+
+#### Use cases
+
+Two primary use cases for bringing in uglify-js are apparent to me:
+
+1. Minifying third party JS libraries which preface your optimized CLJS
+2. Further minifying your optimized CLJS to shave off even more fat
+
+The good news: you can have them both!
 
 #### Integrating into boot
 
