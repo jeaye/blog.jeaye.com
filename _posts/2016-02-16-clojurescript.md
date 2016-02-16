@@ -5,8 +5,8 @@ tags: [clojure, clojurescript, minify, optimize, javascript]
 
 [ClojureScript](https://github.com/clojure/clojurescript) uses the [Google
 Closure](https://developers.google.com/closure/?csw=1) compiler, which not only
-mangles and minifies code, but also inlines functions and removes dead code.
-Still, every extra KB in your application is distributed to every user who
+mangles and minifies code, it also inlines functions and removes dead code.
+Still, every extra KB in your application is distributed to every client who
 wants to use it. So how can we make it even smaller?
 
 When looking to shrink the client-side source for
@@ -97,8 +97,9 @@ minifying, and it falls back to not copying if npm isn't installed.
 ```
 
 Add the task definition to your `build.boot`, call it in your `dev` or `build`
-tasks, and reap the benefits. Be sure to check that your HTML is including the
-minified version of the JS! The task will boast its success upon running.
+tasks after the `cljs` task, and reap the benefits. Be sure to check that your
+HTML is including the minified version of the JS! The task will boast its
+success upon running.
 
 ```text
 2016-02-16 17:52:03.094:INFO::main: Logging initialized @4313ms
@@ -117,16 +118,19 @@ Writing safepaste.jar...
 
 **NOTE:** safepaste is licensed under a GPL-compatible [strict copyleft
 license](https://github.com/jeaye/safepaste/blob/master/LICENSE). For your
-convenience, I'll dual license this specific boot task under the more permissive
+convenience, I dual license this specific boot task under the more permissive
 [MIT](https://opensource.org/licenses/MIT) license as well.
 
 #### Alternatives
 
 To boot users: you're out of luck. With [leiningen](http://leiningen.org/),
-there is [lein-asset-minifier](https://github.com/yogthos/lein-asset-minifier).
-For those interested, I've found that
+however, there is
+[lein-asset-minifier](https://github.com/yogthos/lein-asset-minifier).  For
+those interested, I've found that
 [boot-cljsjs](https://github.com/cljsjs/boot-cljsjs) is using
 lein-asset-minifier within a boot POD. The source can be found
-[here](https://github.com/cljsjs/boot-cljsjs/blob/master/src/cljsjs/boot_cljsjs/packaging.clj#L134). Based on my research, uglify-js is the front-runner in the minification game.
+[here](https://github.com/cljsjs/boot-cljsjs/blob/master/src/cljsjs/boot_cljsjs/packaging.clj#L134).
+
+Based on my research, uglify-js is the front-runner in the minification game.
 The "impurity" of bringing in npm for the job is entirely worthwhile for me,
 considering the palpable gains.
