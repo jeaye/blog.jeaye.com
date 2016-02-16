@@ -97,7 +97,7 @@ minifying, and it falls back to not copying if npm isn't installed.
 ```
 
 Add the task definition to your `build.boot`, call it in your `dev` or `build`
-tasks after the `cljs` task, and reap the benefits. Be sure to check that your
+tasks after the `cljs` task, and reap the benefits ([example](https://github.com/jeaye/safepaste/blob/master/build.boot#L93)). Be sure to check that your
 HTML is including the minified version of the JS! The task will boast its
 success upon running.
 
