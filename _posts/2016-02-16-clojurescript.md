@@ -121,6 +121,14 @@ license](https://github.com/jeaye/safepaste/blob/master/LICENSE). For your
 convenience, I dual license this specific boot task under the more permissive
 [MIT](https://opensource.org/licenses/MIT) license as well.
 
+#### In combination with gzipping
+
+In hopes of shaving off even more fat, you can use some
+[ring](https://github.com/ring-clojure/ring) middleware like
+[ring-gzip](https://github.com/bertrandk/ring-gzip) to serve your content
+zipped. Fortunately, the gains of uglify-js are still visible in the gzipped
+version, sitting at nearly 10% smaller than the gzipped original source.
+
 #### Alternatives
 
 To boot users: you're out of luck. With [leiningen](http://leiningen.org/),
