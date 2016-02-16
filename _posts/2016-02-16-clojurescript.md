@@ -17,7 +17,7 @@ of features, uglify-js also contains its own mangler, optimizer, and dead code
 remover. Much to my surprise, this optimizer works wonders, even on
 Closure-optimized ClojureScript code.
 
-#### Installation
+### Installation
 
 Assuming you have Node.js installed, uglify-js can be installed in the current
 directory with npm.
@@ -26,7 +26,7 @@ directory with npm.
 $ npm install uglify-js
 ```
 
-#### Running
+### Running
 
 Once installed, uglify-js can be used directly on some JS source, whether it's
 compiled ClojureScript or a third party JS library (or both).
@@ -39,7 +39,7 @@ It contains a slew of parameters, many with a number of their own options, but
 the above will get you as far as 20%, in my tests, on already-optimized
 ClojureScript code.
 
-#### Use cases
+### Use cases
 
 Two primary use cases for bringing in uglify-js are apparent to me:
 
@@ -48,7 +48,7 @@ Two primary use cases for bringing in uglify-js are apparent to me:
 
 The good news: you can have them both!
 
-#### Integrating into boot
+### Integrating into boot
 
 For those who've migrated to [boot](https://github.com/boot-clj/boot), a build
 framework for Clojure, here's a
@@ -121,7 +121,7 @@ license](https://github.com/jeaye/safepaste/blob/master/LICENSE). For your
 convenience, I dual license this specific boot task under the more permissive
 [MIT](https://opensource.org/licenses/MIT) license as well.
 
-#### In combination with gzipping
+### In combination with gzipping
 
 In hopes of shaving off even more fat, you can use some
 [ring](https://github.com/ring-clojure/ring) middleware like
@@ -129,7 +129,7 @@ In hopes of shaving off even more fat, you can use some
 zipped. Fortunately, the gains of uglify-js are still visible in the gzipped
 version, sitting at nearly 10% smaller than the gzipped original source.
 
-#### Alternatives
+### Alternatives
 
 To boot users: you're out of luck. With [leiningen](http://leiningen.org/),
 however, there is
