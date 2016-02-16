@@ -124,8 +124,8 @@ convenience, I dual license this specific boot task under the more permissive
 ### In combination with gzipping
 
 In hopes of shaving off even more fat, you can use some
-[ring](https://github.com/ring-clojure/ring) middleware like
-[ring-gzip](https://github.com/bertrandk/ring-gzip) to serve your content
+[ring](https://github.com/ring-clojure/ring) middleware, like
+[ring-gzip](https://github.com/bertrandk/ring-gzip), to serve your content
 zipped. Fortunately, the gains of uglify-js are still visible in the gzipped
 version, sitting at nearly 10% smaller than the gzipped original source.
 
