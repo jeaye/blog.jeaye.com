@@ -98,10 +98,13 @@ The `{% raw %}{{ site.url }}{% endraw %}` is a
 [Liquid](https://github.com/Shopify/liquid/wiki) expression which will be
 replaced by the value in your configuration.
 
-### Force HTTPS
+### Forcing HTTPS
 
 Now that your reverse proxy is setup, it's crucial that you force your users
-onto HTTPS and keep them there. [This](https://www.ssl.com/how-to/force-https-connections-in-an-apache-server-environment/) article covers how to do that simply using Apache. Since I'm using NixOS, I can just specify a global redirect:
+onto HTTPS and keep them there. [This
+article](https://www.ssl.com/how-to/force-https-connections-in-an-apache-server-environment/)
+covers how to do that simply using Apache. Since I'm using NixOS, I can just
+specify a global redirect:
 
 ```nix
 services.httpd.virtualHosts =
@@ -116,3 +119,7 @@ services.httpd.virtualHosts =
 
 Note that it's also important to add a server alias for `www.honest-kittens.org`
 in both your HTTP redirect and your SSL-enabled virtual host.
+
+### The Let's Encrypt effect
+
+According to a [very recent post](https://tacticalsecret.com/early-impacts-of-letsencrypt/) by J.C. Jones, Let's Encrypt is now the fourth largest CA for public web certs. Even more interesting, 93% of all sites using Let's Encrypt didn't have a previous SSL certificate; this means more and more new sites, or previously unencrypted sites, are picking up encryption for free.
