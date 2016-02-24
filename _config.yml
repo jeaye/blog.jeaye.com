@@ -21,7 +21,7 @@ title: "Jeaye's Blog"
 permalink: pretty
 home_url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"
-url: blog_url
+url: "https://blog.jeaye.com"
 
 highlighter: rouge
 exclude: [.bundle, vendor, lib]
