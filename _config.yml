@@ -17,6 +17,7 @@ defaults:
 gems:
   - jekyll-feed
 
+title: "Jeaye's Blog"
 permalink: pretty
 url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"
