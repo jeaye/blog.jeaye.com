@@ -19,7 +19,7 @@ gems:
 
 title: "Jeaye's Blog"
 permalink: pretty
-url: "https://jeaye.com"
+home_url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"
 
 highlighter: rouge
