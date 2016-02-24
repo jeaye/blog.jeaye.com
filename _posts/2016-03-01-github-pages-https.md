@@ -24,16 +24,14 @@ sure to include at least `www.honest-kittens.org` in your certificate as well.
 
 ### The Apache proxy
 
-TODO: proxy modules
-
 The way to get around Github's lack of SSL support for custom domains is to have
 that domain use a proxy server which talks to Github and the client. This isn't
 very much work, compared to hosting a complete Jekyll stack, so we still benefit
 from Github's convenient hosting. To minimize the scope of this post, I assume
 you're familiar with administrating an Apache server.
 
-In the virtual host for `honest-kittens.org`, we can enable the proxy engine
-using:
+You'll need to load the `proxy` and `proxy_http` modules before anything. In the
+virtual host for `honest-kittens.org`, we can enable the proxy engine using:
 
 ```text
 SSLProxyEngine On
@@ -53,10 +51,10 @@ ProxyPass / https://username.github.io/
 important, as is my usage of **https** vs **http**.
 
 Github's server may, for various reasons, send over a 301 redirect request. With
-just this configuration, the request will be proxied and sent directly to the
-client, causing them to end up at `username.github.io`. That's no good. We'll
-setup a reverse proxy to ensure such a redirect from Github is changed before it
-hits the client:
+just this configuration, the request will be forwarded to the client unmodified,
+causing them to end up at `username.github.io`. That's no good. We'll setup a
+reverse proxy to ensure such a redirect from Github is changed before it hits
+the client:
 
 ```text
 ProxyPassReverse / https://username.github.io/
@@ -65,8 +63,8 @@ ProxyPassReverse / http://username.github.io/
 
 This covers both the HTTP and HTTPS cases, ensuring that links matching the
 above `username.github.io` will be translated into the root level of
-`honest-kittens.org`. The only additional configuration necessary is for tying
-in the SSL certs and ensuring no weak ciphers are used:
+`honest-kittens.org`. The only additional configuration necessary is for
+bringing in the SSL certs and ensuring no weak ciphers are used:
 
 ```text
 SSLCertificateKeyFile /path/to/honest-kittens.org/key.pem
@@ -110,7 +108,11 @@ services.httpd.virtualHosts =
 [
   {
     hostName = "honest-kittens.org";
+    serverAliases = [ "www.honest-kittens.org" ];
     globalRedirect = "https://honest-kittens.org/";
   }
 ];
 ```
+
+Note that it's also important to add a server alias for `www.honest-kittens.org`
+in both your HTTP redirect and your SSL-enabled virtual host.
