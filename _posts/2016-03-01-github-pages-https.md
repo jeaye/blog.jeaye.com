@@ -24,6 +24,8 @@ sure to include at least `www.honest-kittens.org` in your certificate as well.
 
 ### The Apache proxy
 
+TODO: proxy modules
+
 The way to get around Github's lack of SSL support for custom domains is to have
 that domain use a proxy server which talks to Github and the client. This isn't
 very much work, compared to hosting a complete Jekyll stack, so we still benefit
@@ -77,3 +79,38 @@ SSLHonorCipherOrder on
 
 ### Updating your Jekyll configuration
 
+At this point, our Github Pages site needs one tweak before all of this will
+work together. We could use mod_proxy_html to rewrite all of the references to
+our `username.github.io` site, within the HTML, or we could just change our
+`_config.yml` and the like to be aware of our custom domain. The choice is
+yours, but I prefer the latter, so it's what I'll cover.
+
+```yaml
+site: https://honest-kittens.org
+```
+
+After setting the site's url in Jekyll's configuration, we should use it for all
+file references within our site. That is, our `main.css` might come in as:
+
+```html
+<link rel="stylesheet" type="text/css" href="{% raw %}{{ site.url }}{% endraw %}/css/main.css" />
+```
+
+The `{% raw %}{{ site.url }}{% endraw %}` is a
+[Liquid](https://github.com/Shopify/liquid/wiki) expression which will be
+replaced by the value in your configuration.
+
+### Force HTTPS
+
+Now that your reverse proxy is setup, it's crucial that you force your users
+onto HTTPS and keep them there. [This](https://www.ssl.com/how-to/force-https-connections-in-an-apache-server-environment/) article covers how to do that simply using Apache. Since I'm using NixOS, I can just specify a global redirect:
+
+```nix
+services.httpd.virtualHosts =
+[
+  {
+    hostName = "honest-kittens.org";
+    globalRedirect = "https://honest-kittens.org/";
+  }
+];
+```
