@@ -53,8 +53,8 @@ important, as is my usage of **https** vs **http**.
 Github's server may, for various reasons, send over a 301 redirect request. With
 just this configuration, the request will be proxied and sent directly to the
 client, causing them to end up at `username.github.io`. That's no good. We'll
-then setup a reverse proxy to ensure such redirect from Github is changed before
-it hits the client:
+setup a reverse proxy to ensure such a redirect from Github is changed before it
+hits the client:
 
 ```text
 ProxyPassReverse / https://username.github.io/
@@ -63,4 +63,17 @@ ProxyPassReverse / http://username.github.io/
 
 This covers both the HTTP and HTTPS cases, ensuring that links matching the
 above `username.github.io` will be translated into the root level of
-`honest-kittens.org`.
+`honest-kittens.org`. The only additional configuration necessary is for tying
+in the SSL certs and ensuring no weak ciphers are used:
+
+```text
+SSLCertificateKeyFile /path/to/honest-kittens.org/key.pem
+SSLCertificateChainFile /path/to/honest-kittens.org/chain.pem
+SSLCertificateFile /path/to/honest-kittens.org/cert.pem
+SSLProtocol All -SSLv2 -SSLv3
+SSLCipherSuite HIGH:!aNULL:!MD5:!EXP
+SSLHonorCipherOrder on
+```
+
+### Updating your Jekyll configuration
+
