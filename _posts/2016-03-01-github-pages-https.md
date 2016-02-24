@@ -14,10 +14,10 @@ herein.
 ### SSL Certs
 
 Before any HTTPS configuration can be setup, SSL certs are required. I use
-[simp_le](https://github.com/kuba/simp_le) and [NixOS](http://nixos.org/)
+[simp_le](https://github.com/kuba/simp_le),
+which is a Let's Encrypt front-end, and [NixOS](http://nixos.org/)
 ([related
-configs](https://github.com/jeaye/nix-files/blob/master/service/acme.nix)),
-which is a Let's Encrypt front-end; there are [many others to
+configs](https://github.com/jeaye/nix-files/blob/master/service/acme.nix)); there are [many others to
 consider](https://www.metachris.com/2015/12/comparison-of-10-acme-lets-encrypt-clients/)
 though. Let's assume you're building your new website `honest-kittens.org`. Be
 sure to include at least `www.honest-kittens.org` in your certificate as well.
@@ -30,8 +30,16 @@ very much work, compared to hosting a complete Jekyll stack, so we still benefit
 from Github's convenient hosting. To minimize the scope of this post, I assume
 you're familiar with administrating an Apache server.
 
-You'll need to load the `proxy` and `proxy_http` modules before anything. In the
-virtual host for `honest-kittens.org`, we can enable the proxy engine using:
+You'll need to load the `proxy` and `proxy_http` modules before anything. Apply
+the following, updating the paths as needed:
+
+```text
+LoadModule proxy_module       modules/mod_proxy.so
+LoadModule proxy_http_module  modules/mod_proxy_http.so
+```
+
+In the virtual host for `honest-kittens.org`, we can enable the proxy engine
+using:
 
 ```text
 SSLProxyEngine On
@@ -80,8 +88,8 @@ SSLHonorCipherOrder on
 At this point, our Github Pages site needs one tweak before all of this will
 work together. We could use mod_proxy_html to rewrite all of the references to
 our `username.github.io` site, within the HTML, or we could just change our
-`_config.yml` and the like to be aware of our custom domain. The choice is
-yours, but I prefer the latter, so it's what I'll cover.
+`_config.yml`, and the like, to be aware of our custom domain. The choice is
+yours, but I'll describe the latter.
 
 ```yaml
 site: https://honest-kittens.org
@@ -122,4 +130,9 @@ in both your HTTP redirect and your SSL-enabled virtual host.
 
 ### The Let's Encrypt effect
 
-According to a [very recent post](https://tacticalsecret.com/early-impacts-of-letsencrypt/) by J.C. Jones, Let's Encrypt is now the fourth largest CA for public web certs. Even more interesting, 93% of all sites using Let's Encrypt didn't have a previous SSL certificate; this means more and more new sites, or previously unencrypted sites, are picking up encryption for free.
+According to a [very recent
+post](https://tacticalsecret.com/early-impacts-of-letsencrypt/) by [J.C.
+Jones](https://twitter.com/jamespugjones), Let's Encrypt is now the fourth
+largest CA for public web certs. Even more interesting, 93% of all sites using
+Let's Encrypt didn't have a previous SSL certificate; this means more and more
+new sites, or previously unencrypted sites, are picking up encryption for free.
