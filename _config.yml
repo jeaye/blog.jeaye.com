@@ -14,6 +14,9 @@ defaults:
       author: "jeaye"
       layout: "default"
 
+gems:
+  - jekyll-feed
+
 permalink: pretty
 url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"

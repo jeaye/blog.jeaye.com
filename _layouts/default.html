@@ -35,7 +35,9 @@ nav-blog-class: current
         {% if page.tags contains tag %}
           {% assign same_count = same_count | plus: 1 %}
           {% assign total_count = total_count | plus: 1 %}
-          {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+          {% capture tagmarkup %}
+            <span class="label label-default">{{ tag }}</span>
+          {% endcapture %}
           {% assign common_tags = common_tags | append: tagmarkup %}
         {% endif %}
       {% endfor %}
