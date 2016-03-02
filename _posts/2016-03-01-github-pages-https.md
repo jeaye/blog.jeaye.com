@@ -1,5 +1,5 @@
 ---
-title: HTTPS for your Github Pages + custom domain
+title: HTTPS for your Github Pages' custom domain
 tags: [ssl, github, pages, https, letsencrypt, simp_le]
 ---
 
