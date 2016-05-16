@@ -16,6 +16,7 @@ defaults:
 
 gems:
   - jekyll-feed
+  - jekyll-seo-tag
 
 title: "Jeaye's Blog"
 permalink: pretty
