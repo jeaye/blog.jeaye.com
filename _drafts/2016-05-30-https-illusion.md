@@ -20,15 +20,7 @@ Firefox presents this comforting green lock when it's using HTTPS for a web
 page. If you take anything away from this, let it be that *this does not mean
 your browsing is private.*
 
-### What is HTTPS?
-[HTTPS](https://en.wikipedia.org/wiki/Https) adds a layer of TLS encryption atop
-the age-old HTTP communications we use while browsing. It succeeds in making
-[MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attacks more
-difficult and protecting the data in transmission from tampering.
-
-Without encryption, all of your web browsing is to be considered public knowledge.
-
-### Shortcomings
+### What to keep in mind
 When browsing a website which uses HTTPS, anyone viewing your traffic (such as
 your ISP, someone on your network, or even other processes on your computer)
 will be able to tell not only which website you're viewing, but for how long and
@@ -45,13 +37,21 @@ searched. What it does with that data would then be entirely out of your hands.
 
 The green lock doesn't mean you're safe.
 
-### What to do about it
-To be clear, *encryption is good and you should use it everywhere.* To help with
-that, use the [HTTPS Everywhere plugin](https://www.eff.org/https-everywhere).
-You might also consider [Privacy Badger](https://www.eff.org/privacybadger) and
+### So, is HTTPS worth it?
+[HTTPS](https://en.wikipedia.org/wiki/Https) adds a layer of TLS encryption atop
+the age-old HTTP communications we use while browsing. It succeeds in making
+[MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attacks more
+difficult and protecting the data in transmission from tampering. Yes, HTTPS is
+absolutely worth it.
+
+Without encryption, all of your web browsing is to be considered public knowledge.
+
+### What you can do
+Most importantly, understand the implications of using a website, HTTPS or
+otherwise. To help with using HTTPS more often, consider the
+[HTTPS Everywhere](https://www.eff.org/https-everywhere) plugin. You might also
+consider [Privacy Badger](https://www.eff.org/privacybadger) and
 [μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/).
-Most importantly, know that, by using a website or webservice, you're trusting
-it with every ounce of data you share.
 
 As soon as that data has been shared, you can never take it back.
 
