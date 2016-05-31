@@ -17,8 +17,10 @@ But what does it buy us? Don't be misled into thinking your browsing is private.
 </div>
 
 Firefox presents this comforting green lock when it's using HTTPS for a web
-page. If you take anything away from this, let it be that *this does not mean
-your browsing is private.*
+page. If you take anything away from this, let it be that this does not mean
+your browsing is private.
+
+*Security does not mean privacy.*
 
 ### What to keep in mind
 When browsing a website which uses HTTPS, anyone viewing your traffic (such as
@@ -35,7 +37,7 @@ searching, even though they can tell that you're searching. Alas, it doesn't
 change the fact that your favorite search engine knows exactly what you
 searched. What it does with that data would then be entirely out of your hands.
 
-The green lock doesn't mean you're safe.
+*The green lock doesn't mean you're safe.*
 
 ### So, is HTTPS worth it?
 [HTTPS](https://en.wikipedia.org/wiki/Https) adds a layer of TLS encryption atop
@@ -44,7 +46,7 @@ the age-old HTTP communications we use while browsing. It succeeds in making
 difficult and protecting the data in transmission from tampering. Yes, HTTPS is
 absolutely worth it.
 
-Without encryption, all of your web browsing is to be considered public knowledge.
+*Without encryption, all of your web browsing is to be considered public knowledge.*
 
 ### What you can do
 Most importantly, understand the implications of using a website, HTTPS or
@@ -53,7 +55,7 @@ otherwise. To help with using HTTPS more often, consider the
 consider [Privacy Badger](https://www.eff.org/privacybadger) and
 [μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/).
 
-As soon as that data has been shared, you can never take it back.
+*As soon as that data has been shared, you can never take it back.*
 
 Once you understand that every website you browse through HTTPS still knows who
 you are, if you want to make that more difficult, you might consider using an
