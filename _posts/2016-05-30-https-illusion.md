@@ -51,7 +51,8 @@ absolutely worth it.
 
 ### What you can do
 Most importantly, understand the implications of using a website, HTTPS or
-otherwise. To help with using HTTPS more often, consider the
+otherwise: any data submitted by you, or for you, to any site, trusts that site
+with the data permanently. To help with using HTTPS more often, consider the
 [HTTPS Everywhere](https://www.eff.org/https-everywhere) plugin. You might also
 consider [Privacy Badger](https://www.eff.org/privacybadger) and
 [μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/).
