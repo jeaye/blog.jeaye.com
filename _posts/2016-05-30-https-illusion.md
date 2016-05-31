@@ -51,14 +51,15 @@ absolutely worth it.
 
 ### What you can do
 Most importantly, understand the implications of using a website, HTTPS or
-otherwise: any data submitted by you, or for you, to any site, trusts that site
-with the data permanently. To help with using HTTPS more often, consider the
-[HTTPS Everywhere](https://www.eff.org/https-everywhere) plugin. You might also
-consider [Privacy Badger](https://www.eff.org/privacybadger) and
-[μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/).
+otherwise: anytime you submit data to any site, you trust that site with the
+data permanently.
 
 *As soon as data has been shared, you can never take it back.*
 
+To help with using HTTPS more often, consider the
+[HTTPS Everywhere](https://www.eff.org/https-everywhere) plugin. You might also
+consider [Privacy Badger](https://www.eff.org/privacybadger) and
+[μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/). 
 Once you understand that every website you browse through HTTPS still knows who
 you are, if you want to make that more difficult, you might consider using an
 anonymizer like [Tor](https://www.torproject.org/).
