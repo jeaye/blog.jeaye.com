@@ -9,9 +9,9 @@ we begin to expect new sites, and popular sites, to adopt this added security.
 But what does it buy us? Don't be misled into thinking your browsing is private.
 
 <div style="text-align:center">
-<a href="{{ site.blog_url }}/img/vim-qt/vim-qt.png" target="_blank">
-<img alt="vim-qt default screen shot"
-     src="/img/https-illusion/blog-jeaye.png" />
+<a href="{{ site.blog_url }}/img/https-illusion/blog-jeaye.png" target="_blank">
+<img alt="blog.jeaye.com https"
+     src="{{ site.blog_url }}/img/https-illusion/blog-jeaye.png" />
 </a>
 <br/> <br/>
 </div>
