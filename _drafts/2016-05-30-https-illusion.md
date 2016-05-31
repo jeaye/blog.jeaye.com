@@ -8,14 +8,19 @@ With the rise of per-website encryption, and the
 we begin to expect new sites, and popular sites, to adopt this added security.
 But what does it buy us? Don't be misled into thinking your browsing is private.
 
-### HTTPS
+![blog.jeaye.com](/img/https-illusion/blog-jeaye.png)
+
+Firefox presents this comforting green lock when it's using HTTPS for a web
+page. If you take anything away from this, let it be that *this does not mean
+your browsing is private.*
+
+### What is HTTPS?
 [HTTPS](https://en.wikipedia.org/wiki/Https) adds a layer of TLS encryption atop
 the age-old HTTP communications we use while browsing. It succeeds in making
 [MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attacks more
 difficult and protecting the data in transmission from tampering.
 
 Without encryption, all of your web browsing is to be considered public knowledge.
-
 
 ### Shortcomings
 When browsing a website which uses HTTPS, anyone viewing your traffic (such as
@@ -32,12 +37,7 @@ searching, even though they can tell that you're searching. Alas, it doesn't
 change the fact that your favorite search engine knows exactly what you
 searched. What it does with that data would then be entirely out of your hands.
 
-![blog.jeaye.com](/img/https-illusion/blog-jeaye.png)
-
-Firefox presents this comforting green lock when it's using HTTPS for a web
-page. If you take anything away from this, let it be that *this does not mean
-your browsing is private.*
-
+### What to do about it
 use https everywhere (plugin)
 privacy badger
 ublock origin
