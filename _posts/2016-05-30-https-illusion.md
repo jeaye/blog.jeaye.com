@@ -56,7 +56,7 @@ otherwise. To help with using HTTPS more often, consider the
 consider [Privacy Badger](https://www.eff.org/privacybadger) and
 [μblock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/).
 
-*As soon as that data has been shared, you can never take it back.*
+*As soon as data has been shared, you can never take it back.*
 
 Once you understand that every website you browse through HTTPS still knows who
 you are, if you want to make that more difficult, you might consider using an
