@@ -35,7 +35,8 @@ absolute trust. For example, your favorite search engine likely forces HTTPS.
 That's good, since it makes it difficult for others to sniff out what you're
 searching, even though they can tell that you're searching. Alas, it doesn't
 change the fact that your favorite search engine knows exactly what you
-searched. What it does with that data would then be entirely out of your hands.
+searched and who you are. What it does with that data, such as passing it onto
+sites you visit, would then be entirely out of your hands.
 
 *The green lock doesn't mean you're safe.*
 
