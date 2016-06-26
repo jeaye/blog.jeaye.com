@@ -11,6 +11,13 @@ carry over to those using custom domains. The approach I'm using for this blog
 and my [home page](https://jeaye.com/), by way of reverse proxy, is documented
 herein.
 
+### Github behavior change (May 2016)
+Github has "fixed a bug" which now causes issues with this setup, since the
+presence of the `CNAME` file will redirect to your custom domain, but your
+custom domain will act as a reverse proxy to the `github.io` address, thus
+causing an infinite loop. The simple solution is to delete the `CNAME` file
+in your repo when you set this up; it's not needed with this approach.
+
 ### SSL Certs
 
 Before any HTTPS configuration can be setup, SSL certs are required. I use
