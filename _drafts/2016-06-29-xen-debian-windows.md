@@ -16,9 +16,13 @@ Debian, however. The latest Debian (8.5.0 at the time of writing) AMD64 ISOs
 are available, via torrent,
 [here](http://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/).
 
+The installation of Debian is [nicely documented](https://www.debian.org/releases/stable/amd64/), so I'll only point out notable changes in my setup and otherwise assume a normal installation.
+
 Origin EON17-SLX
 32GB DDR4 RAM
 Core i7-3940XM @ 3.00GHz
 2x GeForce GTX 670MX (SLI)
 Corsair Neutron 240GB SSD
 1TB Generic HDD
+
+https://wiki.debian.org/VGAPassthrough
