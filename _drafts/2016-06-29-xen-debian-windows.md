@@ -18,10 +18,21 @@ are available, via torrent,
 
 The installation of Debian is [nicely documented](https://www.debian.org/releases/stable/amd64/), so I'll only point out notable changes in my setup and otherwise assume a normal installation.
 
-#### Disk setup
-During the disk partitioning step of the installation, I enabled full disk encryption using LVM. This isn't needed for the Xen setup, but it's recommended for the protection of your data.
+#### Setting up the disk
+During the disk partitioning step of the installation, I enabled full disk
+encryption using LVM. This isn't needed for the Xen setup, but it's recommended
+for the protection of your data.
 
-I also opted to have `/home` on its own partition, since that allows for easier changing of `/` while keeping users exactly as they were.
+I also opted to have `/home` on its own partition, since that allows for easier
+changing of `/` while keeping users exactly as they were.
+
+#### Choosing a desktop environment
+As with most aspects in the GNU/Linux world, there's a good deal of
+fragmentation with desktop environments. As my wife doesn't want anything
+special, I went with GNOME. KDE, XFCE, and GNOME are all fine choices; for
+those who like Unity, there have been [privacy
+concerns](https://en.wikipedia.org/wiki/Unity_(user_interface)#Criticism) worth
+noting.
 
 Origin EON17-SLX
 32GB DDR4 RAM
