@@ -34,6 +34,45 @@ those who like Unity, there have been [privacy
 concerns](https://en.wikipedia.org/wiki/Unity_(user_interface)#Criticism) worth
 noting.
 
+### Installing nVidia drivers
+I know my current hardware, so finding the right driver for it isn't an issue. If you're not sure, however, you can use the `nvidia-detect` tool:
+
+```bash
+aptitude update
+aptitude install nvidia-detect
+nvidia-detect
+```
+
+**NOTE:** You'll need to add `contrib non-free` to each source in your `/etc/apt/sources.list` (you likely also want to comment out the `cdrom` entry) before issuing these commands.
+
+I issued the following, to get the nVidia ball rolling. Depending on your card series, you may not need this legazy version and `nvidia-driver` may work fine for you.
+
+```bash
+aptitude update
+aptitude install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') nvidia-legacy-304xx-kernel-dkms xserver-xorg-video-nvidia-legacy-304xx nvidia-support nvidia-xconfig nvidia-settings
+```
+
+The `Conflicting nouveau kernel module loaded` warnings are expected. I
+generated the new Xorg config, then rebooted the system to leave the nouveau
+drive behind.
+
+```bash
+nvidia-xconfig
+reboot
+```
+
+Once the system comes back up, you can verify that your nVidia drivers are
+operational.
+
+```bash
+nvidia-settings
+```
+
+### Installing QEMU
+```bash
+aptitude install qemu-kvm
+```
+
 Origin EON17-SLX
 32GB DDR4 RAM
 Core i7-3940XM @ 3.00GHz
