@@ -18,6 +18,11 @@ are available, via torrent,
 
 The installation of Debian is [nicely documented](https://www.debian.org/releases/stable/amd64/), so I'll only point out notable changes in my setup and otherwise assume a normal installation.
 
+#### Disk setup
+During the disk partitioning step of the installation, I enabled full disk encryption using LVM. This isn't needed for the Xen setup, but it's recommended for the protection of your data.
+
+I also opted to have `/home` on its own partition, since that allows for easier changing of `/` while keeping users exactly as they were.
+
 Origin EON17-SLX
 32GB DDR4 RAM
 Core i7-3940XM @ 3.00GHz
