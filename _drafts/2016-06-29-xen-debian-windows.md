@@ -97,11 +97,12 @@ You can double check that your CPU supports hardware assisted virtualization
 $ egrep -o '(vmx|svm)' /proc/cpuinfo
 ```
 
-If you were to reboot now, GRUB would show you an option for the Xen-enabled Linux kernel; alas, we want that option to be selected by default.
+If you were to reboot now, GRUB would show you an option for the Xen-enabled Linux kernel; alas, we want that option to be selected by default. The default should be updated before rebooting.
 
 ```bash
 $ dpkg-divert --divert /etc/grub.d/08_linux_xen --rename /etc/grub.d/20_linux_xen
 $ update-grub
+$ reboot
 ```
 
 Origin EON17-SLX
