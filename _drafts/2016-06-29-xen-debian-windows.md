@@ -82,9 +82,26 @@ $ glxinfo | grep "core profile version"
 OpenGL core profile version string: 4.2.0 NVIDIA 304.131
 ```
 
-### Installing QEMU
+### Installing Xen
+Xen will be the foundation of this project, so it's the next package to come
+after the video drivers are setup.
+
 ```bash
-aptitude install qemu-kvm
+$ aptitude install xen-linux-system
+```
+
+You can double check that your CPU supports hardware assisted virtualization
+(should output vmx for Intel and svm for AMD, if HVM is supported):
+
+```bash
+$ egrep -o '(vmx|svm)' /proc/cpuinfo
+```
+
+If you were to reboot now, GRUB would show you an option for the Xen-enabled Linux kernel; alas, we want that option to be selected by default.
+
+```bash
+$ dpkg-divert --divert /etc/grub.d/08_linux_xen --rename /etc/grub.d/20_linux_xen
+$ update-grub
 ```
 
 Origin EON17-SLX
