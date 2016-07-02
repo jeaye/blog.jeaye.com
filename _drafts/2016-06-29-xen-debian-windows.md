@@ -38,9 +38,9 @@ noting.
 I know my current hardware, so finding the right driver for it isn't an issue. If you're not sure, however, you can use the `nvidia-detect` tool:
 
 ```bash
-aptitude update
-aptitude install nvidia-detect
-nvidia-detect
+$ aptitude update
+$ aptitude install nvidia-detect
+$ nvidia-detect
 ```
 
 **NOTE:** You'll need to add `contrib non-free` to each source in your `/etc/apt/sources.list` (you likely also want to comment out the `cdrom` entry) before issuing these commands.
@@ -48,24 +48,38 @@ nvidia-detect
 I issued the following, to get the nVidia ball rolling. Depending on your card series, you may not need this legazy version and `nvidia-driver` may work fine for you.
 
 ```bash
-aptitude update
-aptitude install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') nvidia-legacy-304xx-kernel-dkms xserver-xorg-video-nvidia-legacy-304xx nvidia-support xserver-xorg-dev
+$ aptitude update
+$ aptitude install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') nvidia-legacy-304xx-kernel-dkms xserver-xorg-video-nvidia-legacy-304xx nvidia-support xserver-xorg-dev
 ```
 
-The `Conflicting nouveau kernel module loaded` warnings are expected. I
-generated the new Xorg config, then rebooted the system to leave the nouveau
-drive behind.
+The `Conflicting nouveau kernel module loaded` warnings are expected. I next
+jotted down the new Xorg config. There's an `nvidia-xconfig` tool, but it's
+only available for the newest version of the nVidia driver and breaks
+everything horrifically if you're using the legacy driver. I recommend just
+specifying the following in `/etc/X11/xorg.conf.d/20-nvidia.conf`:
+
+```text
+Section "Device"
+  Identifier "Nvidia Card"
+  Driver "nvidia"
+  VendorName "NVIDIA Corporation"
+  Option "NoLogo" "true"
+EndSection
+```
+
+Reboot after creating the X configs to jump into the new driver.
 
 ```bash
-nvidia-xconfig
-reboot
+$ reboot
 ```
 
 Once the system comes back up, you can verify that your nVidia drivers are
-operational.
+operational. The following should return your driver number (304.131 in my
+case) and some more info about your card.
 
 ```bash
-nvidia-settings
+$ glxinfo | grep "core profile version"
+OpenGL core profile version string: 4.2.0 NVIDIA 304.131
 ```
 
 ### Installing QEMU
