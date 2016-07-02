@@ -49,7 +49,7 @@ I issued the following, to get the nVidia ball rolling. Depending on your card s
 
 ```bash
 aptitude update
-aptitude install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') nvidia-legacy-304xx-kernel-dkms xserver-xorg-video-nvidia-legacy-304xx nvidia-support nvidia-xconfig nvidia-settings xserver-xorg-dev
+aptitude install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') nvidia-legacy-304xx-kernel-dkms xserver-xorg-video-nvidia-legacy-304xx nvidia-support xserver-xorg-dev
 ```
 
 The `Conflicting nouveau kernel module loaded` warnings are expected. I
