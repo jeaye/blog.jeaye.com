@@ -175,9 +175,7 @@ reboot
 
 # log in as root
 
-pacman -S plasma-desktop sddm konsole xorg-server-utils xorg-xinit nvidia-304xx
-
-reboot # for nvidia driver
+pacman -S plasma-desktop sddm konsole xorg-server-utils xorg-xinit
 
 systemctl start sddm
 # enable if everything works
@@ -191,4 +189,10 @@ su - penny
 curl https://gitlab.com/johnth/aur-xen/repository/archive.zip?ref=master > aur-xen.zip
 unzip aur-xen.zip ; cd aur-xen*
 makepkg -s PKGBUILD
+sudo pacman -U xen-*.xz
+sudo grub-mkconfig --output /boot/grub/grub.cfg
+sudo reboot
+
+/etc/init.d/xencommons start
+xl list # should prove Xen is running properly
 ```
