@@ -236,6 +236,7 @@ su - penny
 gpg --list-keys # Generate GPG database
 echo "keyring /etc/pacman.d/gnupg/pubring.gpg" >> ~/.gnupg/gpg.conf
 
+# In order to mount the windows image
 cd ; mkdir pkg ; cd pkg
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
 tar xvf cower.tar.gz
@@ -246,6 +247,15 @@ wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
 tar xvf pacaur.tar.gz
 makepkg -s PKGBUILD
 sudo pacman -U pacaur-*.xz
+exit # back to root
+
+pacaur -S multipath-tools
+kpartx -a windows-7.img
+  mkdir -p mnt
+  mount /dev/mapper/loop1p2 mnt
+    # Access files on Windows machine
+  umount mnt
+kpartx -d windows-7.img
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
