@@ -190,9 +190,48 @@ curl https://gitlab.com/johnth/aur-xen/repository/archive.zip?ref=master > aur-x
 unzip aur-xen.zip ; cd aur-xen*
 makepkg -s PKGBUILD
 sudo pacman -U xen-*.xz
+
+# TODO add dom0_mem=XXXM,max:XXXM to /etc/default/grub
+
 sudo grub-mkconfig --output /boot/grub/grub.cfg
 sudo reboot
 
 /etc/init.d/xencommons start
 xl list # should prove Xen is running properly
+
+lspci | grep VGA
+01:00.0
+02:00.0
+
+lspci | grep 02:00.
+02:00.0 VGA
+02:00.1 Audio
+
+#### Fill out windows-7 config
+# name = "windows-7"
+# builder = "hvm"
+# memory = 4096
+# vcpus = 4
+# disk = [ "file:/root/domU/windows-7.img,hda,w",
+#          "file:/root/domU/windows-7-sp1-x64.iso,hdc:cdrom,r" ]
+# boot = "d"
+# device_model_version = "qemu-xen-traditional"
+# acpi = 1
+# sdl = 0
+# serial = "pty"
+# vnc = 1
+# vnclisten = "0.0.0.0"
+# vncdisplay = 1
+
+truncate -s 20G windows-7.img
+xl create windows-7.cfg
+xl list
+
+pacman -S tigervnc
+vncviewer 0.0.0.0:1
+
+# Go through install process
+
 ```
+
+http://mirror.corenoc.de/digitalrivercontent.net/
