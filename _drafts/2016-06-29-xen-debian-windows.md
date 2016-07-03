@@ -228,9 +228,7 @@ xl create windows-7.cfg
 xl list
 
 pacman -S tigervnc
-vncviewer 0.0.0.0:1
-
-# Go through install process
+vncviewer 0.0.0.0:1 # Go through install process
 
 su - penny
 gpg --list-keys # Generate GPG database
@@ -253,7 +251,7 @@ pacaur -S multipath-tools
 kpartx -a windows-7.img
   mkdir -p mnt
   mount /dev/mapper/loop1p2 mnt
-    # Access files on Windows machine
+    # Read-only access files to (non-live) Windows machine
   umount mnt
 kpartx -d windows-7.img
 ```
