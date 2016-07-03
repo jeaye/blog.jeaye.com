@@ -232,6 +232,20 @@ vncviewer 0.0.0.0:1
 
 # Go through install process
 
+su - penny
+gpg --list-keys # Generate GPG database
+echo "keyring /etc/pacman.d/gnupg/pubring.gpg" >> ~/.gnupg/gpg.conf
+
+cd ; mkdir pkg ; cd pkg
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
+tar xvf cower.tar.gz
+makepkg -s PKGBUILD
+sudo pacman -U cower-16*.xz
+
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
+tar xvf pacaur.tar.gz
+makepkg -s PKGBUILD
+sudo pacman -U pacaur-*.xz
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
