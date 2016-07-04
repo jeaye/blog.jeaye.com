@@ -281,6 +281,16 @@ mkinitcpio -p linux
 
 grub-mkconfig --output /boot/grub/grub.cfg
 reboot # PCI devices will now be ignored
+
+xl pci-assignable-list # To see forwardable PCI device
+0000:02:00.0
+0000:02:00.1
+
+# Host nvidia setup; can't use the repos, gotta get upstream binary
+pacaur -S xf86-video-nouveau-blacklist-git
+reboot
+
+wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.27/NVIDIA-Linux-x86_64-367.27.run
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
