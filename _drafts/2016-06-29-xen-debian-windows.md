@@ -254,6 +254,19 @@ kpartx -a windows-7.img
     # Read-only access files to (non-live) Windows machine
   umount mnt
 kpartx -d windows-7.img
+
+# Network link
+ip link add name xenbr0 type bridge
+ip link set xenbr0 up
+ip link set enp4s0f2 master xenbr0
+bridge link
+
+# Unlink
+ip link set enp4s0f2 nomaster
+ip link delete name xenbr0 type bridge
+
+### Add to windows-7.cfg
+# vif = [ "bridge=xenbr0" ]
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
