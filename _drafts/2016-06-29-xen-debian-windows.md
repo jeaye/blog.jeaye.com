@@ -191,7 +191,7 @@ unzip aur-xen.zip ; cd aur-xen*
 makepkg -s PKGBUILD
 sudo pacman -U xen-*.xz
 
-# TODO add dom0_mem=XXXM,max:XXXM to /etc/default/grub
+# TODO add dom0_mem=XXXM,max:XXXM to /etc/grub.d/09_xen XEN_HYPERVISOR_CMDLINE
 
 sudo grub-mkconfig --output /boot/grub/grub.cfg
 sudo reboot
@@ -267,6 +267,20 @@ ip link delete name xenbr0 type bridge
 
 ### Add to windows-7.cfg
 # vif = [ "bridge=xenbr0" ]
+
+##### Setup PCI forwarding
+
+### Update /etc/mkinitcpio.conf
+# MODULES="xen-pciback"
+
+mkinitcpio -p linux
+
+### Update /etc/grub.d/09_xen
+#XEN_HYPERVISOR_CMDLINE="xsave=1 cpufreq=xen:performance dom0_mem=4096M dom0_max_vcpus=2 dom0_vcpus_pin iommu=1"
+#XEN_LINUX_CMDLINE="console=tty0 xen-pciback.hide=(02:00.0)(02:00.1)"
+
+grub-mkconfig --output /boot/grub/grub.cfg
+reboot # PCI devices will now be ignored
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
