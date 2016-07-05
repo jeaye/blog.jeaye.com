@@ -287,10 +287,21 @@ xl pci-assignable-list # To see forwardable PCI device
 0000:02:00.1
 
 # Host nvidia setup; can't use the repos, gotta get upstream binary
-pacaur -S xf86-video-nouveau-blacklist-git
-reboot
+reboot # add nomodeset to kernel line from grub
+
+
+
+###################### New approach
+gpg --recv-keys <missing keys> # while installing linux-vfio
 
 wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.27/NVIDIA-Linux-x86_64-367.27.run
+pacman -S linux-headers
+sh NVIDIA-Linux-x86_64-367.27.run
+
+su - penny
+  pacaur -S xf86-video-nouveau-blacklist-git
+exit
+reboot # into nvidia drivers
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
