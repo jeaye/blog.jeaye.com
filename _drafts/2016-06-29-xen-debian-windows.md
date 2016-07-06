@@ -292,16 +292,20 @@ reboot # add nomodeset to kernel line from grub
 
 
 ###################### New approach
+export MAKEFLAGS=-j8
+pacaur -S linux-vfio linux-vfio-headers # answer 7 to header patch prompts
 gpg --recv-keys <missing keys> # while installing linux-vfio
 
 wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.27/NVIDIA-Linux-x86_64-367.27.run
-pacman -S linux-headers
-sh NVIDIA-Linux-x86_64-367.27.run
+sh NVIDIA-Linux-x86_64-367.27.run -a
 
 su - penny
   pacaur -S xf86-video-nouveau-blacklist-git
 exit
 reboot # into nvidia drivers
+
+
+linux-vfio + modprobe.d/vfio.conf - vfio modules + runtime vfio-bind
 ```
 
 http://mirror.corenoc.de/digitalrivercontent.net/
