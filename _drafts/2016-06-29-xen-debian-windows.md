@@ -293,7 +293,7 @@ reboot # add nomodeset to kernel line from grub
 
 ###################### New approach
 export MAKEFLAGS=-j8
-pacaur -S linux-vfio linux-vfio-headers # answer 7 to header patch prompts
+pacaur -S linux-vfio linux-vfio-headers # answer y to header patch prompts
 gpg --recv-keys <missing keys> # while installing linux-vfio
 
 wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.27/NVIDIA-Linux-x86_64-367.27.run
@@ -305,7 +305,15 @@ exit
 reboot # into nvidia drivers
 
 # nvidia drivers make this tough; do all the setup without them
-linux-vfio + modprobe.d/vfio.conf - vfio modules + nouveau + runtime vfio-bind
+# (if binding hangs, there's a piece below missing)
+linux-vfio + modprobe.d/vfio.conf - vfio modules
++ nouveau-blacklist
++ runtime vfio-bind
+
+lspci -nk -s 2:
+
+modeprobe vfio-pci hang?
+  null pointer deref in the driver, just fucking use pci-stub
 ```
 
 Windows download:
