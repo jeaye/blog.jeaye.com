@@ -304,8 +304,9 @@ su - penny
 exit
 reboot # into nvidia drivers
 
-
-linux-vfio + modprobe.d/vfio.conf - vfio modules + runtime vfio-bind
+# nvidia drivers make this tough; do all the setup without them
+linux-vfio + modprobe.d/vfio.conf - vfio modules + nouveau + runtime vfio-bind
 ```
 
+Windows download:
 http://mirror.corenoc.de/digitalrivercontent.net/
