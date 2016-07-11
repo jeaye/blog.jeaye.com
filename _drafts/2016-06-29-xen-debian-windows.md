@@ -1,7 +1,15 @@
 ---
 title: Installing Arch Linux with a fully-encrypted disk
-tags: [arch, linux, tutorial, security, encryption]
+tags: [arch, linux, tutorial, security, encryption, disk]
 ---
+
+### Why encrypt?
+On a typical GNU/Linux install, you won't have disk encryption. Though you're a
+keen user and you've chosen a very strong passphrase (TODO link), your data is
+still stored openly. Should anyone steal, confiscate, buy, or otherwise obtain
+your hard drive, every bit of data is going to be readable. Should anyone boot
+into a live CD on your system and mount your drives, your data is readily
+available and your strong passphrase is none the wiser.
 
 Disk:
   /dev/sda1 => /boot (200MB)
