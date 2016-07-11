@@ -22,11 +22,11 @@ sensitive temporary data.
 
 *Encrypt first, then install; use your system with more confidence.*
 
-### Installing
+### Start here
 Let this be a guide for your next bare-bones Arch setup. I assume you're the
 root user unless otherwise specified.
 
-#### Dowloading
+#### Dowload
 Head over to https://www.archlinux.org/download/ and download the latest ISO,
 preferably via BitTorrent. Burn it to your external media in your preferred
 manner; I have a 16GB USB drive at `/dev/sdb`, in this example, and I'll make my
@@ -39,7 +39,7 @@ $ dd if=archlinux-2016.07.01-dual.iso of=/dev/sdb bs=1M
 Boot into your new live CD, choose the boot into Arch, and you'll be dropped at
 a root prompt. Now you'll create your system.
 
-#### Partitioning
+#### Partition
 I'm assuming you're installing to `/dev/sda`; the resulting partition table is
 shown below.
 
