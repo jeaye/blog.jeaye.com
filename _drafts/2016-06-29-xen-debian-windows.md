@@ -71,9 +71,18 @@ tell where the encrypted data stops, since it all looks like random garbage.
 
 ```bash
 $ cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
-
 ```
+
+Given an encrypted partition, which `/dev/sda2` now is, you can decrypt it into
+a labeled volume. In this example, you'll decrypt the fresh `/dev/sda2` into
+`/dev/mapper/cryptroot`.
+
+```bash
 cryptsetup open --type luks /dev/sda2 cryptroot
+```
+
+Once it's there, you're free to mount it, format it, or do just about anything
+you would with a normal disk partition.
 
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/mapper/cryptroot
@@ -121,3 +130,5 @@ umount -R /mnt/boot
 umount -R /mnt
 cryptsetup close cryptroot
 reboot
+
+TODO: When locked out of the system, these commands will help
