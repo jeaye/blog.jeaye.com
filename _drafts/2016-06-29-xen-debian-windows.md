@@ -14,7 +14,7 @@ available and your strong passphrase is none the wiser.
 ### Varying degrees of encryption
 It's becoming more popular to encrypt certain files, perhaps using GPG (TODO
 link), or perhaps your whole home directory. This still suffers, compared to
-full disk encryption, since the entire root of the file system is still open.
+full system encryption, since the entire root of the file system is still open.
 Directories like `/etc`, where the majority of your system configurations exist
 (often including sensitive information), `/var`, where sensitive data may be
 logged by running processes, and even `/tmp`, where processes may store
@@ -22,11 +22,18 @@ sensitive temporary data.
 
 *Encrypt first, then install; use your system with more confidence.*
 
-Disk:
-  /dev/sda1 => /boot (200MB)
-  /dev/sda2 => / (rest)
+### Installing
+Let this be a guide for your next bare-bones Arch setup. I'm assuming we're
+installing to `/dev/sda`; the partition table will look like this:
+
+|Partition    |Mountpoint |Size      |
+|:------------|:----------|:---------|
+| `/dev/sda1` | `/boot`   | 200MB    |
+| `/dev/sda2` | `/`       | Rest     |
 
 ```bash
+cfdisk # setup sda1, sda2
+
 cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
 cryptsetup open --type luks /dev/sda2 cryptroot
 
