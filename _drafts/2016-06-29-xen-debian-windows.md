@@ -94,15 +94,21 @@ $ mkfs.ext4 /dev/sda1
 $ mkfs.ext4 /dev/mapper/cryptroot
 ```
 
-mount -t ext4 /dev/mapper/cryptroot /mnt
-mkdir -p /mnt/boot
-mount -t ext4 /dev/sda1 /mnt/boot
+Once you have your file systems formatted, they should be mounted in a local
+directory. You'll change root into here soon.
 
-pacstrap -i /mnt base base-devel vim tmux htop
+```bash
+$ mkdir -p mnt
+$ mount -t ext4 /dev/mapper/cryptroot mnt
+$ mkdir -p mnt/boot
+$ mount -t ext4 /dev/sda1 mnt/boot
+```
 
-genfstab -U -p /mnt >> /mnt/etc/fstab
+pacstrap -i mnt base base-devel vim tmux htop
 
-arch-chroot /mnt
+genfstab -U -p mnt >> mnt/etc/fstab
+
+arch-chroot mnt
 
 sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
 locale-gen
@@ -133,8 +139,8 @@ grub-install --recheck /dev/sda
 grub-mkconfig --output /boot/grub/grub.cfg
 
 exit
-umount -R /mnt/boot
-umount -R /mnt
+umount -R mnt/boot
+umount -R mnt
 cryptsetup close cryptroot
 reboot
 
