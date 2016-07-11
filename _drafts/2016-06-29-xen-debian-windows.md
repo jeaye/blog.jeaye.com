@@ -104,7 +104,17 @@ $ mkdir -p mnt/boot
 $ mount -t ext4 /dev/sda1 mnt/boot
 ```
 
-pacstrap -i mnt base base-devel vim tmux htop
+#### Install the base system
+The Arch live system comes with a couple of commands to help bootstrap your new
+system. The first you'll use is `pacstrap`, which takes the directory in which
+to install and an arbitrary number of packages. This requires network access and
+I recommend installing some basic tools which will help as you build up your
+system. Aside from the required `base` and `base-devel`, I opt for `vim` and
+`tmux`.
+
+```bash
+$ pacstrap -i mnt base base-devel vim tmux
+```
 
 genfstab -U -p mnt >> mnt/etc/fstab
 
