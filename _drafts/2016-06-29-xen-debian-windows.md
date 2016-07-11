@@ -36,18 +36,43 @@ live disk with one command.
 $ dd if=archlinux-2016.07.01-dual.iso of=/dev/sdb bs=1M
 ```
 
+Boot into your new live CD, choose the boot into Arch, and you'll be dropped at
+a root prompt. Now you'll create your system.
+
 #### Partitioning
-I'm assuming we're installing to `/dev/sda`; the partition table is shown below.
+I'm assuming you're installing to `/dev/sda`; the resulting partition table is
+shown below.
 
 |Partition    |Mountpoint |Size      |
 |:------------|:----------|:---------|
 | `/dev/sda1` | `/boot`   | 200MB    |
 | `/dev/sda2` | `/`       | Rest     |
 
-```bash
-cfdisk # setup sda1, sda2
+Spin up cfdisk and create a matching layout.
 
-cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
+```bash
+$ cfdisk
+```
+
+#### Encrypt
+Now, before you install anything, you're going to setup encryption for
+`/dev/sda2`. Choose a strong passphrase, at least 32 characters long. I
+recommend using a complete sentence with spaces, punctuation, and mixed case. As
+the disk is encrypted, it'll first be scrubbed with random data. You can
+interrupt this, but you should not! Here's why.
+
+Typical data can be discovered by patterns that are inherent to its format.
+(TODO link) Video, audio, source code, etc, each looks different as a pattern of
+bits. Encrypted data typically looks like random garbage. As a result, if you
+only encrypt the data of this new system, there may be old data on the drive
+which will not look random; it'll still be decipherable as video, audio, etc. If
+you randomize the whole drive first, then it's substantially more difficult to
+tell where the encrypted data stops, since it all looks like random garbage.
+
+```bash
+$ cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
+
+```
 cryptsetup open --type luks /dev/sda2 cryptroot
 
 mkfs.ext4 /dev/sda1
