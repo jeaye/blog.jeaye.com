@@ -116,9 +116,22 @@ system. Aside from the required `base` and `base-devel`, I opt for `vim` and
 $ pacstrap -i mnt base base-devel vim tmux
 ```
 
-genfstab -U -p mnt >> mnt/etc/fstab
+Your current mount points will work as a starting point for the new system, so
+you can serialize them as an fstab now.
 
-arch-chroot mnt
+```bash
+$ genfstab -U -p mnt >> mnt/etc/fstab
+```
+
+#### Enter the system
+At this point, a working user-space is within `mnt`, and you an change root into
+it. Arch provides a custom `arch-chroot` for this purpose; it's a helper script
+around `chroot` which also sets up certain API file systems and makes
+`/etc/resolv.conf` available.
+
+```bash
+$ arch-chroot mnt
+```
 
 sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
 locale-gen
