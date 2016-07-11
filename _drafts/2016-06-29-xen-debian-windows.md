@@ -314,6 +314,11 @@ lspci -nk -s 2:
 
 modeprobe vfio-pci hang?
   null pointer deref in the driver, just fucking use pci-stub
+
+1. pci-stub
+2. primary-bind
+3. vfio-bind
+4. start X
 ```
 
 Windows download:
