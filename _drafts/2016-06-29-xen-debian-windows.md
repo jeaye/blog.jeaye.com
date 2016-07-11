@@ -1,6 +1,6 @@
 ---
 title: Installing Arch Linux with a fully-encrypted disk
-tags: [linux, windows, xen, tutorial, vm]
+tags: [arch, linux, tutorial, security, encryption]
 ---
 
 Disk:
