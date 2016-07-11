@@ -78,14 +78,21 @@ a labeled volume. In this example, you'll decrypt the fresh `/dev/sda2` into
 `/dev/mapper/cryptroot`.
 
 ```bash
-cryptsetup open --type luks /dev/sda2 cryptroot
+$ cryptsetup open --type luks /dev/sda2 cryptroot
 ```
 
 Once it's there, you're free to mount it, format it, or do just about anything
 you would with a normal disk partition.
 
-mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/mapper/cryptroot
+
+#### Format
+Both of the partitions will just use [Ext4](https://en.wikipedia.org/wiki/Ext4),
+in this example. You're welcome to use any file system you'd like.
+
+```bash
+$ mkfs.ext4 /dev/sda1
+$ mkfs.ext4 /dev/mapper/cryptroot
+```
 
 mount -t ext4 /dev/mapper/cryptroot /mnt
 mkdir -p /mnt/boot
