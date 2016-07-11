@@ -11,6 +11,17 @@ your hard drive, every bit of data is going to be readable. Should anyone boot
 into a live CD on your system and mount your drives, your data is readily
 available and your strong passphrase is none the wiser.
 
+### Varying degrees of encryption
+It's becoming more popular to encrypt certain files, perhaps using GPG (TODO
+link), or perhaps your whole home directory. This still suffers, compared to
+full disk encryption, since the entire root of the file system is still open.
+Directories like `/etc`, where the majority of your system configurations exist
+(often including sensitive information), `/var`, where sensitive data may be
+logged by running processes, and even `/tmp`, where processes may store
+sensitive temporary data.
+
+*Encrypt first, then install; use your system with more confidence.*
+
 Disk:
   /dev/sda1 => /boot (200MB)
   /dev/sda2 => / (rest)
