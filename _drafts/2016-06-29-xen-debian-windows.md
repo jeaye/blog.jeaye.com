@@ -133,11 +133,16 @@ around `chroot` which also sets up certain API file systems and makes
 $ arch-chroot mnt
 ```
 
+#### Setup locale
+A modern setup should default to UTF-8 (TODO link).
+
+```bash
 sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
 locale-gen
 
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 export LANG=en_US.UTF-8
+```
 
 ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
