@@ -137,16 +137,22 @@ $ arch-chroot mnt
 A modern setup should default to UTF-8 (TODO link).
 
 ```bash
-sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
-locale-gen
+$ sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
+$ locale-gen
 
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-export LANG=en_US.UTF-8
+$ echo LANG=en_US.UTF-8 > /etc/locale.conf
+$ export LANG=en_US.UTF-8
 ```
 
-ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+#### Setup time
+Link in the appropriate time zone for you. I also recommend keeping the hardware
+clock on UTC.
 
-hwclock --systohc --utc
+```bash
+$ ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+
+$ hwclock --systohc --utc
+```
 
 echo xen-master > /etc/hostname
 
