@@ -154,7 +154,12 @@ $ ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 $ hwclock --systohc --utc
 ```
 
-echo xen-master > /etc/hostname
+#### Setup hostname
+Your hostname can be whatever you want; it's network-visible, so keep it sane.
+
+```bash
+echo tofu-ninja > /etc/hostname
+```
 
 passwd # enter root password
 
