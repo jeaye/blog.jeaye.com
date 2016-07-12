@@ -158,15 +158,21 @@ $ hwclock --systohc --utc
 Your hostname can be whatever you want; it's network-visible, so keep it sane.
 
 ```bash
-echo tofu-ninja > /etc/hostname
+$ echo tofu-ninja > /etc/hostname
 ```
 
-passwd # enter root password
+#### Setup users
+Root needs a password and you'll need a normal user. Using root for anything but
+short-term administrative tasks is a dangerous habit. (TODO link)
 
-useradd -m -g users -G wheel -s /bin/bash penny
-passwd penny # enter user's password
+```bash
+$ passwd # enter root password
 
-visudo # uncomment wheel
+$ useradd -m -g users -G wheel -s /bin/bash penny
+$ passwd penny # enter user's password
+
+$ visudo # uncomment wheel
+```
 
 pacman -S grub-bios
 sed -i 's#^\(GRUB_CMDLINE_LINUX="\)#\1cryptdevice=/dev/sda2:cryptroot#' /etc/default/grub
