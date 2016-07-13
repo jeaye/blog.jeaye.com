@@ -1,6 +1,6 @@
 ---
 title: HTTPS for your Github Pages' custom domain
-tags: [ssl, github, pages, https, letsencrypt, simp_le, security]
+tags: [ssl, github, pages, https, letsencrypt, simp_le, security, privacy]
 ---
 
 With the rise of free encryption through [Let's

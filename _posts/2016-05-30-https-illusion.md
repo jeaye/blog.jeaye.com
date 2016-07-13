@@ -1,6 +1,6 @@
 ---
 title: HTTPS and the illusion of privacy
-tags: [http, https, ssl, tls, security]
+tags: [http, https, ssl, tls, security, privacy]
 ---
 
 With the rise of per-website encryption, and the

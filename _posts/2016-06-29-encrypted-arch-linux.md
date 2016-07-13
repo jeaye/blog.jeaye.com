@@ -1,6 +1,6 @@
 ---
 title: Installing Arch Linux with a fully-encrypted disk
-tags: [arch, linux, tutorial, security, encryption, disk]
+tags: [arch, linux, tutorial, security, privacy, encryption, disk]
 ---
 
 On a typical GNU/Linux install, you won't have disk encryption. Though you're a
