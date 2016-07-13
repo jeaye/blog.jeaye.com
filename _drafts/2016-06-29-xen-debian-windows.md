@@ -174,14 +174,23 @@ $ passwd penny # enter user's password
 $ visudo # uncomment wheel
 ```
 
-pacman -S grub-bios
-sed -i 's#^\(GRUB_CMDLINE_LINUX="\)#\1cryptdevice=/dev/sda2:cryptroot#' /etc/default/grub
+#### Install GRUB
+You have other options for your bootloader, but GRUB (TODO link) is the most
+powerful around. I like that, in a pinch, the GRUB shell can be used to boot
+just about anything. The installation is straightforward, but we need to make
+sure that GRUB knows about our encrypted drive.
+
+```bash
+$ pacman -S grub-bios
+
+$ sed -i 's#^\(GRUB_CMDLINE_LINUX="\)#\1cryptdevice=/dev/sda2:cryptroot#' /etc/default/grub
+
+$ grub-install --recheck /dev/sda
+$ grub-mkconfig --output /boot/grub/grub.cfg
+```
 
 sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
-
-grub-install --recheck /dev/sda
-grub-mkconfig --output /boot/grub/grub.cfg
 
 exit
 umount -R mnt/boot
