@@ -37,7 +37,7 @@ live disk with one command.
 $ dd if=archlinux-2016.07.01-dual.iso of=/dev/sdb bs=1M
 ```
 
-Boot into your new live CD, choose the boot into Arch, and you'll be dropped at
+Boot into your new live CD, choose your architecture, and you'll be dropped at
 a root prompt. Now you'll create your system.
 
 #### Partition
