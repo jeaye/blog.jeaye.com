@@ -45,8 +45,8 @@ shown below.
 
 |Partition         |Mountpoint       |Size      |
 |:-----------------|:----------------|:---------|
-| `/dev/sda1`      | `/boot`         | 200MB    |
-| `/dev/sda2`      | `/`             | Rest     |
+| `/dev/sda1     ` | `/boot        ` | 200MB    |
+| `/dev/sda2     ` | `/            ` | Rest     |
 
 Spin up [cfdisk](https://wiki.archlinux.org/index.php/Cfdisk) and create a
 matching layout.
