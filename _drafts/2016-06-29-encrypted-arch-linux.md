@@ -5,20 +5,21 @@ tags: [arch, linux, tutorial, security, encryption, disk]
 
 ### Why encrypt?
 On a typical GNU/Linux install, you won't have disk encryption. Though you're a
-keen user and you've chosen a very strong passphrase (TODO link), your data is
+keen user and you've chosen a [very strong
+passphrase](https://libraryfreedomproject.org/strongpassphrases/), your data is
 still stored openly. Should anyone steal, confiscate, buy, or otherwise obtain
 your hard drive, every bit of data is going to be readable. Should anyone boot
 into a live CD on your system and mount your drives, your data is readily
 available and your strong passphrase is none the wiser.
 
 ### Varying degrees of encryption
-It's becoming more popular to encrypt certain files, perhaps using GPG (TODO
-link), or perhaps your whole home directory. This still suffers, compared to
-full system encryption, since the entire root of the file system is still open.
-Directories like `/etc`, where the majority of your system configurations exist
-(often including sensitive information), `/var`, where sensitive data may be
-logged by running processes, and even `/tmp`, where processes may store
-sensitive temporary data.
+It's becoming more popular to encrypt certain files, [perhaps using
+GPG](https://www.gnupg.org/gph/en/manual/x110.html), or perhaps your whole home
+directory. This still suffers, compared to full system encryption, since the
+entire root of the file system is still open.  Directories like `/etc`, where
+the majority of your system configurations exist (often including sensitive
+information), `/var`, where sensitive data may be logged by running processes,
+and even `/tmp`, where processes may store sensitive temporary data.
 
 *Encrypt first, then install; use your system with more confidence.*
 
@@ -61,13 +62,15 @@ recommend using a complete sentence with spaces, punctuation, and mixed case. As
 the disk is encrypted, it'll first be scrubbed with random data. You can
 interrupt this, but you should not! Here's why.
 
-Typical data can be discovered by patterns that are inherent to its format.
-(TODO link) Video, audio, source code, etc, each looks different as a pattern of
-bits. Encrypted data typically looks like random garbage. As a result, if you
-only encrypt the data of this new system, there may be old data on the drive
-which will not look random; it'll still be decipherable as video, audio, etc. If
-you randomize the whole drive first, then it's substantially more difficult to
-tell where the encrypted data stops, since it all looks like random garbage.
+Typical data [can be
+discovered](https://wiki.archlinux.org/index.php/Securely_wipe_disk) by
+patterns that are inherent to its format.  Video, audio, source code, etc, each
+looks different as a pattern of bits. Encrypted data typically looks like
+random garbage. As a result, if you only encrypt the data of this new system,
+there may be old data on the drive which will not look random; it'll still be
+decipherable as video, audio, etc. If you randomize the whole drive first, then
+it's substantially more difficult to tell where the encrypted data stops, since
+it all looks like random garbage.
 
 ```bash
 $ cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
@@ -134,7 +137,7 @@ $ arch-chroot mnt
 ```
 
 #### Setup locale
-A modern setup should default to UTF-8 (TODO link).
+A modern setup should [default to UTF-8](http://utf8everywhere.org/).
 
 ```bash
 $ sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
@@ -162,8 +165,8 @@ $ echo tofu-ninja > /etc/hostname
 ```
 
 #### Setup users
-Root needs a password and you'll need a normal user. Using root for anything but
-short-term administrative tasks is a dangerous habit. (TODO link)
+Root needs a password and you'll need a normal user. [Using root for anything but
+short-term administrative tasks is a dangerous habit](https://askubuntu.com/questions/16178/why-is-it-bad-to-login-as-root).
 
 ```bash
 $ passwd # enter root password
@@ -175,10 +178,11 @@ $ visudo # uncomment wheel
 ```
 
 #### Install GRUB
-You have other options for your bootloader, but GRUB (TODO link) is the most
-powerful around. I like that, in a pinch, the GRUB shell can be used to boot
-just about anything. The installation is straightforward, but you need to make
-sure that GRUB knows about our encrypted drive.
+You have other options for your bootloader, but
+[GRUB](https://wiki.archlinux.org/index.php/GRUB) is the most powerful around.
+I like that, in a pinch, the GRUB shell can be used to boot just about
+anything. The installation is straightforward, but you need to make sure that
+GRUB knows about our encrypted drive.
 
 ```bash
 $ pacman -S grub-bios
@@ -191,7 +195,8 @@ $ grub-mkconfig --output /boot/grub/grub.cfg
 
 #### Rebuild initramfs
 The kernel needs to know about your encrypted setup, so we'll instruct
-mkinitcpio (TODO link) that it needs to do some extra work.
+[mkinitcpio](https://wiki.archlinux.org/index.php/mkinitcpio) that it needs to
+do some extra work.
 
 ```bash
 $ sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
