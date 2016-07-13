@@ -14,12 +14,12 @@ available and your strong passphrase is none the wiser.
 
 ### Varying degrees of encryption
 It's becoming more popular to encrypt certain files, [perhaps using
-GPG](https://www.gnupg.org/gph/en/manual/x110.html), or perhaps your whole home
-directory. This still suffers, compared to full system encryption, since the
-entire root of the file system is still open.  Directories like `/etc`, where
-the majority of your system configurations exist (often including sensitive
-information), `/var`, where sensitive data may be logged by running processes,
-and even `/tmp`, where processes may store sensitive temporary data.
+GPG](https://www.gnupg.org/gph/en/manual/x110.html), and even home directories.
+This still suffers, compared to full system encryption, since the entire root
+of the file system is still open.  Directories like `/etc`, where the majority
+of your system configurations exist (often including sensitive information),
+`/var`, where sensitive data may be logged by running processes, and even
+`/tmp`, where processes may store sensitive temporary data, are vulnerable.
 
 *Encrypt first, then install; use your system with more confidence.*
 
