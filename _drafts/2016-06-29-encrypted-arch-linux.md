@@ -228,3 +228,6 @@ $ umount -R mnt/boot
 $ umount -R mnt
 $ cryptsetup close cryptroot
 ```
+
+### What now?
+A starting point for filling out your new system would be the [Arch General Recommendations](https://wiki.archlinux.org/index.php/General_recommendations).
