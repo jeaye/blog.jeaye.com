@@ -129,8 +129,8 @@ $ genfstab -U -p mnt >> mnt/etc/fstab
 
 #### Enter the system
 At this point, a working user-space is within `mnt` and you an change root into
-it. Arch provides a custom `arch-chroot` for this purpose; it's a helper script
-around `chroot` which also sets up certain API file systems and makes
+it. Arch provides `arch-chroot` for this purpose; it's a helper script around
+`chroot` which also sets up certain API file systems and makes
 `/etc/resolv.conf` available.
 
 ```bash
@@ -138,7 +138,9 @@ $ arch-chroot mnt
 ```
 
 #### Setup locale
-A modern setup should [default to UTF-8](http://utf8everywhere.org/).
+Now that you're in your new system's environment, some essential information
+will need to be specified. For starters, a modern setup should [default to
+UTF-8](http://utf8everywhere.org/).
 
 ```bash
 $ sed -i 's/^#\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
@@ -159,15 +161,16 @@ $ hwclock --systohc --utc
 ```
 
 #### Setup hostname
-Your hostname can be whatever you want; it's network-visible, so keep it sane.
+Your hostname can be whatever you want; it's network-visible though, so keep it
+sane.
 
 ```bash
 $ echo tofu-ninja > /etc/hostname
 ```
 
 #### Setup users
-Root needs a password and you'll need a normal user. [Using root for anything but
-short-term administrative tasks is a dangerous habit](https://askubuntu.com/questions/16178/why-is-it-bad-to-login-as-root).
+Root needs a password and you'll need a normal user. Using root for anything but
+short-term administrative tasks is a [dangerous habit](https://askubuntu.com/questions/16178/why-is-it-bad-to-login-as-root).
 
 ```bash
 $ passwd # enter root password
@@ -195,9 +198,9 @@ $ grub-mkconfig --output /boot/grub/grub.cfg
 ```
 
 #### Rebuild initramfs
-The kernel needs to know about your encrypted setup, so we'll instruct
-[mkinitcpio](https://wiki.archlinux.org/index.php/mkinitcpio) that it needs to
-do some extra work.
+The kernel needs to know about your encrypted setup, so you must instruct
+[mkinitcpio](https://wiki.archlinux.org/index.php/mkinitcpio) to do some extra
+work.
 
 ```bash
 $ sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
@@ -205,8 +208,9 @@ $ mkinitcpio -p linux
 ```
 
 #### Reboot
-At this point, your minimal setup is complete. You can exit the install
-environment and reboot into GRUB and your new install.
+At this point, your minimal setup is complete and your entire system, save for
+`/boot`, is encrypted. You can exit the install environment and reboot into
+GRUB and your new install.
 
 ```bash
 $ exit
