@@ -177,7 +177,7 @@ $ visudo # uncomment wheel
 #### Install GRUB
 You have other options for your bootloader, but GRUB (TODO link) is the most
 powerful around. I like that, in a pinch, the GRUB shell can be used to boot
-just about anything. The installation is straightforward, but we need to make
+just about anything. The installation is straightforward, but you need to make
 sure that GRUB knows about our encrypted drive.
 
 ```bash
@@ -189,13 +189,25 @@ $ grub-install --recheck /dev/sda
 $ grub-mkconfig --output /boot/grub/grub.cfg
 ```
 
-sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
-mkinitcpio -p linux
+#### Rebuild initramfs
+The kernel needs to know about your encrypted setup, so we'll instruct
+mkinitcpio (TODO link) that it needs to do some extra work.
 
-exit
-umount -R mnt/boot
-umount -R mnt
-cryptsetup close cryptroot
-reboot
+```bash
+$ sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
+$ mkinitcpio -p linux
+```
+
+#### Reboot
+At this point, your minimal setup is complete. You can exit the install
+environment and reboot into GRUB and your new install.
+
+```bash
+$ exit
+$ umount -R mnt/boot
+$ umount -R mnt
+$ cryptsetup close cryptroot
+$ reboot
+```
 
 TODO: When locked out of the system, these commands will help
