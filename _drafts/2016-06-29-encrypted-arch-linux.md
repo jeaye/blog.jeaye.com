@@ -128,7 +128,7 @@ $ genfstab -U -p mnt >> mnt/etc/fstab
 ```
 
 #### Enter the system
-At this point, a working user-space is within `mnt`, and you an change root into
+At this point, a working user-space is within `mnt` and you an change root into
 it. Arch provides a custom `arch-chroot` for this purpose; it's a helper script
 around `chroot` which also sets up certain API file systems and makes
 `/etc/resolv.conf` available.
