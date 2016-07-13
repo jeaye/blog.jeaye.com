@@ -43,10 +43,10 @@ a root prompt. Now you'll create your system.
 I'm assuming you're installing to `/dev/sda`; the resulting partition table is
 shown below.
 
-|Partition    |Mountpoint |Size      |
-|:------------|:----------|:---------|
-| `/dev/sda1` | `/boot`   | 200MB    |
-| `/dev/sda2` | `/`       | Rest     |
+|Partition         |Mountpoint       |Size      |
+|:-----------------|:----------------|:---------|
+| `/dev/sda1`      | `/boot`         | 200MB    |
+| `/dev/sda2`      | `/`             | Rest     |
 
 Spin up [cfdisk](https://wiki.archlinux.org/index.php/Cfdisk) and create a
 matching layout.
