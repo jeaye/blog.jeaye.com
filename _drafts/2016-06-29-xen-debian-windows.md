@@ -210,4 +210,21 @@ $ cryptsetup close cryptroot
 $ reboot
 ```
 
-TODO: When locked out of the system, these commands will help
+### If you get locked out
+If locked out of your system, for whatever reason, you'll need to manually
+decrypt your drives. You can do this by just manually opening and closing
+through `cryptsetup`, like you did for the install.
+
+```bash
+$ cryptsetup open --type luks /dev/sda2 cryptroot
+$ mkdir -p mnt
+$ mount -t ext4 /dev/mapper/cryptroot mnt
+$ mkdir -p mnt/boot
+$ mount -t ext4 /dev/sda1 mnt/boot
+
+# Do your work ...
+
+$ umount -R mnt/boot
+$ umount -R mnt
+$ cryptsetup close cryptroot
+```
