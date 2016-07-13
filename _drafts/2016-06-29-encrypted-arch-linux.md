@@ -25,7 +25,7 @@ of your system configurations exist (often including sensitive information),
 
 ### Start here
 Let this be a guide for your next bare-bones Arch setup. I assume you're the
-root user unless otherwise specified.
+root from here on out.
 
 #### Dowload
 Head over to https://www.archlinux.org/download/ and download the latest ISO,
