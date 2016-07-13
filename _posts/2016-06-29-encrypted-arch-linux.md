@@ -3,7 +3,6 @@ title: Installing Arch Linux with a fully-encrypted disk
 tags: [arch, linux, tutorial, security, encryption, disk]
 ---
 
-### Why encrypt?
 On a typical GNU/Linux install, you won't have disk encryption. Though you're a
 keen user and you've chosen a [very strong
 passphrase](https://libraryfreedomproject.org/strongpassphrases/), your data is
