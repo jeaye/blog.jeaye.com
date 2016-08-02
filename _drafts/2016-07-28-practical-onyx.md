@@ -3,6 +3,14 @@ title: Practical Onyx: from shell to distributed computing
 tags: [clojure, programming, tutorial, onyx, distributed]
 ---
 
+### Setup basic project
+
+```bash
+$ lein new app toy-server
+$ cd toy-server
+$ lein run # should see "Hello, World!"
+```
+
 ### Get Datomic
 
 Go here; create account; download latest
@@ -19,4 +27,11 @@ https://my.datomic.com/account
 
 ```bash
 $ gpg --default-recipient-self -e ~/.lein/credentials.clj > ~/.lein/credentials.clj.gpg
+```
+
+project.clj
+```clojure
+:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
+                                 :creds :gpg}}
+:dependencies [[com.datomic/datomic-pro "0.9.5385"]]
 ```
