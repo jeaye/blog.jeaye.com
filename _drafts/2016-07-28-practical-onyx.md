@@ -35,3 +35,8 @@ project.clj
                                  :creds :gpg}}
 :dependencies [[com.datomic/datomic-pro "0.9.5385"]]
 ```
+
+Download the new deps
+```bash
+$ lein deps # enter GPG passphrase for datomic
+```
