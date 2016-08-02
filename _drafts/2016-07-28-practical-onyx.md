@@ -59,3 +59,7 @@ Test out an in-memory db:
   @(d/transact conn [datom])
   (println (d/q '[:find ?e :where [?e :db/doc "hello world"]] db)))
 ```
+
+### Resources
+#### Videos
+https://www.infoq.com/presentations/Thinking-in-Data
