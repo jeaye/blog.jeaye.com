@@ -40,3 +40,22 @@ Download the new deps
 ```bash
 $ lein deps # enter GPG passphrase for datomic
 ```
+
+Test out an in-memory db:
+```clojure
+(ns toy-server.core
+  (:gen-class)
+  (:require [datomic.api :as d]))
+
+(def db-uri "datomic:mem://toy-server")
+(d/create-database db-uri)
+(def conn (d/connect db-uri))
+(def db (d/db conn))
+(def datom [:db/add (d/tempid :db.part/user)
+            :db/doc "hello world"])
+
+(defn -main
+  [& args]
+  @(d/transact conn [datom])
+  (println (d/q '[:find ?e :where [?e :db/doc "hello world"]] db)))
+```
