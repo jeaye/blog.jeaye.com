@@ -63,3 +63,4 @@ Test out an in-memory db:
 ### Resources
 #### Videos
 https://www.infoq.com/presentations/Thinking-in-Data
+http://www.flyingmachinestudios.com/programming/building-a-forum-with-clojure-datomic-angular/
