@@ -10,12 +10,12 @@ reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.cl
 Many popular languages these days have [list comprehension](https://en.wikipedia.org/wiki/List_comprehension), more commonly [dynamic](https://en.wikipedia.org/wiki/Dynamic_programming_language) ones, and some are even rather [imperative](https://en.wikipedia.org/wiki/Imperative_programming), like Python. Here are some examples of how `for` can be used in Clojure.
 
 #### Map
-{% highlight clojure %}
+```clojure
 (for [x (range 10 15)]
   (str "|" x "|"))
 
 ; => ("|10|" "|11|" "|12|" "|13|" "|14|")
-{% endhighlight %}
+```
 
 #### Filter
 The `:when` modifier allows filtering, based on a predicate. Iteration won't be
