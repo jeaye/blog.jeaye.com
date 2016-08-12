@@ -20,7 +20,7 @@ Many popular languages these days have [list comprehension](https://en.wikipedia
 #### Filter
 The `:when` modifier allows filtering, based on a predicate. Iteration won't be
 stopped, but any iteration which doesn't yield truthy from the predicate will be
-skipped. To contrast, the `:while` modifier allows early termination, based on a
+skipped. In contrast, the `:while` modifier allows early termination, based on a
 predicate. The `:while` predicate can only return false once, since `for` will
 stop iterating immediately and return the accumulated result.
 
@@ -66,19 +66,19 @@ subsequent binding iterating more quickly than the former.
       s [:♠ :♥ :♣ :♦]]
   [c s])
 
-; => ([:2 :♠] [:2 :♥] [:2 :♣] [:2 :♦]
-;     [:3 :♠] [:3 :♥] [:3 :♣] [:3 :♦]
-;     [:4 :♠] [:4 :♥] [:4 :♣] [:4 :♦]
-;     [:5 :♠] [:5 :♥] [:5 :♣] [:5 :♦]
-;     [:6 :♠] [:6 :♥] [:6 :♣] [:6 :♦]
-;     [:7 :♠] [:7 :♥] [:7 :♣] [:7 :♦]
-;     [:8 :♠] [:8 :♥] [:8 :♣] [:8 :♦]
-;     [:9 :♠] [:9 :♥] [:9 :♣] [:9 :♦]
+; => ([:2  :♠] [:2  :♥] [:2  :♣] [:2  :♦]
+;     [:3  :♠] [:3  :♥] [:3  :♣] [:3  :♦]
+;     [:4  :♠] [:4  :♥] [:4  :♣] [:4  :♦]
+;     [:5  :♠] [:5  :♥] [:5  :♣] [:5  :♦]
+;     [:6  :♠] [:6  :♥] [:6  :♣] [:6  :♦]
+;     [:7  :♠] [:7  :♥] [:7  :♣] [:7  :♦]
+;     [:8  :♠] [:8  :♥] [:8  :♣] [:8  :♦]
+;     [:9  :♠] [:9  :♥] [:9  :♣] [:9  :♦]
 ;     [:10 :♠] [:10 :♥] [:10 :♣] [:10 :♦]
-;     [:J :♠] [:J :♥] [:J :♣] [:J :♦]
-;     [:Q :♠] [:Q :♥] [:Q :♣] [:Q :♦]
-;     [:K :♠] [:K :♥] [:K :♣] [:K :♦]
-;     [:A :♠] [:A :♥] [:A :♣] [:A :♦])
+;     [:J  :♠] [:J  :♥] [:J  :♣] [:J  :♦]
+;     [:Q  :♠] [:Q  :♥] [:Q  :♣] [:Q  :♦]
+;     [:K  :♠] [:K  :♥] [:K  :♣] [:K  :♦]
+;     [:A  :♠] [:A  :♥] [:A  :♣] [:A  :♦])
 ```
 
 ### Worth noting
