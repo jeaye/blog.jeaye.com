@@ -7,7 +7,7 @@ Higher order functions in Clojure get a great deal of attention, and for good
 reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.clojure:clojure:1.4.0.html) of functions which focus on purely transforming data. To those studying Clojure, [for](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/for) may stand out as verbose and awkward; it may also go entirely unnoticed.
 
 ### List comprehension
-Many popular languages these days have [list comprehension](https://en.wikipedia.org/wiki/List_comprehension), most of which seem to be [dynamic](https://en.wikipedia.org/wiki/Dynamic_programming_language), and some are even rather [imperative](https://en.wikipedia.org/wiki/Imperative_programming), like Python. Here are some examples of how `for` can be used in Clojure.
+Many popular languages these days have [list comprehension](https://en.wikipedia.org/wiki/List_comprehension), more commonly [dynamic](https://en.wikipedia.org/wiki/Dynamic_programming_language) ones, and some are even rather [imperative](https://en.wikipedia.org/wiki/Imperative_programming), like Python. Here are some examples of how `for` can be used in Clojure.
 
 #### Map
 ```clojure
@@ -34,7 +34,7 @@ skipped.
 ; => ([0 1] [0 2] [1 0] [1 2] [2 0] [2 1])
 ```
 
-#### Extra map values
+#### Extract map values
 It's possible to destructure within the bindings of `for`, allowing for easy
 access to nested values.
 
@@ -44,4 +44,4 @@ access to nested values.
 ; (1 2 3)
 ```
 ### Worth noting
-Lazy!
+Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
