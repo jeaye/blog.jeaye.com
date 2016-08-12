@@ -13,6 +13,7 @@ Many popular languages these days have [list comprehension](https://en.wikipedia
 ```clojure
 (for [x (range 10 15)]
   (str "|" x "|"))
+
 ; => ("|10|" "|11|" "|12|" "|13|" "|14|")
 ```
 
@@ -27,18 +28,21 @@ stop iterating immediately and return the accumulated result.
 (for [x {:a 1 "b" 2 :c 3}
       :when (-> x first keyword?)]
   x)
+
 ; => ([:a 1] [:c 3])
 
 (for [x (range 3)
       y (range 3)
       :when (not= x y)]
   [x y])
+
 ; => ([0 1] [0 2] [1 0] [1 2] [2 0] [2 1])
 
 (for [x (range 3)
       y (range 3)
       :while (not= x y)]
   [x y])
+
 ; => ([1 0] [2 0] [2 1])
 ```
 
@@ -49,6 +53,7 @@ access to nested values.
 ```clojure
 (for [[k v] {:a 1 :b 2 :c 3}]
   v)
+
 ; (1 2 3)
 ```
 
@@ -60,6 +65,7 @@ subsequent binding iterating more quickly than the former.
 (for [c [:2 :3 :4 :5 :6 :7 :8 :9 :10 :J :Q :K :A]
       s [:♠ :♥ :♣ :♦]]
   [c s])
+
 ; => ([:2 :♠] [:2 :♥] [:2 :♣] [:2 :♦]
 ;     [:3 :♠] [:3 :♥] [:3 :♣] [:3 :♦]
 ;     [:4 :♠] [:4 :♥] [:4 :♣] [:4 :♦]
