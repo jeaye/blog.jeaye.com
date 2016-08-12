@@ -26,9 +26,9 @@ url: "https://blog.jeaye.com"
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
 
 markdown: kramdown
-highlighter: rouge
 kramdown:
   input: GFM
+  syntax_highligher: rouge
 
 exclude: [.bundle, vendor, lib]
 includes_dir: _includes
