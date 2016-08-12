@@ -17,9 +17,11 @@ Many popular languages these days have [list comprehension](https://en.wikipedia
 ```
 
 #### Filter
-The `:when` modifier allows filtering based on a predicate. Iteration won't be
+The `:when` modifier allows filtering, based on a predicate. Iteration won't be
 stopped, but any iteration which doesn't yield truthy from the predicate will be
-skipped.
+skipped. To contrast, the `:while` modifier allows early termination, based on a
+predicate. The `:while` predicate can only return false once, since `for` will
+stop iterating immediately and return the accumulated result.
 
 ```clojure
 (for [x {:a 1 "b" 2 :c 3}
@@ -32,6 +34,12 @@ skipped.
       :when (not= x y)]
   [x y])
 ; => ([0 1] [0 2] [1 0] [1 2] [2 0] [2 1])
+
+(for [x (range 3)
+      y (range 3)
+      :while (not= x y)]
+  [x y])
+; => ([1 0] [2 0] [2 1])
 ```
 
 #### Extract map values
@@ -43,5 +51,6 @@ access to nested values.
   v)
 ; (1 2 3)
 ```
+
 ### Worth noting
 Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
