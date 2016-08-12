@@ -57,11 +57,10 @@ Subsequent bindings in the `for` macro will cause nested iteration, each
 subsequent binding iterating more quickly than the former.
 
 ```clojure
-(for [c [:1 :2 :3 :4 :5 :6 :7 :8 :9 :10 :J :Q :K :A]
+(for [c [:2 :3 :4 :5 :6 :7 :8 :9 :10 :J :Q :K :A]
       s [:♠ :♥ :♣ :♦]]
   [c s])
-; => ([:1 :♠] [:1 :♥] [:1 :♣] [:1 :♦]
-;     [:2 :♠] [:2 :♥] [:2 :♣] [:2 :♦]
+; => ([:2 :♠] [:2 :♥] [:2 :♣] [:2 :♦]
 ;     [:3 :♠] [:3 :♥] [:3 :♣] [:3 :♦]
 ;     [:4 :♠] [:4 :♥] [:4 :♣] [:4 :♦]
 ;     [:5 :♠] [:5 :♥] [:5 :♣] [:5 :♦]
