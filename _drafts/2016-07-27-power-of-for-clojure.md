@@ -52,5 +52,33 @@ access to nested values.
 ; (1 2 3)
 ```
 
+#### Nested iteration
+Subsequent bindings in the `for` macro will cause nested iteration, each
+subsequent binding iterating more quickly than the former.
+
+```clojure
+(for [c [:1 :2 :3 :4 :5 :6 :7 :8 :9 :10 :J :Q :K :A]
+      s [:♠ :♥ :♣ :♦]]
+  [c s])
+; => ([:1 :♠] [:1 :♥] [:1 :♣] [:1 :♦]
+;     [:2 :♠] [:2 :♥] [:2 :♣] [:2 :♦]
+;     [:3 :♠] [:3 :♥] [:3 :♣] [:3 :♦]
+;     [:4 :♠] [:4 :♥] [:4 :♣] [:4 :♦]
+;     [:5 :♠] [:5 :♥] [:5 :♣] [:5 :♦]
+;     [:6 :♠] [:6 :♥] [:6 :♣] [:6 :♦]
+;     [:7 :♠] [:7 :♥] [:7 :♣] [:7 :♦]
+;     [:8 :♠] [:8 :♥] [:8 :♣] [:8 :♦]
+;     [:9 :♠] [:9 :♥] [:9 :♣] [:9 :♦]
+;     [:10 :♠] [:10 :♥] [:10 :♣] [:10 :♦]
+;     [:J :♠] [:J :♥] [:J :♣] [:J :♦]
+;     [:Q :♠] [:Q :♥] [:Q :♣] [:Q :♦]
+;     [:K :♠] [:K :♥] [:K :♣] [:K :♦]
+;     [:A :♠] [:A :♥] [:A :♣] [:A :♦])
+```
+
 ### Worth noting
 Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
+
+Most of the time, using `map` or `filter` will be not only more clear, but also
+more concise. If you want early termination, however, or nested iterations, it's
+worthwhile to know the semantics of Clojure's `for`.
