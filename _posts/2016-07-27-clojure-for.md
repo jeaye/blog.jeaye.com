@@ -4,7 +4,7 @@ tags: [clojure, functional, programming, tutorial, loop, review]
 ---
 
 Higher order functions in Clojure get a great deal of attention, and for good
-reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.clojure:clojure:1.4.0.html) of functions which focus on purely transforming data. To those studying Clojure, [for](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/for) may stand out as verbose and awkward; it may also go entirely unnoticed.
+reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.clojure:clojure:1.4.0.html) of functions which focus on purely transforming data. To those studying Clojure, the [for](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/for) macro for list comprehension may stand out as verbose and awkward; it may also go entirely unnoticed.
 
 ### List comprehension
 Many popular languages these days have [list comprehension](https://en.wikipedia.org/wiki/List_comprehension), more commonly [dynamic](https://en.wikipedia.org/wiki/Dynamic_programming_language) ones, and some are even rather [imperative](https://en.wikipedia.org/wiki/Imperative_programming), like Python. Here are some examples of how `for` can be used in Clojure.
