@@ -1,17 +1,19 @@
 ---
-title: The power of Clojure's for loop
-tags: [clojure, programming, tutorial, review]
+title: Clojure's forgotten for loop
+tags: [clojure, functional, programming, tutorial, loop, review]
 ---
 
 Higher order functions in Clojure get a great deal of attention, and for good
-reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.clojure:clojure:1.4.0.html) of functions which focus on purely transforming data. Still, for concise list comprehension, it's hard to beat [for](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/for).
+reason. Clojure has a [rich standard library](http://www.clojureatlas.com/org.clojure:clojure:1.4.0.html) of functions which focus on purely transforming data. To those studying Clojure, [for](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/for) may stand out as verbose and awkward; it may also go entirely unnoticed.
 
 ### List comprehension
 Many popular languages these days have [list comprehension](https://en.wikipedia.org/wiki/List_comprehension), most of which seem to be [dynamic](https://en.wikipedia.org/wiki/Dynamic_programming_language), and some are even rather [imperative](https://en.wikipedia.org/wiki/Imperative_programming), like Python. Here are some examples of how `for` can be used in Clojure.
 
 #### Map
 ```clojure
-
+(for [x (range 10 15)]
+  (str "|" x "|"))
+; => ("|10|" "|11|" "|12|" "|13|" "|14|")
 ```
 
 #### Filter
