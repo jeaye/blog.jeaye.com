@@ -15,11 +15,21 @@ Many popular languages these days have [list comprehension](https://en.wikipedia
 ```
 
 #### Filter
+The `:when` modifier allows filtering based on a predicate. Iteration won't be
+stopped, but any iteration which doesn't yield truthy from the predicate will be
+skipped.
+
 ```clojure
 (for [x {:a 1 "b" 2 :c 3}
       :when (-> x first keyword?)]
   x)
-; ([:a 1] [:c 3])
+; => ([:a 1] [:c 3])
+
+(for [x (range 3)
+      y (range 3)
+      :when (not= x y)]
+  [x y])
+; => ([0 1] [0 2] [1 0] [1 2] [2 0] [2 1])
 ```
 
 #### Extra map values
