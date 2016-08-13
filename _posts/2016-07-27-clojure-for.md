@@ -54,7 +54,7 @@ access to nested values.
 (for [[k v] {:a 1 :b 2 :c 3}]
   v)
 
-; (1 2 3)
+; => (1 2 3)
 ```
 
 #### Nested iteration
