@@ -17,14 +17,14 @@ To begin with, we'll sort out our dependencies. This was tested using SBCL 1.2.1
 
 We'll just use [quicklisp](https://www.quicklisp.org/beta/) to install these for us.
 
-```lisp
+```cl
 (ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
 ```
 
 ### Package
 After that, we'll define a package for our application. In my case, it's `:jank-repl`.
 
-```lisp
+```cl
 (defpackage :jank-repl
   (:use :cl :hunchentoot :cl-who :parenscript :smackjack))
 (in-package :jank-repl)
@@ -33,7 +33,7 @@ After that, we'll define a package for our application. In my case, it's `:jank-
 ### Starting the server
 At this point, we can tell Hunchentoot to start up. It won't do much, but it'll allow us to verify everything is good so far.
 
-```lisp
+```cl
 (defparameter *server*
   (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
 ```
@@ -53,14 +53,14 @@ If all is working well, you should get a simple page back saying something like 
 ### Adding custom pages
 Before we jump into using cl-who with Hunchentoot, we need to tell Parenscript how to escape its strings when embedded in cl-who.
 
-```lisp
+```cl
 ; Allow cl-who and Parenscript to work together
 (setf *js-string-delimiter* #\")
 ```
 
 Now we can define a custom route using Hunchentoot's `define-easy-handler` macro.
 
-```lisp
+```cl
 (define-easy-handler (repl :uri "/repl") ()
   (with-html-output-to-string (s)
     (:html
@@ -79,21 +79,21 @@ curl "http://localhost:8080/repl"
 ### Setting up a remote API
 To have our server start responding to queries, we'll begin integrating SmackJack into our source. To start, we need an AJAX processor operating at a specific URI.
 
-```lisp
+```cl
 (defparameter *ajax-processor*
   (make-instance 'ajax-processor :server-uri "/repl-api"))
 ```
 
 After that, we can register remote functions with it using SmackJack's `defun-ajax` macro. We'll start with a simple echo function. The `:callback-data` can be various types, from text to JSON, to XML. For now, we'll just echo text.
 
-```lisp
+```cl
 (defun-ajax echo (data) (*ajax-processor* :callback-data :response-text)
   (concatenate 'string "echo: " data))
 ```
 
 The last thing we need to do, in order for us to access our remote functions through Hunchentoot, is integrate the AJAX handler with Hunchentoot's dispatch table.
 
-```lisp
+```cl
 (setq *dispatch-table* (list 'dispatch-easy-handlers
                              (create-ajax-dispatcher *ajax-processor*)))
 ```
@@ -116,7 +116,7 @@ In order to access our AJAX functions from Parenscript, we need to bring in Smac
 
 Let's see how that looks, replacing our old call to `define-easy-handler`:
 
-```lisp
+```cl
 (define-easy-handler (repl :uri "/repl") ()
   (with-html-output-to-string (s)
     (:html
@@ -160,7 +160,7 @@ The full echo client/server source is shown below, as well as some references I 
 
 ### Full source
 
-```lisp
+```cl
 (ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
 
 (defpackage :jank-repl
