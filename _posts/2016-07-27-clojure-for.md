@@ -81,6 +81,25 @@ subsequent binding iterating more quickly than the former.
 ;     [:A  :♠] [:A  :♥] [:A  :♣] [:A  :♦])
 ```
 
+#### Pairwise disjoint sets
+The nested looping can be used to flatten nested sequences.
+
+```clojure
+(defn pairwise-disjoint [s]
+  (->> (for [s' s
+             r s']
+         r)
+       (apply distinct?)))
+
+(pairwise-disjoint #{#{:a :b :c :d :e}
+                     #{:a :b :c :d}
+                     #{:a :b :c}
+                     #{:a :b}
+                     #{:a}})
+
+; => false
+```
+
 ### Worth noting
 Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
 
