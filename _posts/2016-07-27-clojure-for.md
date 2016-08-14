@@ -114,7 +114,7 @@ The nested looping can be used to flatten nested sequences.
 ```
 
 ### Worth noting
-Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_%28computer_science%28). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
+Those coming from the imperative camp may look to `for` to achieve [side-effects](https://en.wikipedia.org/wiki/Side_effect_%28computer_science%29). That won't work well, since Clojure's `for` is lazy; if it's not consumed, it'll never be realized. It may also only be partially consumed. For that, consider [doseq](https://www.conj.io/store/v1/org.clojure/clojure/1.8.0/clj/clojure.core/doseq).
 
 Most of the time, using `map` or `filter` will be not only more clear, but also
 more concise. If you want early termination, however, or nested iterations, it's
