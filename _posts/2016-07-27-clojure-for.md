@@ -46,6 +46,19 @@ stop iterating immediately and return the accumulated result.
 ; => ([1 0] [2 0] [2 1])
 ```
 
+#### Create intermediate bindings
+It's possible to create bindings per-iteration; they have access to all bindings
+above them.
+
+```clojure
+(for [i (range 1 10)
+      :when (even? i)
+      :let [inverse (/ 1 i)]]
+  [i inverse])
+
+; => ([2 1/2] [4 1/4] [6 1/6] [8 1/8])
+```
+
 #### Extract map values
 It's possible to destructure within the bindings of `for`, allowing for easy
 access to nested values.
