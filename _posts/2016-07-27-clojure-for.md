@@ -98,17 +98,17 @@ subsequent binding iterating more quickly than the former.
 The nested looping can be used to flatten nested sequences.
 
 ```clojure
-(defn pairwise-disjoint [s]
+(defn pairwise-disjoint? [s]
   (->> (for [s' s
              r s']
          r)
        (apply distinct?)))
 
-(pairwise-disjoint #{#{:a :b :c :d :e}
-                     #{:a :b :c :d}
-                     #{:a :b :c}
-                     #{:a :b}
-                     #{:a}})
+(pairwise-disjoint? #{#{:a :b :c :d :e}
+                      #{:a :b :c :d}
+                      #{:a :b :c}
+                      #{:a :b}
+                      #{:a}})
 
 ; => false
 ```
