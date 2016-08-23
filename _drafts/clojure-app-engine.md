@@ -156,11 +156,11 @@ to Liberator.
     issue because you haven't specified an `Accept` header.
 
     ```bash
-    curl -i -H "Accept: application/json" -X POST -d "" "https://project-id.appspot.com/my-resource?my-param=foo"
+    curl -i -H "Accept: application/json" -X POST -d "" "https://project-id.appspot.com/meow?kitty=cat"
 
     # or...
 
-    http POST "https://project-id.appspot.com/my-resource?my-param=foo" Accept:application/json
+    http POST "https://project-id.appspot.com/meow?kitty=cat" Accept:application/json
     ```
 
     While testing, an echo resource proved very useful.
