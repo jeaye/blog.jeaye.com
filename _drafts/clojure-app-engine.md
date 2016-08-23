@@ -173,7 +173,15 @@ to Liberator.
       :handle-created (partial pr-str))
     ```
 
-appengine-magic is worth inspecting; it's untouched since 2014 though
-  the query bits, especially
+#### Closing thoughts
+The biggest issue, once everything's working, is just getting through all that
+Java interop. The appeal of something like
+[appengine-magic](https://github.com/gcv/appengine-magic) is that so much of the
+cruft is hidden away. At the very least, its interface and MIT-licensed
+implementation gives us a starting point from which we can clean up our App
+Engine code.
 
-spoke with cognitect; no news yet
+Cognitect approached me recently, asking how I'm enjoying Datomic.
+Unfortunately, I replied saying it's not being utilized, since it lacks support
+for Google Cloud Datastore. Maybe some more information will come out of this;
+using Datomic with App Engine would really be a treat.
