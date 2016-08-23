@@ -3,10 +3,10 @@ title: Running Clojure on Google App Engine
 tags: [clojure, programming, appengine, google, tutorial]
 ---
 
-Clojure excels at pure transformations of persistent data. One application of
-it which works quite well is stateless servers, which transform data between
-the client and the datastore. For distributed server development in Clojure, we
-already have [Onyx](http://www.onyxplatform.org/), as well as [wrappers for
+Clojure excels at pure transformations of persistent data. One area well-suited
+for this is a stateless server which transforms data between the client and the
+datastore. For distributed server development in Clojure, we already have
+[Onyx](http://www.onyxplatform.org/), as well as [wrappers for
 Mesos](https://github.com/pyr/mesomatic) and others. An apparently less-explored
 option is using Clojure on Google App Engine, which runs sandboxed applications
 in Google-managed data centers while providing automatic scaling.
