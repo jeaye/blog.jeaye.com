@@ -11,6 +11,23 @@ Mesos](https://github.com/pyr/mesomatic) and others. An apparently less explored
 option is using Clojure on Google App Engine, which runs sandboxed applications
 in Google-managed data centers while providing automatic scaling.
 
+#### State of third-party libraries
+When looking to start with Clojure on App Engine, you might explore the current
+open source libraries available. Unfortunately, there are a few, namely
+[appengine-magic](https://github.com/gcv/appengine-magic), yet all of them have
+been stale for at least two years. Most of them are built on Clojure 1.4 or
+older.
+
+#### State of official documentation
+Your next step may be to see what official documentation there is, since you
+can't readily use a third party library to do your dirty work. App Engine's
+[documentation](https://cloud.google.com/appengine/docs) can be very helpful, no
+doubt, but one issue is that App Engine supports JVM applications, not
+specifically Clojure applications. Its examples are in Java, using Maven, and
+the typical serving of XML. The docs will come in handy, once you can get some
+basic App Engine code working, but they don't get you over that hurdle. Not in
+Clojure.
+
 guide:
   http://lambda-startup.com/developing-clojure-on-app-engine/
 
