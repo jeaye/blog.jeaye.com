@@ -44,8 +44,54 @@ In that order.
 Still, there are unclear bits, omitted bits, outdated bits, and inconsistencies
 between the two of them. So, doing my part, I'll expand upon the first resource
 and provide some clarifications, tools, and useful tips. I recommend you give
-both a read, without following along in the repl/editor, so you have an idea of
+both a read, without following along in the REPL/editor, so you have an idea of
 what's required.
+
+#### Installing a local App Engine
+When the very useful lambda-startup article gets to installing the App Engine
+jars into your local repo, the instructions become unclear. To clarify,
+`GAE_SDK` is where you have downloaded and extracted the SDK. The commands
+should be executed from the working directory of your leiningen project. To make
+things even simpler, use this script, named `install-gae`, in your project root:
+
+```bash
+#!/usr/bin/env bash
+
+set -ue
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+export gae_version=1.9.42
+export gae_sdk="$here/lib/appengine-java-sdk-$gae_version"
+export gae_zip="$gae_sdk.zip"
+
+function install_gae
+{
+  if [ -d "$gae_sdk" ];
+  then
+    echo "GAE exists; not installing"
+    return
+  fi
+
+  echo "Downloading GAE"
+  mkdir -p "$here/lib"
+  pushd "$here/lib"
+    wget "https://storage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-$gae_version.zip"
+    unzip -q "$gae_zip"
+  popd
+
+  echo "Installing GAE"
+  function gae_install
+  { lein localrepo install "$gae_sdk/lib/$1" "com.google.appengine/$2" $gae_version; }
+
+  gae_install impl/appengine-api-stubs.jar appengine-api-stubs
+  gae_install impl/appengine-local-runtime.jar appengine-local-runtime
+  gae_install shared/appengine-local-runtime-shared.jar appengine-local-runtime-shared
+
+  echo "Done"
+}
+install_gae
+```
 
 appengine-magic is worth inspecting; it's untouched since 2014 though
   the query bits, especially
