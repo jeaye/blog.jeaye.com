@@ -93,22 +93,50 @@ function install_gae
 install_gae
 ```
 
+#### Intricate errors
+You may find some odd errors, when setting up your project, which yield very
+little information, when searched.
+
+
+* Compilation failed: No method in multimethod 'print-dup' for dispatch value:
+  class org.sonatype.aether.repository.RemoteRepository
+
+    The solution here is to upgrade lein-ring to 0.9.7; the lambda-startup docs
+    are outdated and recommend 0.9.6.
+
+* No API environment is registered for this thread
+
+    This will happen if you try to use datastore from the REPL. Since it can
+    only be accessed from one thread, I've only been able to do my datastore
+    work from within the program. It's an annoyance, but not as serious of an
+    issue as it first seemed.
+
+* java.lang.ClassNotFoundException: com.google.appengine.tools.development.ApiProxyLocalFactory
+
+    The lambda-startup resource doesn't mention that the provided App Engine
+    wrapper source (`app-engine.clj`) should only be compiled in the `:dev`
+    profile; it should not be included in the uberwar. To handle this, update
+    your leiningen project to include another directory and move your
+    `app-engine.clj` there.
+
+    ```clojure
+    :profiles {:dev {:source-paths ["dev/"]}}
+    ```
+
+    The `dev` directory might look like this.
+
+    ```text
+    dev
+    └── my_app
+        └── app_engine.clj
+    ```
+
+
 appengine-magic is worth inspecting; it's untouched since 2014 though
   the query bits, especially
 
 errors:
-  Compilation failed: No method in multimethod 'print-dup' for dispatch value:
-  class org.sonatype.aether.repository.RemoteRepository
 
-    upgrade lein-ring to 0.9.7
-
-  No API environment is registered for this thread
-
-    don't use datastore from repl; use it from program only
-
-  Compiling app-engine in uberwar
-
-    move the source into a separate dir and only have it in the :dev profile
 
   status 400 when accessing liberator/compojure routes
 
