@@ -131,19 +131,49 @@ little information, when searched.
         └── app_engine.clj
     ```
 
+#### Liberator-specific issues
+For those not familiar with Clojure's
+[Liberator](https://clojure-liberator.github.io/liberator/) library, I *highly
+recommend it*, in conjunction with Compojure. I came across Liberator by reading
+[this
+post](http://www.flyingmachinestudios.com/programming/building-a-forum-with-clojure-datomic-angular/).
+With all of its lovely features, there are some behavior differences I've
+noticed between the App Engine development and production servers, when it comes
+to Liberator.
+
+* No method in multimethod 'render-map-generic' for dispatch value: null
+
+    This occurs when you return a map which contains a nil key from a Liberator
+    resource. Use [pr-str](http://clojuredocs.org/clojure.core/pr-str) instead
+    of returning a map directly.
+
+* Status 400 when accessing liberator/compojure routes
+
+    Watch your [MIME types](https://en.wikipedia.org/wiki/Media_type)! The App
+    Engine + Liberator combo isn't so much the "issue" as Google's front-end
+    servers are. If you're lazy, during development, and you're using curl or
+    the handy [httpie](https://github.com/jkbrzt/httpie), you may run into this
+    issue because you haven't specified an `Accept` header.
+
+    ```bash
+    curl -i -H "Accept: application/json" -X POST -d "" "https://project-id.appspot.com/my-resource?my-param=foo"
+
+    # or...
+
+    http POST "https://project-id.appspot.com/my-resource?my-param=foo" Accept:application/json
+    ```
+
+    While testing, an echo resource proved very useful.
+
+    ```clojure
+    (defresource echo
+      :media-type-available? (constantly true)
+      :method-allowed? (constantly true)
+      :handle-ok (partial pr-str)
+      :handle-created (partial pr-str))
+    ```
 
 appengine-magic is worth inspecting; it's untouched since 2014 though
   the query bits, especially
-
-errors:
-
-
-  status 400 when accessing liberator/compojure routes
-
-    liberator is the issue - watch your MIME types! my content-type was nil
-
-  No method in multimethod 'render-map-generic' for dispatch value: null
-
-    use pr-str instead of returning a map
 
 spoke with cognitect; no news yet
