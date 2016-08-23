@@ -54,7 +54,7 @@ jars into your local repo, the instructions become unclear. To clarify,
 should be executed from the working directory of your leiningen project. To make
 things even simpler, use this script, named `install-gae`, in your project root:
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 set -ue
@@ -125,7 +125,7 @@ little information, when searched.
 
     The `dev` directory might look like this.
 
-    ```
+    ```text
     dev
     └── my_app
         └── app_engine.clj
@@ -155,7 +155,7 @@ to Liberator.
     the handy [httpie](https://github.com/jkbrzt/httpie), you may run into this
     issue because you haven't specified an `Accept` header.
 
-    ```sh
+    ```bash
     curl -i -H "Accept: application/json" -X POST -d "" "https://project-id.appspot.com/my-resource?my-param=foo"
 
     # or...
@@ -184,7 +184,7 @@ environment variable and substituted.
 
 For something more complex, consider integrating a custom [leiningen plugin](https://github.com/technomancy/leiningen/blob/stable/doc/PLUGINS.md).
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 set -ue
