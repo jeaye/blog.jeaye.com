@@ -41,6 +41,12 @@ you with what's been most helpful for me:
 
 In that order.
 
+Still, there are unclear bits, omitted bits, outdated bits, and inconsistencies
+between the two of them. So, doing my part, I'll expand upon the first resource
+and provide some clarifications, tools, and useful tips. I recommend you give
+both a read, without following along in the repl/editor, so you have an idea of
+what's required.
+
 appengine-magic is worth inspecting; it's untouched since 2014 though
   the query bits, especially
 
@@ -61,5 +67,9 @@ errors:
   status 400 when accessing liberator/compojure routes
 
     liberator is the issue - watch your MIME types! my content-type was nil
+
+  No method in multimethod 'render-map-generic' for dispatch value: null
+
+    use pr-str instead of returning a map
 
 spoke with cognitect; no news yet
