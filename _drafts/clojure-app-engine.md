@@ -173,6 +173,57 @@ to Liberator.
       :handle-created (partial pr-str))
     ```
 
+#### One-shot deploy script
+It's been said, over and over, that a deployment should only take a single
+command. For this simple App Engine setup, this simple script will do the trick.
+The only change this requires, aside from storing the script adjacent to the
+`install-gae` script in the root of the project, is that the `appengine-web.xml`
+file is also stored in the root of the project. The project ID, which is to be
+kept secret, should be `XXX`; it'll be read from the `gae_project_id`
+environment variable and substituted.
+
+For something more complex, consider integrating a custom [leiningen plugin](https://github.com/technomancy/leiningen/blob/stable/doc/PLUGINS.md).
+
+```bash
+#!/usr/bin/env bash
+
+set -ue
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$here/install-gae"
+
+function deploy
+{
+  echo "Building uberwar"
+  war=$(lein ring uberwar | egrep "Created .+" | cut -d' ' -f2)
+
+  if [ "x$war" == "x" ];
+  then
+    echo "Unable to build war"
+    return 1
+  fi
+
+  tmp=$(mktemp -d /tmp/XXXXXX)
+  echo "Exploding"
+  pushd "$tmp"
+    jar xf "$war"
+    if [ -z ${gae_project_id+x} ];
+    then
+      echo "No gae_project_id set in environment"
+      exit 1
+    fi
+    sed "s/XXX/$gae_project_id/g" < "$here/appengine-web.xml" > WEB-INF/appengine-web.xml
+
+    echo "Uploading"
+    "$gae_sdk/bin/appcfg.sh" update .
+  popd
+
+  echo "Deployed!"
+}
+deploy
+```
+
 #### Closing thoughts
 The biggest issue, once everything's working, is just getting through all that
 Java interop. The appeal of something like
