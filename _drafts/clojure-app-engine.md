@@ -102,7 +102,9 @@ little information, when searched.
   class org.sonatype.aether.repository.RemoteRepository`
 
     The solution here is to upgrade lein-ring to 0.9.7; the lambda-startup docs
-    are outdated and recommend 0.9.6.
+    are outdated and recommend 0.9.6. I highly recommend
+    [lein-ancient](https://github.com/xsc/lein-ancient) for keeping dependencies
+    up-to-date.
 
 * `No API environment is registered for this thread`
 
