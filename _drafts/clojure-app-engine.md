@@ -8,8 +8,8 @@ for this is a stateless server which transforms data between the client and the
 datastore. For distributed server development in Clojure, we already have
 [Onyx](http://www.onyxplatform.org/), as well as [wrappers for
 Mesos](https://github.com/pyr/mesomatic) and others. An apparently less-explored
-option is using Clojure on Google App Engine, which runs sandboxed applications
-in Google-managed data centers while providing automatic scaling.
+option is the use of Clojure on Google App Engine, which runs sandboxed
+applications in Google-managed data centers while providing automatic scaling.
 
 #### State of third-party libraries
 When looking to start with Clojure on App Engine, you might explore the current
@@ -234,5 +234,7 @@ Engine code.
 
 Cognitect approached me recently, asking how I'm enjoying Datomic.
 Unfortunately, I replied saying it's not being utilized, since it lacks support
-for Google Cloud Datastore. Maybe some more information will come out of this;
-using Datomic with App Engine would really be a treat.
+for Google Cloud Datastore. I was linked to the [mailing
+list](https://groups.google.com/forum/#!topic/datomic/M9v1ssUbT9Q/discussion),
+where some users have reportedly setup Datomic with Google Cloud SQL. That's
+something worth investigating.
