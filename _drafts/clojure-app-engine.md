@@ -23,7 +23,7 @@ Your next step may be to see what official documentation there is, since you
 can't readily use a third-party library to do your dirty work. App Engine's
 [documentation](https://cloud.google.com/appengine/docs) can be very helpful, no
 doubt, but one issue is that App Engine supports JVM applications, not
-specifically Clojure applications. Its examples are in Java, using Maven, and
+specifically Clojure applications. Its examples are in Java, using Maven, with
 the typical serving of XML. The docs will come in handy, once you can get some
 basic App Engine code working, but they don't get you over that hurdle. Not in
 Clojure.
@@ -98,20 +98,21 @@ You may find some odd errors, when setting up your project, which yield very
 little information, when searched.
 
 
-* Compilation failed: No method in multimethod 'print-dup' for dispatch value:
-  class org.sonatype.aether.repository.RemoteRepository
+* `Compilation failed: No method in multimethod 'print-dup' for dispatch value:
+  class org.sonatype.aether.repository.RemoteRepository`
 
     The solution here is to upgrade lein-ring to 0.9.7; the lambda-startup docs
     are outdated and recommend 0.9.6.
 
-* No API environment is registered for this thread
+* `No API environment is registered for this thread`
 
     This will happen if you try to use datastore from the REPL. Since it can
     only be accessed from one thread, I've only been able to do my datastore
     work from within the program. It's an annoyance, but not as serious of an
     issue as it first seemed.
 
-* java.lang.ClassNotFoundException: com.google.appengine.tools.development.ApiProxyLocalFactory
+* `java.lang.ClassNotFoundException:
+  com.google.appengine.tools.development.ApiProxyLocalFactory`
 
     The lambda-startup resource doesn't mention that the provided App Engine
     wrapper source (`app-engine.clj`) should only be compiled in the `:dev`
@@ -141,7 +142,7 @@ With all of its lovely features, there are some behavior differences I've
 noticed between the App Engine development and production servers, when it comes
 to Liberator.
 
-* No method in multimethod 'render-map-generic' for dispatch value: null
+* `No method in multimethod 'render-map-generic' for dispatch value: null`
 
     This occurs when you return a map which contains a nil key from a Liberator
     resource. Use [pr-str](http://clojuredocs.org/clojure.core/pr-str) instead
