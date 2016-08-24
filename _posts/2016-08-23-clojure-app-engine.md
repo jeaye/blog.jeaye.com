@@ -36,8 +36,8 @@ most of them are vacant mailing list threads and/or even more dated than the
 abandoned libraries. If you landed here, I'll save you the trouble and provide
 you with what's been most helpful for me:
 
-1. [](http://lambda-startup.com/developing-clojure-on-app-engine/)
-2. [](http://flowa.fi/blog/2014/04/25/clojure-gae-howto.html)
+1. [http://lambda-startup.com/developing-clojure-on-app-engine/](http://lambda-startup.com/developing-clojure-on-app-engine/)
+2. [http://flowa.fi/blog/2014/04/25/clojure-gae-howto.html](http://flowa.fi/blog/2014/04/25/clojure-gae-howto.html)
 
 In that order.
 
