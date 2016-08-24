@@ -178,7 +178,7 @@ to Liberator.
 
 #### One-shot deploy script
 It's been said, over and over, that a deployment should only take a single
-command. For this simple App Engine setup, this simple script will do the trick.
+command. For this simple App Engine setup, a bash script will do the trick.
 The only change this requires, aside from storing the script adjacent to the
 `install-gae` script in the root of the project, is that the `appengine-web.xml`
 file is also stored in the root of the project. The project ID, which is to be
@@ -237,7 +237,7 @@ Engine code.
 
 Cognitect approached me recently, asking how I'm enjoying Datomic.
 Unfortunately, I replied saying it's not being utilized, since it lacks support
-for Google Cloud Datastore. I was linked to the [mailing
-list](https://groups.google.com/forum/#!topic/datomic/M9v1ssUbT9Q/discussion),
+for Google Cloud Datastore. I was linked to the [mailing list
+thread](https://groups.google.com/forum/#!topic/datomic/M9v1ssUbT9Q/discussion),
 where some users have reportedly setup Datomic with Google Cloud SQL. That's
 something worth investigating.
