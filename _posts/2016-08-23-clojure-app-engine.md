@@ -123,9 +123,9 @@ little information, when searched.
     `app-engine.clj` there. The `dev` directory might look like this:
     `dev/my_app/app_engine.clj`
 
-    ```clojure
+```clojure
     :profiles {:dev {:source-paths ["dev/"]}}
-    ```
+```
 
 #### Liberator-specific issues
 For those not familiar with Clojure's
