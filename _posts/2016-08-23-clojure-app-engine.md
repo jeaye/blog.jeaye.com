@@ -120,18 +120,11 @@ little information, when searched.
     wrapper source (`app-engine.clj`) should only be compiled in the `:dev`
     profile; it should not be included in the uberwar. To handle this, update
     your leiningen project to include another directory and move your
-    `app-engine.clj` there.
+    `app-engine.clj` there. The `dev` directory might look like this:
+    `dev/my_app/app_engine.clj`
 
     ```clojure
     :profiles {:dev {:source-paths ["dev/"]}}
-    ```
-
-    The `dev` directory might look like this.
-
-    ```text
-    dev
-    └── my_app
-        └── app_engine.clj
     ```
 
 #### Liberator-specific issues
