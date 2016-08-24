@@ -158,23 +158,27 @@ to Liberator.
     the handy [httpie](https://github.com/jkbrzt/httpie), you may run into this
     issue because you haven't specified an `Accept` header.
 
-    ```bash
+
+```bash
     curl -i -H "Accept: application/json" -X POST -d "" "https://project-id.appspot.com/meow?kitty=cat"
 
     # or...
 
     http POST "https://project-id.appspot.com/meow?kitty=cat" Accept:application/json
-    ```
+```
 
-    While testing, an echo resource proved very useful.
 
-    ```clojure
+* What's going on?
+    While testing, an echo resource proved very useful. Google's front-end
+    servers may surprise you.
+
+```clojure
     (defresource echo
       :media-type-available? (constantly true)
       :method-allowed? (constantly true)
       :handle-ok (partial pr-str)
       :handle-created (partial pr-str))
-    ```
+```
 
 #### One-shot deploy script
 It's been said, over and over, that a deployment should only take a single
