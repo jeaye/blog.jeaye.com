@@ -20,11 +20,13 @@ nav-blog-class: current
 
   <div>
     {% assign total_count = 0 %}
-    {% assign total_html = 0 %}
 
     {% for p in site.posts %}
 
       {% if p.title == page.title %}
+        {% continue %}
+      {% endif %}
+      {% if total_count >= 5 %}
         {% continue %}
       {% endif %}
 
@@ -34,7 +36,6 @@ nav-blog-class: current
       {% for tag in p.tags %}
         {% if page.tags contains tag %}
           {% assign same_count = same_count | plus: 1 %}
-          {% assign total_count = total_count | plus: 1 %}
           {% capture tagmarkup %}
             <span class="label label-default">{{ tag }}</span>
           {% endcapture %}
@@ -43,11 +44,13 @@ nav-blog-class: current
       {% endfor %}
 
       {% if same_count >= 1 %}
-        {% capture total_html %}
+        {% capture post_html %}
           <li>
             <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
           </li>
         {% endcapture %}
+        {% assign total_html = total_html | append: post_html %}
+        {% assign total_count = total_count | plus: 1 %}
       {% endif %}
     {% endfor %}
 
