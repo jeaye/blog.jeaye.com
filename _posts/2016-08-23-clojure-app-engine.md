@@ -207,6 +207,12 @@ little information, when searched.
     work from within the program. It's an annoyance, but not as serious of an
     issue as it first seemed.
 
+* `java.lang.NullPointerException` in `/appstats/stats`
+
+    If you try to view Appstats and you get this error, make sure that you've
+    added the `api-labs` dependency to the WAR. Supplying it in your leiningen
+    project should suffice.
+
 * `java.lang.ClassNotFoundException:
   com.google.appengine.tools.development.ApiProxyLocalFactory`
 
