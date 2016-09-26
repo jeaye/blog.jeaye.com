@@ -95,7 +95,7 @@ install_gae
 ```
 
 #### Profiling with Appstats
-Google provides an [Appstats](https://cloud.google.com/appengine/docs/java/tools/appstats) library for profiling individual RPCs. It can tell you how long each Datastore read and write takes, how much time you're spending in various routes, as well as how much each operation costs you in USD. There wasn't any documentation for getting this working with Clojure, so this is from experimentation. Before following, I recommend reading the [Appstats documentation](https://cloud.google.com/appengine/docs/java/tools/appstats) for how to setup; once you have an idea of what's needed, the following will make more sense.
+Google provides an [Appstats](https://cloud.google.com/appengine/docs/java/tools/appstats) library for profiling individual RPCs. It can tell you how long each Datastore read or write takes, how much time you're spending in various routes, as well as how much each operation costs you in USD. There wasn't any documentation for getting this working with Clojure, so this info is from experimentation. Before following, I recommend reading the [Appstats documentation](https://cloud.google.com/appengine/docs/java/tools/appstats) for how to set it up in Java; once you have an idea of what's needed, the following will make more sense.
 
 First, add the proper dependency:
 
@@ -130,10 +130,11 @@ Then define a service around your ring application.
 ```
 
 ##### Package a web.xml
-Finally, there's another file that's needed: `web.xml`, as described by the
-documentation. In it, you can specify how Appstats should be accessible, among
-other things. Here's a reasonable copy which works with the deploy script below
-(update values as needed -- XXX is replaced by the deploy script):
+Finally, there's another file that's needed: `web.xml` (adjacent to
+`appengine-web.xml`), as described by the documentation. In it, you can specify
+how Appstats should be accessible, among other things. Here's a reasonable
+version which works with the deploy script below (update values as needed -- XXX
+is replaced by the deploy script):
 
 ```xml
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
