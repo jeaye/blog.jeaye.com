@@ -85,6 +85,7 @@ function install_gae
   { lein localrepo install "$gae_sdk/lib/$1" "com.google.appengine/$2" $gae_version; }
 
   gae_install impl/appengine-api-stubs.jar appengine-api-stubs
+  gae_install impl/appengine-api-labs.jar appengine-api-labs
   gae_install impl/appengine-local-runtime.jar appengine-local-runtime
   gae_install shared/appengine-local-runtime-shared.jar appengine-local-runtime-shared
 
@@ -92,6 +93,98 @@ function install_gae
 }
 install_gae
 ```
+
+#### Profiling with Appstats
+Google provides an [Appstats](https://cloud.google.com/appengine/docs/java/tools/appstats) library for profiling individual RPCs. It can tell you how long each Datastore read and write takes, how much time you're spending in various routes, as well as how much each operation costs you in USD. There wasn't any documentation for getting this working with Clojure, so this is from experimentation. Before following, I recommend reading the [Appstats documentation](https://cloud.google.com/appengine/docs/java/tools/appstats) for how to setup; once you have an idea of what's needed, the following will make more sense.
+
+First, add the proper dependency:
+
+```clojure
+[com.google.appengine/appengine-api-labs "1.9.42"] ; Installed with above script
+```
+
+##### Run a servlet
+In order to use Appstats, you'll need to configure your application to be a
+servlet. First, change your `my-project.core` to extend from `HttpServlet`:
+
+```clojure
+(ns my-project.core
+  (:gen-class :extends javax.servlet.http.HttpServlet)
+  (:use [ring.util.servlet :only [defservice]])
+  ; Other stuff ...
+  )
+```
+
+Then define a service around your ring application.
+
+```clojure
+(defroutes app
+  (ANY "/kittens" [] show-kittens))
+
+(def wrapped-app
+  (-> app
+      wrap-params ; Optional: Handy bit from [ring.middleware.params]
+      (wrap-trace :header))) ; Optional: Handy bit from [liberator.dev]
+
+(defservice wrapped-app) ; Meat and potatoes
+```
+
+##### Package a web.xml
+Finally, there's another file that's needed: `web.xml`, as described by the
+documentation. In it, you can specify how Appstats should be accessible, among
+other things. Here's a reasonable copy which works with the deploy script below
+(update values as needed -- XXX is replaced by the deploy script):
+
+```xml
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+  <servlet>
+    <servlet-name>XXX</servlet-name>
+    <servlet-class>my-project.core</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XXX</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>appstats</filter-name>
+    <filter-class>com.google.appengine.tools.appstats.AppstatsFilter</filter-class>
+    <init-param>
+      <param-name>calculateRpcCosts</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>appstats</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>appstats</servlet-name>
+    <servlet-class>com.google.appengine.tools.appstats.AppstatsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>appstats</servlet-name>
+    <url-pattern>/appstats/*</url-pattern>
+  </servlet-mapping>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>appstats</web-resource-name>
+      <url-pattern>/appstats/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+</web-app>
+```
+
+##### Accessing
+After deploying your new servlet with Appstats enabled, you will be able to
+access the web interface at `https://project-id.appspot.com/appstats`.
 
 #### Intricate errors
 You may find some odd errors, when setting up your project, which yield very
@@ -193,10 +286,20 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$here/install-gae"
 
+if [ -z ${gae_project_id+x} ];
+then
+  echo "No gae_project_id set in environment"
+  exit 1
+fi
+
 function deploy
 {
+  echo "Cleaning"
+  lein clean
+
   echo "Building uberwar"
-  war=$(lein ring uberwar | egrep "Created .+" | cut -d' ' -f2)
+  lein ring uberwar
+  war=$(ls -1t $here/target/uberjar/*.war | head)
 
   if [ "x$war" == "x" ];
   then
@@ -208,12 +311,8 @@ function deploy
   echo "Exploding"
   pushd "$tmp"
     jar xf "$war"
-    if [ -z ${gae_project_id+x} ];
-    then
-      echo "No gae_project_id set in environment"
-      exit 1
-    fi
     sed "s/XXX/$gae_project_id/g" < "$here/appengine-web.xml" > WEB-INF/appengine-web.xml
+    sed "s/XXX/$gae_project_id/g" < "$here/web.xml" > WEB-INF/web.xml
 
     echo "Uploading"
     "$gae_sdk/bin/appcfg.sh" update .
