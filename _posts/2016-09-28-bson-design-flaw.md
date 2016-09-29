@@ -12,7 +12,7 @@ than own a copy internally. This has the big selling point of allowing
 [memory-mapped files](https://en.wikipedia.org/wiki/Memory-mapped_file) to be
 used as a BSON backend, while all operations on the immutable BSON require no
 copying or ownership. Unfortunately, there exists an under-documented design
-flaw in BSON which renders it incompatible with standard, common, JSON.
+flaw in BSON which renders it incompatible with common, standard JSON.
 
 #### Use case
 While porting some JSON work to BSON, it became clear that the API provided by
