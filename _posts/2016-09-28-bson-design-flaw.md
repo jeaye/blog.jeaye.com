@@ -1,5 +1,5 @@
 ---
-title: BSON and the design flaw
+title: BSON's design flaw
 tags: [bson, flaw, array, json, rant]
 ---
 
