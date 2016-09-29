@@ -35,3 +35,21 @@ nearly seven years, this probably isn't happening. Either way, it's crucial to
 note that your **data may not be representable in BSON without changes.**
 
 #### Mitigation
+If the performance gains still compel you to make the switch to BSON, you might
+find yourself having to make top-level arrays into nested elements of a
+singly-keyed map, perhaps specified with a unique identifier.
+
+```json
+{"$array": [1, "kitty", "foo"]}
+```
+
+This isn't a show stopper for me, and it may not be for you, but this should
+certainly not be swept under the rug. In fact, the official description of BSON
+seems a bit unfair, in this regard:
+
+    ... a binary-encoded serialization of JSON-like documents. Like JSON, BSON
+    supports the embedding of documents and arrays within other documents
+    and arrays.
+
+It's not wrong. You *can* embed documents in arrays. Unfortunately, everything
+must be in a document.
