@@ -15,8 +15,7 @@ copying or ownership. Unfortunately, there exists an under-documented design
 flaw in BSON which renders it incompatible with common, standard JSON.
 
 #### Use case
-While porting some JSON work to BSON, it became clear that the API provided by
-the BSON library lacked support for creating top-level arrays. That is, this is
+The issue arises as soon as there are top-level arrays. For example, this is
 valid JSON:
 
 ```json
