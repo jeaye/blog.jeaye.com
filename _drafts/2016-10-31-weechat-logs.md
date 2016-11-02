@@ -3,17 +3,19 @@ title: Optimizing weechat log usage
 tags: [tutorial, weechat, log, linux]
 ---
 
-weechat is a curses-based IRC client and a very sane alternative to irssi. For
-those with [IRC bouncers](https://en.wikipedia.org/wiki/BNC_%28software%29), or
-those who spend a great deal of time on IRC, popular channels can start to
-accrue rather large logs. By default, those logs are quite verbose and are never
-rotated. In my case, my logs were taking up 2GB worth of disk space on my VPS.
+[weechat](https://weechat.org/) is a curses-based IRC client and a very sane
+alternative to irssi. For those with [IRC
+bouncers](https://en.wikipedia.org/wiki/BNC_%28software%29), or those who spend
+a great deal of time on IRC, popular channels can start to accrue rather large
+logs. By default, those logs are quite verbose and are never rotated. In my
+case, weechat's logs were taking up 2GB worth of disk space on my VPS.
 
 #### Investigating the issue
 My first question, when my monitoring showed that disk usage had passed the 90%
-mark, is "what's growing and can it be trimmed?" After using
+mark, was "what's growing and can it be trimmed?" After using
 [du](https://linux.die.net/man/1/du) to find which user directories were the
 issue, I was able to pinpoint a couple of culprits. The biggest one was weechat.
+
 ```text
 $ du -h -d1 ~
 ... elided ...
@@ -59,7 +61,7 @@ usage down to 1.4G already.
 
 #### Choosing what you log
 After inspecting the documentation for weechat's logger plugin, `/help logger`,
-I saw that the default logging level for each channel is `9`. Here's a breakdown
+I saw that the default logging level for each channel was `9`. Here's a breakdown
 of the levels, from the documentation:
 
 ```text
