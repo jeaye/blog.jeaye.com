@@ -77,3 +77,52 @@ perfectly reasonable.
 ```text
 /set logger.level.irc 3
 ```
+
+#### Cleaning up existing logs
+Once weechat was logging more minimally, and not logging specific channels,
+there was still the issue of 1.4GB worth of logs, all of which had been formed
+using weechat's level `9` setting. So I investigated how much that difference
+actually was, knowing that my `weechat.look.prefix_join` was `»»»` and my
+`weechat.look.prefix_quit` was `«««`.
+
+```text
+# Total size of the largest log (335MB)
+$ wc -c irc.freenode.##programming.weechatlog
+350526327 irc.freenode.##programming.weechatlog
+
+# Total number of joins/parts/quits in that file (1.3 million)
+$ egrep -c "»»»|«««" irc.freenode.##programming.weechatlog
+1363355
+
+# Total size of the log without those joins/parts/quits (208MB)
+$ wc -c <(sed '/»»»\|«««/d' irc.freenode.##programming.weechatlog)
+208668563 /dev/fd/63
+```
+
+Alright! I could trim off 97MB from my largest buffer, just by removing the
+joins/parts/quits. Even better, some channels have a much higher join/part/quit
+to message ratio.
+
+```bash
+# This may take a few moments
+for log in *.weechatlog; do sed -i '/»»»\|«««/d' "$log"; done
+```
+
+And now for the final numbers:
+
+```text
+$ ls -lhS | head
+total 721M
+-rw-rw-r-- 1 irc git  200M Nov  2 13:05 irc.freenode.##programming.weechatlog
+-rw-rw-r-- 1 irc git   71M Nov  2 13:05 irc.freenode.##slackware.weechatlog
+-rw-rw-r-- 1 irc git   49M Nov  2 13:05 irc.freenode.#osdev.weechatlog
+-rw-rw-r-- 1 irc git   47M Nov  2 13:05 irc.freenode.##c++.weechatlog
+-rw-rw-r-- 1 irc git   34M Nov  2 13:05 irc.freenode.#osdev-offtopic.weechatlog
+-rw-rw-r-- 1 irc git   30M Nov  2 13:05 irc.freenode.#nixos.weechatlog
+-rw-rw-r-- 1 irc git   26M Nov  2 13:05 irc.freenode.##c++-social.weechatlog
+-rw-rw-r-- 1 irc git   24M Nov  2 13:05 irc.freenode.##opengl.weechatlog
+-rw-rw-r-- 1 irc git   24M Nov  2 13:05 irc.freenode.##csharp.weechatlog
+```
+
+Removing the join/part/quit events cut the total log size in half, from 1.4GB to
+720MB. As far as I'm concerned, the useful content is still there.
