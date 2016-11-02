@@ -9,6 +9,11 @@ those who spend a great deal of time on IRC, popular channels can start to
 accrue rather large logs. By default, those logs are quite verbose and are never
 rotated. In my case, my logs were taking up 2GB worth of disk space on my VPS.
 
+#### Investigating the issue
+My first question, when my monitoring showed that disk usage had passed the 90%
+mark, is "what's growing and can it be trimmed?" After using
+[du](https://linux.die.net/man/1/du) to find which user directories were the
+issue, I was able to pinpoint a couple of culprits. The biggest one was weechat.
 ```text
 $ du -h -d1 ~
 ... elided ...
@@ -16,6 +21,9 @@ $ du -h -d1 ~
 ... elided ...
 ```
 
+It makes sense that weechat's logs would be large, since it's constantly running
+on this machine. Still, my next question was "which channels are taking up the
+most space?"
 
 ```text
 $ ls -lhS | head
@@ -31,3 +39,8 @@ total 2.0G
 -rw-rw-r-- 1 irc git  52M Apr  8  2016 irc.freenode.#lisp.weechatlog
 -rw-rw-r-- 1 irc git  51M Apr  9  2016 irc.freenode.##c++-general.weechatlog
 ```
+
+Much to my initial surprise, the ##news channel log was significantly larger
+than anything else. The freenode ##news channel contains various bots for
+sharing links to news as it comes out. In fact, it's not actually something I
+care to log, since it's just links to news articles.
