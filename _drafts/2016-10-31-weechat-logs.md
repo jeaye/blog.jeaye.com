@@ -144,3 +144,4 @@ In the meantime, for those looking to use
 [logrotate](https://linux.die.net/man/8/logrotate), Jelle van der Waa has a
 write up about [how to do so with
 weechat](http://vdwaa.nl/archlinux/systemd/weechat/logs/logrotate-weechat-logs/).
+It'll break your ability to search within weechat though.
