@@ -128,7 +128,7 @@ total 721M
 ```
 
 Removing the join/part/quit events cut the total log size in half, from 1.4GB to
-720MB. As far as I'm concerned, the useful content is still there.
+721MB. As far as I'm concerned, the useful content is still there.
 
 #### Compressing, rotating, and next steps
 This setup could be further improved by
