@@ -44,3 +44,11 @@ Much to my initial surprise, the ##news channel log was significantly larger
 than anything else. The freenode ##news channel contains various bots for
 sharing links to news as it comes out. In fact, it's not actually something I
 care to log, since it's just links to news articles.
+
+#### Asking weechat to ignore certain buffers
+Given that the ##news channel logs aren't going to be useful to me, I then
+looked to disable logging on that channel entirely.
+
+```bash
+/set logger.level.irc.freenode.##news 0
+```
