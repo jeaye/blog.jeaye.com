@@ -51,4 +51,29 @@ looked to disable logging on that channel entirely.
 
 ```bash
 /set logger.level.irc.freenode.##news 0
+/save
+```
+
+From there, I was safe to delete the ##news weechat log. That brought the disk
+usage down to 1.4G already.
+
+#### Choosing what you log
+After inspecting the documentation for weechat's logger plugin, `/help logger`,
+I saw that the default logging level for each channel is `9`. Here's a breakdown
+of the levels, from the documentation:
+
+```text
+1: user message, notice, private
+2: nick change
+3: server message
+4: join/part/quit
+9: all other messages
+```
+
+In my logs, I don't care about join/part/quit events, and whatever other
+messages there may be; dropping the level down to 3 for every channel seems
+perfectly reasonable.
+
+```text
+/set logger.level.irc 3
 ```
