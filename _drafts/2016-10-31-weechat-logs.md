@@ -126,3 +126,18 @@ total 721M
 
 Removing the join/part/quit events cut the total log size in half, from 1.4GB to
 720MB. As far as I'm concerned, the useful content is still there.
+
+#### Compressing, rotating, and next steps
+This setup could be further improved by
+[rotating](https://en.wikipedia.org/wiki/Log_rotation) large logs and
+compressing non-active logs. Out of the box, this would impede on the ability to
+use those logs within weechat, via
+[grep.py](https://weechat.org/scripts/source/grep.py.html/) or similar. I found
+an [open issue](https://github.com/weechat/weechat/issues/314) on weechat's
+Github that requests for gzip functionality. Hopefully something like this could
+be officially supported.
+
+In the meantime, for those looking to use
+[logrotate](https://linux.die.net/man/8/logrotate), Jelle van der Waa has a
+write up about [how to do so with
+weechat](http://vdwaa.nl/archlinux/systemd/weechat/logs/logrotate-weechat-logs/).
