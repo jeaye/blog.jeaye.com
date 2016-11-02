@@ -107,6 +107,7 @@ to message ratio.
 
 ```bash
 # This may take a few moments
+# Note that this assumes GNU sed; BSD sed treats -i a bit differently
 for log in *.weechatlog; do sed -i '/»»»\|«««/d' "$log"; done
 ```
 
