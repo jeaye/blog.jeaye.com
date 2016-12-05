@@ -10,3 +10,5 @@ Vim land. Here's a contemporary look at providing the expected slurpage,
 barfage, evaluation, and more.
 
 http://blog.venanti.us/clojure-vim/
+
+http://usevim.com/2015/02/25/clojure/
