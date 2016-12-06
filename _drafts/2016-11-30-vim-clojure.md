@@ -50,6 +50,12 @@ Take a look at the
 example of how minimal and clean the mappings have become. Combined with
 vim-surround, as Venantius said, Vim becomes a formidable s-expr wrangler.
 
-lein trampoline repl
+### Pitfalls to dodge
+#### When using vim-fireplace, no `.nrepl-port` file is found
+If you need to manually `:Connect` and type in your nREPL port, there's
+something wrong. I've found that `lein repl` creates the appropriate
+`.nrepl-port` file, while `lein trampoline repl` does not. I've created an
+[issue](https://github.com/technomancy/leiningen/issues/2224) on Leiningen's
+Github; we'll see if this is a bug or something intentional.
 
 http://usevim.com/2015/02/25/clojure/
