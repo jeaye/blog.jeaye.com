@@ -67,3 +67,12 @@ something wrong. I've found that `lein repl` creates the appropriate
 `.nrepl-port` file, while `lein trampoline repl` does not. I've created an
 [issue](https://github.com/technomancy/leiningen/issues/2224) on Leiningen's
 Github; we'll see if this is a bug or something intentional.
+
+
+### Final thoughts
+It's an exciting time to be in the Clojure world. For those interested in
+Clojure and game development, take a look at
+[Arcadia](https://github.com/arcadia-unity/arcadia) for the ability to combine
+Clojure and Unity. There's also initial support for connecting the Unity Clojure
+REPL to vim-fireplace, using
+[arcadia.nrepl](https://github.com/spacepluk/arcadia.nrepl).
