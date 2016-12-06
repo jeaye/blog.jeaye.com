@@ -9,6 +9,8 @@ provide paredit-like editing and slime-like evaluating to those who edit
 modally. Here's a contemporary look at helping Vim provide the expected slurpage,
 barfage, evaluation, and more.
 
+*What's slurping and barfing...? See [here](http://usevim.com/2015/02/25/clojure/).*
+
 ### The lineup
 The key plugins I use are listed below. As mentioned in a [previous
 post](https://blog.jeaye.com/2015/12/31/vim-qt/), I'm running
@@ -58,4 +60,3 @@ something wrong. I've found that `lein repl` creates the appropriate
 [issue](https://github.com/technomancy/leiningen/issues/2224) on Leiningen's
 Github; we'll see if this is a bug or something intentional.
 
-http://usevim.com/2015/02/25/clojure/
