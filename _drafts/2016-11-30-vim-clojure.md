@@ -5,7 +5,7 @@ tags: [clojure, programming, vim, plugin]
 
 Those in Emacs land need not worry about excellent Lisp and REPL support. Here
 in Vim land, the ground is less certain. There have been a myriad of attempts to
-provide paredit-like editing and slime-like evaluating to those who edit
+provide Paredit-like editing and SLIME-like evaluating to those who edit
 modally. Here's a contemporary look at helping Vim provide the expected slurpage,
 barfage, evaluation, and more.
 
@@ -59,4 +59,3 @@ something wrong. I've found that `lein repl` creates the appropriate
 `.nrepl-port` file, while `lein trampoline repl` does not. I've created an
 [issue](https://github.com/technomancy/leiningen/issues/2224) on Leiningen's
 Github; we'll see if this is a bug or something intentional.
-
