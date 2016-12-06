@@ -12,7 +12,8 @@ barfage, evaluation, and more.
 ### The lineup
 The key plugins I use are listed below. As mentioned in a [previous
 post](https://blog.jeaye.com/2015/12/31/vim-qt/), I'm running
-[Vim-Qt](https://bitbucket.org/equalsraf/vim-qt/wiki/Home).
+[Vim-Qt](https://bitbucket.org/equalsraf/vim-qt/wiki/Home) and my Vim configs
+are [here](https://github.com/jeaye/vimrc).
 
 * [guns/vim-sexp](https://github.com/guns/vim-sexp)
 * [tpope/vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
@@ -34,6 +35,20 @@ left gaping: repeatability. Paredit.vim suffers a fatal flaw, in that it rebinds
 `.` to do its own repeating and it breaks core Vim functionality. Depending on
 your workflow, this is a deal breaker. If you ever user `.` to not retype what
 you just typed, this is a deal breaker.
+
+vim-sexp just works, when it comes to repeating, partially due to its
+compatibility with tpope's `vim-repeat`. It also is less strict than Paredit
+when it comes to manually unbalancing parens, which can annoyingly get in the
+way in non-trivial use cases. Paredit's rigidity, in that sense, also led to
+situations where parens were left unbalanced by an edit, but Paredit thought
+otherwise and wouldn't allow one to easily correct the issue.
+
+vim-sexp's key flaw appears to be that its bindings are unapproachable. tpope
+saved the day, again, with sarcasm and vim-sexp-mappings-for-regular-people.
+Take a look at the
+[README](https://github.com/tpope/vim-sexp-mappings-for-regular-people) for an
+example of how minimal and clean the mappings have become. Combined with
+vim-surround, as Venantius said, Vim becomes a formidable s-expr wrangler.
 
 lein trampoline repl
 
