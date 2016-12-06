@@ -56,6 +56,11 @@ vim-surround, as Venantius said, Vim becomes a formidable s-expression wrangler.
 ### Pitfalls to dodge
 
 
+#### Start your REPL first
+Since vim-fireplace relies on connecting to the nREPL for its inner workings,
+and manually connecting to such a REPL is tedious, consider just starting the
+REPL before opening up Vim.
+
 #### When using vim-fireplace, no `.nrepl-port` file is found
 If you need to manually `:Connect` and type in your nREPL port, there's
 something wrong. I've found that `lein repl` creates the appropriate
