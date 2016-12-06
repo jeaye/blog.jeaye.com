@@ -21,6 +21,20 @@ post](https://blog.jeaye.com/2015/12/31/vim-qt/), I'm running
 * [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace)
 * [tpope/vim-salve](https://github.com/tpope/vim-salve)
 
-http://blog.venanti.us/clojure-vim/
+[Venantius](https://venanti.us/) has done an excellent job, in [his
+blog](http://blog.venanti.us/clojure-vim/), covering the ins and outs of most of
+these plugins; I think that his post is certainly worth reading before
+continuing here.
+
+### What's new?
+The big difference between our setups is the change from
+[Paredit.vim](http://www.vim.org/scripts/script.php?script_id=3998) to vim-sexp.
+vim-sexp showed up a couple of years ago and filled in a hole which was sorely
+left gaping: repeatability. Paredit.vim suffers a fatal flaw, in that it rebinds
+`.` to do its own repeating and it breaks core Vim functionality. Depending on
+your workflow, this is a deal breaker. If you ever user `.` to not retype what
+you just typed, this is a deal breaker.
+
+lein trampoline repl
 
 http://usevim.com/2015/02/25/clojure/
