@@ -9,7 +9,7 @@ attempts to provide Paredit-like editing and SLIME-like evaluating to those who
 edit modally. Here's a contemporary look at helping Vim provide the expected
 slurpage, barfage, evaluation, and more.
 
-*What's slurping and barfing…? See [here](http://usevim.com/2015/02/25/clojure/).*
+*What's slurping and barfing…? See [here](http://danmidwood.com/content/2014/11/21/animated-paredit.html).*
 
 ### The lineup
 The key plugins I use for Clojure are listed below. As mentioned in a [previous
