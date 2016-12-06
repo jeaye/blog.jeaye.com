@@ -10,6 +10,10 @@ modally. Here's a contemporary look at helping Vim provide the expected slurpage
 barfage, evaluation, and more.
 
 ### The lineup
+The key plugins I use are listed below. As mentioned in a [previous
+post](https://blog.jeaye.com/2015/12/31/vim-qt/), I'm running
+[Vim-Qt](https://bitbucket.org/equalsraf/vim-qt/wiki/Home).
+
 * [guns/vim-sexp](https://github.com/guns/vim-sexp)
 * [tpope/vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
 * [luochen1990/rainbow](https://github.com/luochen1990/rainbow)
