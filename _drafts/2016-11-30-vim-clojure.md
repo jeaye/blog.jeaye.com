@@ -16,6 +16,7 @@ post](https://blog.jeaye.com/2015/12/31/vim-qt/), I'm running
 
 * [guns/vim-sexp](https://github.com/guns/vim-sexp)
 * [tpope/vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
+* [tpope/vim-surround](https://github.com/tpope/vim-surround)
 * [luochen1990/rainbow](https://github.com/luochen1990/rainbow)
 * [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace)
 * [tpope/vim-salve](https://github.com/tpope/vim-salve)
