@@ -8,3 +8,6 @@ Qwerty:
 
 Occurence:
   grep -o . $(git ls-files src) | sed 's/.\+://' | sort | uniq -c | sort -rn
+
+References:
+  Tutorial: http://programmer-dvorak.appspot.com/
