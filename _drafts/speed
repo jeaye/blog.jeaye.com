@@ -5,3 +5,6 @@ Qwerty:
     72 wpm 97.3%
     80 wpm 96.8%
     70 wpm 94.1%
+
+Occurence:
+  grep -o . $(git ls-files src) | sed 's/.\+://' | sort | uniq -c | sort -rn
