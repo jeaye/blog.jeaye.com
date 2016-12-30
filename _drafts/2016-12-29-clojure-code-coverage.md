@@ -98,3 +98,16 @@ will run your coverage analysis and output the results in a specific codecov
 format. Those results will then just be uploaded to codecov, which already knows
 and trusts travis-ci servers, and your project's codecov page will be update
 shortly thereafter.
+
+
+### Quick note about code coverage
+It's worthwhile to note that 100% code coverage probably isn't worth the effort.
+Furthermore, code coverage doesn't mean that your tests are any good and that
+they are representative of the inputs and behaviors your application will see in
+the wild. Especially in Clojure, so much of our programs rely on the data, not
+the code.
+
+Assuming that's been noted, the coverage analysis is superb for
+pointing out dead code, missed corner cases, and other areas which don't see
+much love in your test suite. Your argument parsing, for example, or codegen in
+the case of jank.
