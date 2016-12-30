@@ -67,3 +67,34 @@ After clicking on a specific file, it's possible to see a line-by-line breakdown
 of the coverage. In the above image, it's clear that there are no tests which
 cover adding explicit returns for macro definition, since that code was never
 hit when cloverage ran jank's test suite.
+
+### Running it continuously
+Manually running cloverage is great, but something like this should be running
+with each push to Github. This is where [codecov](https://codecov.io/) comes in.
+Like Github, codecov is free for an unlimited number of
+[FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) projects.
+Sign up using your Github session and add one of your Clojure projects. The
+following assumes that you already have continuous testing using
+[travis-ci](https://travis-ci.com/).
+
+Add the following to your `.travis.yml`
+
+```yaml
+after_success:
+- lein cloverage --codecov
+- bash <(curl -s https://codecov.io/bash) -f target/coverage/codecov.json
+```
+
+### Adding a readme badge
+If you'd like, you can add a codecov badge to your `README.md`, like so:
+
+```markdown
+[![codecov](https://codecov.io/gh/jeaye/jank/branch/master/graph/badge.svg)](https://codecov.io/gh/USERNAME/PROJECT-NAME)
+```
+
+### Ok, then?
+No, seriously, that's it. Whenever you push and the build succeeds, travis-ci
+will run your coverage analysis and output the results in a specific codecov
+format. Those results will then just be uploaded to codecov, which already knows
+and trusts travis-ci servers, and your project's codecov page will be update
+shortly thereafter.
