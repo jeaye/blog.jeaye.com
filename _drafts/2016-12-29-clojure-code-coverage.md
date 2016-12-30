@@ -1,5 +1,5 @@
 ---
-title: Continuous code coverage in Clojure
+title: Continuous test coverage in Clojure
 tags: [clojure, programming, code, coverage, cloverage, codecov]
 ---
 
@@ -9,7 +9,7 @@ analysis can be integrated in a handful of minutes using
 [cloverage](https://github.com/cloverage/cloverage) and
 [codecov](https://codecov.io/).
 
-### What is code coverage?
+### What is test coverage?
 *The term test coverage used in the context of programming / software
 engineering, refers to measuring how much a software program has been exercised
 by tests.* ([Fault Coverage](https://en.wikipedia.org/wiki/Fault_coverage)).
@@ -100,9 +100,9 @@ and trusts travis-ci servers, and your project's codecov page will be update
 shortly thereafter.
 
 
-### Quick note about code coverage
-It's worthwhile to note that 100% code coverage probably isn't worth the effort.
-Furthermore, code coverage doesn't mean that your tests are any good and that
+### Quick note about test coverage
+It's worthwhile to note that 100% test coverage probably isn't worth the effort.
+Furthermore, test coverage doesn't mean that your tests are any good and that
 they are representative of the inputs and behaviors your application will see in
 the wild. Especially in Clojure, so much of our programs rely on the data, not
 the code.
