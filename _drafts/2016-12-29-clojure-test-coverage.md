@@ -39,7 +39,7 @@ For Midje users, specify `--runner :midje` as well.
 
 
 ### Examining the output
-By default cloverage will run all of your tests and generate an HTML output at
+By default, cloverage will run all of your tests and generate an HTML output at
 `target/coverage/index.html`. Open that up with your favorite browser and you'll
 see something like this:
 
@@ -85,11 +85,11 @@ after_success:
 - bash <(curl -s https://codecov.io/bash) -f target/coverage/codecov.json
 ```
 
-### Adding a readme badge
+### Adding a README badge
 If you'd like, you can add a codecov badge to your `README.md`, like so:
 
 ```markdown
-[![codecov](https://codecov.io/gh/jeaye/jank/branch/master/graph/badge.svg)](https://codecov.io/gh/USERNAME/PROJECT-NAME)
+[![codecov](https://codecov.io/gh/USERNAME/PROJECT-NAME/branch/master/graph/badge.svg)](https://codecov.io/gh/USERNAME/PROJECT-NAME)
 ```
 
 ### Ok, then?
@@ -97,7 +97,8 @@ No, seriously, that's it. Whenever you push and the build succeeds, travis-ci
 will run your coverage analysis and output the results in a specific codecov
 format. Those results will then just be uploaded to codecov, which already knows
 and trusts travis-ci servers, and your project's codecov page will be update
-shortly thereafter.
+shortly thereafter. Have a look around the codecov site, which provides a
+similar view into your source, with various graphs and metrics.
 
 
 ### Quick note about test coverage
@@ -110,4 +111,5 @@ the code.
 Assuming that's been noted, the coverage analysis is superb for
 pointing out dead code, missed corner cases, and other areas which don't see
 much love in your test suite. Your argument parsing, for example, or codegen in
-the case of jank.
+the case of jank. By putting a coverage badge on your README, you're entering a
+silent contract to improve your coverage with quality tests.
