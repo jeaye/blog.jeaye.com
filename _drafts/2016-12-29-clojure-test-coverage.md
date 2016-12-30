@@ -44,9 +44,9 @@ By default, cloverage will run all of your tests and generate an HTML output at
 see something like this:
 
 <div style="text-align:center">
-<a href="{{ site.blog_url }}/img/clojure-code-coverage/cloverage-index.png" target="_blank">
+<a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png" target="_blank">
 <img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-code-coverage/cloverage-index.png" width="66%" />
+     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png" width="66%" />
 </a>
 </div>
 
@@ -57,9 +57,9 @@ for interpreting and codegen. It's possible to get a more detailed view of any
 of these files by clicking one.
 
 <div style="text-align:center">
-<a href="{{ site.blog_url }}/img/clojure-code-coverage/cloverage-detailed.png" target="_blank">
+<a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" target="_blank">
 <img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-code-coverage/cloverage-detailed.png" width="66%" />
+     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" width="66%" />
 </a>
 </div>
 
