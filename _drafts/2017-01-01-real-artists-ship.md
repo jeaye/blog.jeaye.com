@@ -42,9 +42,48 @@ of it behave as expected, and protect against regressions, with tests."*
 Heather: *"If we do it your way, Sally, we never ship. Real artists ship."*
 
 ### The philosophy
+Like so many other aspects in this world, software practices are treated as
+black and white. You're either apparently a real artist, who ships, or you're
+someone who cares about the quality of your product and you never ship. Surely,
+this is absurd.
+
+#### Testing
+Having software tests means one thing, specifically: you care, or are required
+to care, about software quality. Do companies with automated tests actually ship
+code? Let's take a look at the big four.
+
+1. Google? - [Of
+   course](https://testing.googleblog.com/2011/01/how-google-tests-software.html)
+2. Amazon? - 
+   [Yep](http://www.zdnet.com/article/how-amazon-handles-a-new-software-deployment-every-second/)
+3. Facebook? - [Absolutely](https://youtu.be/OJ94KqmsxiI?t=1393)
+4. Microsoft? - 
+   [You bet](https://blogs.msdn.microsoft.com/microsoft_press/2009/02/13/new-book-how-we-test-software-at-microsoft/)
+
+Ok, sure. What about "real" companies, where the "real artists" work? Let's try
+startups, maybe.
+
+1. TODO
+
+My experience is primarily in game development, so it could be that it's just
+simply game developers that can't ship if they have tests. Unless...
+
+1. TODO
+
+Software testing is not a religion. To much of it and you may not meet your
+deadline. Too little of it and you may not meet many users. If you have to ship
+without testing, in order to get your Apple featuring, or something similar,
+fine. Will you test next sprint? Will you ensure there are no regressions in
+functionality or performance?
+
+TODO: tools for testing
+
+#### Refactoring
+
+#### Learning
 
 ### The damage
 
 ### What Jobs really meant
 
-### What "real artists" may be
+### What "real artists" may actually be
