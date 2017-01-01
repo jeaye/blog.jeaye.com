@@ -52,13 +52,10 @@ Having software tests means one thing, specifically: you care, or are required
 to care, about software quality. Do companies with automated tests actually ship
 code? Let's take a look at the big four.
 
-1. Google? - [Of
-   course](https://testing.googleblog.com/2011/01/how-google-tests-software.html)
-2. Amazon? - 
-   [Yep](http://www.zdnet.com/article/how-amazon-handles-a-new-software-deployment-every-second/)
-3. Facebook? - [Absolutely](https://youtu.be/OJ94KqmsxiI?t=1393)
-4. Microsoft? - 
-   [You bet](https://blogs.msdn.microsoft.com/microsoft_press/2009/02/13/new-book-how-we-test-software-at-microsoft/)
+1. [Google](https://testing.googleblog.com/2011/01/how-google-tests-software.html)
+2. [Amazon](http://www.zdnet.com/article/how-amazon-handles-a-new-software-deployment-every-second/)
+3. [Facebook](https://youtu.be/OJ94KqmsxiI?t=1393)
+4. [Microsoft](https://blogs.msdn.microsoft.com/microsoft_press/2009/02/13/new-book-how-we-test-software-at-microsoft/)
 
 Ok, let's try smaller companies.
 
@@ -88,13 +85,15 @@ engines, are just as testable as anything else. Again, some examples.
 4. [RIOT](https://engineering.riotgames.com/news/automated-testing-league-legends)
 5. [CCP/Eve Online](https://community.eveonline.com/news/dev-blogs/eve-probe/)
 
-Software testing is not a religion. Too much of it and you may not meet your
-deadline. Too little of it and you may not meet many users. If you have to ship
-without testing, in order to get your Apple featuring, or similar, fine. Will
-you test next sprint? Will you ensure there are no regressions in functionality
-or performance?
+Clearly, it's entirely possible to have automated tests running continuously,
+alongside your typical QA. The best thing about it is, you can still ship! Even
+better, you can both ship and iterate more confidently. Software testing is not
+a religion. Too much of it and you may not meet your deadline. Too little of it
+and you may not meet many users, or you may struggle to keep them.
 
-Related [Gamasutra
+If you have to ship without testing, in order to get your Apple featuring, or
+similar, fine.  Will you test next sprint? Will you ensure there are no
+regressions in functionality or performance? Related [Gamasutra
 article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
