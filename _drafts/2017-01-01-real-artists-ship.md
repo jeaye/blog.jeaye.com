@@ -97,6 +97,16 @@ regressions in functionality or performance? Related [Gamasutra
 article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
+Real artists also seem to not have time to refactor old code. Write it once, get
+it done, and ship it, apparently. If you're one of those devs who goes back,
+after cranking out a new system, and removes duplication, improves API type
+safety, or adds more assertions and documention, you may not be a real artist.
+Worse, you may never ship.
+
+Refactoring code should be though of as code hygiene. Just as most of us shower
+regularly, brush our teeth, and wipe after shitting, we need to clean up our
+code. The social norm, it seems, has us hiding from those who don't shower, but
+high-fiving those who skip on the refactoring, anointing them as real artists.
 
 #### Learning
 
