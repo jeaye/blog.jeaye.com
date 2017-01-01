@@ -91,7 +91,8 @@ after_success:
 If you'd like, you can add a codecov badge to your `README.md`, like so:
 
 ```markdown
-[![codecov](https://codecov.io/gh/USERNAME/PROJECT-NAME/branch/master/graph/badge.svg)](https://codecov.io/gh/USERNAME/PROJECT-NAME)
+[![codecov](https://codecov.io/gh/USERNAME/PROJECT-NAME/branch/master/graph/badge.svg)]
+ (https://codecov.io/gh/USERNAME/PROJECT-NAME)
 ```
 
 ### Ok, then?
