@@ -60,23 +60,42 @@ code? Let's take a look at the big four.
 4. Microsoft? - 
    [You bet](https://blogs.msdn.microsoft.com/microsoft_press/2009/02/13/new-book-how-we-test-software-at-microsoft/)
 
-Ok, sure. What about "real" companies, where the "real artists" work? Let's try
-startups, maybe.
+Ok, let's try smaller companies.
 
-1. TODO
+1. [CircleCI](https://circleci.com/blog/rewriting-your-test-suite-in-clojure-in-24-hours/)
+2. [AirBnB](http://airbnb.io/enzyme/)
+3. [Uber](https://eng.uber.com/tech-stack-part-one/)
+4. [Github](http://githubengineering.com/move-fast/)
+5. [Assertible](https://assertible.com/blog/test-every-single-api-deployment)
 
-My experience is primarily in game development, so it could be that it's just
-simply game developers that can't ship if they have tests. Unless...
+What about some of the big open source projects?
 
-1. TODO
+1. [Linux](https://linux-test-project.github.io/)
+2. [Krita](https://community.kde.org/Krita/Docs/Unittests_in_Krita)
+3. [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Automated_testing)
+4. [React.js](https://facebook.github.io/react/docs/test-utils.html)
+5. [Emacs](https://www.emacswiki.org/emacs/UnitTesting)
+6. [NeoVim](https://github.com/neovim/neovim/wiki/Unit-tests)
 
-Software testing is not a religion. To much of it and you may not meet your
+My experience is primarily in game development, where software testing is
+apparently far less common. Imperative programming exacerbates this
+problem, making functions harder to test, but games, and especially game
+engines, are just as testable as anything else. Again, some examples.
+
+1. [UnrealEngine](https://docs.unrealengine.com/latest/INT/Programming/Automation/index.html)
+2. [Unity3D](https://unity3d.com/unity/qa/test-suites)
+3. [Crytek](http://www.crytek.com/cryengine/cryengine3/presentations/aaa-automated-testing-for-aaa-games)
+4. [RIOT](https://engineering.riotgames.com/news/automated-testing-league-legends)
+5. [CCP/Eve Online](https://community.eveonline.com/news/dev-blogs/eve-probe/)
+
+Software testing is not a religion. Too much of it and you may not meet your
 deadline. Too little of it and you may not meet many users. If you have to ship
-without testing, in order to get your Apple featuring, or something similar,
-fine. Will you test next sprint? Will you ensure there are no regressions in
-functionality or performance?
+without testing, in order to get your Apple featuring, or similar, fine. Will
+you test next sprint? Will you ensure there are no regressions in functionality
+or performance?
 
-TODO: tools for testing
+Related [Gamasutra
+article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
 
