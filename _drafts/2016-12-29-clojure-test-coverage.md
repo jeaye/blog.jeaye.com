@@ -43,30 +43,32 @@ By default, cloverage will run all of your tests and generate an HTML output at
 `target/coverage/index.html`. Open that up with your favorite browser and you'll
 see something like this:
 
-<div style="text-align:center">
+<figure>
 <a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png" target="_blank">
 <img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png" width="66%" />
+     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png"/>
 </a>
-</div>
-
+<figcaption>
 This is the output from the first run of cloverage on
-[jank](http://jank-lang.org/). From this, we can see that there was reasonable
+<a href="http://jank-lang.org/">jank</a>. From this, we can see that there was reasonable
 coverage for the parsing and type checking tests, but it clearly had no tests
 for interpreting and codegen. It's possible to get a more detailed view of any
 of these files by clicking one.
+</figcaption>
+</figure>
 
-<div style="text-align:center">
+<figure>
 <a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" target="_blank">
 <img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" width="66%" />
+     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" />
 </a>
-</div>
-
+<figcaption>
 After clicking on a specific file, it's possible to see a line-by-line breakdown
 of the coverage. In the above image, it's clear that there are no tests which
 cover adding explicit returns for macro definition, since that code was never
 hit when cloverage ran jank's test suite.
+</figcaption>
+</figure>
 
 ### Running it continuously
 Manually running cloverage is great, but something like this should be running
