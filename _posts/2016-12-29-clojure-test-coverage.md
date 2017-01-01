@@ -49,11 +49,11 @@ see something like this:
      src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png"/>
 </a>
 <figcaption>
-This is the output from the first run of cloverage on
-<a href="http://jank-lang.org/">jank</a>. From this, we can see that there was reasonable
-coverage for the parsing and type checking tests, but it clearly had no tests
-for interpreting and codegen. It's possible to get a more detailed view of any
-of these files by clicking one.
+This is the output from the first run of cloverage on <a
+href="http://jank-lang.org/">jank</a>. From this, we can see that there was good
+coverage for the parsing and type checking tests, reasonable coverage for
+interpreting, but it clearly had no tests for codegen. It's possible to get a
+more detailed view of any of these files by clicking one.
 </figcaption>
 </figure>
 
