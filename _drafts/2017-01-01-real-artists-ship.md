@@ -15,7 +15,7 @@ of concern for the success of the product beyond delivery.
 
 ### It's a joke
 Many people do say "real artists ship" as joke, when knowingly tolerating some
-poor practice. The problem worth pointing out is that, while this is a joke,
+poor practice. The problem worth pointing out is that, while this said in jest,
 it's actually masking the underlying issue in unsettling humor. It's become
 affordable, in engineering social circles and development teams, to subvert good
 practice in favor of reaching deadlines -- and here's the kicker -- with no
@@ -98,17 +98,29 @@ article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_contin
 
 #### Refactoring
 Real artists also seem to not have time to refactor old code. Write it once, get
-it done, and ship it, apparently. If you're one of those devs who goes back,
-after cranking out a new system, and removes duplication, improves API type
-safety, or adds more assertions and documention, you may not be a real artist.
-Worse, you may never ship.
+it done, and ship it. If you're one of those devs who goes back, after cranking
+out a new system, and removes duplication, improves API type safety, or adds
+more assertions and documentation, you may not be a real artist. Worse, you may
+never ship.
 
-Refactoring code should be though of as code hygiene. Just as most of us shower
+Refactoring code should be thought of as code hygiene. Just as most of us shower
 regularly, brush our teeth, and wipe after shitting, we need to clean up our
 code. The social norm, it seems, has us hiding from those who don't shower, but
-high-fiving those who skip on the refactoring, anointing them as real artists.
+embracing those who skip on the refactoring, anointing them as real artists.
 
 #### Learning
+It also seems that real artists claim to know all that there is needed to know
+for shipping their products. However, there is always room for growth. We should
+always be striving to improve our craft. We should always be looking to
+modernize our practices. We can greatly benefit from reflecting on our flaws, or
+even having our code reviewed by the team. Yet these ideas are not of the real
+artist.
+
+The more one observes real artists, the more it becomes clear that they are
+entirely one dimensional. They're built to ship, regardless of parameters, and
+will sacrifice anything to do so. Technical debt will accrue without bound and,
+after years, the hope to gain a firm grasp of the product's stability and
+behavior will be immaterial.
 
 ### The damage
 
