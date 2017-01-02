@@ -4,16 +4,16 @@ tags: [rant, programming]
 ---
 
 I want to tackle an issue which seems prevalent in the modern software
-engineering industry. The idea, laid down by [Steve Jobs](TODO), is that "real
-artists ship" and everyone else is forgotten. What does it mean to be a "real
-artist," and what does it mean to "ship" as one? I think what Jobs meant when he
-said it and what many others mean when they parrot it may be quite different.
-It's become a facade, analogous to
-[YOLO](http://www.urbandictionary.com/define.php?term=Yolo), intended to cover
-one's tracks of poor engineering practices, lack of tool understanding, and lack
-of concern for the success of the product beyond delivery.
+engineering industry. The idea, laid down by [Steve
+Jobs](http://www.folklore.org/StoryView.py?story=Real_Artists_Ship.txt), is that
+"real artists ship" and everyone else is forgotten. What does it mean to be a
+"real artist," and what does it mean to "ship" as one? It's become a facade,
+analogous to [YOLO](http://www.urbandictionary.com/define.php?term=Yolo),
+intended to cover one's tracks of poor engineering practices, lack of tool
+understanding, and lack of concern for the success of the product beyond
+delivery.
 
-### It's a joke
+### It's a joke?
 Many people do say "real artists ship" as joke, when knowingly tolerating some
 poor practice. The problem worth pointing out is that, while this said in jest,
 it's actually masking the underlying issue in unsettling humor. It's become
@@ -98,8 +98,7 @@ may not meet many users, or you may struggle to keep them. Build a company
 around a foundation of untested code, continue to accrue hundreds of thousands
 of lines of it, and then expect stability and performance? That is not sane.
 
-[Related Gamasutra
-article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
+[Related Gamasutra article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
 "Real artists" also seem to not have time to refactor old code. Write it once, get
@@ -167,11 +166,15 @@ sort of tests are there? Is there a style guide which prohibits certain
 dangerous practices? Are third-party libraries kept up to date to minimize
 security holes and duplicated patching efforts?
 
-### What Jobs really meant
-
 ### A note to "real artists"
 If I could whisper in your ear, I'd note that there's no point shipping a
 product not worth shipping. I'd note that repeated bastardization of software
 practices leads to an unmaintainable mess. I'd ask you to attempt to quantify
 the summation of all "real artist" moments you've had, where sane practice was
 abandoned. Was it worth it? What was the cost? Is it too late?
+
+<figure><figcaption style="font-style: italic;">
+"Real artists don't ship, they provoke. In today's world, shipping is the easy
+part. Making something meaningful that questions the status quo is the real
+challenge." ~ <a href="https://www.quora.com/What-does-real-artists-ship-mean-to-you/answer/Natalie-Edward-Phillips-Hamblett">Natalie Edward Phillips-Hamblett</a>
+</figcaption></figure>
