@@ -93,7 +93,7 @@ and you may not meet many users, or you may struggle to keep them.
 
 If you have to ship without testing, in order to get your Apple featuring, or
 similar, fine.  Will you test next sprint? Will you ensure there are no
-regressions in functionality or performance? Related [Gamasutra
+regressions in functionality or performance? [Related Gamasutra
 article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
