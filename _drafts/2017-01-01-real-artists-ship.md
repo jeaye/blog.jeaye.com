@@ -6,15 +6,15 @@ tags: [rant, programming]
 I want to tackle an issue which seems prevalent in the modern software
 engineering industry. The idea, laid down by [Steve
 Jobs](http://www.folklore.org/StoryView.py?story=Real_Artists_Ship.txt), is that
-"real artists ship" and everyone else is forgotten. What does it mean to be a
-"real artist," and what does it mean to "ship" as one? It's become a facade,
+“real artists ship” and everyone else is forgotten. What does it mean to be a
+“real artist,” and what does it mean to “ship” as one? It's become a facade,
 analogous to [YOLO](http://www.urbandictionary.com/define.php?term=Yolo),
 intended to cover one's tracks of poor engineering practices, lack of tool
 understanding, and lack of concern for the success of the product beyond
 delivery.
 
 ### It's a joke?
-Many people do say "real artists ship" as joke, when knowingly tolerating some
+Many people do say “real artists ship” as joke, when knowingly tolerating some
 poor practice. The problem worth pointing out is that, while this said in jest,
 it's actually masking the underlying issue in unsettling humor. It's become
 affordable, in engineering social circles and development teams, to subvert good
@@ -24,28 +24,30 @@ intention of returning to the code to refactor.
 Furthermore, it's become an attack against those who do care about software
 quality. In this form, it's not a joke at all, but a claim from a high horse
 that shipped products are not polished products, or stable products, or secure
-products. A lunch-time conversation between two equal-ranked devs may go like
-this:
+products, but at least they're shipped. A lunch-time conversation between two
+equal-ranked devs may go like this:
 
-Sally: *"Did you get tests written for the new notification system?"*
+Sally: *“Did you get tests written for the new notification system?”*
 
-Heather: *"No, I needed to get it out the door."*
+Heather: *“No, I needed to get it out the door.”*
 
-Sally: *"Yeah, that dealine was tight. Do you plan on getting the tests written
-before the next sprint?"*
+Sally: *“Yeah, that dealine was tight. Do you plan on getting the tests written
+before the next sprint?”*
 
-Heather: *"No, I don't think they're important. The code works and it's live."*
+Heather: *“No, I don't think they're important. The code works and it's live.”*
 
-Sally: *"It is important, since it's such a core system; we can verify all parts
-of it behave as expected, and protect against regressions, with tests."*
+Sally: *“It is important, since it's such a core system; we can verify all parts
+of it behave as expected, and protect against regressions, with tests.”*
 
-Heather: *"If we do it your way, Sally, we never ship. Real artists ship."*
+Heather: *“If we do it your way, Sally, we never ship. Real artists ship.”*
 
 ### The philosophy
 Like so many other aspects in this world, software practices are treated as
-black and white. You're either apparently a "real artist", who ships, or you're
+black and white. You're either apparently a “real artist”, who ships, or you're
 someone who cares about the quality of your product and you never ship. Surely,
-this is absurd.
+this is absurd. Everything is gray and modern software engineering is neither
+the Kung Fu nor the Aikido nor the Wrestling; it's the mixed martial arts,
+pulling the most practical pieces from as many sources as possible.
 
 #### Testing
 Having software tests means one thing, specifically: you care, or are required
@@ -101,42 +103,43 @@ of lines of it, and then expect stability and performance? That is not sane.
 [Related Gamasutra article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
-"Real artists" also seem to not have time to refactor old code. Write it once, get
+“Real artists” also seem to not have time to refactor old code. Write it once, get
 it done, and ship it. If you're one of those devs who goes back, after cranking
 out a new system, and removes duplication, improves API type safety, or adds
-more assertions and documentation, you may not be a "real artist". Worse, you may
-never ship.
+more assertions and documentation, you may not be a “real artist.” Worse,
+according to them, you may never ship.
 
 Refactoring code should be thought of as code hygiene. Just as most of us shower
 regularly, brush our teeth, and wipe after shitting, we need to clean up our
-code. The social norm, it seems, has us hiding from those who don't shower, but
-embracing those who skip on the refactoring, anointing them as "real artists".
+code; feature work, in a short sprint, can be very dirty work! The social norm,
+it seems, has us hiding from those who don't shower, but embracing those who
+skip on the refactoring, anointing them as “real artists.”
 
 <figure><figcaption style="font-style: italic;">
-"At GitHub we try not to brag about the “shortcuts” we’ve taken over the
+“At GitHub we try not to brag about the “shortcuts” we’ve taken over the
 years to scale our web application to more than 12 million users. In fact,
 we do quite the opposite: we make a conscious effort to study our codebase
 looking for systems that can be rewritten to be cleaner, simpler and more
 efficient, and we develop tools and workflows that allow us to perform these
-rewrites efficiently and reliably." ~ <a href="http://githubengineering.com/move-fast/">Github</a>
+rewrites efficiently and reliably.” ~ <a href="http://githubengineering.com/move-fast/">Github Engineering</a>
 </figcaption></figure>
 
 #### Learning
-It also seems that "real artists" claim to know all that there is needed to know
+It also seems that “real artists” claim to know all that there is needed to know
 for shipping their products. However, there is always room for growth. We should
 always be striving to improve our craft. We should always be looking to
 modernize our practices. We can greatly benefit from reflecting on our flaws, or
-even having our code reviewed by the team. Yet these ideas are not of the real
-artist.
+even having our code reviewed by the team. Yet these ideas are not of the “real
+artist.”
 
-The more one observes "real artists," the more it becomes clear that they are
+The more one observes “real artists,” the more it becomes clear that they are
 entirely one dimensional. They're built to ship, regardless of parameters, and
 will sacrifice anything to do so. Technical debt will accrue without bound and,
 after years, the hope to gain a firm grasp of the product's stability and
 behavior will be immaterial.
 
 ### The damage
-The army of "real artists" may have barricaded your workplace. If so, you'll be
+The army of “real artists” may have barricaded your workplace. If so, you'll be
 met with great reluctance when trying to introduce code reviews, continuous
 integration, and modern safety practices. You'll be labeled an extremist for
 calling out and proposing fixes for poor tooling, bit-rotten systems, and
@@ -155,8 +158,8 @@ your proprietary tech?
 
 Gaming is a [$100 billion
 market](https://newzoo.com/insights/articles/global-games-market-reaches-99-6-billion-2016-mobile-generating-37/);
-mobile is a third of that. How much is your company losing because the "real
-artists" are so quick to ship bugs?
+mobile comprises a third of that. How much is your company losing because the
+“real artists” are so quick to ship bugs?
 
 If you find yourself in this position, your
 best option may be to find a new employer. When you're interviewing, ask the
@@ -164,17 +167,17 @@ interviewer about their software practices. Is there automated testing? Are
 there code reviews? Static analysis? Linting? What's the test coverage? What
 sort of tests are there? Is there a style guide which prohibits certain
 dangerous practices? Are third-party libraries kept up to date to minimize
-security holes and duplicated patching efforts?
+security holes and duplicated patching efforts? What's the most stale system?
 
-### A note to "real artists"
+### A final note to “real artists”
 If I could whisper in your ear, I'd note that there's no point shipping a
 product not worth shipping. I'd note that repeated bastardization of software
 practices leads to an unmaintainable mess. I'd ask you to attempt to quantify
-the summation of all "real artist" moments you've had, where sane practice was
+the summation of all “real artist” moments you've had, where sane practice was
 abandoned. Was it worth it? What was the cost? Is it too late?
 
 <figure><figcaption style="font-style: italic;">
-"Real artists don't ship, they provoke. In today's world, shipping is the easy
+“Real artists don't ship, they provoke. In today's world, shipping is the easy
 part. Making something meaningful that questions the status quo is the real
-challenge." ~ <a href="https://www.quora.com/What-does-real-artists-ship-mean-to-you/answer/Natalie-Edward-Phillips-Hamblett">Natalie Edward Phillips-Hamblett</a>
+challenge.” ~ <a href="https://www.quora.com/What-does-real-artists-ship-mean-to-you/answer/Natalie-Edward-Phillips-Hamblett">Natalie Edward Phillips-Hamblett</a>
 </figcaption></figure>
