@@ -141,7 +141,31 @@ The army of "real artists" may have barricaded your workplace. If so, you'll be
 met with great reluctance when trying to introduce code reviews, continuous
 integration, and modern safety practices. You'll be labeled an extremist for
 calling out and proposing fixes for poor tooling, bit-rotten systems, and
-haggard practices.
+haggard practices. You may find solace in some colleagues, but only rigidity on
+a department level.
+
+Consider the effect of this behavior on the product. Can you release
+continuously? Probably not; getting stable binaries out is a slow chug, so bugs
+linger. Are your users frustrated that your software crashes often? That goes
+without saying. Is your new-user experience poor because of your degrading
+performance? Can you address this without systemic changes? Is your poor
+developer tooling hurting the productivity of your devs and significantly
+increasing your iteration time?  Is is troubling to on-board new devs, given the
+poor documentation and [bus factor](https://en.wikipedia.org/wiki/Bus_factor) of
+your proprietary tech?
+
+Gaming is a [$100 billion
+market](https://newzoo.com/insights/articles/global-games-market-reaches-99-6-billion-2016-mobile-generating-37/);
+mobile is a third of that. How much is your company losing because the "real
+artists" are so quick to ship bugs?
+
+If you find yourself in this position, your
+best option may be to find a new employer. When you're interviewing, ask the
+interviewer about their software practices. Is there automated testing? Are
+there code reviews? Static analysis? Linting? What's the test coverage? What
+sort of tests are there? Is there a style guide which prohibits certain
+dangerous practices? Are third-party libraries kept up to date to minimize
+security holes and duplicated patching efforts?
 
 ### What Jobs really meant
 
