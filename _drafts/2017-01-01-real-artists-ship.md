@@ -169,4 +169,9 @@ security holes and duplicated patching efforts?
 
 ### What Jobs really meant
 
-### What "real artists" may actually be
+### A note to "real artists"
+If I could whisper in your ear, I'd note that there's no point shipping a
+product not worth shipping. I'd note that repeated bastardization of software
+practices leads to an unmaintainable mess. I'd ask you to attempt to quantify
+the summation of all "real artist" moments you've had, where sane practice was
+abandoned. Was it worth it? What was the cost? Is it too late?
