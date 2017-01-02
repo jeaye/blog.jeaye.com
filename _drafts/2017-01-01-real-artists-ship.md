@@ -43,7 +43,7 @@ Heather: *"If we do it your way, Sally, we never ship. Real artists ship."*
 
 ### The philosophy
 Like so many other aspects in this world, software practices are treated as
-black and white. You're either apparently a real artist, who ships, or you're
+black and white. You're either apparently a "real artist", who ships, or you're
 someone who cares about the quality of your product and you never ship. Surely,
 this is absurd.
 
@@ -87,42 +87,61 @@ engines, are just as testable as anything else. Again, some examples.
 
 Clearly, it's entirely possible to have automated tests running continuously,
 alongside your typical QA. The best thing about it is, you can still ship! Even
-better, you can both ship and iterate more confidently. Software testing is not
-a religion. Too much of it and you may not meet your deadline. Too little of it
-and you may not meet many users, or you may struggle to keep them.
+better, you can both ship and iterate more confidently. If you do have to ship
+without testing, in order to meet some external deadline, fine. Will you test
+next sprint? Will you ensure there are no regressions in functionality or
+performance?
 
-If you have to ship without testing, in order to get your Apple featuring, or
-similar, fine.  Will you test next sprint? Will you ensure there are no
-regressions in functionality or performance? [Related Gamasutra
+No stance on this should be religious; in every aspect, we must be pragmatic.
+Too much testing and you may not meet your deadline. Too little of it and you
+may not meet many users, or you may struggle to keep them. Build a company
+around a foundation of untested code, continue to accrue hundreds of thousands
+of lines of it, and then expect stability and performance? That is not sane.
+
+[Related Gamasutra
 article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
 #### Refactoring
-Real artists also seem to not have time to refactor old code. Write it once, get
+"Real artists" also seem to not have time to refactor old code. Write it once, get
 it done, and ship it. If you're one of those devs who goes back, after cranking
 out a new system, and removes duplication, improves API type safety, or adds
-more assertions and documentation, you may not be a real artist. Worse, you may
+more assertions and documentation, you may not be a "real artist". Worse, you may
 never ship.
 
 Refactoring code should be thought of as code hygiene. Just as most of us shower
 regularly, brush our teeth, and wipe after shitting, we need to clean up our
 code. The social norm, it seems, has us hiding from those who don't shower, but
-embracing those who skip on the refactoring, anointing them as real artists.
+embracing those who skip on the refactoring, anointing them as "real artists".
+
+<figure><figcaption style="font-style: italic;">
+"At GitHub we try not to brag about the “shortcuts” we’ve taken over the
+years to scale our web application to more than 12 million users. In fact,
+we do quite the opposite: we make a conscious effort to study our codebase
+looking for systems that can be rewritten to be cleaner, simpler and more
+efficient, and we develop tools and workflows that allow us to perform these
+rewrites efficiently and reliably." ~ <a href="http://githubengineering.com/move-fast/">Github</a>
+</figcaption></figure>
 
 #### Learning
-It also seems that real artists claim to know all that there is needed to know
+It also seems that "real artists" claim to know all that there is needed to know
 for shipping their products. However, there is always room for growth. We should
 always be striving to improve our craft. We should always be looking to
 modernize our practices. We can greatly benefit from reflecting on our flaws, or
 even having our code reviewed by the team. Yet these ideas are not of the real
 artist.
 
-The more one observes real artists, the more it becomes clear that they are
+The more one observes "real artists," the more it becomes clear that they are
 entirely one dimensional. They're built to ship, regardless of parameters, and
 will sacrifice anything to do so. Technical debt will accrue without bound and,
 after years, the hope to gain a firm grasp of the product's stability and
 behavior will be immaterial.
 
 ### The damage
+The army of "real artists" may have barricaded your workplace. If so, you'll be
+met with great reluctance when trying to introduce code reviews, continuous
+integration, and modern safety practices. You'll be labeled an extremist for
+calling out and proposing fixes for poor tooling, bit-rotten systems, and
+haggard practices.
 
 ### What Jobs really meant
 
