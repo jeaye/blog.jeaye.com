@@ -13,7 +13,7 @@ intended to cover one's tracks of poor engineering practices, lack of tool
 understanding, and lack of concern for the success of the product beyond
 delivery.
 
-### It's a joke?
+### It's not a joke
 Many people do say “real artists ship” as joke, when knowingly tolerating some
 poor practice. The problem worth pointing out is that, while this said in jest,
 it's actually masking the underlying issue in unsettling humor. It's become
@@ -152,7 +152,7 @@ linger. Are your users frustrated that your software crashes often? That goes
 without saying. Is your new-user experience poor because of your degrading
 performance? Can you address this without systemic changes? Is your poor
 developer tooling hurting the productivity of your devs and significantly
-increasing your iteration time?  Is is troubling to on-board new devs, given the
+increasing your iteration time? Is is troubling to on-board new devs, given the
 poor documentation and [bus factor](https://en.wikipedia.org/wiki/Bus_factor) of
 your proprietary tech?
 
@@ -161,23 +161,26 @@ market](https://newzoo.com/insights/articles/global-games-market-reaches-99-6-bi
 mobile comprises a third of that. How much is your company losing because the
 “real artists” are so quick to ship bugs?
 
-If you find yourself in this position, your
-best option may be to find a new employer. When you're interviewing, ask the
-interviewer about their software practices. Is there automated testing? Are
-there code reviews? Static analysis? Linting? What's the test coverage? What
-sort of tests are there? Is there a style guide which prohibits certain
-dangerous practices? Are third-party libraries kept up to date to minimize
-security holes and duplicated patching efforts? What's the most stale system?
+If you're hunting for a job, be sure to make note of the culture around quality.
+When you're interviewing, ask the interviewers about their software practices. Is
+there automated testing? Are there code reviews? Static analysis? Linting?
+What's the test coverage? What sort of tests are there? Is there a style guide
+which prohibits certain dangerous practices? Are third-party libraries kept up
+to date to minimize security holes and duplicated patching efforts? What's the
+most stale system? Is there time between feature sprints to refactor code?
 
 ### A final note to “real artists”
-If I could whisper in your ear, I'd note that there's no point shipping a
+I'd note that there's no point shipping a
 product not worth shipping. I'd note that repeated bastardization of software
 practices leads to an unmaintainable mess. I'd ask you to attempt to quantify
 the summation of all “real artist” moments you've had, where sane practice was
-abandoned. Was it worth it? What was the cost? Is it too late?
+abandoned. Was it worth it? What was the cost?
 
 <figure><figcaption style="font-style: italic;">
 “Real artists don't ship, they provoke. In today's world, shipping is the easy
 part. Making something meaningful that questions the status quo is the real
 challenge.” ~ <a href="https://www.quora.com/What-does-real-artists-ship-mean-to-you/answer/Natalie-Edward-Phillips-Hamblett">Natalie Edward Phillips-Hamblett</a>
 </figcaption></figure>
+
+TODO:
+- Bring final note back to gray
