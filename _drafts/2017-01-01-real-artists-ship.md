@@ -170,17 +170,16 @@ to date to minimize security holes and duplicated patching efforts? What's the
 most stale system? Is there time between feature sprints to refactor code?
 
 ### A final note to “real artists”
-I'd note that there's no point shipping a
-product not worth shipping. I'd note that repeated bastardization of software
+I'd note that we all ship quick and dirty hacks; what matters is that we go back
+and clean them up. Every step of the way, we should be pragmatic and focused on
+maintaining quality software; that doesn't need to get in the way of shipping,
+but it does need to be done. I'd note that repeated bastardization of software
 practices leads to an unmaintainable mess. I'd ask you to attempt to quantify
 the summation of all “real artist” moments you've had, where sane practice was
-abandoned. Was it worth it? What was the cost?
+abandoned. Was it worth it? What was the cost? Are you still paying for it?
 
 <figure><figcaption style="font-style: italic;">
 “Real artists don't ship, they provoke. In today's world, shipping is the easy
 part. Making something meaningful that questions the status quo is the real
 challenge.” ~ <a href="https://www.quora.com/What-does-real-artists-ship-mean-to-you/answer/Natalie-Edward-Phillips-Hamblett">Natalie Edward Phillips-Hamblett</a>
 </figcaption></figure>
-
-TODO:
-- Bring final note back to gray
