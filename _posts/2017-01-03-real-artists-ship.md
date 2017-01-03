@@ -101,7 +101,7 @@ may not meet many users, or you may struggle to keep them. Build a company
 around a foundation of untested code, continue to accrue hundreds of thousands
 of lines of it, and then expect stability and performance? That is not sane.
 
-*NOTE: A common argument: "But interactive applications are impossible to test!" Ok, they require a different setup, but [Xamarin does it](https://www.xamarin.com/test-cloud), [PhantomJS does it](http://phantomjs.org/), [Android does it](https://developer.android.com/training/testing/ui-testing/index.html), [iOS does it](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation), and even [Unity3D does it](http://doctrina-kharkov.blogspot.com/2016/08/cultorios-automated-unity-game-testing-tutorial.html). No more excuses.*
+*NOTE: A common argument: "But interactive applications are impossible to test!" Ok, they require a different setup, but [Xamarin does it](https://www.xamarin.com/test-cloud), [PhantomJS does it](http://phantomjs.org/), [Android does it](https://developer.android.com/training/testing/ui-testing/index.html), [iOS does it](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation), and even [Unity3D does it](http://doctrina-kharkov.blogspot.com/2016/08/cultorios-automated-unity-game-testing-tutorial.html).*
 
 [Related Gamasutra article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
