@@ -7,19 +7,19 @@ I want to tackle an issue which seems prevalent in the modern software
 engineering industry. The idea, laid down by [Steve
 Jobs](http://www.folklore.org/StoryView.py?story=Real_Artists_Ship.txt), is that
 “real artists ship” and everyone else is forgotten. What does it mean to be a
-“real artist,” and what does it mean to “ship” as one? It's become a facade,
-analogous to [YOLO](http://www.urbandictionary.com/define.php?term=Yolo),
-intended to cover one's tracks of poor engineering practices, lack of tool
-understanding, and lack of concern for the success of the product beyond
-delivery.
+“real artist,” and what does it mean to “ship” as one? Unfortunately, it's
+become a facade, analogous to
+[YOLO](http://www.urbandictionary.com/define.php?term=Yolo), intended to cover
+one's tracks of poor engineering practices, lack of tooling, and lack
+of concern for the success of the product beyond delivery.
 
 ### It's not a joke
 Many people do say “real artists ship” as joke, when knowingly tolerating some
 poor practice. The problem worth pointing out is that, while this said in jest,
 it's actually masking the underlying issue in unsettling humor. It's become
 affordable, in engineering social circles and development teams, to subvert good
-practice in favor of reaching deadlines -- and here's the kicker -- with no
-intention of returning to the code to refactor.
+software practice in favor of reaching deadlines -- and here's the kicker --
+with no intention of returning to the code to refactor.
 
 Furthermore, it's become an attack against those who do care about software
 quality. In this form, it's not a joke at all, but a claim from a high horse
@@ -43,20 +43,21 @@ Heather: *“If we do it your way, Sally, we never ship. Real artists ship.”*
 
 ### The philosophy
 Like so many other aspects in this world, software practices are treated as
-black and white. You're either apparently a “real artist”, who ships, or you're
+black and white. You're either apparently a “real artist,” who ships, or you're
 someone who cares about the quality of your product and you never ship. Surely,
-this is absurd. Everything is gray and modern software engineering is neither
-the Kung Fu nor the Aikido nor the Wrestling; it's the mixed martial arts,
-pulling the most practical pieces from as many sources as possible.
+this is absurd. Everything is gray, not black or white, and modern software
+engineering is neither the Kung Fu nor the Aikido nor the Wrestling; it's the
+mixed martial arts, pulling the most practical pieces from as many sources as
+possible.
 
 #### Testing
-Having software tests means one thing, specifically: you care, or are required
-to care, about software quality. Do companies with automated tests actually ship
-code? Let's take a look at the big four.
+Having software tests typically means one thing, specifically: you care, or are
+required to care, about software quality. Do companies with automated tests
+actually ship code? Let's take a look at the big four.
 
 1. [Google](https://testing.googleblog.com/2011/01/how-google-tests-software.html)
 2. [Amazon](http://www.zdnet.com/article/how-amazon-handles-a-new-software-deployment-every-second/)
-3. [Facebook](https://youtu.be/OJ94KqmsxiI?t=1393)
+3. [Facebook (Video)](https://youtu.be/OJ94KqmsxiI?t=1393)
 4. [Microsoft](https://blogs.msdn.microsoft.com/microsoft_press/2009/02/13/new-book-how-we-test-software-at-microsoft/)
 
 Ok, let's try smaller companies.
@@ -78,8 +79,8 @@ What about some of the big open source projects?
 
 My experience is primarily in game development, where software testing is
 apparently far less common. Imperative programming exacerbates this
-problem, making functions harder to test, but games, and especially game
-engines, are just as testable as anything else. Again, some examples.
+problem, since impure functions are harder to test, but games, and especially
+game engines, are just as testable as anything else. Again, some examples.
 
 1. [UnrealEngine](https://docs.unrealengine.com/latest/INT/Programming/Automation/index.html)
 2. [Unity3D](https://unity3d.com/unity/qa/test-suites)
@@ -99,6 +100,8 @@ Too much testing and you may not meet your deadline. Too little of it and you
 may not meet many users, or you may struggle to keep them. Build a company
 around a foundation of untested code, continue to accrue hundreds of thousands
 of lines of it, and then expect stability and performance? That is not sane.
+
+*NOTE:* A common argument: "But interactive applications are impossible to test!" Ok, they require a different setup, but [Xamarin does it](https://www.xamarin.com/test-cloud), [PhantomJS does it](http://phantomjs.org/), [Android does it](https://developer.android.com/training/testing/ui-testing/index.html), [iOS does it](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation), and even [Unity3D does it](http://doctrina-kharkov.blogspot.com/2016/08/cultorios-automated-unity-game-testing-tutorial.html).
 
 [Related Gamasutra article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
