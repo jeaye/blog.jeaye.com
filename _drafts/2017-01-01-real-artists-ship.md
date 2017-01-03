@@ -101,7 +101,7 @@ may not meet many users, or you may struggle to keep them. Build a company
 around a foundation of untested code, continue to accrue hundreds of thousands
 of lines of it, and then expect stability and performance? That is not sane.
 
-*NOTE:* A common argument: "But interactive applications are impossible to test!" Ok, they require a different setup, but [Xamarin does it](https://www.xamarin.com/test-cloud), [PhantomJS does it](http://phantomjs.org/), [Android does it](https://developer.android.com/training/testing/ui-testing/index.html), [iOS does it](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation), and even [Unity3D does it](http://doctrina-kharkov.blogspot.com/2016/08/cultorios-automated-unity-game-testing-tutorial.html).
+*NOTE: A common argument: "But interactive applications are impossible to test!" Ok, they require a different setup, but [Xamarin does it](https://www.xamarin.com/test-cloud), [PhantomJS does it](http://phantomjs.org/), [Android does it](https://developer.android.com/training/testing/ui-testing/index.html), [iOS does it](http://blog.manbolo.com/2012/04/08/ios-automated-tests-with-uiautomation), and even [Unity3D does it](http://doctrina-kharkov.blogspot.com/2016/08/cultorios-automated-unity-game-testing-tutorial.html). No more excuses.*
 
 [Related Gamasutra article](http://www.gamasutra.com/view/feature/130682/automated_tests_and_continuous_.php).
 
@@ -114,9 +114,9 @@ according to them, you may never ship.
 
 Refactoring code should be thought of as code hygiene. Just as most of us shower
 regularly, brush our teeth, and wipe after shitting, we need to clean up our
-code; feature work, in a short sprint, can be very dirty work! The social norm,
-it seems, has us hiding from those who don't shower, but embracing those who
-skip on the refactoring, anointing them as “real artists.”
+code and fight bit rot; feature work, in a short sprint, can be very dirty work!
+The social norm, it seems, has us hiding from those who don't shower, but
+embracing those who skip on the refactoring, anointing them as “real artists.”
 
 <figure><figcaption style="font-style: italic;">
 “At GitHub we try not to brag about the “shortcuts” we’ve taken over the
@@ -128,8 +128,9 @@ rewrites efficiently and reliably.” ~ <a href="http://githubengineering.com/mo
 </figcaption></figure>
 
 #### Learning
-It also seems that “real artists” claim to know all that there is needed to know
-for shipping their products. However, there is always room for growth. We should
+It also seems that “real artists” claim to know all that's needed for shipping
+their products; anything new, no matter how old the teachings may be, is
+superfluous. However, I'd argue that there is always room for growth. We should
 always be striving to improve our craft. We should always be looking to
 modernize our practices. We can greatly benefit from reflecting on our flaws, or
 even having our code reviewed by the team. Yet these ideas are not of the “real
