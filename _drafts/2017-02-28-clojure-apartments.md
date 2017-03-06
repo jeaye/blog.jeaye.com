@@ -14,3 +14,4 @@ Such a bot may look something like this.
 Talk about:
   existing bots (python, didn't work)
   law for infinite set (ignore first third to get price)
+  terms of service
