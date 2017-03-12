@@ -145,8 +145,7 @@ corresponding Clojure namespace should be:
 
 ```clojure
 (ns ninjakitten.milk
-  (:use arcadia.core)
-  (:import [UnityEngine]))
+  (:use arcadia.core))
 ```
 
 #### Helpful Arcadia resources
