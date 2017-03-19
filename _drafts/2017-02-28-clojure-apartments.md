@@ -11,7 +11,14 @@ crawl various apartment listing sites, match all listings against your filters,
 and report to you in whichever format you prefer: email, HipChat, IRC, RSS, etc.
 Such a bot may look something like this.
 
+### Existing bots
+Arguably the most well-known apartment finding bot was created and documented by
+Vik Paruchuri [here](https://www.dataquest.io/blog/apartment-finding-slackbot/).
+For those interested in researching such a both in Python, that'd be a great
+resource. For my research, a bot in Clojure would prove to be more fun to write.
+
+### Padwatch
+
 Talk about:
-  existing bots (python, didn't work)
   law for infinite set (ignore first third to get price)
   terms of service
