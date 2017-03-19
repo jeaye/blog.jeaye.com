@@ -1,6 +1,6 @@
 ---
 title: Finding an apartment with Clojure
-tags: [clojure, apartment, irc, bot, sf]
+tags: [clojure, apartment, irc, bot, sf, padwatch, apartment-finder]
 ---
 
 Finding a reasonably-priced apartment in the Bay Area can be a stressful job.
