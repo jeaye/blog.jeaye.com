@@ -237,6 +237,64 @@ Geocoding](https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?
 service in order to turn street addresses into latitude & longitude pairs. That
 information can then be sent into WalkScore to get accurate results.
 
+### Configuration
+Since Padwatch is written in Clojure, using its idioms, configuration is done in
+a declarative [EDN](https://github.com/edn-format/edn) file. Fortunately, EDN's
+format is just Clojure data, so, since Clojure is
+[homoiconic](https://en.wikipedia.org/wiki/Homoiconicity), it reads just like
+Clojure code.
+
+The structure of the config map sets up some ranges and limits for prices,
+walkscores, bed/bathrooms, etc. There's also a map of sources, to provide
+source-specific configuration. Sources include Craigslist, Zillow, Walkscore,
+and Census Geocoding. Here's an example `config.edn`:
+
+```clojure
+(let [min-price 1500 max-price 3000
+      min-sqft 600 max-sqft 1000
+      bedrooms 1 bathrooms 1
+      min-walkscore 60]
+  {:min-price min-price :max-price max-price
+   :min-sqft min-sqft :max-sqft max-sqft
+   :bedrooms bedrooms :bathrooms bathrooms
+   :min-walkscore min-walkscore
+   :source {:craigslist (let [base-url "https://sfbay.craigslist.org"
+                              max-rows 20]
+                          {:source "craigslist"
+                           :enabled? true
+                           :base-url base-url
+                           :search-url (str base-url "/search/apa")
+                           :max-rows max-rows
+                           :cycle-length-ms (* 1000 60 max-rows) ; Amortize minutes per row
+                           :params {:min_price min-price :max_price max-price
+                                    :minSqft min-sqft :maxSqft max-sqft
+                                    :bedrooms bedrooms :bathrooms bathrooms
+                                    :no_smoking 1
+                                    :availabilityMode 0 ; All dates
+                                    :hasPic 1
+                                    :sort "date"
+                                    :search_distance 3
+                                    :postal 94010
+                                    :bundleDuplicates 0}})
+            :zillow (let [zones ["belmont-ca" "half-moon-bay-ca"
+                                 "highlands-baywood-park-ca" "hillsborough-ca"
+                                 "pacifica-ca" "san-bruno-ca"
+                                 "south-san-francisco-ca" "brisbane-ca"
+                                 "daly-city-ca" "colma-ca" "millbrae-ca"
+                                 "oakland-ca" "san-francisco-ca" "piedmont-ca"
+                                 "berkeley-ca" "albany-ca" "richmond-ca"
+                                 "emeryville-ca"
+                                 "burlingame-ca" "san-mateo-ca"]]
+                      {:source "zillow"
+                       :enabled? false
+                       :base-url "http://www.zillow.com"
+                       :cycle-length-ms (* 1000 60 10 (count zones)) ; Amortize minutes per zone
+                       :zones zones})
+            :walkscore {:key "XXX-FILL-THIS-IN-XXX"
+                        :format-url "http://api.walkscore.com/score?format=json&lat=%s&lon=%s&wsapikey=%s"}
+            :census-geo {:format-url "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=%s&benchmark=4&vintage=4"}}})
+```
+
 ### A note on terms of service
 Craigslist, Zillow, and likely most other apartment listing websites have
 listed, in their terms of service (to which you agree by using their service),
