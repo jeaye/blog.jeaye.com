@@ -49,30 +49,32 @@ From there, it's possible to make queries on that data. For example:
 Now, the HTML of a given row contains something like this:
 
 ```html
-<span class="icon icon-star" role="button" title="save this post in your favorites list">
-  <span class="screen-reader-text">favorite this post</span>
-</span>
-
-<time class="result-date" datetime="2016-03-18 12:26" title="Mon 07 Mar 12:22:08 PM">Mar 07</time>
-<a href="/apa/3299094122.html" data-id="3299094122" class="result-title hdrlnk">1672 Hidden alley place</a>
-
-<span class="result-meta">
-  <span class="result-price">$2200</span>
-  <span class="housing"> 5br - </span>
-  <span class="result-hood"> (sacramento)</span>
-  <span class="result-tags">
-    pic
-    <span class="maptag" data-pid="3299094122">map</span>
+<p class="result-info">
+  <span class="icon icon-star" role="button" title="save this post in your favorites list">
+    <span class="screen-reader-text">favorite this post</span>
   </span>
-  <span class="banish icon icon-trash" role="button">
-    <span class="screen-reader-text">hide this posting</span>
+
+  <time class="result-date" datetime="2016-03-18 12:26" title="Mon 07 Mar 12:22:08 PM">Mar 07</time>
+  <a href="/apa/3299094122.html" data-id="3299094122" class="result-title hdrlnk">1672 Hidden alley place</a>
+
+  <span class="result-meta">
+    <span class="result-price">$2200</span>
+    <span class="housing"> 5br - </span>
+    <span class="result-hood"> (sacramento)</span>
+    <span class="result-tags">
+      pic
+      <span class="maptag" data-pid="3299094122">map</span>
+    </span>
+    <span class="banish icon icon-trash" role="button">
+      <span class="screen-reader-text">hide this posting</span>
+    </span>
+    <span class="unbanish icon icon-trash red" role="button" aria-hidden="true"></span>
+    <a href="#" class="restore-link">
+      <span class="restore-narrow-text">restore</span>
+      <span class="restore-wide-text">restore this posting</span>
+    </a>
   </span>
-  <span class="unbanish icon icon-trash red" role="button" aria-hidden="true"></span>
-  <a href="#" class="restore-link">
-    <span class="restore-narrow-text">restore</span>
-    <span class="restore-wide-text">restore this posting</span>
-  </a>
-</span>
+</p>
 ```
 
 To pull out that data into our row data, it's possible to do the following:
@@ -159,7 +161,7 @@ output more terse, some URL shortening can specific formatting could be applied.
 
 ; Easily pull a specific list of keys from a map
 (defn extract [m ks]
-  (reduce #(assoc %1 %2 (m %2)) {} keys))
+  (reduce #(assoc %1 %2 (m %2)) {} ks))
 
 (defn message-row! [row-info]
   (let [useful (merge (util/extract row-info [:where :style :price :sqft])
@@ -170,6 +172,14 @@ output more terse, some URL shortening can specific formatting could be applied.
     (irc/message @connection channel (pr-str useful))))
 ```
 
-Talk about:
-  law for infinite set (ignore first third to get price)
-  terms of service
+### A note on terms of service
+Craigslist, Zillow, and likely most other apartment listing websites have
+listed, in their terms of service (to which you agree by using their service),
+that scraping their data with bots is not permitted. You need to know this.
+
+### Summary
+To me, this was a perfect use case for Clojure: data in, data out. Lots of pure
+transformations, querying of deep data structures, and the occasional side
+effect (writing to the db to minimize duplicates, reporting listings to IRC). If
+you're interested in learning more about Clojure, I recommend, first and
+foremost, you read through [Brave Clojure](http://www.braveclojure.com/).
