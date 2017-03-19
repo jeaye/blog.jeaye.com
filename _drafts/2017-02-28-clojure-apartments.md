@@ -103,6 +103,73 @@ To pull out that data into our row data, it's possible to do the following:
 (row-price (first rows) {}) ; possible output: {:price 2300}
 ```
 
+As is hopefully quite clear, with a number of
+[pure](https://en.wikipedia.org/wiki/Pure_function), concise functions, it's
+possible to extract a great deal of information about a given apartment listing.
+By combining those functions together, in a reduction, it's very straightforward
+to build up a model of a given listing.
+
+```clojure
+(reduce #(when %1
+           (%2 rows %1))
+        {} ; Starting with an empty map
+        [row-link row-post-date row-price row-where]) ; All of the extractors
+```
+
+#### Reporting the data
+For easy IRC access in Clojure, it's likely you'll turn to the late Raynes'
+[irclj](https://github.com/Raynes/irclj). Surely, I did; the API is so simple!
+
+```clojure
+(def nick "padwatch")
+(def channel "#padwatch")
+
+(def connection (atom nil))
+
+; By default, logs go to stdout; use this to quiet them
+(defn eat-log [& args]
+  (comment pprint args))
+
+(defn disconnect! []
+  (when @connection
+    (swap! connection irc/kill)))
+
+(defn connect! []
+  (disconnect!)
+  (reset! connection (irc/connect "irc.freenode.net"
+                                  6667 nick
+                                  :callbacks {:raw-log eat-log}))
+  (irc/join @connection channel))
+
+(defn message! [msg]
+  (irc/message @connection channel msg))
+```
+
+From there, reporting listings as they come in should be no problem. To make the
+output more terse, some URL shortening can specific formatting could be applied.
+
+```clojure
+; Take a url and return the shortened one, if possible
+(defn shorten-url [url]
+  (when url
+    (try
+      (slurp (str "http://tinyurl.com/api-create.php?url=" url))
+      (catch Throwable _ ; tinyurl can time out; just skip the shortening
+        url))))
+
+; Easily pull a specific list of keys from a map
+(defn extract [m ks]
+  (reduce #(assoc %1 %2 (m %2)) {} keys))
+
+(defn message-row! [row-info]
+  (let [useful (merge (util/extract row-info [:where :style :price :sqft])
+                      {:url (-> row-info :url shorten-url)
+                       :walkscore (-> (:walkscore row-info)
+                                      (update :url shorten-url)
+                                      (dissoc :description))})]
+    (irc/message @connection channel (pr-str useful))))
+```
+
 Talk about:
   law for infinite set (ignore first third to get price)
   terms of service
