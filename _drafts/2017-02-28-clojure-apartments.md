@@ -14,16 +14,19 @@ Such a bot may look something like this.
 ### Existing bots
 Arguably the most well-known apartment finding bot was created and documented by
 Vik Paruchuri [here](https://www.dataquest.io/blog/apartment-finding-slackbot/).
-For those interested in researching such a both in Python, that'd be a great
-resource. For my research, a bot in Clojure would prove to be more fun to write.
+It takes a very similar approach to what I've done, but uses imperative Python
+and Slack. For those interested in researching such a both in Python, that'd be
+a great resource. For my research, a bot in Clojure would prove to be more fun
+to write.
 
 ### Padwatch
 [Padwatch](https://github.com/jeaye/padwatch) is an apartment finding bot
-written in Clojure, which is designed to work with Craigslist and Zillow. Both
-sources provide HTML content which follows specific patterns and is "scrapeable"
-in an automated fashion. The key behind the logic for doing web scraping in
-Clojure is [Enlive](https://github.com/cgrand/enlive); it's superb for
-performing queries on HTML data.
+written in Clojure, which is designed to work with
+[Craigslist](https://craigslist.org/) and [Zillow](https://www.zillow.com/).
+Both sources provide HTML content which follows specific patterns and is
+"scrapable" in an automated fashion. The key behind the logic for doing web
+scraping in Clojure is [Enlive](https://github.com/cgrand/enlive); it's superb
+for performing queries on HTML data.
 
 #### Example usage of Enlive
 Let's say the goal is to pull out some Craigslist apartment information. It
@@ -36,7 +39,10 @@ Clojure data structure:
                    enlive/html-resource))
 ```
 
-From there, it's possible to make queries on that data. For example:
+From there, it's possible to make queries on that data. By inspecting the HTML
+in a browser, it's clear that each apartment listing is in a `<p>` tag and has a
+class of `result-info`. It's possible then, with Enlive, to pull out all
+entities which match that pattern:
 
 ```clojure
 ; Pull out just the rows of results from all of the HTML
@@ -46,17 +52,22 @@ From there, it's possible to make queries on that data. For example:
 (def rows (select-rows html-data))
 ```
 
-Now, the HTML of a given row contains something like this:
+After that selection, `rows` is just a Clojure [vector](https://clojure.org/reference/data_structures#Vectors), where each element represents the contents of the matched `<p>` entity. Now, the HTML of a given row contains something like this:
 
 ```html
+<!-- Note, here's the :p.result-info referenced from above. -->
 <p class="result-info">
   <span class="icon icon-star" role="button" title="save this post in your favorites list">
     <span class="screen-reader-text">favorite this post</span>
   </span>
 
+  <!-- There's information here about the post date. -->
   <time class="result-date" datetime="2016-03-18 12:26" title="Mon 07 Mar 12:22:08 PM">Mar 07</time>
+
+  <!-- This is a link to the page specifically for this listing, as well as its street address. -->
   <a href="/apa/3299094122.html" data-id="3299094122" class="result-title hdrlnk">1672 Hidden alley place</a>
 
+  <!-- Herein lies the price, bedroom/bath count, and neighborhood. -->
   <span class="result-meta">
     <span class="result-price">$2200</span>
     <span class="housing"> 5br - </span>
@@ -80,8 +91,8 @@ Now, the HTML of a given row contains something like this:
 To pull out that data into our row data, it's possible to do the following:
 
 ```clojure
-; helper
-(def select-first (comp first select))
+; Helper to pull out the first match of an Enlive select
+(def select-first (comp first enlive/select))
 
 ; Take in a single row and a map onto which to assoc the extracted date 
 (defn row-post-date [row-data row]
@@ -108,19 +119,58 @@ To pull out that data into our row data, it's possible to do the following:
 As is hopefully quite clear, with a number of
 [pure](https://en.wikipedia.org/wiki/Pure_function), concise functions, it's
 possible to extract a great deal of information about a given apartment listing.
-By combining those functions together, in a reduction, it's very straightforward
-to build up a model of a given listing.
+The benefit of having these functions be individual and pure is that they're
+both composable and easy to debug/reason about. That is, a function like
+`row-post-date` has the simple task of selecting some data and transforming some
+other data before returning it. The reader of the function doesn't need to worry
+about global state, which may be mutated, affecting the result of the function.
+The reader also needn't worry about thread safety, since these pure functions
+are using Clojure's persistent, immutable data structures. This is the benefit
+of [functional programming](http://www.braveclojure.com/functional-programming/)
+with Clojure.
+
+By combining those functions together, in a reduction, it's straightforward to
+build up a model of a given listing.
 
 ```clojure
 (reduce #(when %1
            (%2 rows %1))
         {} ; Starting with an empty map
         [row-link row-post-date row-price row-where]) ; All of the extractors
+
+; Example simulation of data:
+; 1. Reduce calls the first extractor with the empty map
+(row-link {})
+  => {:link "http://craigslist.com/foo/blah"} ; output
+
+; 2. The result of that is then collected and the next extractor is called
+(row-post-date {:link "http://craigslist.com/foo/blah"})
+  => {:link "http://craigslist.com/foo/blah"
+      :post-date "Feb 2 of the 5th ice age"}
+
+; 3. Rinse and repeat
+(row-price {:link "http://craigslist.com/foo/blah"
+            :post-date "Feb 2 of the 5th ice age"})
+  => {:link "http://craigslist.com/foo/blah"
+      :post-date "Feb 2 of the 5th ice age"
+      :price 2300}
+
+(row-where {:link "http://craigslist.com/foo/blah"
+            :post-date "Feb 2 of the 5th ice age"
+            :price 2300})
+  => {:link "http://craigslist.com/foo/blah"
+      :post-date "Feb 2 of the 5th ice age"
+      :price 2300
+      :where "sacramento"}
+
+; The last result is the return value of the reduction. It's the map which
+; describes the whole row, based on the extractors. It's the apartment data!
 ```
 
 #### Reporting the data
 For easy IRC access in Clojure, it's likely you'll turn to the late Raynes'
-[irclj](https://github.com/Raynes/irclj). Surely, I did; the API is so simple!
+[irclj](https://github.com/Raynes/irclj). The API is minimal and can be wrapped
+with just a few lines.
 
 ```clojure
 (def nick "padwatch")
