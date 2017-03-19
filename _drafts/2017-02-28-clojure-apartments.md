@@ -222,6 +222,21 @@ output more terse, some URL shortening can specific formatting could be applied.
     (irc/message @connection channel (pr-str useful))))
 ```
 
+### Accessing other services for more detailed information
+Padwatch also takes advantage of a few other free services, to improve the
+reported data. Among them, [WalkScore](https://www.walkscore.com/) is notable
+for having a simple API. After signing up and getting a free API key, one can
+make a limited number of requests per day. Since most Craigslist apartment
+listings contain the [geo tag](https://en.wikipedia.org/wiki/Geotagging) of the
+apartment, that information can be sent to Walkscore in order to get accurate
+information regarding the proximity of shops, transit, and landmarks.
+
+Some listings, however, don't contain any sort of positional information, aside
+from the street address. To work around that, Padwatch uses the free [Census
+Geocoding](https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9366+Perry+St+Westminster+CO&benchmark=4&vintage=4)
+service in order to turn street addresses into latitude & longitude pairs. That
+information can then be sent into WalkScore to get accurate results.
+
 ### A note on terms of service
 Craigslist, Zillow, and likely most other apartment listing websites have
 listed, in their terms of service (to which you agree by using their service),
