@@ -10,7 +10,7 @@ a great deal of time on IRC, popular channels can start to accrue rather large
 logs. By default, those logs are quite verbose and are never rotated. In my
 case, weechat's logs were taking up 2GB worth of disk space on my VPS.
 
-#### Investigating the issue
+### Investigating the issue
 My first question, when my monitoring showed that disk usage had passed the 90%
 mark, was "what's growing and can it be trimmed?" After using
 [du](https://linux.die.net/man/1/du) to find which user directories were the
@@ -47,7 +47,7 @@ than anything else. The freenode ##news channel contains various bots for
 sharing links to news as it comes out. In fact, it's not actually something I
 care to log, since it's just links to news articles.
 
-#### Asking weechat to ignore certain buffers
+### Asking weechat to ignore certain buffers
 Given that the ##news channel logs aren't going to be useful to me, I then
 looked to disable logging on that channel entirely.
 
@@ -59,7 +59,7 @@ looked to disable logging on that channel entirely.
 From there, I was safe to delete the ##news weechat log. That brought the disk
 usage down to 1.4G already.
 
-#### Choosing what you log
+### Choosing what you log
 After inspecting the documentation for weechat's logger plugin, `/help logger`,
 I saw that the default logging level for each channel was `9`. Here's a breakdown
 of the levels, from the documentation:
@@ -80,7 +80,7 @@ perfectly reasonable.
 /set logger.level.irc 3
 ```
 
-#### Cleaning up existing logs
+### Cleaning up existing logs
 Once weechat was logging more minimally, and not logging specific channels,
 there was still the issue of 1.4GB worth of logs, all of which had been formed
 using weechat's level `9` setting. So I investigated how much that difference
@@ -130,7 +130,7 @@ total 721M
 Removing the join/part/quit events cut the total log size in half, from 1.4GB to
 721MB. As far as I'm concerned, the useful content is still there.
 
-#### Compressing, rotating, and next steps
+### Compressing, rotating, and next steps
 This setup could be further improved by
 [rotating](https://en.wikipedia.org/wiki/Log_rotation) large logs and
 compressing non-active logs. Out of the box, this would impede on the ability to

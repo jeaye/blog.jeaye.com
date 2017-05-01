@@ -14,7 +14,7 @@ used as a BSON backend, while all operations on the immutable BSON require no
 copying or ownership. Unfortunately, there exists an under-documented design
 flaw in BSON which renders it incompatible with common, standard JSON.
 
-#### Use case
+### Use case
 The issue arises as soon as there are top-level arrays. For example, this is
 valid JSON:
 
@@ -33,7 +33,7 @@ Each of the threads references a to-be-announced BSON 2.0; since it's been
 nearly seven years, this probably isn't happening. Either way, it's crucial to
 note that your **data may not be representable in BSON without changes.**
 
-#### Mitigation
+### Mitigation
 If the performance gains still compel you to make the switch to BSON, you might
 find yourself having to make top-level arrays into nested elements of a
 singly-keyed map, perhaps specified with a unique identifier.
