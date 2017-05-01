@@ -25,6 +25,8 @@ blog_url: "https://blog.jeaye.com"
 url: "https://blog.jeaye.com"
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
 
+nav-blog-class: current
+
 markdown: kramdown
 kramdown:
   input: GFM
