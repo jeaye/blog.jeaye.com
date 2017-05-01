@@ -11,14 +11,14 @@ Mesos](https://github.com/pyr/mesomatic) and others. An apparently less-explored
 option is the use of Clojure on Google App Engine, which runs sandboxed
 applications in Google-managed data centers while providing automatic scaling.
 
-#### State of third-party libraries
+### State of third-party libraries
 When looking to start with Clojure on App Engine, you might explore the current
 open source libraries available. Unfortunately, there are a few, namely
 [appengine-magic](https://github.com/gcv/appengine-magic), yet all of them have
 been stale for at least two years. Most of them are built on Clojure 1.4 or
 older.
 
-#### State of official documentation
+### State of official documentation
 Your next step may be to see what official documentation there is, since you
 can't readily use a third-party library to do your dirty work. App Engine's
 [documentation](https://cloud.google.com/appengine/docs) can be very helpful, no
@@ -28,7 +28,7 @@ the typical serving of XML. The docs will come in handy, once you can get some
 basic App Engine code working, but they don't get you over that hurdle. Not in
 Clojure.
 
-#### State of third-party documentation
+### State of third-party documentation
 Before giving up, you do some searching for what others have done. *"Surely
 someone's made an application for GAE sometime after 2014,"* you think.
 Fortunately, you'll likely happen across a few good resources. Unfortunately,
@@ -47,7 +47,7 @@ and provide some clarifications, tools, and useful tips. I recommend you give
 both a read, without following along in the REPL/editor, so you have an idea of
 what's required.
 
-#### Installing a local App Engine
+### Installing a local App Engine
 When the very useful lambda-startup article gets to installing the App Engine
 jars into your local repo, the instructions become unclear. To clarify,
 `GAE_SDK` is where you have downloaded and extracted the SDK. The commands
@@ -94,7 +94,7 @@ function install_gae
 install_gae
 ```
 
-#### Profiling with Appstats
+### Profiling with Appstats
 Google provides an [Appstats](https://cloud.google.com/appengine/docs/java/tools/appstats) library for profiling individual RPCs. It can tell you how long each Datastore read or write takes, how much time you're spending in various routes, as well as how much each operation costs you in USD. There wasn't any documentation for getting this working with Clojure, so this info is from experimentation. Before following, I recommend reading the [Appstats documentation](https://cloud.google.com/appengine/docs/java/tools/appstats) for how to set it up in Java; once you have an idea of what's needed, the following will make more sense.
 
 First, add the proper dependency:
@@ -103,7 +103,7 @@ First, add the proper dependency:
 [com.google.appengine/appengine-api-labs "1.9.42"] ; Installed with above script
 ```
 
-##### Run a servlet
+#### Run a servlet
 In order to use Appstats, you'll need to configure your application to be a
 servlet. First, change your `my-project.core` to extend from `HttpServlet`:
 
@@ -129,7 +129,7 @@ Then define a service around your ring application.
 (defservice wrapped-app) ; Meat and potatoes
 ```
 
-##### Package a web.xml
+#### Package a web.xml
 Finally, there's another file that's needed: `web.xml` (adjacent to
 `appengine-web.xml`), as described by the documentation. In it, you can specify
 how Appstats should be accessible, among other things. Here's a reasonable
@@ -183,11 +183,11 @@ is replaced by the deploy script):
 </web-app>
 ```
 
-##### Accessing
+#### Accessing
 After deploying your new servlet with Appstats enabled, you will be able to
 access the web interface at `https://project-id.appspot.com/appstats`.
 
-#### Intricate errors
+### Intricate errors
 You may find some odd errors, when setting up your project, which yield very
 little information, when searched.
 
@@ -227,7 +227,7 @@ little information, when searched.
     :profiles {:dev {:source-paths ["dev/"]}}
 ```
 
-#### Liberator-specific issues
+### Liberator-specific issues
 For those not familiar with Clojure's
 [Liberator](https://clojure-liberator.github.io/liberator/) library, I *highly
 recommend it*, in conjunction with Compojure. I came across Liberator by reading
@@ -273,7 +273,7 @@ to Liberator.
       :handle-created (partial pr-str))
 ```
 
-#### One-shot deploy script
+### One-shot deploy script
 It's been said, over and over, that a deployment should only take a single
 command. For this simple App Engine setup, a bash script will do the trick.
 The only change this requires, aside from storing the script adjacent to the
@@ -330,7 +330,7 @@ function deploy
 deploy
 ```
 
-#### Closing thoughts
+### Closing thoughts
 The biggest issue, once everything's working, is just getting through all that
 Java interop. The appeal of something like
 [appengine-magic](https://github.com/gcv/appengine-magic) is that so much of the

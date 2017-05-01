@@ -5,7 +5,7 @@ tags: [linux, slackware, xen]
 
 My Slackware setup is unique, since, unlike most Slackers, I've compiled my entire OS from source. I require the latest GCC 5.1, for work with C++14, the latest Vim, for use with [color_coded](https://github.com/jeaye/color_coded), and the ABI incompatibilities that follow have led me down a winding path.
 
-#### How
+### How
 When I wanted to do some virtualization with VGA pass-through, I found myself compiling Xen and running into some nasty issues. To do the heavy lifting, I used [sbopkg](http://sbopkg.org/). In order to patch the Slackbuild it uses, I copied `xen.Slackbuild` to `xen.Slackbuild.sbopkg` in `/var/lib/sbopkg/SBo/14.1/system/xen`. Once such a file exists, sbopkg will prompt me to use it while compiling.
 
 The first issue was as follows:
@@ -154,7 +154,7 @@ There are two files which need to be patched, as shown below:
                                 chan->channel,
 ```
 
-#### Bringing it together
+### Bringing it together
 Given these patches, the only task remaining was to tie them together into a working Slackbuild script. Since some sources are only extracted once one tries to build them, the tools need to be built in two steps: try first, patch, then try again. Such is life (and my impatience).
 
 I found that there were some issues with the existing Slackbuild, as it was using incorrect paths during install (see the diff below). Also, I've had no issues adding `-j8` to each of these `make` commands, which has made my life much easier.
