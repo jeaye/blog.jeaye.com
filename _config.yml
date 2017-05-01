@@ -20,7 +20,7 @@ gems:
 
 title: "Jeaye's Blog"
 permalink: pretty
-home_url: "/home/jeaye/projects/jeaye.com"
+home_url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"
 url: "https://blog.jeaye.com"
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
