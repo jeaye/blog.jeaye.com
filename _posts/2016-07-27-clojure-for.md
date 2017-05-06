@@ -1,6 +1,6 @@
 ---
 title: Clojure's forgotten for loop
-tags: [clojure, functional, programming, tutorial, loop, review]
+tags: [clojure, functional, programming, tutorial]
 ---
 
 Higher order functions in Clojure get a great deal of attention, and for good
