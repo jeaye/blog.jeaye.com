@@ -40,7 +40,7 @@ you're familiar with administrating an Apache server.
 You'll need to load the `proxy` and `proxy_http` modules before anything. Apply
 the following, updating the paths as needed:
 
-```text
+```apache
 LoadModule proxy_module       modules/mod_proxy.so
 LoadModule proxy_http_module  modules/mod_proxy_http.so
 ```
@@ -48,7 +48,7 @@ LoadModule proxy_http_module  modules/mod_proxy_http.so
 In the virtual host for `honest-kittens.org`, we can enable the proxy engine
 using:
 
-```text
+```apache
 SSLProxyEngine On
 ProxyPreserveHost Off
 ```
@@ -58,7 +58,7 @@ the `honest-kittens.org` host. If it did, the SSL discussion would fail. To have
 Apache relay `honest-kittens.org/` to `username.github.io/`, where `username` is
 your username, we setup a proxy pass:
 
-```text
+```apache
 ProxyPass / https://username.github.io/
 ```
 
@@ -71,7 +71,7 @@ causing them to end up at `username.github.io`. That's no good. We'll setup a
 reverse proxy to ensure such a redirect from Github is changed before it hits
 the client:
 
-```text
+```apache
 ProxyPassReverse / https://username.github.io/
 ProxyPassReverse / http://username.github.io/
 ```
@@ -81,7 +81,7 @@ above `username.github.io` will be translated into the root level of
 `honest-kittens.org`. The only additional configuration necessary is for
 bringing in the SSL certs and ensuring no weak ciphers are used:
 
-```text
+```apache
 SSLCertificateKeyFile /path/to/honest-kittens.org/key.pem
 SSLCertificateChainFile /path/to/honest-kittens.org/chain.pem
 SSLCertificateFile /path/to/honest-kittens.org/cert.pem
