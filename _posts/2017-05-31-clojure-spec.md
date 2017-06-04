@@ -37,11 +37,11 @@ Here's why.
 A hugely overlooked aspect of spec is its
 [instrumentation](https://clojure.org/guides/spec#_instrumentation_and_testing).
 In short, if you spec your functions and your data, you can ask Clojure to
-*automatically check every single function call* to make sure the arguments are
+automatically check every single function call to make sure the arguments are
 correct. Not just during testing, but during development or even production.
 Furthermore, if you use [Orchestra](https://github.com/jeaye/orchestra), then
-Clojure can *automatically check every function's return value against its
-spec*, among other things.
+Clojure can automatically check every function's return value against its spec,
+among other things.
 
 *This is superb.*
 
