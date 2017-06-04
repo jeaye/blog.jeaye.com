@@ -88,11 +88,13 @@ Orchestra](https://github.com/jeaye/orchestra#usage).
 user=> (my-inc "ok")
 clojure.lang.ExceptionInfo: Call to #'user/my-inc did not conform to spec:
                             In: [0] val: "ok" fails at: [:args :x] predicate: number?
-                            :clojure.spec.alpha/spec  #object[clojure.spec.alpha$regex_spec_impl$reify__1200 0x5422f7a "clojure.spec.alpha$regex_spec_impl$reify__1200@5422f7a"]
-                            :clojure.spec.alpha/value  ("ok")
-                            :clojure.spec.alpha/args  ("ok")
-                            :clojure.spec.alpha/failure  :instrument
-                            :orchestra.spec.test/caller  {:file "form-init6204324603710300718.clj", :line 1, :var-scope user/eval42203}
+                            :clojure.spec.alpha/spec #object[...]
+                            :clojure.spec.alpha/value ("ok")
+                            :clojure.spec.alpha/args ("ok")
+                            :clojure.spec.alpha/failure :instrument
+                            :orchestra.spec.test/caller {:file "form-...",
+                                                         :line 1,
+                                                         :var-scope user/eval42203}
 ```
 
 That's gorgeous. Before we get into the function, we're stopped with some very
@@ -139,17 +141,61 @@ output map are exactly the keys meant to be extracted. Note, this expects that
 all keys were present, but that's the sort of control which you can embed and
 automatically run on each function call.
 
+If we intentionally add a bug, where we use `if-let` instead of `if-some` or
+`some?`, this function won't work well with `false`.
+
+```clojure
+(defn extract
+  "Given a map and some keys, return a map with only those keys"
+  [m ks]
+  (reduce (fn [acc k]
+            (if-let [v (get m k)]
+              (assoc acc k v)
+              acc))
+          {}
+          ks))
+```
+
+With instrumentation enabled, here's what we might see. Since it's the `:fn`
+spec which fails, the error will give us all of the argument values, as well as
+the return value. It gives use the predicate which failed and dropping them all
+in the REPL would allow us to figure out exactly why.
+
+```clojure
+user=> (extract {:foo 0 :bar false :spam "meow"} [:bar])
+
+clojure.lang.ExceptionInfo: Call to #'user/extract did not conform to spec:
+                            val: {:ret {},
+                                  :args {:m {:foo 0, :bar false, :spam "meow"},
+                                         :ks [:bar]}}
+                            fails at: [:fn]
+                            predicate: (fn [ctx]
+                                         (= (into #{} (-> ctx :args :ks))
+                                            (into #{} (-> ctx :ret keys))))
+                            :clojure.spec.alpha/spec  #object[...]
+                            :clojure.spec.alpha/value {:ret {},
+                                                       :args {:m {:foo 0, :bar false, :spam "meow"},
+                                                              :ks [:bar]}}
+                            :clojure.spec.alpha/fn {:ret {},
+                                                    :args {:m {:foo 0, :bar false, :spam "meow"},
+                                                           :ks [:bar]}}
+                            :clojure.spec.alpha/failure :instrument
+                            :orchestra.spec.test/caller {:file "form-...",
+                                                         :line 1,
+                                                         :var-scope user/eval53563}
+```
+
 ### A real-world example
 Just recently, I opened a [pull request to
 Reagent](https://github.com/reagent-project/reagent/pull/301), which is an
-excellent project, in hopes of improving its input validation. Rather than using
-spec, it's performing manual asserts on input data and then providing adhoc
-error messages on failed validation. My PR keeps the asserts, but refactors them
-to common helpers and improves the messages (introducing new deps isn't
-typically the right first step in improving a library as an outsider). Still, we
-can do so much better than that. These can be checked for us and we can describe
-the shape of the data as it should be when it flows through our Clojure
-machines.
+excellent project, in hopes of improving its input validation and error
+messages. Rather than using spec, it's performing manual asserts on input data
+and then providing adhoc error messages on failed validation. My PR keeps the
+asserts, but refactors them to common helpers and improves the messages
+(introducing new deps isn't typically the right first step in improving a
+library as an outsider). Still, we can do so much better than that. These can be
+checked for us and we can describe the shape of the data as it should be when it
+flows through our Clojure machines.
 
 ### Performance implications
 Automatically instrumenting every single function call, checking all the
