@@ -87,7 +87,10 @@ Orchestra](https://github.com/jeaye/orchestra#usage).
 ```clojure
 user=> (my-inc "ok")
 clojure.lang.ExceptionInfo: Call to #'user/my-inc did not conform to spec:
-                            In: [0] val: "ok" fails at: [:args :x] predicate: number?
+                            In: [0]
+                            val: "ok"
+                            fails at: [:args :x]
+                            predicate: number?
                             :clojure.spec.alpha/spec #object[...]
                             :clojure.spec.alpha/value ("ok")
                             :clojure.spec.alpha/args ("ok")
