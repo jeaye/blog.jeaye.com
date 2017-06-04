@@ -106,10 +106,10 @@ After setting the site's url in Jekyll's configuration, we should use it for all
 file references within our site. That is, our `main.css` might come in as:
 
 ```html
-<link rel="stylesheet" type="text/css" href="{% raw %}{{ site.blog_url }}{% endraw %}/css/main.css" />
+<link rel="stylesheet" type="text/css" href="{% raw %}{{ site.url }}{% endraw %}/css/main.css" />
 ```
 
-The `{% raw %}{{ site.blog_url }}{% endraw %}` is a
+The `{% raw %}{{ site.url }}{% endraw %}` is a
 [Liquid](https://github.com/Shopify/liquid/wiki) expression which will be
 replaced by the value in your configuration.
 
