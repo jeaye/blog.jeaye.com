@@ -102,6 +102,34 @@ The most important aspect has yet to be mentioned: if a Clojure library provides
 these specs for its functions and data, any consumers using Orchestra and spec
 will immediately be able to benefit from automatic instrumentation.
 
+#### More complex map extraction
+```clojure
+; This behaves similarly to clojure.core/select-keys
+(defn extract
+  "Given a map and some keys, return a map with only those keys"
+  [m ks]
+  (reduce (fn [acc k]
+            (let [v (get m k)]
+              (if (some? v)
+                (assoc acc k v)
+                acc)))
+          {}
+          ks))
+(s/fdef extract
+        :args (s/cat :m map?
+                     :ks (s/coll-of any?))
+        :fn (fn [ctx]
+              (= (into #{} (-> ctx :args :ks))
+                 (into #{} (-> ctx :ret keys))))
+        :ret map?)
+```
+
+In this example, we can use Orchestra to take advantage of spec's `:fn` spec.
+These are executed at the end of a function call, and they're given both the
+arguments and the return value. In this case, we can verify that the keys of the
+output map are exactly the keys meant to be extracted. Note, this expects that
+all keys were present, but that's the sort of control which you can embed and
+automatically run on each function call.
 
 
 TODO:
