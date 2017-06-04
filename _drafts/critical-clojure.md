@@ -11,3 +11,7 @@ poor vim tooling; fireplace is a shit repl
 startup time is awful
 
 requires a project just to run
+
+no static type system
+
+poor docstrings for stdlib
