@@ -31,7 +31,7 @@ something else. What if that's not the case?
 
 *Please. Still use clojure.spec.*
 
-Here's a motivating example.
+Here's why.
 
 ### Instrumentation
 A hugely overlooked aspect of spec is its
@@ -41,9 +41,9 @@ In short, if you spec your functions and your data, you can ask Clojure to
 correct. Not just during testing, but during development or even production.
 Furthermore, if you use [Orchestra](https://github.com/jeaye/orchestra), then
 Clojure can *automatically check every function's return value against its
-spec*, among other validators.
+spec*, among other things.
 
-*This is huge.*
+*This is superb.*
 
 Coming from C++, or Java, or C#, or so many other languages: have you been able
 to easily instrument every single function to validate it's working properly?
@@ -58,7 +58,9 @@ Let's look at some code.
   (inc x))
 ```
 
-What if we were to call this with something other than a number?
+This is a simple function, so it's easy to tell what `x` needs to be. In more
+complex functions, that's not always the case. Now, what if we were to call this
+with something other than a number?
 
 ```clojure
 (my-inc nil) ; => java.lang.NullPointerException
@@ -96,11 +98,17 @@ clojure.lang.ExceptionInfo: Call to #'user/my-inc did not conform to spec:
 That's gorgeous. Before we get into the function, we're stopped with some very
 detailed information that `[:args :x]` (the argument called `x`) was supposed to
 match `number?`, but it has the value of `"ok"`. We also get to see all the
-other args to the function, line/file info, etc.
+other args to the function, line/file info, etc. Compared to typical
+statically-typed languages, and the typical Clojure exceptions, which say
+"expected number, got string," we're now dealing with values, not just types. In
+this way, spec behaves more like a [dependent
+type system](https://en.wikipedia.org/wiki/Dependent_type).
 
 The most important aspect has yet to be mentioned: if a Clojure library provides
 these specs for its functions and data, any consumers using Orchestra and spec
-will immediately be able to benefit from automatic instrumentation.
+will immediately be able to benefit from automatic instrumentation. Each spec is
+also a form of documentation which must be up-to-date with the code (or
+instrumentation would fail!).
 
 #### More complex map extraction
 ```clojure
@@ -136,9 +144,12 @@ Just recently, I opened a [pull request to
 Reagent](https://github.com/reagent-project/reagent/pull/301), which is an
 excellent project, in hopes of improving its input validation. Rather than using
 spec, it's performing manual asserts on input data and then providing adhoc
-errors messages on failed validation. We can do so much better than that. These
-can be checked for us and we can describe the shape of the data as it should be
-when it flows through our Clojure machines.
+error messages on failed validation. My PR keeps the asserts, but refactors them
+to common helpers and improves the messages (introducing new deps isn't
+typically the right first step in improving a library as an outsider). Still, we
+can do so much better than that. These can be checked for us and we can describe
+the shape of the data as it should be when it flows through our Clojure
+machines.
 
 ### Performance implications
 Automatically instrumenting every single function call, checking all the
