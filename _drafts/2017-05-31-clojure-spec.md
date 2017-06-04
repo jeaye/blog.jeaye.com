@@ -131,7 +131,25 @@ output map are exactly the keys meant to be extracted. Note, this expects that
 all keys were present, but that's the sort of control which you can embed and
 automatically run on each function call.
 
+### A real-world example
+Just recently, I opened a [pull request to
+Reagent](https://github.com/reagent-project/reagent/pull/301), which is an
+excellent project, in hopes of improving its input validation. Rather than using
+spec, it's performing manual asserts on input data and then providing adhoc
+errors messages on failed validation. We can do so much better than that. These
+can be checked for us and we can describe the shape of the data as it should be
+when it flows through our Clojure machines.
 
-TODO:
-  reagent asserts
-  perf implications
+### Performance implications
+Automatically instrumenting every single function call, checking all the
+arguments, return values, and possibly `:fn` specs sounds pretty slow, right?
+You may be surprised. For development, I've seen absolutely no notable
+performance issues running Orchestra and instrumenting just about every function
+in a back-end deployment of Ring + Compojure + PostgreSQL. Your mileage may
+vary, but this is something you should try first, get as much out of it as you
+can, and only put down if you absolutely must.
+
+For the safety of your programs and the programs of everyone using your
+libraries, Clojure devs, please spec out your functions and your data. If you
+want help writing your specs, heck, email me and let's get it done. Clojure devs
+deserve the huge win of automatic instrumentation.
