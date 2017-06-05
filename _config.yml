@@ -23,7 +23,7 @@ permalink: pretty
 home_url: "https://jeaye.com"
 blog_url: "https://blog.jeaye.com"
 url: "https://blog.jeaye.com"
-baseurl: []
+baseurl: ""
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
 tagline: "This is my blog about GNU/Linux, functional programming, safety, and security."
 
