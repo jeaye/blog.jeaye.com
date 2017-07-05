@@ -167,25 +167,25 @@ in the REPL would allow us to figure out exactly why.
 ```clojure
 user=> (extract {:foo 0 :bar false :spam "meow"} [:bar])
 
-clojure.lang.ExceptionInfo: Call to #'user/extract did not conform to spec:
-                            val: {:ret {},
-                                  :args {:m {:foo 0, :bar false, :spam "meow"},
-                                         :ks [:bar]}}
-                            fails at: [:fn]
-                            predicate: (fn [ctx]
-                                         (= (into #{} (-> ctx :args :ks))
-                                            (into #{} (-> ctx :ret keys))))
-                            :clojure.spec.alpha/spec  #object[...]
-                            :clojure.spec.alpha/value {:ret {},
-                                                       :args {:m {:foo 0, :bar false, :spam "meow"},
-                                                              :ks [:bar]}}
-                            :clojure.spec.alpha/fn {:ret {},
-                                                    :args {:m {:foo 0, :bar false, :spam "meow"},
-                                                           :ks [:bar]}}
-                            :clojure.spec.alpha/failure :instrument
-                            :orchestra.spec.test/caller {:file "form-...",
-                                                         :line 1,
-                                                         :var-scope user/eval53563}
+ExceptionInfo: Call to #'user/extract did not conform to spec:
+               val: {:ret {},
+                     :args {:m {:foo 0, :bar false, :spam "meow"},
+                            :ks [:bar]}}
+               fails at: [:fn]
+               predicate: (fn [ctx]
+                            (= (into #{} (-> ctx :args :ks))
+                               (into #{} (-> ctx :ret keys))))
+               :clojure.spec.alpha/spec  #object[...]
+               :clojure.spec.alpha/value {:ret {},
+                                          :args {:m {:foo 0, :bar false, :spam "meow"},
+                                                 :ks [:bar]}}
+               :clojure.spec.alpha/fn {:ret {},
+                                       :args {:m {:foo 0, :bar false, :spam "meow"},
+                                              :ks [:bar]}}
+               :clojure.spec.alpha/failure :instrument
+               :orchestra.spec.test/caller {:file "form-...",
+                                            :line 1,
+                                            :var-scope user/eval53563}
 ```
 
 ### A real-world example
