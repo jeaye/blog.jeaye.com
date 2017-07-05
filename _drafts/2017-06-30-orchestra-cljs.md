@@ -70,9 +70,9 @@ Clojure and ClojureScript have their own platform-specific code and tests/entry
 points as well. More on this later.
 
 ### Pitfall: Namespaces
-The likely first thought to a dev looking to port a hypothetical `kitty-ninja`
-Clojure project to ClojureScript would be to also have the ClojureScript
-counterpart be in the `kitty-ninja` namespace.
+The likely first thought, when looking to port the `kitty-ninja` project to
+ClojureScript, would be to also have the ClojureScript counterpart be in the
+`kitty-ninja` namespace.
 
 *This will cause much, much more harm than good.*
 
@@ -91,15 +91,14 @@ in either a `clj` or `cljc` file. Part of refactoring `kitty-ninja`, or any
 other project, would involve moving the macros which will be shared with
 ClojureScript to the `src/cljc/` directory. Furthermore, any
 ClojureScript-specific macros may be kept in the `src/cljs/` directory. This may
-be counter-intuitive, since it will mean there will be `cljc` files in
-`src/cljs/`, but this makes sense in the case where they're for
-ClojureScript-only macros.
+be counter-intuitive, since it means there will be `cljc` files in `src/cljs/`,
+but this makes sense in the case where they're for ClojureScript-only macros.
 
 There is also a pattern, which has largely gone unstated as far I can tell,
-where a `cljs` and `cljc` file can have the same name and same namespace. If the
-`cljs` file requires the `cljc` version, to bring in its macros, then they'll
-automatically be available to anyone to requires the `cljs` file. Here's an
-illustration of how that works:
+where a `cljs` and `cljc` file can have the same file name and namespace.  If
+the `cljs` file requires the `cljc` version, to bring in its macros, then
+they'll automatically be available to anyone to requires the `cljs` file. Here's
+an illustration of how that works:
 
 ```text
 .
@@ -125,9 +124,9 @@ illustration of how that works:
   (:require-macros [kitty-ninja-cljs.stealth :as st]))
 ```
 
-**any other cljs file**:
+**core.cljs:**
 ```clojure
-(ns kitty-ninja-cljs.something
+(ns kitty-ninja-cljs.core
   (:require [kitty-ninja-cljs.stealth :as st]))
 
 (st/purr) ; Macro invocation without having to do require-macros
@@ -187,6 +186,7 @@ reference.
 
 ### Wrapping up
 ClojureScript's tooling doesn't compare to Clojure's, but it's certainly a
-capable platform. For those working in ClojureScript, do consider using spec and
+capable platform. For those already working in ClojureScript, be it with
+React(Native) or anything else, please do consider using spec and
 instrumentation to aid in your development. For those coming to ClojureScript,
 from Clojure, hopefully these points will save you some time.
