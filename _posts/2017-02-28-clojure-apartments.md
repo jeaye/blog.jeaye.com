@@ -209,12 +209,8 @@ output more terse, some URL shortening can specific formatting could be applied.
       (catch Throwable _ ; tinyurl can time out; just skip the shortening
         url))))
 
-; Easily pull a specific list of keys from a map
-(defn extract [m ks]
-  (reduce #(assoc %1 %2 (m %2)) {} ks))
-
 (defn message-row! [row-info]
-  (let [useful (merge (util/extract row-info [:where :style :price :sqft])
+  (let [useful (merge (select-keys row-info [:where :style :price :sqft])
                       {:url (-> row-info :url shorten-url)
                        :walkscore (-> (:walkscore row-info)
                                       (update :url shorten-url)
