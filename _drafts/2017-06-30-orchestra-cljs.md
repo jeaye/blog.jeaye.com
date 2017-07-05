@@ -171,9 +171,22 @@ you need. Here's an annotated example from Orchestra:
                                           :target :nodejs}}}}}})
 ```
 
-* project organization
-* namespaces must be different (a la cljs.spec)
-* macros need to be in cljc files
-* cljsbuild profiles are limiting
-* tests with doo
-* phantom => node (link to issue of phantom dying)
+### Consideration: Tests with doo
+A combination of [doo](https://github.com/bensu/doo) and ClojureScript's
+`cljs.test` will allow for mostly painless sharing of tests between Clojure and
+ClojureScript. A word of caution, however, based on my experience:
+
+*Use Node for your tests, not Phantom.*
+
+There exists an [issue on doo](https://github.com/bensu/doo/issues/135) for
+this, but PhantomJS is not as well supported and, in my experience, not nearly
+as reliable. Fortunately, switching to Node should be as easy as adding
+`:target :nodejs` to the cljsbuild profile and changing the `lein doo` command
+to use `node` instead of `phantom`. See the Orchestra profile above for
+reference.
+
+### Wrapping up
+ClojureScript's tooling doesn't compare to Clojure's, but it's certainly a
+capable platform. For those working in ClojureScript, do consider using spec and
+instrumentation to aid in your development. For those coming to ClojureScript,
+from Clojure, hopefully these points will save you some time.
