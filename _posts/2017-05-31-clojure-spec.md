@@ -86,18 +86,18 @@ Orchestra](https://github.com/jeaye/orchestra#usage).
 
 ```clojure
 user=> (my-inc "ok")
-clojure.lang.ExceptionInfo: Call to #'user/my-inc did not conform to spec:
-                            In: [0]
-                            val: "ok"
-                            fails at: [:args :x]
-                            predicate: number?
-                            :clojure.spec.alpha/spec #object[...]
-                            :clojure.spec.alpha/value ("ok")
-                            :clojure.spec.alpha/args ("ok")
-                            :clojure.spec.alpha/failure :instrument
-                            :orchestra.spec.test/caller {:file "form-...",
-                                                         :line 1,
-                                                         :var-scope user/eval42203}
+ExceptionInfo: Call to #'user/my-inc did not conform to spec:
+               In: [0]
+               val: "ok"
+               fails at: [:args :x]
+               predicate: number?
+               :clojure.spec.alpha/spec #object[...]
+               :clojure.spec.alpha/value ("ok")
+               :clojure.spec.alpha/args ("ok")
+               :clojure.spec.alpha/failure :instrument
+               :orchestra.spec.test/caller {:file "form-...",
+                                            :line 1,
+                                            :var-scope user/eval42203}
 ```
 
 That's gorgeous. Before we get into the function, we're stopped with some very
