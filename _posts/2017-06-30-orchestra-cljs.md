@@ -184,6 +184,15 @@ as reliable. Fortunately, switching to Node should be as easy as adding
 to use `node` instead of `phantom`. See the Orchestra profile above for
 reference.
 
+### Pitfall: Figwheel's REPL
+If you end up using [figwheel](https://github.com/bhauman/lein-figwheel),
+which arguably most non-trivial ClojureScript projects do, absolutely consider
+using [rlwrap](https://linux.die.net/man/1/rlwrap) (available on most Unix-like
+platforms). By default, fighwheel's REPL doesn't provide history (up and down
+arrows), word/line based editing (like `^W` and `^U`), or reverse search of
+previous inputs (using `^R`). rlwrap will provide all of these otherwise
+ubiquitous features for you, without breaking any figwheel functionality.
+
 ### Wrapping up
 ClojureScript's tooling doesn't compare to Clojure's, but it's certainly a
 capable platform. For those already working in ClojureScript, be it with
