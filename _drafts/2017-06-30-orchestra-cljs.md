@@ -133,6 +133,44 @@ illustration of how that works:
 (st/purr) ; Macro invocation without having to do require-macros
 ```
 
+### Pitfall: Cljsbuild profiles
+Unlike [Leiningen
+profiles](https://github.com/technomancy/leiningen/blob/master/doc/PROFILES.md),
+which are quite flexible,
+[cljsbuild](https://github.com/emezeske/lein-cljsbuild) profiles tend toward
+redundancy. Furthermore, cljsbuild requires a top-level key in the
+`project.clj`. As a result, the best setup I've found is to provide the base
+information at the top-level, using a fixed build name, rather than in a shared
+Leiningen profile. From there, use Leiningen profiles to customize the values
+you need. Here's an annotated example from Orchestra:
+
+```clojure
+(defproject ; ... elided a great deal ...
+
+  ; Keep cljs in here so `lein jar` packages the sources
+  :source-paths ["src/clj/" "src/cljs/"]
+
+  ; Base cljs setup
+  :cljsbuild {:test-commands {"test" ["lein" "doo" "node" "app" "once"]}
+              :builds {:app
+                       {:source-paths ["src/cljs/"]
+                        :compiler
+                        {:optimizations :advanced
+                         :pretty-print false
+                         :parallel-build true
+                         :output-dir "target/test"
+                         :output-to "target/test.js"}}}}
+
+  ; Custom dev dependencies, sources, and entry point for test running
+  :profiles {:dev {:dependencies [[lein-doo "0.1.7"]]
+                   :source-paths ["test/clj/" "test/cljc/"]
+                   :cljsbuild {:builds {:app
+                                        {:source-paths ["test/cljs/" "test/cljc/"]
+                                         :compiler
+                                         {:main orchestra-cljs.test
+                                          :target :nodejs}}}}}})
+```
+
 * project organization
 * namespaces must be different (a la cljs.spec)
 * macros need to be in cljc files
