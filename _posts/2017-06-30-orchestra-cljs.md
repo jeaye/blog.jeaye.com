@@ -187,7 +187,7 @@ reference.
 ### Pitfall: Figwheel's REPL
 If you end up using [figwheel](https://github.com/bhauman/lein-figwheel),
 which arguably most non-trivial ClojureScript projects do, absolutely consider
-using [rlwrap](https://linux.die.net/man/1/rlwrap) (available on most Unix-like
+using [rlwrap](https://github.com/hanslub42/rlwrap) (available on most Unix-like
 platforms). By default, fighwheel's REPL doesn't provide history (up and down
 arrows), word/line based editing (like `^W` and `^U`), or reverse search of
 previous inputs (using `^R`). rlwrap will provide all of these otherwise
