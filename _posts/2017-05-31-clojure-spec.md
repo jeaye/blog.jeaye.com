@@ -41,7 +41,7 @@ automatically check every single function call to make sure the arguments are
 correct. Not just during testing, but during development or even production.
 Furthermore, if you use [Orchestra](https://github.com/jeaye/orchestra), then
 Clojure can automatically check every function's return value against its spec,
-among other things.
+among other things. Note, this includes ClojureScript!
 
 *This is superb.*
 
