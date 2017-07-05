@@ -84,9 +84,58 @@ arise with having `src/clj/` and `src/cljs/` in your Leiningen `:source-paths`,
 just agree from the start that your ClojureScript port will be in a different
 namespace.
 
-project organization
-namespaces must be different (a la cljs.spec)
-macros need to be in cljc files
-cljsbuild profiles are limiting
-tests with doo
-phantom => node (link to issue of phantom dying)
+### Pitfall: Macros
+In ClojureScript, macro expansion is a very distinct phase of compilation, which
+involves running Clojure on the ClojureScript code. As such, macros need to be
+in either a `clj` or `cljc` file. Part of refactoring `kitty-ninja`, or any
+other project, would involve moving the macros which will be shared with
+ClojureScript to the `src/cljc/` directory. Furthermore, any
+ClojureScript-specific macros may be kept in the `src/cljs/` directory. This may
+be counter-intuitive, since it will mean there will be `cljc` files in
+`src/cljs/`, but this makes sense in the case where they're for
+ClojureScript-only macros.
+
+There is also a pattern, which has largely gone unstated as far I can tell,
+where a `cljs` and `cljc` file can have the same name and same namespace. If the
+`cljs` file requires the `cljc` version, to bring in its macros, then they'll
+automatically be available to anyone to requires the `cljs` file. Here's an
+illustration of how that works:
+
+```text
+.
+└── src
+    └── cljs
+        └── kitty_ninja_cljs
+            ├── core.cljs
+            ├── stealth.cljc
+            └── stealth.cljs
+```
+
+**stealth.cljc**:
+```clojure
+(ns kitty-ninja-cljs.stealth)
+
+(defmacro purr []
+  `(println "purrrr"))
+```
+
+**stealth.cljs**:
+```clojure
+(ns kitty-ninja-cljs.stealth
+  (:require-macros [kitty-ninja-cljs.stealth :as st]))
+```
+
+**any other cljs file**:
+```clojure
+(ns kitty-ninja-cljs.something
+  (:require [kitty-ninja-cljs.stealth :as st]))
+
+(st/purr) ; Macro invocation without having to do require-macros
+```
+
+* project organization
+* namespaces must be different (a la cljs.spec)
+* macros need to be in cljc files
+* cljsbuild profiles are limiting
+* tests with doo
+* phantom => node (link to issue of phantom dying)
