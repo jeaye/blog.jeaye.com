@@ -1,6 +1,6 @@
 ---
 title: Dear Clojure devs, use clojure.spec please
-tags: [clojure, spec, rant, dependent types, safety]
+tags: [clojure, spec, orchestra, rant, dependent types, safety]
 ---
 
 Clojure 1.9 has introduced a novel library,
