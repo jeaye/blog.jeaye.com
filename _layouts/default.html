@@ -42,7 +42,8 @@
       {% if same_count >= 1 %}
         {% capture post_html %}
           <li>
-            <h4><a href="{{ p.url }}">{{ p.title }}</a>{{ common_tags }}</h4>
+            <span class="related-post"><a href="{{ p.url }}">{{ p.title }}</a></span>
+            {{ common_tags }}
           </li>
         {% endcapture %}
         {% assign total_html = total_html | append: post_html %}
