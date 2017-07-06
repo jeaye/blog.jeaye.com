@@ -37,7 +37,8 @@ kramdown:
   input: GFM
   syntax_highligher: rouge
   syntax_highligher_opts:
-    default_lang: clojure
+    span:
+      default_lang: clojure
 
 exclude: [.bundle, vendor, lib]
 includes_dir: _includes
