@@ -15,7 +15,7 @@ engineering, refers to measuring how much a software program has been exercised
 by tests.* ([Fault Coverage](https://en.wikipedia.org/wiki/Fault_coverage)).
 With cloverage, you can analyze the coverage of your
 [clojure.test](https://clojure.github.io/clojure/clojure.test-api.html) or
-[Midie](https://github.com/marick/Midje) tests.
+[Midje](https://github.com/marick/Midje) tests.
 
 ### Trying out cloverage
 You can add cloverage to your `~/.lein` plugins, but, in order to allow anyone
