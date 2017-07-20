@@ -37,5 +37,5 @@ kramdown:
   input: GFM
   syntax_highligher: rouge
 
-exclude: [.bundle, vendor, lib]
+exclude: [TODO, .bundle, vendor, lib]
 includes_dir: _includes
