@@ -27,7 +27,7 @@ Let this be a guide for your next bare-bones Arch setup. I assume you're the
 root from here on out.
 
 #### Download
-Head over to then [Arch download site](https://www.archlinux.org/download/) and
+Head over to the [Arch download site](https://www.archlinux.org/download/) and
 get the latest ISO, preferably via BitTorrent. Burn it to your external media in
 your preferred manner; I have a 16GB USB drive at `/dev/sdb`, in this example,
 and I'll make my live disk with one command.
