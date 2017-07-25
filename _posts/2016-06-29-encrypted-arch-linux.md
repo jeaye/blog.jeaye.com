@@ -73,7 +73,8 @@ it's substantially more difficult to tell where the encrypted data stops, since
 it all looks like random garbage.
 
 ```bash
-$ cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sda2
+$ cryptsetup --verbose --key-size 512 --hash sha512 --iter-time 5000 \
+             --use-random luksFormat /dev/sda2
 ```
 
 Given an encrypted partition, which `/dev/sda2` now is, you can decrypt it into
@@ -190,7 +191,8 @@ GRUB knows about our encrypted drive.
 ```bash
 $ pacman -S grub-bios
 
-$ sed -i 's#^\(GRUB_CMDLINE_LINUX="\)#\1cryptdevice=/dev/sda2:cryptroot#' /etc/default/grub
+$ sed -i 's#^\(GRUB_CMDLINE_LINUX="\)#\1cryptdevice=/dev/sda2:cryptroot#' \
+         /etc/default/grub
 
 $ grub-install --recheck /dev/sda
 $ grub-mkconfig --output /boot/grub/grub.cfg
@@ -202,7 +204,8 @@ The kernel needs to know about your encrypted setup, so you must instruct
 work.
 
 ```bash
-$ sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' /etc/mkinitcpio.conf
+$ sed -i 's/^\(HOOKS=".*\)\(filesystems.*\)/\1 encrypt \2/' \
+         /etc/mkinitcpio.conf
 $ mkinitcpio -p linux
 ```
 
