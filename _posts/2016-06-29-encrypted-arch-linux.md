@@ -26,11 +26,11 @@ of your system configurations exist (often including sensitive information),
 Let this be a guide for your next bare-bones Arch setup. I assume you're the
 root from here on out.
 
-#### Dowload
-Head over to https://www.archlinux.org/download/ and download the latest ISO,
-preferably via BitTorrent. Burn it to your external media in your preferred
-manner; I have a 16GB USB drive at `/dev/sdb`, in this example, and I'll make my
-live disk with one command.
+#### Download
+Head over to then [Arch download site](https://www.archlinux.org/download/) and
+get the latest ISO, preferably via BitTorrent. Burn it to your external media in
+your preferred manner; I have a 16GB USB drive at `/dev/sdb`, in this example,
+and I'll make my live disk with one command.
 
 ```bash
 $ dd if=archlinux-2016.07.01-dual.iso of=/dev/sdb bs=1M
