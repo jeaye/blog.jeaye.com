@@ -171,6 +171,42 @@ environment.systemPackages =
 ];
 ```
 
+### Minimizing used disk space
+If left on its own, NixOS can be quite greedy with disk space. This is primarily
+a trade-off for the convenience of a purely functional package infrastructure,
+but it's still worth noting how it can be managed. The following bits have
+helped keep my system pretty lean (`/nix` is 5.4G).
+
+```nix
+# Auto GC every morning
+nix.gc.automatic = false;
+services.cron.systemCronJobs = [ "0 3 * * * root /etc/admin/optimize-nix" ];
+
+environment.etc =
+{
+  "admin/optimize-nix" =
+  {
+    text =
+    ''
+      #!/run/current-system/sw/bin/bash
+      set -eu
+
+      # Delete everything from this profile that isn't currently needed
+      nix-env --delete-generations old
+
+      # Delete generations older than a wee
+      nix-collect-garbage
+      nix-collect-garbage --delete-older-than 7d
+
+      # Optimize
+      nix-store --gc --print-dead
+      nix-store --optimise
+    '';
+    mode = "0774";
+  };
+};
+```
+
 ### Declaring private data
 This is something I've yet to tackle. Instead, there are various places within
 my NixOS files which are marked as `XXX`, with a comment saying what I need to
@@ -182,13 +218,16 @@ may be to commit them to git after GPG-encrypting them. For everything else,
 perhaps a GPG-encrypted bash script in the repo, which does the remaining setup
 interactively, would suffice.
 
+* knowing sha256 of a package
+* nix commands not just using English
+
 ### Considering what's left and how things are
 It's been two years with NixOS on my VPS and they've been great. My biggest
 complaints are in the form of the Nix expression language itself not being very
 easy to use, having a good standard library, and having much documentation on
 doing generic tasks with it. In this regard, I think that
 [GuixSD](https://www.gnu.org/software/guix/) is much more appealing: it uses
-[Guile Scheme](https://www.gnu.org/software/guile/), has clear practical
+[Guile Scheme](https://www.gnu.org/software/guile/), which has clear practical
 applications and is a much more general-purpose language that system
 administrators might even already know.
 
