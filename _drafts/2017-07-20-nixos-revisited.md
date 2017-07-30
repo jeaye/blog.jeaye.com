@@ -1,6 +1,6 @@
 ---
 title: "NixOS: lasting impression"
-tags: [linux, nixos, nix, review]
+tags: [linux, nixos, nix, review, digital ocean, functional programming]
 ---
 
 Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url
