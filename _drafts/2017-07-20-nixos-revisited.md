@@ -44,10 +44,9 @@ provided by that NixOS service. Unlike packages, in Nix and NixOS, services
 can't be overridden. This has only been an issue once, in the past couple
 years, but it's currently limiting my ability to configure
 [spamassassin](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/mail/spamassassin.nix)
-(`master` has a much better interface than `17.03`, so I need to wait
-until `17.09` unless I want to run from `master` -- I don't).
+(`master` has a much better interface than `17.03`).
 
-I tend to forget things, like what I've setup on a machine, or everything that
+I tend to forget things, like what I've set up on a machine, or everything that
 was required to get a service running, so having it all in plain text, and
 version control, in a reproducible fashion, is ideal.
 
@@ -171,6 +170,17 @@ environment.systemPackages =
   pkgs.weechat
 ];
 ```
+
+### Declaring private data
+This is something I've yet to tackle. Instead, there are various places within
+my NixOS files which are marked as `XXX`, with a comment saying what I need to
+do. These comments represent imperative steps I need to take when deploying this
+configuration to a new machine. Currently, this just entails setting up private
+keys, [htpassword](https://en.wikipedia.org/wiki/.htpasswd) files, and some
+private git repos which I host. A possible solution for passwords, and the like,
+may be to commit them to git after GPG-encrypting them. For everything else,
+perhaps a GPG-encrypted bash script in the repo, which does the remaining setup
+interactively, would suffice.
 
 ### Considering what's left and how things are
 It's been two years with NixOS on my VPS and they've been great. My biggest
