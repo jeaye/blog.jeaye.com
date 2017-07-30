@@ -145,7 +145,30 @@ buildPhase =
   ${pkgs.leiningen}/bin/lein uberjar
 '';
 ```
+### Pulling from unstable when packages are too old
+Occasionally, a package in the Nix repos for a given release, like `17.03`, will be too old, have a bug, etc. If NixOS `master` has a fix for this, it might be worthwhile to bring in the `master` version of just that package, not your whole OS. Due to the elegance of Nix's dependency management, this isn't a problem at all. Say we wanted to do this for [weechat](TODO).
+
+```nix
+environment.systemPackages = let pkgsUnstable = import
+(
+  fetchTarball https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz
+)
+{ };
+in
+[
+  pkgsUnstable.weechat
+];
+```
+
+Once the next version has been released, or the fix has been added to your
+default channel, then this can go back to normal.
+
+```nix
+environment.systemPackages =
+[
+  pkgs.weechat
+];
+```
 
 * Prefer Scheme/Guix to Nix
 * Guix's free software is more appealing
-* Some packages move too slowly, so I need to pull from unstable
