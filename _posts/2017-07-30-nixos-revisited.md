@@ -1,5 +1,5 @@
 ---
-title: "NixOS: lasting impression"
+title: "NixOS: A lasting impression"
 tags: [linux, nixos, nix, review, digital ocean, functional programming]
 ---
 
