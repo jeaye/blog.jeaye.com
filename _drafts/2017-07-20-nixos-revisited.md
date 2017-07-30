@@ -123,8 +123,8 @@ with a custom initrd, it turns out the problem was that the activation script
 hitting the network was failing, since there was no network, and the rest of the
 boot would then fail.
 
-In short, leave network IO out of activation scripts; I'm using a cron job
-instead and it's at least much more resilient to this sort of issue.
+In short, leave network IO out of activation scripts; I'm using a cron job, for
+this task, instead and it's at least much more resilient to this sort of issue.
 
 * Building leiningen projects with Nix is a pain (and it's slow to download deps
   again and again)
