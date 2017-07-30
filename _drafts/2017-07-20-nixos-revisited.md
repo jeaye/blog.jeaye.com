@@ -146,7 +146,7 @@ buildPhase =
 '';
 ```
 ### Pulling from unstable when packages are too old
-Occasionally, a package in the Nix repos for a given release, like `17.03`, will be too old, have a bug, etc. If NixOS `master` has a fix for this, it might be worthwhile to bring in the `master` version of just that package, not your whole OS. Due to the elegance of Nix's dependency management, this isn't a problem at all. Say we wanted to do this for [weechat](TODO).
+Occasionally, a package in the Nix repos for a given release, like `17.03`, will be too old, have a bug, etc. If NixOS `master` has a fix for this, it might be worthwhile to bring in the `master` version of just that package, not your whole OS. Due to the elegance of Nix's dependency management, this isn't a problem at all. Say we wanted to do this for [weechat](https://weechat.org/).
 
 ```nix
 environment.systemPackages = let pkgsUnstable = import
@@ -170,5 +170,25 @@ environment.systemPackages =
 ];
 ```
 
-* Prefer Scheme/Guix to Nix
-* Guix's free software is more appealing
+### Considering what's left and how things are
+It's been two years with NixOS on my VPS and they've been great. My biggest
+complaints are in the form of the Nix expression language itself not being very
+easy to use, having a good standard library, and having much documentation on
+doing generic tasks with it. In this regard, I think that
+[GuixSD](https://www.gnu.org/software/guix/) is much more appealing: it uses
+[Guile Scheme](https://www.gnu.org/software/guile/), has clear practical
+applications and is a much more general-purpose language that system
+administrators might even already know.
+
+Guix's stance on free software, due to it being a GNU project, is also more
+appealing, as my VPS has absolutely no need for proprietary software (it's
+harder to argue that for my workstation).
+
+I very much plan to keep NixOS running on my VPS and switching as much as I can
+to the declarative style. After having such great success with NixOS in the
+server world, I've been thinking more about trying it again for my workstation,
+but I think my issues would the Nix language would bug me enough to where that
+wouldn't be enjoyable. If I can work out getting Skype on GuixSD, or maybe if
+GNU Ring stabilizes enough, then I'd really enjoy having a declarative workspace
+in very much the same fashion. Maybe in two years I'll be following up with my
+thoughts on that.
