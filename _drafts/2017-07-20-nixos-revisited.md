@@ -87,15 +87,34 @@ environment.etc =
     '';
   };
 };
+
 ```
+
+I also use a trick to ensure directories exist, which just involves
+declaratively putting a hidden file in there. NixOS will create any parent
+directories needed.
+
+```nix
+# Ensure that the /etc/user/safepaste/paste directory exists
+environment.etc."user/safepaste/paste/.manage-directory".text = "";
+```
+
+### Sticking with mainstream configuration to avoid compilations
+Initially, I was amazed that my VPS was regularly spending an hour compiling
+[OpenJDK](https://en.wikipedia.org/wiki/OpenJDK) every time I updated. After
+further investigation, in the helpful `#nixos` IRC channel on Freenode, it seems
+this is because I had disabled X everywhere I could. On a headless server, this
+seemed intuitive. Unfortunately, the [NixOS Hydra](https://nixos.org/hydra/),
+which builds all of NixOS' deterministic binaries, only builds with so many
+configurations. As one can imagine, each new configuration added for a build,
+with the various platforms, architectures, and other configurations, expands the
+build time exponentially. As such, the VPS now runs with [environment.noXlibs
+set to
+false](https://github.com/jeaye/nix-files/blob/master/system/environment.nix#L26).
 
 * No side effects in activation scripts
 * Building leiningen projects with Nix is a pain (and it's slow to download deps
   again and again)
 * Prefer Scheme/Guix to Nix
 * Guix's free software is more appealing
-* Can't disable X without having to compile a ton of openjdk + more
-* User home management in /etc
-* Ensuring directories exist with `.manage-directory`
 * Some packages move too slowly, so I need to pull from unstable
-* IRC channel is still super helpful
