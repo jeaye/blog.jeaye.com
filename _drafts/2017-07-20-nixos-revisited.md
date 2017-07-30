@@ -126,8 +126,26 @@ boot would then fail.
 In short, leave network IO out of activation scripts; I'm using a cron job, for
 this task, instead and it's at least much more resilient to this sort of issue.
 
-* Building leiningen projects with Nix is a pain (and it's slow to download deps
-  again and again)
+### Building Clojure packages with Leiningen
+When bringing in some of my Clojure services, there were issues with compiling
+Leiningen projects, due to the dependency downloading. By default, the home of
+the Nix builder isn't writable, so some workarounds are needed. This setup has
+been working for me (as part of the rest of your Nix package):
+
+```nix
+buildInputs = [ pkgs.leiningen ];
+buildPhase =
+''
+  # For leiningen
+  export HOME=$PWD
+  export LEIN_HOME=$HOME/.lein
+  mkdir -p $LEIN_HOME
+  echo "{:user {:local-repo \"$LEIN_HOME\"}}" > $LEIN_HOME/profiles.clj
+
+  ${pkgs.leiningen}/bin/lein uberjar
+'';
+```
+
 * Prefer Scheme/Guix to Nix
 * Guix's free software is more appealing
 * Some packages move too slowly, so I need to pull from unstable
