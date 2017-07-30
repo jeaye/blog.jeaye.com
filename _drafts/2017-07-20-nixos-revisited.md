@@ -6,17 +6,19 @@ tags: [linux, nixos, nix, review, digital ocean, functional programming]
 Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url
 }}/2015/11/24/nixos/), as I was using it in my workstation. While I adored the
 concept of declarative OS configuration, it didn't quite fit the workflow I had
-in mind for my laptop. The post was finished with me considering NixOS for my
+in mind for my laptop. The post was concluded with me considering NixOS for my
 VPS, but I didn't quite want to move away from DigitalOcean, which has support
 for only a few distros. What follows details how I've been running NixOS since,
 what it took, and what I've learned.
 
 ### Dealing with DigitalOcean
-Ever since I started with DigitalOcean a few years ago, they've been joy to work
-with, so I really didn't want to leave. Alas, they don't support many distros,
-and certainly not custom ISOs. The first droplet I was administrating was
-already going against the grain, running Arch using [a script which converts
-Debian to Arch in place](https://github.com/gh2o/digitalocean-debian-to-arch).
+My VPS is hosting this blog, [jeaye.com](https://jeaye.com/), and many other
+sites and services. For this, I use DigitalOcean. Ever since I started with
+DigitalOcean a few years ago, they've been joy to work with, so I really didn't
+want to leave. Alas, they don't support many distros, and certainly not custom
+ISOs. The first droplet I was administrating was already going against the
+grain, running Arch using [a script which converts Debian to Arch in
+place](https://github.com/gh2o/digitalocean-debian-to-arch).
 
 *"What a neat idea,"* I thought, *"to trick DigitalOcean into thinking it's
 running a supported distro."*. A couple weeks later,
@@ -42,7 +44,7 @@ provided by that NixOS service. Unlike packages, in Nix and NixOS, services
 can't be overridden. This has only been an issue once, in the past couple
 years, but it's currently limiting my ability to configure
 [spamassassin](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/mail/spamassassin.nix)
-right now (`master` has a much better interface than `17.03`, so I need to wait
+(`master` has a much better interface than `17.03`, so I need to wait
 until `17.09` unless I want to run from `master` -- I don't).
 
 I tend to forget things, like what I've setup on a machine, or everything that
@@ -59,7 +61,7 @@ simpler solution, which was already supported at the time. NixOS forfeits the
 conventional ideas of where programs live and how they're installed and
 upgraded, so why not take that liberty with user homes?
 
-So, since NixOS provides declarative management of `/etc` and its subdirectories, I just use `/etc/user` as my analogous `/home`. For example, the user `irc`, [defined here](https://github.com/jeaye/nix-files/blob/master/user/jeaye.nix), is described as:
+So, since NixOS provides declarative management of `/etc` and its subdirectories, I just use `/etc/user` as my analogous `/home`. For example, the user `jeaye`, [defined here](https://github.com/jeaye/nix-files/blob/master/user/jeaye.nix), is described as:
 
 ```nix
 users.users.jeaye =
@@ -104,7 +106,7 @@ Initially, I was amazed that my VPS was regularly spending an hour compiling
 [OpenJDK](https://en.wikipedia.org/wiki/OpenJDK) every time I updated. After
 further investigation, in the helpful `#nixos` IRC channel on Freenode, it seems
 this is because I had disabled X everywhere I could. On a headless server, this
-seemed intuitive. Unfortunately, the [NixOS Hydra](https://nixos.org/hydra/),
+seemed intuitive. Unfortunately, [NixOS Hydra](https://nixos.org/hydra/),
 which builds all of NixOS' deterministic binaries, only builds with so many
 configurations. As one can imagine, each new configuration added for a build,
 with the various platforms, architectures, and other configurations, expands the
@@ -124,13 +126,13 @@ hitting the network was failing, since there was no network, and the rest of the
 boot would then fail.
 
 In short, leave network IO out of activation scripts; I'm using a cron job, for
-this task, instead and it's at least much more resilient to this sort of issue.
+this task, instead. Simple enough.
 
 ### Building Clojure packages with Leiningen
 When bringing in some of my Clojure services, there were issues with compiling
 Leiningen projects, due to the dependency downloading. By default, the home of
 the Nix builder isn't writable, so some workarounds are needed. This setup has
-been working for me (as part of the rest of your Nix package):
+been working for me (as part of your typical Nix package):
 
 ```nix
 buildInputs = [ pkgs.leiningen ];
@@ -181,14 +183,14 @@ applications and is a much more general-purpose language that system
 administrators might even already know.
 
 Guix's stance on free software, due to it being a GNU project, is also more
-appealing, as my VPS has absolutely no need for proprietary software (it's
-harder to argue that for my workstation).
+appealing; my VPS has absolutely no need for proprietary software (it's harder
+to argue that for my workstation).
 
 I very much plan to keep NixOS running on my VPS and switching as much as I can
 to the declarative style. After having such great success with NixOS in the
 server world, I've been thinking more about trying it again for my workstation,
 but I think my issues would the Nix language would bug me enough to where that
-wouldn't be enjoyable. If I can work out getting Skype on GuixSD, or maybe if
-GNU Ring stabilizes enough, then I'd really enjoy having a declarative workspace
-in very much the same fashion. Maybe in two years I'll be following up with my
-thoughts on that.
+wouldn't be enjoyable. If I can work out getting Skype (and maybe nVidia) on
+GuixSD, or maybe if [GNU Ring](https://ring.cx/en) stabilizes enough, then I'd
+really enjoy having a declarative workspace in very much the same fashion. Maybe
+in two years I'll be following up with my thoughts on that.
