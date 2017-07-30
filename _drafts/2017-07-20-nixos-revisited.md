@@ -194,7 +194,7 @@ environment.etc =
       # Delete everything from this profile that isn't currently needed
       nix-env --delete-generations old
 
-      # Delete generations older than a wee
+      # Delete generations older than a week
       nix-collect-garbage
       nix-collect-garbage --delete-older-than 7d
 
