@@ -218,28 +218,50 @@ may be to commit them to git after GPG-encrypting them. For everything else,
 perhaps a GPG-encrypted bash script in the repo, which does the remaining setup
 interactively, would suffice.
 
-* knowing sha256 of a package
-* nix commands not just using English
+### Various nitpicks which could improve the NixOS user's experience
+* Calculating SHA-256 of a package isn't easy
+
+    It seems like the best way to do this is to put in a bad SHA-256, try to
+    build, have it fail and tell you the correct one, and then put it in.
+
+* Nix command-line UI needs a re-design
+
+    This is a [known issue](https://github.com/NixOS/nix/issues/779) but, after
+    nearly two years, has not yet been merged. In short, commands like `nix-env
+    -qa` would become `nix search` and `nix-env -qc` would become `nix status`.
+    There's no reason users should have to remember, or learn, the former.
+
+* Editor support for Nix and Nixpkgs
+
+    Yes, there are Nix plugins for every good editor. What I haven't seen any
+    formal discussion about, but could help Nix along, is a more functional
+    integration into those editors. I think [Emacs is currently best
+    posed](https://github.com/matthewbauer/nix-mode), in this regard, but
+    providing semantic completion of all the items in
+    [nixpkgs](https://github.com/NixOS/nixpkgs), completion for dependency
+    injection and Nix's standard library, semantic highlighting, linting,
+    SHA-256 calculation (when writing packages), etc., might really help users
+    jump into the Nix world.
 
 ### Considering what's left and how things are
 It's been two years with NixOS on my VPS and they've been great. My biggest
 complaints are in the form of the Nix expression language itself not being very
 easy to use, having a good standard library, and having much documentation on
-doing generic tasks with it. In this regard, I think that
+doing generic tasks. In this regard, I think that
 [GuixSD](https://www.gnu.org/software/guix/) is much more appealing: it uses
 [Guile Scheme](https://www.gnu.org/software/guile/), which has clear practical
 applications and is a much more general-purpose language that system
 administrators might even already know.
 
 Guix's stance on free software, due to it being a GNU project, is also more
-appealing; my VPS has absolutely no need for proprietary software (it's harder
-to argue that for my workstation).
+appealing; my VPS has absolutely no need for proprietary software (it's only
+somewhat harder to argue that for my workstation).
 
 I very much plan to keep NixOS running on my VPS and switching as much as I can
-to the declarative style. After having such great success with NixOS in the
-server world, I've been thinking more about trying it again for my workstation,
-but I think my issues would the Nix language would bug me enough to where that
-wouldn't be enjoyable. If I can work out getting Skype (and maybe nVidia) on
-GuixSD, or maybe if [GNU Ring](https://ring.cx/en) stabilizes enough, then I'd
-really enjoy having a declarative workspace in very much the same fashion. Maybe
-in two years I'll be following up with my thoughts on that.
+to the declarative style. After having such great success in the server world,
+I've been thinking more about trying it again for my workstation. Alas, I think
+my issues would the Nix language would bug me enough to where that wouldn't be
+enjoyable. If I can work out getting Skype (and maybe nVidia) on GuixSD, or
+maybe if [GNU Ring](https://ring.cx/en) stabilizes enough, then I'd really enjoy
+having a declarative workspace in very much the same fashion. Maybe in two years
+I'll be following up with my thoughts on that.
