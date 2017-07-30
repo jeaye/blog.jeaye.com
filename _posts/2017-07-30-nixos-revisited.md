@@ -147,7 +147,7 @@ buildPhase =
 '';
 ```
 ### Pulling from unstable when packages are too old
-Occasionally, a package in the Nix repos for a given release, like `17.03`, will be too old, have a bug, etc. If NixOS `master` has a fix for this, it might be worthwhile to bring in the `master` version of just that package, not your whole OS. Due to the elegance of Nix's dependency management, this isn't a problem at all. Say we wanted to do this for [weechat](https://weechat.org/).
+Occasionally, a package in the Nix repos for a given release, like `17.03`, will be too old, have a bug, etc. If NixOS `master` has a fix for this, it might be worthwhile to bring in the `master` version of just that package, not your whole OS. Due to the elegance of Nix's dependency management, this isn't a problem at all; the `unstable` channel follows each successful build of the `master` branch, so we can just pull that in. Say we wanted to do this for [weechat](https://weechat.org/).
 
 ```nix
 environment.systemPackages = let pkgsUnstable = import
