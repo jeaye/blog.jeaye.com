@@ -49,7 +49,7 @@ I tend to forget things, like what I've setup on a machine, or everything that
 was required to get a service running, so having it all in plain text, and
 version control, in a reproducible fashion, is ideal.
 
-### Manager user homes
+### Managing user homes
 NixOS doesn't provide a way to declaratively manage user homes. In fact, the
 only direct control it provides, declaratively, is over what's in `/etc` and its
 subdirectories. There have been some approaches and discussions (like
@@ -112,7 +112,20 @@ build time exponentially. As such, the VPS now runs with [environment.noXlibs
 set to
 false](https://github.com/jeaye/nix-files/blob/master/system/environment.nix#L26).
 
-* No side effects in activation scripts
+### Hitting the network in an activation script
+I had an upgrade script, which I was running in `system.activationScripts`, that
+hit the network to check for upgrades. While the machine was already running,
+this posed no problem at all and worked quite nicely. Whenever I would
+`nixos-rebuild switch`, the activation script would run and upgrade the package
+if needed. Alas, during a routine reboot, I was no longer able to boot even into
+a shell; the kernel would panic. After several hours of painstaking debugging
+with a custom initrd, it turns out the problem was that the activation script
+hitting the network was failing, since there was no network, and the rest of the
+boot would then fail.
+
+In short, leave network IO out of activation scripts; I'm using a cron job
+instead and it's at least much more resilient to this sort of issue.
+
 * Building leiningen projects with Nix is a pain (and it's slow to download deps
   again and again)
 * Prefer Scheme/Guix to Nix
