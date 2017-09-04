@@ -16,7 +16,7 @@ it contains cljc files shared between Clojure and ClojureScript and it makes
 heavy use of spec and namespace-qualified keywords. Apparently this causes a lot
 of issues with tooling.
 
-### [eastwood](https://github.com/jonase/eastwood) (linter) [active | doesn't work]
+### [eastwood](https://github.com/jonase/eastwood) [active | doesn't work]
 ```clojure
 [jonase/eastwood "0.2.4"]
 ```
@@ -29,7 +29,21 @@ it does run, it raises the same false positive over and over.
 * Namespaced maps: https://github.com/jonase/eastwood/issues/201
 * False positives: https://github.com/jonase/eastwood/issues/227
 
-2. yagni (dead code finding)
+### [yagni](https://github.com/venantius/yagni) [inactive | doesn't work]
+```clojure
+[venantius/yagni "0.1.4"]
+```
+
+yagni is an acronym for [You Aren't Gonna Need
+It](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) and the library is
+a dead code finder (the only one of its kind, in the Clojure world).
+Unfortunately, it doesn't support reader conditionals and it also chokes on the
+usage of spec.
+
+### Relevant tickets
+* Reader conditionals: https://github.com/venantius/yagni/issues/37
+* Spec usage: https://github.com/venantius/yagni/issues/36
+
 3. kibit (idiom suggester)
 4. [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) (checks for code cleanliness)
 5. slamhound (automatically clean up namespaces)
