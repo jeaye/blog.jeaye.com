@@ -16,7 +16,7 @@ it contains cljc files shared between Clojure and ClojureScript and it makes
 heavy use of spec and namespace-qualified keywords. Apparently this causes a lot
 of issues with tooling.
 
-### [eastwood](https://github.com/jonase/eastwood) [active | doesn't work]
+### [eastwood](https://github.com/jonase/eastwood) [maintained | doesn't work]
 ```clojure
 [jonase/eastwood "0.2.4"]
 ```
@@ -29,7 +29,7 @@ it does run, it raises the same false positive over and over.
 * Namespaced maps: https://github.com/jonase/eastwood/issues/201
 * False positives: https://github.com/jonase/eastwood/issues/227
 
-### [yagni](https://github.com/venantius/yagni) [inactive | doesn't work]
+### [yagni](https://github.com/venantius/yagni) [unmaintained | doesn't work]
 ```clojure
 [venantius/yagni "0.1.4"]
 ```
@@ -44,7 +44,20 @@ usage of spec.
 * Reader conditionals: https://github.com/venantius/yagni/issues/37
 * Spec usage: https://github.com/venantius/yagni/issues/36
 
-3. kibit (idiom suggester)
+### [kibit](https://github.com/jonase/kibit) [maintained | doesn't work]
+```clojure
+[lein-kibit "0.1.5"]
+```
+
+kibit is an analyzer which uses core.logic to search for patterns in code
+which can be written to be more idiomatic. Like many other such tools, kibit
+struggles with parsing some Clojure, like nested requires and reader
+conditionals.
+
+### Relevant tickets
+* Nested requires: https://github.com/jonase/kibit/issues/202
+* Reader conditionals: https://github.com/jonase/kibit/pull/194
+
 4. [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) (checks for code cleanliness)
 5. slamhound (automatically clean up namespaces)
 6. spectrum (static checking based on specs)
