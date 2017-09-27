@@ -135,3 +135,16 @@ instrumenting the code to see which functions are called, which branches are
 taken, etc. It works out of the box and integrates very nicely into a CI
 setup.
 
+## Wrapping up
+There are some promising tools out there, just in the Clojure JVM world, for
+verifying code quality and correctness, automatically making improvements, or
+even just suggesting cleaner ways of writing code. It seems like most of them,
+in fact, are struggling with parsing modern Clojure code, be it reader
+conditionals, namespace aliases, nested requires, or aliased keywords. Given
+that this is a consistent problem across several projects and several authors,
+there is an indication of insufficient or unreliable tooling when it comes to
+statically reading Clojure code. This is likely due to Clojure's dynamic nature.
+
+Given all of the tickets linked above, I encourage readers to try out these
+tools on their code bases, issue more tickets, ping maintainers, and contribute
+some PRs. If there's a library that should be on this list, email me!
