@@ -40,7 +40,7 @@ a dead code finder (the only one of its kind, in the Clojure world).
 Unfortunately, it doesn't support reader conditionals and it also chokes on the
 usage of spec.
 
-### Relevant tickets
+#### Relevant tickets
 * Reader conditionals: https://github.com/venantius/yagni/issues/37
 * Spec usage: https://github.com/venantius/yagni/issues/36
 
@@ -54,11 +54,22 @@ which can be written to be more idiomatic. Like many other such tools, kibit
 struggles with parsing some Clojure, like nested requires and reader
 conditionals.
 
-### Relevant tickets
+#### Relevant tickets
 * Nested requires: https://github.com/jonase/kibit/issues/202
 * Reader conditionals: https://github.com/jonase/kibit/pull/194
 
-4. [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) (checks for code cleanliness)
+### [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) [maintained | works]
+```clojure
+[lein-bikeshed "0.4.1"]
+```
+
+lein-bikeshed is one of the tools which worked out of the box. Unfortunately,
+the output wasn't terribly useful. The two issues reported were some lines
+longer than 80 characters and some functions missing doc strings. I think, even
+given its name, that it doesn't take itself too seriously with providing
+the most practical tooling for CI integration, but it certainly gets points for
+not choking on the code.
+
 5. slamhound (automatically clean up namespaces)
 6. spectrum (static checking based on specs)
 7. lein-nvd (vulnerability check in dependencies)
