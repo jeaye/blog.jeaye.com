@@ -96,7 +96,18 @@ be, reaching into the land of dependent types, this is a very promising avenue.
 Unfortunately, after speaking with the developer for a bit, it's clear that
 spectrum isn't yet ready to use.
 
-7. lein-nvd (vulnerability check in dependencies)
+### [lein-nvd](https://github.com/rm-hull/lein-nvd) [active | works]
+```clojure
+[lein-nvd "0.3.0"]
+```
+
+This tool is a must. Furthermore, it worked without issue. It crawls through a
+project's dependencies and checks for vulnerable versions of libraries. If
+there's a known vulnerability in one of your dependencies, it informs you and
+also conveys the severity of the issue. I don't see why a Clojure back-end would
+run CI without this.
+
+
 8. orchestra (automatic spec validation for every fn call)
 9. lein-cloverage
 
