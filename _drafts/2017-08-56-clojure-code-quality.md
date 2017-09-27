@@ -16,7 +16,7 @@ it contains cljc files shared between Clojure and ClojureScript and it makes
 heavy use of spec and namespace-qualified keywords. Apparently this causes a lot
 of issues with tooling.
 
-### [eastwood](https://github.com/jonase/eastwood) [maintained | doesn't work]
+### [eastwood](https://github.com/jonase/eastwood) [active | doesn't work]
 ```clojure
 [jonase/eastwood "0.2.4"]
 ```
@@ -29,7 +29,7 @@ it does run, it raises the same false positive over and over.
 * Namespaced maps: https://github.com/jonase/eastwood/issues/201
 * False positives: https://github.com/jonase/eastwood/issues/227
 
-### [yagni](https://github.com/venantius/yagni) [unmaintained | doesn't work]
+### [yagni](https://github.com/venantius/yagni) [inactive | doesn't work]
 ```clojure
 [venantius/yagni "0.1.4"]
 ```
@@ -44,7 +44,7 @@ usage of spec.
 * Reader conditionals: https://github.com/venantius/yagni/issues/37
 * Spec usage: https://github.com/venantius/yagni/issues/36
 
-### [kibit](https://github.com/jonase/kibit) [maintained | doesn't work]
+### [kibit](https://github.com/jonase/kibit) [active | doesn't work]
 ```clojure
 [lein-kibit "0.1.5"]
 ```
@@ -58,7 +58,7 @@ conditionals.
 * Nested requires: https://github.com/jonase/kibit/issues/202
 * Reader conditionals: https://github.com/jonase/kibit/pull/194
 
-### [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) [maintained | works]
+### [lein-bikeshed](https://github.com/dakrone/lein-bikeshed) [active | works]
 ```clojure
 [lein-bikeshed "0.4.1"]
 ```
@@ -70,7 +70,21 @@ given its name, that it doesn't take itself too seriously with providing
 the most practical tooling for CI integration, but it certainly gets points for
 not choking on the code.
 
-5. slamhound (automatically clean up namespaces)
+### slamhound [inactive | doesn't work]
+```clojure
+[slamhound "1.5.5"]
+```
+
+By only comparing the descriptions, slamhound seemed like one of the most useful
+ones of the bunch. Unfortunately, it hasn't been maintained for a year and has
+started sprouting various issues and PRs which go unloved. More importantly, it
+fails to parse aliased keywords, as well as the parsing of dotted namespace
+aliases.
+
+#### Relevant tickets
+* Aliased keywords: https://github.com/technomancy/slamhound/issues/79
+* Dotted ns alias: https://github.com/technomancy/slamhound/pull/87
+
 6. spectrum (static checking based on specs)
 7. lein-nvd (vulnerability check in dependencies)
 8. orchestra (automatic spec validation for every fn call)
