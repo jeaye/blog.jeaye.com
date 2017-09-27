@@ -76,7 +76,10 @@ not choking on the code.
 ```
 
 By only comparing the descriptions, slamhound seemed like one of the most useful
-ones of the bunch. Unfortunately, it hasn't been maintained for a year and has
+ones of the bunch. It has the ability to clean up namespaces aliases, add
+requires, and even remove unused requires.
+
+Unfortunately, it hasn't been maintained for a year and has
 started sprouting various issues and PRs which go unloved. More importantly, it
 fails to parse aliased keywords, as well as the parsing of dotted namespace
 aliases.
