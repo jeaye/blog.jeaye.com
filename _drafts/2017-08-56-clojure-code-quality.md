@@ -70,7 +70,7 @@ given its name, that it doesn't take itself too seriously with providing
 the most practical tooling for CI integration, but it certainly gets points for
 not choking on the code.
 
-### slamhound [inactive | doesn't work]
+### [slamhound](https://github.com/technomancy/slamhound) [inactive | doesn't work]
 ```clojure
 [slamhound "1.5.5"]
 ```
@@ -88,7 +88,14 @@ aliases.
 * Aliased keywords: https://github.com/technomancy/slamhound/issues/79
 * Dotted ns alias: https://github.com/technomancy/slamhound/pull/87
 
-6. spectrum (static checking based on specs)
+### [spectrum](https://github.com/arohner/spectrum) [active | unfinished]
+Spectrum is the one on this list which is most exciting for use with CI, in my
+opinion. It performs static analysis and, using both specs and type inference,
+determines if code is incorrect without running it. Given how complex specs can
+be, reaching into the land of dependent types, this is a very promising avenue.
+Unfortunately, after speaking with the developer for a bit, it's clear that
+spectrum isn't yet ready to use.
+
 7. lein-nvd (vulnerability check in dependencies)
 8. orchestra (automatic spec validation for every fn call)
 9. lein-cloverage
