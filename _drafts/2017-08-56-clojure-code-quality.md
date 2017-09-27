@@ -3,13 +3,13 @@ title: The state of code quality tools in Clojure 1.9
 tags: [clojure, spec, orchestra, rant, safety]
 ---
 
-There are several libraries for verifying code quality in Clojure projects. When
+There are several projects for verifying code quality in Clojure projects. When
 surveying how they'll work on a distributed Clojure server built for Heroku +
 Postgres, I took some notes on the issues that came up. These should represent
 the current state of things, as well as how we, the Clojure community, can help
 improve things.
 
-Out of the nine libraries used, only three of them worked, and only two were
+Out of the nine projects used, only three of them worked, and only two were
 immediately useful for CI. Here are some notes on each. It's worth noting that
 the codebase being tested is nothing special, in terms of features used, but
 it contains cljc files shared between Clojure and ClojureScript and it makes
@@ -147,4 +147,4 @@ market for some sturdy tooling here.
 
 Given all of the tickets linked above, I encourage readers to try out these
 projects on their code bases, issue more tickets, ping maintainers, and
-contribute some PRs. If there's a library that should be on this list, email me!
+contribute some PRs. If there's a project that should be on this list, email me!
