@@ -108,7 +108,21 @@ also conveys the severity of the issue. I don't see why a Clojure back-end would
 run CI without this.
 
 
-8. orchestra (automatic spec validation for every fn call)
+### [orchestra](https://github.com/jeaye/orchestra) [active | works]
+```clojure
+[orchestra "2017.08.13"]
+```
+
+Orchestra is a Clojure(Script) library made as a drop-in replacement for
+clojure.spec.test.alpha, which provides custom instrumentation that validates
+all aspects of function specs. By default, clojure.spec will only instrument
+:args. This leaves out :ret and :fn from automatic validation; Orchestra checks
+all of them for you.
+
+Best of all, it works out of the box on this source code and can be used during
+testing, development, and even production.
+
+
 9. lein-cloverage
 
 noteworthy
