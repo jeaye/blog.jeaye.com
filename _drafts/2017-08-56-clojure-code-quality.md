@@ -123,8 +123,15 @@ Best of all, it works out of the box on this source code and can be used during
 testing, development, and even production.
 
 
-9. lein-cloverage
+### [cloverage](https://github.com/cloverage/cloverage) [active | works]
+```clojure
+[lein-cloverage "1.0.9"]
+```
 
-noteworthy
+I've [written about cloverage
+before](https://blog.jeaye.com/2016/12/29/clojure-test-coverage/) and I'll
+recommend it again. cloverage will report how much coverage your tests have by
+instrumenting the code to see which functions are called, which branches are
+taken, etc. It works out of the box and integrates very nicely into a CI
+setup.
 
-* https://github.com/quality-clojure/qualityclj
