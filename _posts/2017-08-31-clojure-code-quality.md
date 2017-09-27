@@ -1,5 +1,5 @@
 ---
-title: The state of code quality tools in Clojure 1.9
+title: The state of code quality tools in Clojure
 tags: [clojure, spec, orchestra, survey, continuous-integration, safety]
 ---
 
