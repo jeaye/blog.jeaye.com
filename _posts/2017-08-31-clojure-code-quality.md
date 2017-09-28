@@ -10,11 +10,12 @@ represent the current state of things, as well as how we, the Clojure community,
 can help move them forward.
 
 Out of the nine projects evaluated, only three of them worked, and only two were
-immediately useful for CI. It's worth noting that the codebase being tested is
-nothing special, in terms of features used, but it does contain cljc files
-shared between Clojure and ClojureScript and it makes heavy use of spec and
-namespace-qualified keywords. Apparently this causes a lot of issues with
-tooling!
+immediately useful for
+[CI](https://en.wikipedia.org/wiki/Continuous_integration). It's worth noting
+that the codebase being tested is nothing special, in terms of features used,
+but it does contain cljc files shared between Clojure and ClojureScript and it
+makes heavy use of spec and namespace-qualified keywords. Apparently this causes
+a lot of issues with tooling!
 
 ### Project: [eastwood](https://github.com/jonase/eastwood)
 ```clojure
