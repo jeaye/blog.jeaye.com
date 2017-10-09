@@ -1,3 +1,11 @@
+### hmm
+* Bring in `/dev/urandom`
+* Redis?
+* Disable previews?
+* Opcache
+* Cron
+* Network access
+
 ### Why is google being accessed?
 ```text
 	GuzzleHttp\Exception\ConnectException: cURL error 6: Couldn't resolve host 'www.google.com'
