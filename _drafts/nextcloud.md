@@ -6,6 +6,9 @@
 * Cron
 * Network access
 
+## Current issues
+* Cron not running
+
 ### Why is google being accessed?
 ```text
 	GuzzleHttp\Exception\ConnectException: cURL error 6: Couldn't resolve host 'www.google.com'
