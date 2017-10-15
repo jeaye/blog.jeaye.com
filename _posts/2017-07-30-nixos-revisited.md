@@ -21,7 +21,7 @@ grain, running Arch using [a script which converts Debian to Arch in
 place](https://github.com/gh2o/digitalocean-debian-to-arch).
 
 *"What a neat idea,"* I thought, *"to trick DigitalOcean into thinking it's
-running a supported distro."*. A couple weeks later,
+running a supported distro."* A couple weeks later,
 [nixos-in-place](https://github.com/jeaye/nixos-in-place) was born; it remains
 the most stable solution for converting any running GNU/Linux setup to NixOS in
 place.
