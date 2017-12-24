@@ -32,11 +32,11 @@ of the services I was running on my Arch droplet to a declarative setup which I
 could easily version with git. Here are some of the services I'm running, as
 well as the related configs for each.
 
-* [apache-httpd](https://github.com/jeaye/nix-files/blob/master/service/httpd.nix)
-* [fail2ban](https://github.com/jeaye/nix-files/blob/master/service/fail2ban.nix)
-* [dovecot](https://github.com/jeaye/nix-files/blob/master/service/dovecot.nix)
-* [postfix](https://github.com/jeaye/nix-files/blob/master/service/postfix.nix)
-* [radicale](https://github.com/jeaye/nix-files/blob/master/service/radicale.nix)
+* [apache-httpd](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/service/httpd.nix)
+* [fail2ban](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/service/fail2ban.nix)
+* [dovecot](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/service/dovecot.nix)
+* [postfix](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/service/postfix.nix)
+* [radicale](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/service/radicale.nix)
 
 For the most part, setting up a service on NixOS is similar to setting it up on
 any normal distro. The difference is that one generally is limited to the API
@@ -60,7 +60,7 @@ simpler solution, which was already supported at the time. NixOS forfeits the
 conventional ideas of where programs live and how they're installed and
 upgraded, so why not take that liberty with user homes?
 
-So, since NixOS provides declarative management of `/etc` and its subdirectories, I just use `/etc/user` as my analogous `/home`. For example, the user `jeaye`, [defined here](https://github.com/jeaye/nix-files/blob/master/user/jeaye.nix), is described as:
+So, since NixOS provides declarative management of `/etc` and its subdirectories, I just use `/etc/user` as my analogous `/home`. For example, the user `jeaye`, [defined here](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/user/jeaye.nix), is described as:
 
 ```nix
 users.users.jeaye =
@@ -111,7 +111,7 @@ configurations. As one can imagine, each new configuration added for a build,
 with the various platforms, architectures, and other configurations, expands the
 build time exponentially. As such, the VPS now runs with [environment.noXlibs
 set to
-false](https://github.com/jeaye/nix-files/blob/master/system/environment.nix#L26).
+false](https://github.com/jeaye/nix-files/blob/e3bf921a5af925465d8f41ec006c87c8f0ffafe3/system/environment.nix#L26).
 
 ### Hitting the network in an activation script
 I had an upgrade script, which I was running in `system.activationScripts`, that
