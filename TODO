@@ -1,5 +1,7 @@
 safepaste
 
+sarcastic: writing more code in C
+
 testing with cljs and re-frame
 
 Declarative config for Firefox
@@ -12,7 +14,7 @@ history-proxy
 
 Open source analytics
 
-Usefulness of gui tabs
+Usefulness of vim gui tabs
 
 Building with boot in NixOS
 
