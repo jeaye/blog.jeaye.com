@@ -1,6 +1,7 @@
 ---
 title: Shave 20% off your optimized ClojureScript
-tags: [clojure, clojurescript, minify, optimize, javascript]
+categories: [clojurescript, tutorial]
+tags: [clojure, clojurescript, minify, optimize, javascript, tutorial]
 ---
 
 [ClojureScript](https://github.com/clojure/clojurescript) uses the [Google

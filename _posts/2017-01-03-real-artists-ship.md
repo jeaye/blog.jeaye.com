@@ -1,5 +1,6 @@
 ---
 title: Real artists ship
+categories: [rant]
 tags: [rant, programming]
 ---
 

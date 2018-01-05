@@ -1,5 +1,6 @@
 ---
 title: Common Lisp, Parenscript, and AJAX
+categories: [lisp, tutorial]
 tags: [lisp, parenscript, ajax, tutorial]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: A Clojure + Vim setup
+categories: [clojure, vim]
 tags: [clojure, programming, vim, plugin]
 ---
 

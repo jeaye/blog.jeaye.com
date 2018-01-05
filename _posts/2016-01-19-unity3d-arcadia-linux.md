@@ -1,5 +1,6 @@
 ---
 title: Unity3D and Arcadia on GNU/Linux
+categories: [unity, linux, clojure, review]
 tags: [unity, unity3d, arcadia, linux, clojure, review]
 ---
 

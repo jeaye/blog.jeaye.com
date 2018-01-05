@@ -1,5 +1,6 @@
 ---
 title: Running Clojure on Google App Engine
+categories: [clojure, tutorial]
 tags: [clojure, programming, appengine, google, tutorial]
 ---
 
