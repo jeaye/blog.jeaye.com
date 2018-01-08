@@ -35,7 +35,7 @@ nav-blog-class: current
             {% endif %}
 
             {% capture category_html %}
-            <span class="post-category post-category-{{ category }}" href="#">{{ category }}</span>
+            <span class="post-category post-category-{{ category }}">{{ category }}</span>
             {% endcapture %}
             {% assign all_category_html = all_category_html | append: category_html %}
             {% assign total_count = total_count | plus: 1 %}

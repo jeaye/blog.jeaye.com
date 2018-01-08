@@ -1,66 +1,68 @@
 {% include jeaye.com/_includes/header.html %}
 
-<div class="posts">
-  <section class="post">
-    <div class="post-date">{{ page.date | date: "%B %d, %Y" }}</div>
-    <h2 class="post-title">
-      <a href="{{ page.url }}" title="{{ page.url }}">
-        {{ page.title }}
-      </a>
-    </h2>
+<div class="main-content pure-u-3-4">
+  <div class="posts">
+    <section class="post">
+      <div class="post-date">{{ page.date | date: "%B %d, %Y" }}</div>
+      <h2 class="post-title">
+        <a href="{{ page.url }}" title="{{ page.url }}">
+          {{ page.title }}
+        </a>
+      </h2>
 
-    {{ content }}
-  </section>
+      {{ content }}
+    </section>
 
-  <hr />
+    <hr />
 
-  <div>
-    {% assign total_count = 1 %}
+    <div>
+      {% assign total_count = 1 %}
 
-    {% for p in site.posts %}
+      {% for p in site.posts %}
 
       {% if p.title == page.title %}
-        {% continue %}
+      {% continue %}
       {% endif %}
       {% if total_count > 4 %}
-        {% continue %}
+      {% continue %}
       {% endif %}
 
       {% assign same_count = 0 %}
       {% assign common_categories = '' %}
 
       {% for cat in p.categories %}
-        {% if page.categories contains cat %}
-          {% assign same_count = same_count | plus: 1 %}
-          {% capture catmarkup %}
-            <span class="post-category post-category-{{ cat }}">{{ cat }}</span>
-          {% endcapture %}
-          {% assign common_categories = common_categories | append: catmarkup %}
-        {% endif %}
+      {% if page.categories contains cat %}
+      {% assign same_count = same_count | plus: 1 %}
+      {% capture catmarkup %}
+      <span class="post-category post-category-{{ cat }}">{{ cat }}</span>
+      {% endcapture %}
+      {% assign common_categories = common_categories | append: catmarkup %}
+      {% endif %}
       {% endfor %}
 
       {% if same_count >= 1 %}
-        {% capture post_html %}
-          <li>
-            <h2 class="related-post-title">
-              <a href="{{ p.url }}">{{ p.title }}</a>
-              {{ common_categories }}
-            </h2>
-          </li>
-        {% endcapture %}
-        {% assign total_html = total_html | append: post_html %}
-        {% assign total_count = total_count | plus: 1 %}
+      {% capture post_html %}
+      <li>
+        <h2 class="related-post-title">
+          <a href="{{ p.url }}">{{ p.title }}</a>
+          {{ common_categories }}
+        </h2>
+      </li>
+      {% endcapture %}
+      {% assign total_html = total_html | append: post_html %}
+      {% assign total_count = total_count | plus: 1 %}
       {% endif %}
-    {% endfor %}
+      {% endfor %}
 
-    {% if total_count >= 1 %}
+      {% if total_count >= 1 %}
       <div class="pure-g border-bottom">
         <h1 class="pure-u-1 content-subhead">Related posts</h1>
         <ul class="pure-u-1-2 related-list">
           {{ total_html }}
         </ul>
       </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </div>
 </div>
 
