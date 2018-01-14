@@ -18,10 +18,13 @@ gems:
   - jekyll-feed
   - jekyll-seo-tag
 
+port: 4001
 title: "Jeaye's Blog"
 permalink: pretty
 home_url: "https://jeaye.com"
+#home_url: "http://0.0.0.0:4000"
 blog_url: "https://blog.jeaye.com"
+#blog_url: "http://0.0.0.0:4001"
 url: "https://blog.jeaye.com"
 baseurl: ""
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
