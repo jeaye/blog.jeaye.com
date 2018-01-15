@@ -15,6 +15,7 @@ defaults:
       layout: "default"
 
 gems:
+  - octopress-minify-html
   - jekyll-feed
   - jekyll-seo-tag
 
