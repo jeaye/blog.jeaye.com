@@ -34,6 +34,12 @@ tagline: "This is my blog about GNU/Linux, functional programming, safety, and s
 feed:
   path: feed.xml
 
+social:
+  name: Jeaye Wilkerson
+  links:
+    - https://www.linkedin.com/in/jeaye
+    - https://github.com/jeaye
+
 markdown: kramdown
 kramdown:
   input: GFM
