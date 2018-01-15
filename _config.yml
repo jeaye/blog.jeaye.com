@@ -33,8 +33,6 @@ tagline: "This is my blog about GNU/Linux, functional programming, safety, and s
 feed:
   path: feed.xml
 
-nav-blog-class: current
-
 markdown: kramdown
 kramdown:
   input: GFM
