@@ -1,6 +1,6 @@
 ---
 title: Continuous test coverage in Clojure
-categories: [clojure, tutorial]
+labels: [clojure, tutorial]
 tags: [clojure, programming, code, coverage, cloverage, codecov]
 ---
 

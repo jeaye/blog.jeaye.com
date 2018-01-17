@@ -1,6 +1,6 @@
 ---
 title: Clojure's forgotten for loop
-categories: [clojure, tutorial]
+labels: [clojure, tutorial]
 tags: [clojure, functional, programming, tutorial]
 ---
 

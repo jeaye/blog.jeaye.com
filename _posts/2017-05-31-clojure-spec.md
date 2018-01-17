@@ -1,6 +1,6 @@
 ---
 title: Dear Clojure devs, use clojure.spec please
-categories: [clojure, safety, rant]
+labels: [clojure, safety, rant]
 tags: [clojure, spec, orchestra, rant, dependent types, safety]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: The state of code quality tools in Clojure
-categories: [clojure, safety, review]
+labels: [clojure, safety, review]
 tags: [clojure, spec, orchestra, survey, continuous-integration, safety, review]
 ---
 

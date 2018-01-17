@@ -28,7 +28,7 @@ title: Jeaye | Blog
           Under:
           {% assign all_category_html = '' %}
           {% assign total_count = 1 %}
-          {% for category in post.categories %}
+          {% for category in post.labels %}
             {% if total_count > 4 %}
               {% continue %}
             {% endif %}

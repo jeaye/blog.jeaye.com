@@ -1,6 +1,6 @@
 ---
 title: Shave 20% off your optimized ClojureScript
-categories: [clojurescript, tutorial]
+labels: [clojurescript, tutorial]
 tags: [clojure, clojurescript, minify, optimize, javascript, tutorial]
 ---
 

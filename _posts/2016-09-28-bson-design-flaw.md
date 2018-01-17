@@ -1,6 +1,6 @@
 ---
 title: BSON's design flaw
-categories: [rant]
+labels: [rant]
 tags: [bson, flaw, array, json, rant]
 ---
 

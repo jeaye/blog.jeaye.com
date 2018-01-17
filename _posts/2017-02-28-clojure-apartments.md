@@ -1,6 +1,6 @@
 ---
 title: Finding an apartment with Clojure
-categories: [clojure]
+labels: [clojure]
 tags: [clojure, apartment, irc, bot, sf, padwatch, apartment-finder]
 ---
 

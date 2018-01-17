@@ -1,6 +1,6 @@
 ---
 title: Running Xen on Slackware 14.1 with GCC 5.1
-categories: [linux]
+labels: [linux]
 tags: [linux, slackware, xen]
 ---
 

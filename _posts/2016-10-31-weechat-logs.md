@@ -1,6 +1,6 @@
 ---
 title: Optimizing weechat log usage
-categories: [linux, tutorial]
+labels: [linux, tutorial]
 tags: [tutorial, weechat, log, linux]
 ---
 

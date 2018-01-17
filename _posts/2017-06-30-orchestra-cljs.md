@@ -1,6 +1,6 @@
 ---
 title: Porting Orchestra to ClojureScript
-categories: [clojure, safety]
+labels: [clojure, safety]
 tags: [clojure, clojurescript, spec, orchestra, dependent types, safety]
 ---
 

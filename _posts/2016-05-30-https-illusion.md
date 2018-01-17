@@ -1,6 +1,6 @@
 ---
 title: HTTPS and the illusion of privacy
-categories: [security, privacy, rant]
+labels: [security, privacy, rant]
 tags: [http, https, ssl, tls, security, privacy]
 ---
 
