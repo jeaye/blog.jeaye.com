@@ -1,4 +1,4 @@
-defaults: 
+defaults:
   -
     scope:
       path: ""
@@ -15,21 +15,26 @@ defaults:
       layout: "default"
 
 gems:
-  - octopress-minify-html
   - jekyll-feed
   - jekyll-seo-tag
+  - octopress-minify-html
+  - jekyll-sitemap
 
 port: 4001
 title: "Jeaye's Blog"
 permalink: pretty
 home_url: "https://jeaye.com"
-#home_url: "http://0.0.0.0:4000"
+#home_url: "http://192.168.0.12:4000"
 blog_url: "https://blog.jeaye.com"
-#blog_url: "http://0.0.0.0:4001"
+#blog_url: "http://192.168.0.12:4001"
 url: "https://blog.jeaye.com"
 baseurl: ""
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
 tagline: "This is my blog about GNU/Linux, functional programming, safety, and security."
+
+sass:
+  sass_dir: _includes/jeaye.com/css-partial
+  style: compressed
 
 feed:
   path: feed.xml
@@ -45,5 +50,5 @@ kramdown:
   input: GFM
   syntax_highligher: rouge
 
-exclude: [TODO, .bundle, vendor, lib]
-includes_dir: _includes
+exclude: [TODO, publish, .bundle, vendor, lib, Gemfile, Gemfile.lock, node_modules, package.json, package-lock.json]
+includes_dir: _includes/jeaye.com
