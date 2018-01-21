@@ -9,13 +9,11 @@ With the rise of per-website encryption, and the
 we begin to expect new sites, and popular sites, to adopt this added security.
 But what does it buy us? Don't be misled into thinking your browsing is private.
 
-<div style="text-align:center">
-<a href="{{ site.blog_url }}/img/https-illusion/blog-jeaye.png" target="_blank">
-<img alt="blog.jeaye.com https"
-     src="{{ site.blog_url }}/img/https-illusion/blog-jeaye.png" />
-</a>
-<br/> <br/>
-</div>
+<figure>
+  <a href="/assets/{{ assets["https-illusion/blog-jeaye.png"].digest_path }}" target="_blank">
+    {% img https-illusion/blog-jeaye.png alt:"blog.jeaye.com https" %}
+  </a>
+</figure>
 
 Firefox presents this comforting green lock when it's using HTTPS for a web
 page. If you take anything away from this, let it be that this does not mean

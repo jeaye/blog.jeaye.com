@@ -45,10 +45,9 @@ By default, cloverage will run all of your tests and generate an HTML output at
 see something like this:
 
 <figure>
-<a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png" target="_blank">
-<img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-index.png"/>
-</a>
+  <a href="/assets/{{ assets["clojure-test-coverage/cloverage-index.png"].digest_path }}" target="_blank">
+    {% img clojure-test-coverage/cloverage-index.png class:"figure-2-3" alt:"cloverage index screen shot" %}
+  </a>
 <figcaption>
 This is the output from the first run of cloverage on <a
 href="http://jank-lang.org/">jank</a>. From this, we can see that there was good
@@ -59,10 +58,9 @@ more detailed view of any of these files by clicking one.
 </figure>
 
 <figure>
-<a href="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" target="_blank">
-<img alt="cloverage index screen shot"
-     src="{{ site.blog_url }}/img/clojure-test-coverage/cloverage-detailed.png" />
-</a>
+  <a href="/assets/{{ assets["clojure-test-coverage/cloverage-detailed.png"].digest_path }}" target="_blank">
+    {% img clojure-test-coverage/cloverage-detailed.png class:"figure-2-3" alt:"cloverage detailed screen shot" %}
+  </a>
 <figcaption>
 After clicking on a specific file, it's possible to see a line-by-line breakdown
 of the coverage. In the above image, it's clear that there are no tests which
