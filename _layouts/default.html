@@ -30,8 +30,8 @@
       {% assign same_count = 0 %}
       {% assign common_categories = '' %}
 
-      {% for cat in p.categories %}
-      {% if page.categories contains cat %}
+      {% for cat in p.labels %}
+      {% if page.labels contains cat %}
       {% assign same_count = same_count | plus: 1 %}
       {% capture catmarkup %}
       <span class="post-category post-category-{{ cat }}">{{ cat }}</span>
