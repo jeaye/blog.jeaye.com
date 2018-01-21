@@ -4,3 +4,6 @@ _site/
 vendor/
 
 Gemfile.lock
+
+# Assets
+.asset-cache

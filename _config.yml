@@ -36,6 +36,15 @@ sass:
   sass_dir: _includes/jeaye.com/css-partial
   style: compressed
 
+assets:
+  # Generate files with names based on their content hash.
+  digest: true
+  sources:
+  - _assets/css
+  - _assets/img
+  - _includes/jeaye.com/_assets/css
+  - _includes/jeaye.com/_assets/img
+
 feed:
   path: feed.xml
 
