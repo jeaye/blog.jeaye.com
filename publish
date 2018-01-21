@@ -4,4 +4,4 @@ set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-bash -x ./_includes/jeaye.com/publish
+./_includes/jeaye.com/publish
