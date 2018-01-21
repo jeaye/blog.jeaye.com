@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'json', github: 'flori/json', branch: 'v1.8' # ruby 2.4 incompatability
-gem 'github-pages'
+gem 'jekyll-feed'
+gem 'jekyll-seo-tag'
 gem 'octopress-minify-html'
-gem "jekyll-assets", group: :jekyll_plugins
+gem 'jekyll-sitemap'
+gem 'jekyll-assets', '~> 3.0', '>= 3.0.6', group: :jekyll_plugins

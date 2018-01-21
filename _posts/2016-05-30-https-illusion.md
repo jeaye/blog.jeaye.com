@@ -10,8 +10,8 @@ we begin to expect new sites, and popular sites, to adopt this added security.
 But what does it buy us? Don't be misled into thinking your browsing is private.
 
 <figure>
-  <a href="/assets/{{ assets["https-illusion/blog-jeaye.png"].digest_path }}" target="_blank">
-    {% img https-illusion/blog-jeaye.png alt:"blog.jeaye.com https" %}
+  <a href="{% asset https-illusion/blog-jeaye.png @path %}" target="_blank">
+    {% asset https-illusion/blog-jeaye.png alt:"blog.jeaye.com https" %}
   </a>
 </figure>
 

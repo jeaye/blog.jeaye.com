@@ -6,4 +6,4 @@ vendor/
 Gemfile.lock
 
 # Assets
-.asset-cache
+.jekyll-cache

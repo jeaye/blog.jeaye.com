@@ -45,8 +45,8 @@ By default, cloverage will run all of your tests and generate an HTML output at
 see something like this:
 
 <figure>
-  <a href="/assets/{{ assets["clojure-test-coverage/cloverage-index.png"].digest_path }}" target="_blank">
-    {% img clojure-test-coverage/cloverage-index.png class:"figure-2-3" alt:"cloverage index screen shot" %}
+  <a href="{% asset clojure-test-coverage/cloverage-index.png @path %}" target="_blank">
+    {% asset clojure-test-coverage/cloverage-index.png class="figure-2-3" alt:"cloverage index screen shot" %}
   </a>
 <figcaption>
 This is the output from the first run of cloverage on <a
@@ -58,8 +58,8 @@ more detailed view of any of these files by clicking one.
 </figure>
 
 <figure>
-  <a href="/assets/{{ assets["clojure-test-coverage/cloverage-detailed.png"].digest_path }}" target="_blank">
-    {% img clojure-test-coverage/cloverage-detailed.png class:"figure-2-3" alt:"cloverage detailed screen shot" %}
+  <a href="{% asset clojure-test-coverage/cloverage-detailed.png @path %}" target="_blank">
+    {% asset clojure-test-coverage/cloverage-detailed.png class="figure-2-3" alt:"cloverage detailed screen shot" %}
   </a>
 <figcaption>
 After clicking on a specific file, it's possible to see a line-by-line breakdown
