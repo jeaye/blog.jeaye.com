@@ -1,6 +1,7 @@
 ---
 title: The five common forms of Clojure keywords
-tags: [clojure, keyword, tutorial]
+labels: [clojure, tutorial]
+tags: [clojure, keyword]
 ---
 
 Depending on what libraries are being used, Clojure has a handful of various
@@ -8,7 +9,7 @@ different idiomatic forms keywords can take. When approaching some forms, like
 those in [Datomic](http://www.datomic.com/), the overall intention may not be
 immediately clear. For a new Clojure developer, it may also be unclear which
 form should be the default, and why. This post aims to add some clarity on the
-subject.
+subject and is meant to apply to both Clojure and ClojureScript.
 
 ### Brief: the five common forms
 1. `:foo`, which is just your plain old keyword
