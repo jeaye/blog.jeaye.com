@@ -3,7 +3,12 @@
 <div class="main-content pure-u-22-24 pure-u-md-3-4">
   <div class="posts">
     <section class="post">
-      <div class="post-date">{{ page.date | date: "%B %d, %Y" }}</div>
+      <div class="post-date">
+        {{ page.date | date: "%B %d, %Y" }}
+        {% if page.updated %}
+          <div class="post-updated-date">Updated {{ page.updated | date: "%B %d, %Y" }}</div>
+        {% endif %}
+      </div>
       <h2 class="post-title">
         <a href="{{ page.url }}" title="{{ page.url }}">
           {{ page.title }}
