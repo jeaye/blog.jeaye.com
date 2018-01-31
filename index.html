@@ -17,7 +17,12 @@ title: Index
   {% for post in site.posts %}
     <section class="post">
       <header class="post-header">
-        <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+        <div class="post-date">
+          {{ post.date | date: "%B %d, %Y" }}
+          {% if post.updated %}
+            <div class="post-updated-date">Updated {{ post.updated | date: "%B %d, %Y" }}</div>
+          {% endif %}
+        </div>
         <h2 class="post-title">
           <a href="{{ post.url }}" title="{{ post.url }}">
             {{ post.title }}
