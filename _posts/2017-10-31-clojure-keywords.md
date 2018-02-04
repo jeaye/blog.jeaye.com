@@ -58,12 +58,22 @@ being explicit about ownership is.
 
 #### Example
 ```clojure
+; Form 2.
+(ns my.vector)
 (s/def ::x number?)
 (s/def ::y number?)
-(s/def ::position (s/keys :req [::x ::y]))
+(s/def ::2d (s/keys :req [::x ::y]))
 
-(def my-data {::x 1.5 ::y 0.0})
-(s/assert ::position my-data)
+; Form 4.
+(ns my.game-object
+  (:require [my.vector :as v]))
+(s/def ::position ::v/2d)
+(def my-data {::v/x 1.5 ::v/y 0.0})
+
+; Form 3. Some declaractive config or scene.
+{:my.game/objects [{:my.game-object/id :coltrane
+                    :my.game-object/position {:my.vector/x 5.0
+                                              :my.vector/y 1.0}}]}
 ```
 
 #### Recommendation
