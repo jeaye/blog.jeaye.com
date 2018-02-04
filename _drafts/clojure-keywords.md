@@ -69,9 +69,44 @@ even if the namespace `ninja.kitten` doesn't exist.
 **Recommendation:** Avoid these in most situations, but use them where
 idiomatic. Given that you may want specs for these keywords anyway, I would
 recommend replacing `:db/id` with `::db/id` and building a `my-app.db` namespace
-with the correct specs, but use good judgement.
+with the correct specs; use your own good judgement.
 
-### TODO
-specific cases like honeysql
+### Dotted keywords
+Finally, some Clojure libraries allow, or encourage, the use of dotted keywords
+(my own terminology) for string building. It's somewhat more convenient than
+using strings, since keywords just have a prefix and needn't be enclosed in
+quotes. These forms aren't necessarily recommended, but, within a DSL, it's
+often quite clear what the intent is.
 
-https://www.deepbluelambda.org/programming/clojure/know-your-keywords
+#### HoneySQL
+[![Clojars Project](https://img.shields.io/clojars/v/honeysql.svg)](https://clojars.org/honeysql)
+
+```clojure
+; Keywords like :f.a are used for string building.
+(-> {:select [:a :b :c]
+     :from [:foo]
+     :where [:= :f.a "baz"]}
+    sql/format)
+=> ["SELECT a, b, c FROM foo WHERE f.a = ?" "baz"]
+
+; Keywords are also used with symbols to convey operations.
+(-> (select :*)
+    (from :foo)
+    (where [:= :a 1] [:< :b 100])
+    sql/format)
+=> ["SELECT * FROM foo WHERE (a = ? AND b < ?)" 1 100]
+```
+
+#### cljs-oops
+[![Clojars Project](https://img.shields.io/clojars/v/binaryage/oops.svg)](https://clojars.org/binaryage/oops)
+
+```clojure
+; Keywords can be used for accessing members of JS objects.
+(oget my-js-obj :my-member)
+
+; Nested members can be accessed using dotted keywords.
+(oget my-js-obj :transform.position.x)
+
+; Calling functions is much the same.
+(ocall js/Math :abs my-debt)
+```
