@@ -38,7 +38,7 @@ data being passed around, for example, namespace the keywords (and consider
 adding specs for the data). If you have an "enum," meaning one in a discrete set
 of possible keywords, also namespace them. The only time when a plain old
 keyword's convenience overcomes its cost is within a simple API or DSL with no
-middleware, so no possibility for collisions. An example of this would be:
+middleware, so no possibility for collisions. Examples of this would be:
 
 
 ```clojure
@@ -53,8 +53,8 @@ This applies to forms #2, #3, and #4 specifically. These are necessary for
 specs. They convey ownership, since they're tied to a valid namespace, they
 completely avoid the issue of name collision, and they can help explicitly spell
 out dependencies. Though they may feel like extra work, since you will need to
-treat them as dependencies, I think that willy-nilly access to data is not a
-good thing and being explicit about ownership is.
+treat them as dependencies, willy-nilly access to data is not a good thing and
+being explicit about ownership is.
 
 #### Example
 ```clojure
@@ -67,22 +67,23 @@ good thing and being explicit about ownership is.
 ```
 
 #### Recommendation
-Forms #2 and #4 should be your default. Within a namespace,
-`::foo` is only one more character than `:foo`, but it contains significantly
-more data. When you want to access some other system's data from your app state,
-for example, you have a dependency on that data. Tying that dependency on a
-namespace level, through a `(:require [my.ns :as my-ns])` allows you to then use
-the shorthand #4 form `::my-ns/foo`. If you detect cyclical dependencies and
-can't reorganize, or you need to avoid the require for another reason, then the
-#3 form can be used. Similarly, within your `config.edn`, you'll use form #3,
-since you likely have no requires.
+Forms #2 and #4 should be your default in Clojure and ClojureScript. Within the
+same namespace, `::foo` is only one more character than `:foo`, but it carries
+significantly more data. When you want to access some other system's data from
+your app state, for example, you have a dependency on that data. Tying that
+dependency on a namespace level, through a `(:require [my.ns :as my-ns])` allows
+you to then use the shorthand #4 form `::my-ns/foo`. If you detect cyclical
+dependencies and can't reorganize, or you need to avoid the require for another
+reason, then the #3 form can be used. Similarly, within your `config.edn`, or
+similar, you'll use form #3, since you likely have no requires.
 
 ### Grouped keywords
-Syntactically, grouped keywords (my own terminology) are namespaced keywords,
-but they're not tied to a valid namespace. Instead, the namespace segment is
-used for some logical grouping. Datomic uses this for grouping attributes, like
-`:db/id` and `:user/name`. Note that grouped keywords may also use nested group
-names, like `:db.type/long`.
+Grouped keywords (my own terminology) match form #5. Syntactically, grouped
+keywords are namespaced keywords, but they're not tied to a valid namespace.
+Instead, the namespace segment is used for some logical grouping. Datomic uses
+this for grouping attributes, like `:db/id` and `:user/name`. Note that grouped
+keywords may also use nested group names, like `:db.type/long`. These don't map
+to valid namespaces.
 
 #### Example
 ```clojure
@@ -112,7 +113,9 @@ Finally, some Clojure libraries allow, or encourage, the use of dotted keywords
 specifically used for string building. They're somewhat more convenient than
 using strings, since keywords just have a prefix and needn't be enclosed in
 quotes. They are less common and aren't necessarily recommended, but, within a
-DSL, they can feel quite natural.
+DSL, they can feel quite natural. Due to their uncommonness, dotted keywords
+aren't included in the five common forms; they're included here as an honorable
+mention.
 
 #### Example: HoneySQL
 [![Clojars Project](https://img.shields.io/clojars/v/honeysql.svg)](https://clojars.org/honeysql)
@@ -155,6 +158,6 @@ Keywords in Clojure are certainly versatile. This post has covered plain old
 keywords, three forms of namespaced keywords, grouped keywords, and dotted
 keywords. You should now also know their common uses and pitfalls. When in
 doubt, namespace your keywords to convey explicit ownership of data and prevent
-name collisions. When building a DSL without middleware or using keyword
+name collisions. When building a DSL without middleware or when using keyword
 arguments, plain old keywords will probably do. Where possible, [use
 clojure.spec]({{ site.blog_url }}/2017/05/31/clojure-spec/)!
