@@ -17,7 +17,7 @@ when to opt for something else.
 1. `:foo`, which is just your plain old keyword
 2. `::foo`, which is a namespaced keyword for the current namespace
 3. `:my.ns/name`, which is a namespaced keyword for a valid namespace
-4. `::my/name`, which uses the `:as` alias to achieve the same as point #3
+4. `::my/name`, which uses the `:as` alias to achieve the same as form #3
 5. `:something/foo`, which is commonly used with Datomic and doesn't actually map to a valid namespace
 
 ### Plain old keywords
@@ -42,14 +42,14 @@ middleware, so no possibility for collisions. An example of this would be:
 
 
 ```clojure
-; Simple keyword arguments
+; Simple keyword arguments.
 (json/read-str "{}" :key-fn keyword)
 
 (s/keys :req [])
 ````
 
 ### Namespaced keywords
-This applies to points #2, #3, and #4 specifically. These are necessary for
+This applies to forms #2, #3, and #4 specifically. These are necessary for
 specs. They convey ownership, since they're tied to a valid namespace, they
 completely avoid the issue of name collision, and they can help explicitly spell
 out dependencies. Though they may feel like extra work, since you will need to
@@ -148,3 +148,12 @@ cljs-oops is an essential library for any ClojureScript being compiled with
 ; Calling functions is much the same.
 (ocall js/Math :abs my-debt)
 ```
+
+### Summary
+Keywords in Clojure are certainly versatile. This post has covered plain old
+keywords, three forms of namespaced keywords, grouped keywords, and dotted
+keywords. You should now also know their common uses and pitfalls. When in
+doubt, namespace your keywords to convey explicit ownership of data and prevent
+name collisions. When building a DSL without middleware or using keyword
+arguments, plain old keywords will probably do. Where possible, [use
+clojure.spec]({{ site.blog_url }}/2017/05/31/clojure-spec/)!
