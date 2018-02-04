@@ -32,7 +32,8 @@ reasons, they can't be used to name specs with `clojure.spec`.
 (def my-data {:x 1.5 :y 0.0})
 ```
 
-**Recommendation:** Avoid plain old keywords by default. If you have a map of
+#### Recommendation
+Avoid plain old keywords by default. If you have a map of
 data being passed around, for example, namespace the keywords (and consider
 adding specs for the data). If you have an "enum," meaning one in a discrete set
 of possible keywords, also namespace them. The only time when a plain old
@@ -65,7 +66,8 @@ good thing and being explicit about ownership is.
 (s/assert ::position my-data)
 ```
 
-**Recommendation:** Forms #2 and #4 should be your default. Within a namespace,
+#### Recommendation
+Forms #2 and #4 should be your default. Within a namespace,
 `::foo` is only one more character than `:foo`, but it contains significantly
 more data. When you want to access some other system's data from your app state,
 for example, you have a dependency on that data. Tying that dependency on a
@@ -98,7 +100,8 @@ names, like `:db.type/long`.
 (d/transact conn {:tx-data order-schema})
 ```
 
-**Recommendation:** Avoid these in most situations, but use them where
+#### Recommendation
+Avoid these in most situations, but use them where
 idiomatic. Given that you may want specs for these keywords anyway, I would
 recommend replacing `:db/id` with `::db/id` and building a `my-app.db` namespace
 with the correct specs; use your own good judgement.
