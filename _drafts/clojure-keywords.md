@@ -78,8 +78,9 @@ using strings, since keywords just have a prefix and needn't be enclosed in
 quotes. These forms aren't necessarily recommended, but, within a DSL, it's
 often quite clear what the intent is.
 
-#### HoneySQL
+#### Example: HoneySQL
 [![Clojars Project](https://img.shields.io/clojars/v/honeysql.svg)](https://clojars.org/honeysql)
+HoneySQL is an excellent query builder for numerous SQL databases.
 
 ```clojure
 ; Keywords like :f.a are used for string building.
@@ -97,8 +98,10 @@ often quite clear what the intent is.
 => ["SELECT * FROM foo WHERE (a = ? AND b < ?)" 1 100]
 ```
 
-#### cljs-oops
+#### Example: cljs-oops
 [![Clojars Project](https://img.shields.io/clojars/v/binaryage/oops.svg)](https://clojars.org/binaryage/oops)
+cljs-oops is an essential library for any ClojureScript being compiled with
+`:advanced` optimizations.
 
 ```clojure
 ; Keywords can be used for accessing members of JS objects.
