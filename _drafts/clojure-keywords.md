@@ -16,9 +16,9 @@ when to opt for something else.
 ### Brief: the five common forms
 1. `:foo`, which is just your plain old keyword
 2. `::foo`, which is a namespaced keyword for the current namespace
-3. `:my.ns/name`, which is a namespaced keyword for a valid ns
+3. `:my.ns/name`, which is a namespaced keyword for a valid namespace
 4. `::my/name`, which uses the `:as` alias to achieve the same as point #3
-5. `:something/foo`, which is commonly used with Datomic and doesn't actually map to a valid ns
+5. `:something/foo`, which is commonly used with Datomic and doesn't actually map to a valid namespace
 
 ### Plain old keywords
 These will show up most often in the Clojure and ClojureScript available on the
@@ -38,6 +38,22 @@ middleware, so no possibility for collisions. An example of this would be:
 ```clojure
 (clojure.data.json/read-str "{}" :key-fn keyword)
 ````
+
+### Namespaced keywords
+This applies to points #2, #3, and #4 specifically. These are necessary for
+specs. They convey ownership, since they're tied to a valid namespace, they
+completely avoid the issue of name collision, and they can help explcitly spell
+out dependencies.
+
+**Recommendation:** Forms #2 and #4 should be your default. Within a namespace,
+`::foo` is only one more character than `:foo`, but it contains significantly
+more data. When you want to access some other system's data from your app state,
+for example, you have a dependency on that data. Tying that dependency on a
+namespace level, through a `(:require [my.ns :as my-ns])` allows you to then use
+the shorthand #4 form `::my-ns/foo`. If you detect cyclical dependencies and
+can't reorganize, or you need to avoid the require for another reason, then the
+#3 form can be used. Similarly, within your `config.edn`, you'll use form #3,
+since you likely have no requires.
 
 ### TODO
 specific cases like honeysql
