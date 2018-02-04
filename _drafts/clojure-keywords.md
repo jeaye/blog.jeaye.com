@@ -27,16 +27,24 @@ it easy for anyone to consume. That convenience, however, comes at a cost; they
 can easily cause name collisions, they don't convey ownership, and, for those
 reasons, they can't be used to name specs with `clojure.spec`.
 
+#### Example
+```clojure
+(def my-data {:x 1.5 :y 0.0})
+```
+
 **Recommendation:** Avoid plain old keywords by default. If you have a map of
 data being passed around, for example, namespace the keywords (and consider
 adding specs for the data). If you have an "enum," meaning one in a discrete set
 of possible keywords, also namespace them. The only time when a plain old
-keyword's convenience overcomes its cost is within a simple API with no
+keyword's convenience overcomes its cost is within a simple API or DSL with no
 middleware, so no possibility for collisions. An example of this would be:
 
 
 ```clojure
-(clojure.data.json/read-str "{}" :key-fn keyword)
+; Simple keyword arguments
+(json/read-str "{}" :key-fn keyword)
+
+(s/keys :req [])
 ````
 
 ### Namespaced keywords
@@ -46,6 +54,16 @@ completely avoid the issue of name collision, and they can help explicitly spell
 out dependencies. Though they may feel like extra work, since you will need to
 treat them as dependencies, I think that willy-nilly access to data is not a
 good thing and being explicit about ownership is.
+
+#### Example
+```clojure
+(s/def ::x number?)
+(s/def ::y number?)
+(s/def ::position (s/keys :req [::x ::y]))
+
+(def my-data {::x 1.5 ::y 0.0})
+(s/assert ::position my-data)
+```
 
 **Recommendation:** Forms #2 and #4 should be your default. Within a namespace,
 `::foo` is only one more character than `:foo`, but it contains significantly
@@ -61,10 +79,24 @@ since you likely have no requires.
 Syntactically, grouped keywords (my own terminology) are namespaced keywords,
 but they're not tied to a valid namespace. Instead, the namespace segment is
 used for some logical grouping. Datomic uses this for grouping attributes, like
-`:db/id` and `:user/name`. You can distinguish this form #5 usage from form #3,
-since the namespace portion for form #5 will usually only be a single segment.
-That's not guaranteed, however, since `:ninja.kitten/milk` is entirely valid,
-even if the namespace `ninja.kitten` doesn't exist.
+`:db/id` and `:user/name`. Note that grouped keywords may also use nested group
+names, like `:db.type/long`.
+
+#### Example
+```clojure
+(def order-schema
+  [{:db/ident :order/items
+    :db/valueType :db.type/ref
+    :db/cardinality :db.cardinality/many
+    :db/isComponent true}
+   {:db/ident :item/id
+    :db/valueType :db.type/ref
+    :db/cardinality :db.cardinality/one}
+   {:db/ident :item/count
+    :db/valueType :db.type/long
+    :db/cardinality :db.cardinality/one}])
+(d/transact conn {:tx-data order-schema})
+```
 
 **Recommendation:** Avoid these in most situations, but use them where
 idiomatic. Given that you may want specs for these keywords anyway, I would
@@ -73,10 +105,10 @@ with the correct specs; use your own good judgement.
 
 ### Dotted keywords
 Finally, some Clojure libraries allow, or encourage, the use of dotted keywords
-(my own terminology) for string building. It's somewhat more convenient than
+(my own terminology) for string building. They're somewhat more convenient than
 using strings, since keywords just have a prefix and needn't be enclosed in
-quotes. These forms aren't necessarily recommended, but, within a DSL, it's
-often quite clear what the intent is.
+quotes. They are less common and aren't necessarily recommended, but, within a
+DSL, it's often quite clear what the intent is.
 
 #### Example: HoneySQL
 [![Clojars Project](https://img.shields.io/clojars/v/honeysql.svg)](https://clojars.org/honeysql)
