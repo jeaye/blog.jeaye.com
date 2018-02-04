@@ -42,8 +42,10 @@ middleware, so no possibility for collisions. An example of this would be:
 ### Namespaced keywords
 This applies to points #2, #3, and #4 specifically. These are necessary for
 specs. They convey ownership, since they're tied to a valid namespace, they
-completely avoid the issue of name collision, and they can help explcitly spell
-out dependencies.
+completely avoid the issue of name collision, and they can help explicitly spell
+out dependencies. Though they may feel like extra work, since you will need to
+treat them as dependencies, I think that willy-nilly access to data is not a
+good thing and being explicit about ownership is.
 
 **Recommendation:** Forms #2 and #4 should be your default. Within a namespace,
 `::foo` is only one more character than `:foo`, but it contains significantly
@@ -54,6 +56,20 @@ the shorthand #4 form `::my-ns/foo`. If you detect cyclical dependencies and
 can't reorganize, or you need to avoid the require for another reason, then the
 #3 form can be used. Similarly, within your `config.edn`, you'll use form #3,
 since you likely have no requires.
+
+### Grouped keywords
+Syntactically, grouped keywords (my own terminology) are namespaced keywords,
+but they're not tied to a valid namespace. Instead, the namespace segment is
+used for some logical grouping. Datomic uses this for grouping attributes, like
+`:db/id` and `:user/name`. You can distinguish this form #5 usage from form #3,
+since the namespace portion for form #5 will usually only be a single segment.
+That's not guaranteed, however, since `:ninja.kitten/milk` is entirely valid,
+even if the namespace `ninja.kitten` doesn't exist.
+
+**Recommendation:** Avoid these in most situations, but use them where
+idiomatic. Given that you may want specs for these keywords anyway, I would
+recommend replacing `:db/id` with `::db/id` and building a `my-app.db` namespace
+with the correct specs, but use good judgement.
 
 ### TODO
 specific cases like honeysql
