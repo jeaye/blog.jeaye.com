@@ -108,10 +108,11 @@ with the correct specs; use your own good judgement.
 
 ### Dotted keywords
 Finally, some Clojure libraries allow, or encourage, the use of dotted keywords
-(my own terminology) for string building. They're somewhat more convenient than
+(my own terminology). Dotted keywords are plain old keywords, but they're
+specifically used for string building. They're somewhat more convenient than
 using strings, since keywords just have a prefix and needn't be enclosed in
 quotes. They are less common and aren't necessarily recommended, but, within a
-DSL, it's often quite clear what the intent is.
+DSL, they can feel quite natural.
 
 #### Example: HoneySQL
 [![Clojars Project](https://img.shields.io/clojars/v/honeysql.svg)](https://clojars.org/honeysql)
