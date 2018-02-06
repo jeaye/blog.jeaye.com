@@ -2,6 +2,7 @@
 title: HTTPS for your Github Pages' custom domain
 labels: [security, privacy, tutorial]
 tags: [ssl, github, pages, https, letsencrypt, simp_le, security, privacy, tutorial]
+updated: 2016-04-31
 ---
 
 With the rise of free encryption through [Let's
