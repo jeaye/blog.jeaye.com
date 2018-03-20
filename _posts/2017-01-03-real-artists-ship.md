@@ -163,7 +163,7 @@ linger. Are your users frustrated that your software crashes often? That goes
 without saying. Is your new-user experience poor because of your degrading
 performance? Can you address this without systemic changes? Is your poor
 developer tooling hurting the productivity of your devs and significantly
-increasing your iteration time? Is is troubling to on-board new devs, given the
+increasing your iteration time? Is it troubling to on-board new devs, given the
 poor documentation and [bus factor](https://en.wikipedia.org/wiki/Bus_factor) of
 your proprietary tech?
 
