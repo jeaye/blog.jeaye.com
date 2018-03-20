@@ -32,7 +32,7 @@ Sally: *“Did you get tests written for the new notification system?”*
 
 Heather: *“No, I needed to get it out the door.”*
 
-Sally: *“Yeah, that dealine was tight. Do you plan on getting the tests written
+Sally: *“Yeah, that deadline was tight. Do you plan on getting the tests written
 before the next sprint?”*
 
 Heather: *“No, I don't think they're important. The code works and it's live.”*
