@@ -14,12 +14,11 @@ image-background with border-radius
 
 vimwiki with just markdown and a couple mappings
 
-securing a new Android phone
-
 securing a new android phone
   taintdroid
 
 k-9 review
+  unable to sign-only
 
 vim fuzzy search
   ctrlp, vim-fuzzysearch
