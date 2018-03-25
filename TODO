@@ -1,8 +1,34 @@
 safepaste
 
+favorite tech of 2017
+  re-frame, firebase, react native
+
+re-frisk with react native
+
+how not to handle bug reports
+  ignore them (llvm)
+  require complete tests (llvm)
+  require tooling nobody uses (clojure)
+
+image-background with border-radius
+
+vimwiki with just markdown and a couple mappings
+
+securing a new Android phone
+
+securing a new android phone
+  taintdroid
+
+k-9 review
+
+vim fuzzy search
+  ctrlp, vim-fuzzysearch
+
 github pages with gems using publish script
 
 sarcastic: writing more code in C
+
+C++ is too complex
 
 testing with cljs and re-frame
 
