@@ -11,4 +11,16 @@ Clojure was with the utmost intention and it was the culmination of a few years'
 worth of reflection upon where safety meets practicality, in terms of functional
 programming. In building our flagship product beta, we chose several
 technologies to help us along and a few of them really stood out. None of these
-technologies are new to 2017, but they were most helpful to me in 2017.
+technologies were new in 2017, but they were most helpful to my team in 2017.
+
+*NOTE: There are no affiliate links on this blog and I bring in no revenue
+by hosting it or by discussing paid products.*
+
+### Number 1: re-frame
+[re-frame](https://github.com/Day8/re-frame) is a ClojureScript MVC framework,
+*basically*, for React (and React Native), with which one can manage each layer
+of the application using 
+
+### Number 2: Firebase
+
+### Number 3: React Native
