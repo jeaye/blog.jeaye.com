@@ -7,6 +7,8 @@ using promesa/bluebird for async/await in ClojureScript
 
 re-frisk with react native
 
+designing a game engine flow with Clojure/jank
+
 how not to handle bug reports
   ignore them (llvm)
   require complete tests (llvm)
