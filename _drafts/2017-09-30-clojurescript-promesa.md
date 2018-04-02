@@ -24,7 +24,7 @@ it allows the code to read as though it works synchronously, even though each
 line is awaiting a promise.
 
 ```javascript
-async function main() {
+async function sign_in() {
   await driver.init().timeoutsImplicitWait(120 * 1000);
 
   await driver.waitForVisible("~email");
@@ -34,3 +34,37 @@ async function main() {
   await driver.pause(1000).end();
 }
 ```
+
+### The first pass
+The first attempt won't be the cleanest, but it'll mimic the functionality.
+```clojure
+(ns my-app.test.sign-in
+  (:require [[oops.core :refer [ocall]]
+             [promesa.core :as p]
+             [promesa.async-cljs :refer-macros [async]]]))
+
+(defn sign-in []
+  (async
+    (-> driver
+        (ocall :init) (ocall :timeoutsImplicitWait (* 120 1000))
+        p/await)
+
+    (-> driver
+        (ocall :waitForVisible "~email")
+        p/await)
+
+    (-> driver
+        (ocall :element "~email") (ocall :setValue "test@example.com")
+        p/await)
+
+    (-> driver
+        (ocall :click "~email")
+        p/await)
+
+    (-> driver
+        (ocall :pause 1000)
+        (ocall :end)
+        p/await)))
+```
+
+TODO: Mention cljs-promises
