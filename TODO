@@ -3,8 +3,6 @@ safepaste
 favorite tech of 2017
   clojure, re-frame, firebase, react native
 
-using promesa/bluebird for async/await in ClojureScript
-
 re-frisk with react native
 
 designing a game engine flow with Clojure/jank
