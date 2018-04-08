@@ -85,7 +85,7 @@ of promesa will be available.
 ```
 
 ### Removing some redundancy
-Cleaning up the duplication can be done with a simple macro.
+Cleaning up the duplication can be done with a simple `await->` macro.
 
 ```clojure
 ; This must be a cljc file.
@@ -126,4 +126,10 @@ Cleaning up the duplication can be done with a simple macro.
              (ocall :end))))
 ```
 
-TODO: Mention cljs-promises
+### Sticking with core.async
+For those interested in sticking with core.async, perhaps due to an existing
+dependency, there is
+[cljs-promises](https://github.com/jamesmacaulay/cljs-promises), which allows
+the conversion of JS promises into async channels. Unlike bluebird's resolve,
+cljs-promises doesn't work with all thenables though, so it's not as flexible as
+promesa in that regard.
