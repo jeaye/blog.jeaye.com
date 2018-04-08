@@ -93,12 +93,9 @@ Cleaning up the duplication can be done with a simple macro.
   (:require [promesa.core :as p]))
 
 #?(:clj
-   (defmacro resolve! [thenable]
-     `(~'js/Promise.resolve ~thenable)))
-
-#?(:clj
-   (defmacro await! [thenable]
-     `(-> (resolve! ~thenable)
+   (defmacro await-> [thenable & thens]
+     `(-> ~@thens
+          (~'js/Promise.resolve ~thenable)
           p/await)))
 ```
 
@@ -111,26 +108,21 @@ Cleaning up the duplication can be done with a simple macro.
 
 (defn sign-in []
   (async
-    (-> driver
-        (ocall :init) (ocall :timeoutsImplicitWait (* 120 1000))
-        await!)
+    (await-> driver
+             (ocall :init) (ocall :timeoutsImplicitWait (* 120 1000)))
 
-    (-> driver
-        (ocall :waitForVisible "~email")
-        await!)
+    (await-> driver
+             (ocall :waitForVisible "~email"))
 
-    (-> driver
-        (ocall :element "~email") (ocall :setValue "test@example.com")
-        await!)
+    (await-> driver
+             (ocall :element "~email") (ocall :setValue "test@example.com"))
 
-    (-> driver
-        (ocall :click "~email")
-        await!)
+    (await-> driver
+             (ocall :click "~email"))
 
-    (-> driver
-        (ocall :pause 1000)
-        (ocall :end)
-        await!)))
+    (await-> driver
+             (ocall :pause 1000)
+             (ocall :end))))
 ```
 
 TODO: Mention cljs-promises
