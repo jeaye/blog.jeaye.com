@@ -94,8 +94,9 @@ Cleaning up the duplication can be done with a simple macro.
 
 #?(:clj
    (defmacro await-> [thenable & thens]
-     `(-> ~@thens
-          (~'js/Promise.resolve ~thenable)
+     `(-> ~thenable
+          ~@thens
+          ~'js/Promise.resolve
           p/await)))
 ```
 
