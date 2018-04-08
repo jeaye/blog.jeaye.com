@@ -84,6 +84,53 @@ of promesa will be available.
         p/await)))
 ```
 
-### The second pass
+### Removing some redundancy
+Cleaning up the duplication can be done with a simple macro.
+
+```clojure
+; This must be a cljc file.
+(ns my-app.test.util.macro
+  (:require [promesa.core :as p]))
+
+#?(:clj
+   (defmacro resolve! [thenable]
+     `(~'js/Promise.resolve ~thenable)))
+
+#?(:clj
+   (defmacro await! [thenable]
+     `(-> (resolve! ~thenable)
+          p/await)))
+```
+
+```clojure
+(ns my-app.test.sign-in
+  (:require [[oops.core :refer [ocall]]
+             [promesa.core :as p]
+             [promesa.async-cljs :refer-macros [async]]
+             [my-app.test.util.macro :refer-macros [await!]))
+
+(defn sign-in []
+  (async
+    (-> driver
+        (ocall :init) (ocall :timeoutsImplicitWait (* 120 1000))
+        await!)
+
+    (-> driver
+        (ocall :waitForVisible "~email")
+        await!)
+
+    (-> driver
+        (ocall :element "~email") (ocall :setValue "test@example.com")
+        await!)
+
+    (-> driver
+        (ocall :click "~email")
+        await!)
+
+    (-> driver
+        (ocall :pause 1000)
+        (ocall :end)
+        await!)))
+```
 
 TODO: Mention cljs-promises
