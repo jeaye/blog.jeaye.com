@@ -50,12 +50,18 @@ of promesa will be available.
              [promesa.async-cljs :refer-macros [async]]]))
 
 (defn sign-in []
+  ; async is a promesa macro to allow for awaiting promises.
   (async
     (-> driver
         (ocall :init) (ocall :timeoutsImplicitWait (* 120 1000))
+        ; We resolve the thenable into a bluebird promise...
         js/Promise.resolve
+        ; Then we await the promise, just like in the JS version.
         p/await)
 
+    ; The repeated resolve and await are an eye sore, but we can't just put them
+    ; into a fn, since await can only be used within the async form. We need a
+    ; macro.
     (-> driver
         (ocall :waitForVisible "~email")
         js/Promise.resolve
