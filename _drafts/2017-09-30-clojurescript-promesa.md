@@ -37,7 +37,7 @@ async function sign_in() {
 
 ### Awaiting a JS promise
 The first attempt won't be the cleanest, but it'll mimic the functionality. In
-order to turn a JS promise, or, more correctly, any thenable, into a
+order to turn a JS promise, or, more correctly, any JS thenable, into a
 [bluebird](http://bluebirdjs.com/docs/getting-started.html) promise (which is
 what promesa uses behind the scenes), one needs to call `js/Promise.resolve`.
 After resolving, the thenable will be a bluebird promise and all of the niceties
