@@ -11,9 +11,9 @@ all of its machines and released an [update
 plan](http://blog.system76.com/post/168050597573/system76-me-firmware-updates-plan)
 in November 2017. In February 2018, owners of the [Oryx
 Pro](https://system76.com/laptops/oryx) were informed that the firmware update
-was available through System76's open source firmware updater. For anyone not on
-Systm76's [Pop!_OS](https://system76.com/pop) or similar Debian-based distros,
-this firmware updater probably didn't do *anything*. After waiting patiently for
+was available through System76's open source [firmware updater](TODO). For anyone not on
+System76's [Pop!_OS](https://system76.com/pop) or similar Debian-based distros,
+this firmware updater probably *didn't do anything*. After waiting patiently for
 a couple of months for more updates and not seeing any fixes, I dug into how I
 could get things going. Herein lies the easiest way I found.
 
@@ -51,9 +51,10 @@ When deciding to dig into what was going on, the first thing I did was step
 through the program with [pdb](TODO). From there, it became clear that
 `system76-firmware` is trying to show a modal, but can't find the display name,
 so it [exits silently](TODO). It's reading the display name from `who`, which is
-odd, since I'd think it'd just check `DISPLAY`, so I just edited the source to
-just return `:0`, which is the value of `echo $DISPLAY` in my X session. Looks
-like this is just an assumption made on System76's part.
+odd, since I'd think it'd just check `DISPLAY`, so I edited the source to just
+return `":0"`, which is the value of `echo $DISPLAY` in my X session. This could
+be because I'm running [i3-wm](TODO) and not GNOME or KDE, but it's an
+assumption made on System76's part either way.
 
 For the file: `/usr/lib/python3.6/site-packages/system76driver/firmware.py`
 ```diff
@@ -82,14 +83,37 @@ into the firmware updater. Restart!
 
 Back into GRUB, then into Arch, with no firmware updates. Damn. So I dug more
 into the source for, hopefully, another one liner. There's a bash script, as part
-of the Python source, called [FIRMWARE_SET_NEXT_BOOT](TODO). This is what's
-trying to make the next boot go into the updater's EFI file instead of the
-normal boot order. So, already, there are some assumptions made.
+of the Python source, called [FIRMWARE_SET_NEXT_BOOT](TODO). It looks like this:
+
+```bash
+EFIDEV="$(findmnt -n /boot/efi -o SOURCE)"
+EFINAME="$(basename "${EFIDEV}")"
+EFISYS="$(readlink -f "/sys/class/block/${EFINAME}")"
+EFIPART="$(cat "${EFISYS}/partition")"
+DISKSYS="$(dirname "${EFISYS}")"
+DISKNAME="$(basename "${DISKSYS}")"
+DISKDEV="/dev/${DISKNAME}"
+
+echo -e "\e[1mCreating Boot1776 on "${DISKDEV}" "${EFIPART}" \e[0m" >&2
+efibootmgr -B -b 1776 || true
+efibootmgr -C -b 1776 -d "${DISKDEV}" -p "${EFIPART}" -l '\\system76-firmware-update\\boot.efi' -L "system76-firmware-update"
+
+echo -e "\e[1mSetting BootNext to 1776\e[0m" >&2
+efibootmgr -n 1776
+
+echo -e "\e[1mInstalled system76-firmware-update\e[0m" >&2
+efibootmgr -v
+```
+
+This is what's trying to make the next boot go into the updater's EFI file
+instead of the normal boot order. So, already, there are some assumptions made.
 
 1. The user is booting with EFI
 2. `/boot/efi` is mounted
-4. Writing the System76 updater EFI to `/boot/efi/system76-firmware-update/` is useful
-3. `efibootmgr -C` is valid
+3. Writing the System76 updater EFI to `/boot/efi/system76-firmware-update/` is useful
+4. `efibootmgr -C` is valid
+5. Errors don't matter. They do though, so it should be using [safer
+   settings](https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/).
 
 For all but the first of these assumptions, on my Arch setup, System76 is
 guessing incorrectly. Yes, I'm booting with EFI, but `/boot/efi` isn't always
@@ -113,18 +137,18 @@ the updater:
 I was able to get `efibootmgr` to finally run without error, but a restart still
 just brought me to GRUB. So, I took a more manual route.
 
-### Before proceeding: get rescatux
-Before you do this, make sure you have a USB or CD/DVD with a burned image of
-[rescatux](TODO). rescatux is an amazing 20MB rescue boot image which can boot
+### Before proceeding: get Rescatux
+Very importantly, make sure you have a USB or CD/DVD with a burned image of
+[Rescatux](TODO). Rescatux is an amazing 20MB rescue boot image which can boot
 into most anything. This is not a precaution; if you follow these steps, you
-*will* need rescatux, so burn it now. TODO: download/burn instructions.
+*will* need Rescatux, so burn it now. TODO: download/burn instructions.
 
 ### Manually loading the updater EFI
-The idea is simple: just add a GRUB entry for the firmware updater, since I can
+My idea was simple: just add a GRUB entry for the firmware updater, since I can
 so reliably make it into GRUB. The catch is that the firmware updater, thinking
-that it was booted from the temporary boot made by the bash script discussed
-above, deletes the EFI boot entry which was used to boot. As long as there's a
-rescatux image lying around, though, that's not a problem.
+that it was booted from the temporary boot path made by the bash script
+discussed above, deletes the EFI boot path which was used to boot. As long as
+there's a Rescatux image lying around, though, that's not a problem.
 
 #### Add the GRUB entry
 The GRUB entry should look something like this (put it at the bottom of
@@ -141,12 +165,13 @@ menuentry "System76 Firmware Update" {
 
 In order for it to work for your machine, you need to do two things.
 
-##### Find the filesystem UUID
-Run `cfdisk` and select your EFI partition to see its filesystem id. For
-example, mine is `129D-B845`. Replace `TODO-ID` in the above GRUB entry with
+#### Find the filesystem UUID
+Run `cfdisk <your disk>` and select your EFI partition to see its filesystem id.
+For example, mine is `129D-B845`. Replace `TODO-ID` in the above GRUB entry with
 your id. Here's what it should look like:
 
 ```text
+$ cfdisk /dev/nvme0n1
                                    Disk: /dev/nvme0n1
                  Size: 232.9 GiB, 250059350016 bytes, 488397168 sectors
               Label: gpt, identifier: B7545E19-CF68-4779-BD95-F12C7DC8DDA6
@@ -165,11 +190,11 @@ your id. Here's what it should look like:
 
 ```
 
-##### Move the updater to the EFI partition
+#### Move the updater to the EFI partition
 As mentioned above, `system76-firmware` installs the updater to
-`/boot/efi/system76-firmware-update`. If that's your EFI root, great, but you
-may need to move the updater to `/boot/efi/EFI/system76-firmware-update` as I
-did.
+`/boot/efi/system76-firmware-update`. If that's your EFI root, great. Just
+update the GRUB entry to not use `/EFI/`. If your system is like mine, though,
+you'll need to move the updater to `/boot/efi/EFI/system76-firmware-update`.
 
 #### Generate GRUB's new config
 With the new GRUB entry, the final step to get ready for the reboot is to
@@ -181,7 +206,7 @@ $ grub-mkconfig --output /boot/grub/grub.cfg
 
 ### Time to update the firmware
 At this point, a reboot should bring you into GRUB with your new entry. After
-selecting your entry, you should see the updater and you can press enter to
+selecting your new entry, you should see the updater and you can press enter to
 continue. Remember to have the [System76 docs](TODO) on hand, so you understand
 how the update flow should go.
 
@@ -192,8 +217,8 @@ System76 docs to jump into BIOS, adopt the defaults, and everything else. When
 you're ready to get back into GNU/Linux, you'll find your EFI boot path is gone.
 
 ### Rescatux
-Plug in your rescatux media, reboot your machine, optionally hit F2 to change
-your boot order, if necessary, and make it into the Rescatux menu. The default
+Plug in your Rescatux media, reboot your machine, optionally hit F2 to change
+your boot order, if necessary, to make it into the Rescatux menu. The default
 option, to find all bootable OSs, will do the trick, so just hit enter and then
 choose the first Linux boot option to get back into your typical environment.
 
@@ -209,9 +234,12 @@ $ mount /dev/nvme0n1p1 /boot/efi
 $ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 ```
 
+The Intel Management Engine has now been disabled and its code has been removed.
+You can try running the firmware updater again, just to be sure that it detects
+everything is up to date.
+
 ### Cleanup
-Once you're back into GNU/Linux and you've reinstalled GRUB, feel free to remove
-`/boot/efi/EFI/system76-firmware-update` and
+Finally, feel free to remove `/boot/efi/EFI/system76-firmware-update` and
 `/boot/efi/system76-firmware-update`, if they're still around. You can also
 remove the GRUB boot entry from `/etc/grub.d/40_custom` and re-generate your
 GRUB config.
@@ -225,8 +253,8 @@ $ grub-mkconfig --output /boot/grub/grub.cfg
 ### Post-update issues
 In `#system76` on Freenode, which is barren and likely not worth joining, I've
 seen some questions about people losing some fn key functionality after the
-update. For me, HDMI didn't work at all after the update. After unplugging and
-testing the HDMI cable and monitor on another machine, I concluded that the
+update. For me, HDMI didn't work at all after the update. I unplugged and
+tested the HDMI cable and monitor on another machine and concluded that the
 firmware update must've borked something. `xrandr` didn't show any connections,
 but I didn't look further into it than that, since it was late and I was pleased
 enough to've finished the update.
