@@ -11,7 +11,8 @@ all of its machines and released an [update
 plan](http://blog.system76.com/post/168050597573/system76-me-firmware-updates-plan)
 in November 2017. In February 2018, owners of the [Oryx
 Pro](https://system76.com/laptops/oryx) were informed that the firmware update
-was available through System76's open source [firmware updater](TODO). For anyone not on
+was available through System76's open source [firmware
+updater](https://github.com/system76/firmware-update). For anyone not on
 System76's [Pop!_OS](https://system76.com/pop) or similar Debian-based distros,
 this firmware updater probably *didn't do anything*. After waiting patiently for
 a couple of months for more updates and not seeing any fixes, I dug into how I
@@ -49,13 +50,15 @@ things were since the `system76-firmware` command was added to the AUR package.
 
 ### Issues with the display
 When deciding to dig into what was going on, the first thing I did was step
-through the program with [pdb](TODO). From there, it became clear that
-`system76-firmware` is trying to show a modal, but can't find the display name,
-so it [exits silently](TODO). It's reading the display name from `who`, which is
-odd, since I'd think it'd just check `DISPLAY`, so I edited the source to just
-return `":0"`, which is the value of `echo $DISPLAY` in my X session. This could
-be because I'm running [i3-wm](TODO) and not GNOME or KDE, but it's an
-assumption made on System76's part either way.
+through the program with [pdb](https://docs.python.org/2/library/pdb.html). From
+there, it became clear that `system76-firmware` is trying to show a modal, but
+can't find the display name, so it [exits
+silently](https://github.com/pop-os/system76-driver/blob/master_artful/system76driver/firmware.py#L467).
+It's reading the display name from `who`, which is odd, since I'd think it'd
+just check `DISPLAY`, so I edited the source to just return `":0"`, which is the
+value of `echo $DISPLAY` in my X session. This could be because I'm running
+[i3-wm](https://i3wm.org/) and not GNOME or KDE, but it's an assumption made on
+System76's part either way.
 
 For the file: `/usr/lib/python3.6/site-packages/system76driver/firmware.py`
 ```diff
@@ -85,7 +88,9 @@ restart into the firmware updater. Restart!
 
 Back into GRUB, then into Arch, with no firmware updates. Damn. So I dug more
 into the source for, hopefully, another one liner. There's a bash script, as part
-of the Python source, called [FIRMWARE_SET_NEXT_BOOT](TODO). It looks like this:
+of the Python source, called
+[FIRMWARE_SET_NEXT_BOOT](https://github.com/pop-os/system76-driver/blob/master_artful/system76driver/firmware.py#L206).
+It looks like this:
 
 ```bash
 EFIDEV="$(findmnt -n /boot/efi -o SOURCE)"
@@ -132,7 +137,7 @@ Could not prepare Boot variable: No such file or directory
 So, you might try the following, in order to get your restarts to bring you into
 the updater:
 
-1. Patch the [bash script](TODO) to use `-c` instead of `-C` with `efibootmgr`
+1. Patch the [bash script](https://github.com/pop-os/system76-driver/blob/master_artful/system76driver/firmware.py#L224) to use `-c` instead of `-C` with `efibootmgr`
 2. Mount `/boot/efi` and *then* run `system76-firmware` (then see if it installs properly and try rebooting)
 3. Move `/boot/efi/system76-firmware-update` to `/boot/efi/EFI/system76-firmware-update` and then run `system76-firmware` again, to see if `efibootmgr -c` picks it up and try your restart
 
@@ -212,8 +217,9 @@ $ grub-mkconfig --output /boot/grub/grub.cfg
 ### Time to update the firmware
 At this point, a reboot should bring you into GRUB with your new entry. After
 selecting your new entry, you should see the updater and you can press enter to
-continue. Remember to have the [System76 docs](TODO) on hand, so you understand
-how the update flow should go.
+continue. Remember to have the [System76
+docs](http://support.system76.com/articles/laptop-firmware/) on hand, so you
+understand how the update flow should go.
 
 After a little while, the updater will reboot. Your fans will be on full blast.
 **At the GRUB menu, choose the updater again.** Once you're back in the updater,
