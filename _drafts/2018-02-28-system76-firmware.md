@@ -204,9 +204,9 @@ just mount your EFI partition and reinstall GRUB. For me, that process looked
 like this.
 
 ```bash
-cfdisk /dev/nvme0n1
-mount /dev/nvme0n1p1 /boot/efi
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+$ cfdisk /dev/nvme0n1
+$ mount /dev/nvme0n1p1 /boot/efi
+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 ```
 
 ### Cleanup
@@ -227,9 +227,9 @@ In `#system76` on Freenode, which is barren and likely not worth joining, I've
 seen some questions about people losing some fn key functionality after the
 update. For me, HDMI didn't work at all after the update. After unplugging and
 testing the HDMI cable and monitor on another machine, I concluded that the
-firmware update must've borked something related to HDMI. `xrandr` didn't show
-any connections, but I didn't look further into it than that, since it was late
-and I was pleased enough to've finished the update.
+firmware update must've borked something. `xrandr` didn't show any connections,
+but I didn't look further into it than that, since it was late and I was pleased
+enough to've finished the update.
 
-In the morning, HDMI worked as expected, without any hiccups. Maybe that machine
+In the morning, HDMI worked as expected, without any hiccups. Maybe the machine
 also just need a good night's rest.
