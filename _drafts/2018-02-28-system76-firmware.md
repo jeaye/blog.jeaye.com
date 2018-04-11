@@ -42,7 +42,28 @@ give me any insight into how or when that was going to happen. This is how
 things were since the `system76-firmware` command was added to the AUR package.
 
 ### Issues with the display
-After digging into [the source](), 
+When deciding to dig into what was going on, the first thing I did was step
+through the program with [pdb](TODO). From there, it became clear that
+`system76-firmware` is trying to show a modal, but can't find the display name,
+so it [exits silently](TODO). It's reading the display name from `who`, which is
+odd, since I'd think it'd just check `DISPLAY`, so I just edited the source to
+just return `:0`, which is the value of `echo $DISPLAY` in my X session.
+
+For the file: `/usr/lib/python3.6/site-packages/system76driver/firmware.py`
+```diff
+diff --git a/firmware.py b/firmware.py
+index 95bafe1..90c60f9 100644
+--- a/firmware.py
++++ b/firmware.py
+@@ -444,6 +444,7 @@ def get_user_session():
+                     "who | awk -v vt=tty$(fgconsole) '$0 ~ vt {print $5}'",
+                     shell=True
+                 ).decode('utf-8').rstrip('\n').lstrip('(').rstrip(')')
++    display_name = ":0" # XXX: Hack
+ 
+     user_pid = subprocess.check_output(
+                     "who -u | awk -v vt=tty$(fgconsole) '$0 ~ vt {print $6}'",
+```
 
 mv /boot/efi/system76-firmware-update /boot/efi/EFI/
 
