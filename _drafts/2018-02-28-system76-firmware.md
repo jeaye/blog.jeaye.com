@@ -47,7 +47,8 @@ through the program with [pdb](TODO). From there, it became clear that
 `system76-firmware` is trying to show a modal, but can't find the display name,
 so it [exits silently](TODO). It's reading the display name from `who`, which is
 odd, since I'd think it'd just check `DISPLAY`, so I just edited the source to
-just return `:0`, which is the value of `echo $DISPLAY` in my X session.
+just return `:0`, which is the value of `echo $DISPLAY` in my X session. Looks
+like this is just an assumption made on System76's part.
 
 For the file: `/usr/lib/python3.6/site-packages/system76driver/firmware.py`
 ```diff
@@ -64,6 +65,48 @@ index 95bafe1..90c60f9 100644
      user_pid = subprocess.check_output(
                      "who -u | awk -v vt=tty$(fgconsole) '$0 ~ vt {print $6}'",
 ```
+
+### Issues with efibootmgr
+After that one line fix, running `system76-firmware` resulted in a modal! I
+could choose to close the modal or click a button to install the firmware. After
+trying to install, another modal shows up with the procedure instructions, as
+they're also shown on the [System76 support page](TODO), and a button to restart
+into the firmware updater. Restart!
+
+...
+
+Back into GRUB, then into Arch, with no firmware updates. Damn. So I dug more
+into the source for, hopefully, another one liner. There's a bash script, as part
+of the Python source, called [FIRMWARE_SET_NEXT_BOOT](TODO). This is what's
+trying to make the next boot go into the updater's EFI file instead of the
+normal boot order. So, already, there are some assumptions made.
+
+1. The user is booting with EFI
+2. `/boot/efi` is mounted
+4. Writing the System76 updater EFI to `/boot/efi/system76-firmware-update/` is useful
+3. `efibootmgr -C` is valid
+
+For all but the first of these assumptions, on my Arch setup, System76 is
+guessing incorrectly. Yes, I'm booting with EFI, but `/boot/efi` isn't always
+mounted. Furthermore, the `system76-firmware-update` directory should be
+installed into `/boot/efi/EFI` if it wants to actually be useful. Finally,
+according to the `efibootmgr` man page, `-c` should be used to create boot
+entries. `-C` doesn't exist. In your `system76-firmware` output, you'll probably
+see something like this (from `efibootmgr`):
+
+```text
+Could not prepare Boot variable: No such file or directory
+```
+
+So, you might try the following, in order to get your restarts to bring you into
+the updater:
+
+1. Patch the [bash script](TODO) to use `-c` instead of `-C` with `efibootmgr`
+2. Mount `/boot/efi` and *then* run `system76-firmware` (then see if it installs properly and try rebooting)
+3. Move `/boot/efi/system76-firmware-update` to `/boot/efi/EFI/system76-firmware-update` and then run `system76-firmware` again, to see if `efibootmgr -c` picks it up and try your restart
+
+I was able to get `efibootmgr` to finally run without error, but a restart still
+just brought me to GRUB.
 
 mv /boot/efi/system76-firmware-update /boot/efi/EFI/
 
@@ -84,10 +127,6 @@ mount /dev/nvme0n1p1 /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 ```
 
-```
-efibootmgr -c -b 1776 -l '\\system76-firmware-update\\boot.efi' -L "system76-firmware-update"
-Could not prepare Boot variable: No such file or directory
-```
 
 efi install worked once, with some GPT warnings. After a reboot, I still went right to grub.
 
