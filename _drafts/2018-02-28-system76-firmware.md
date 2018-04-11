@@ -17,7 +17,14 @@ this firmware updater probably didn't do *anything*. After waiting patiently for
 a couple of months for more updates and not seeing any fixes, I dug into how I
 could get things going. Herein lies the easiest way I found.
 
+### Silent errors when running
+The [system76-driver AUR
+package](https://aur.archlinux.org/packages/system76-driver/) provides a systemd
+service which just runs the `system76-firmware` command to check for firmware
+updates. In my case, when I ran it, I saw something like the following:
+
 ```
+$ system76-firmware
 2018-04-08 10:48:51,895  INFO  Verified manifest signature...
 2018-04-08 10:48:51,895  INFO  Fetching f7cd3816401c6ab1cd2f0a83285a56ee432a9736b707870fb7aeb34c2750bcefc2adcf0f83952696eb688b9768e93f68 with cache /var/cache/system76-firmware
 2018-04-08 10:48:51,897  INFO  Fetching e4206477b3f5bad09d54363a78ae79e2916127399e9725c3b9d77bf229c25c293111926d841c1c05b186a96c0963f6ff with cache /var/cache/system76-firmware
@@ -26,7 +33,16 @@ could get things going. Herein lies the easiest way I found.
 2018-04-08 10:48:52,263  INFO  Fetching f7cd3816401c6ab1cd2f0a83285a56ee432a9736b707870fb7aeb34c2750bcefc2adcf0f83952696eb688b9768e93f68 with cache /var/cache/system76-firmware
 2018-04-08 10:48:52,265  INFO  Fetching e4206477b3f5bad09d54363a78ae79e2916127399e9725c3b9d77bf229c25c293111926d841c1c05b186a96c0963f6ff with cache /var/cache/system76-firmware
 2018-04-08 10:48:52,299  INFO  Fetching ec0b0b475412acde6b2b9a05647a64f48beaa5baea298e8801ce1a34bbddcdada5fc2d8025b2e6f07d9802c384a01e7c with cache /var/cache/system76-firmware
+$ echo $?
+0
 ```
+
+No errors, no warnings, a clean exit code, but it didn't update my firmware or
+give me any insight into how or when that was going to happen. This is how
+things were since the `system76-firmware` command was added to the AUR package.
+
+### Issues with the display
+After digging into [the source](), 
 
 mv /boot/efi/system76-firmware-update /boot/efi/EFI/
 
