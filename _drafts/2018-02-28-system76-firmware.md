@@ -19,8 +19,9 @@ could get things going. Herein lies the easiest way I found.
 
 ### Before proceeding
 To start with, try the firmware update normally, as recommended by the [System76
-docs](TODO). The approach I took is pretty hacky, but it was the only thing
-which worked for my setup. Ideally, you can take a more trodden route.
+docs](http://support.system76.com/articles/laptop-firmware/). The approach I
+took is pretty hacky, but it was the only thing which worked for my setup.
+Ideally, you can take a more trodden route.
 
 ### Silent errors when running
 The [system76-driver AUR
@@ -76,8 +77,9 @@ index 95bafe1..90c60f9 100644
 After that one line fix, running `system76-firmware` resulted in a modal! I
 could choose to close the modal or click a button to install the firmware. After
 trying to install, another modal shows up with the procedure instructions, as
-they're also shown on the [System76 support page](TODO), and a button to restart
-into the firmware updater. Restart!
+they're also shown on the [System76 support
+page](http://support.system76.com/articles/laptop-firmware/), and a button to
+restart into the firmware updater. Restart!
 
 ...
 
@@ -139,9 +141,9 @@ just brought me to GRUB. So, I took a more manual route.
 
 ### Before proceeding: get Rescatux
 Very importantly, make sure you have a USB or CD/DVD with a burned image of
-[Rescatux](TODO). Rescatux is an amazing 20MB rescue boot image which can boot
-into most anything. This is not a precaution; if you follow these steps, you
-*will* need Rescatux, so burn it now.
+[Rescatux](https://www.supergrubdisk.org/rescatux/). Rescatux is an amazing 20MB
+rescue boot image which can boot into most anything. This is not a precaution;
+if you follow these steps, you *will* need Rescatux, so burn it now.
 
 1. Download it [here](https://www.supergrubdisk.org/category/download/rescatuxdownloads/rescatux-beta/)
 2. Burn with `dd` or whatever you prefer
