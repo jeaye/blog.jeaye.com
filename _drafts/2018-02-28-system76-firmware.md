@@ -17,6 +17,11 @@ this firmware updater probably didn't do *anything*. After waiting patiently for
 a couple of months for more updates and not seeing any fixes, I dug into how I
 could get things going. Herein lies the easiest way I found.
 
+### Before proceeding
+To start with, try the firmware update normally, as recommended by the [System76
+docs](TODO). The approach I took is pretty hacky, but it was the only thing
+which worked for my setup. Ideally, you can take a more trodden route.
+
 ### Silent errors when running
 The [system76-driver AUR
 package](https://aur.archlinux.org/packages/system76-driver/) provides a systemd
@@ -106,19 +111,71 @@ the updater:
 3. Move `/boot/efi/system76-firmware-update` to `/boot/efi/EFI/system76-firmware-update` and then run `system76-firmware` again, to see if `efibootmgr -c` picks it up and try your restart
 
 I was able to get `efibootmgr` to finally run without error, but a restart still
-just brought me to GRUB.
+just brought me to GRUB. So, I took a more manual route.
 
-mv /boot/efi/system76-firmware-update /boot/efi/EFI/
+### Before proceeding: get rescatux
+Before you do this, make sure you have a USB or CD/DVD with a burned image of
+[rescatux](TODO). rescatux is an amazing 20MB rescue boot image which can boot
+into most anything. This is not a precaution; if you follow these steps, you
+*will* need rescatux, so burn it now. TODO: download/burn instructions.
 
-rescatux
+### Manually loading the updater EFI
+The idea is simple: just add a GRUB entry for the firmware updater, since I can
+so reliably make it into GRUB. The catch is that the firmware updater, thinking
+that it was booted from the temporary boot made by the bash script discussed
+above, deletes the EFI boot entry which was used to boot. As long as there's a
+rescatux image lying around, though, that's not a problem.
 
-```
+#### Add the GRUB entry
+The GRUB entry should look something like this:
+
+```text
 menuentry "System76 Firmware Update" {
         insmod chain
         insmod search_fs_uuid
-        search --fs-uuid --no-floppy --set=root 129D-B845
+        search --fs-uuid --no-floppy --set=root TODO-ID
         chainloader /EFI/system76-firmware-update/boot.efi
 }
+```
+
+In order for it to work for your machine, you need to do two things.
+
+##### Find the filesystem UUID
+Run `cfdisk` and select your EFI partition to see its filesystem id. The shape
+should be similar to `129D-B845`. Replace `TODO-ID` in the above GRUB entry with
+your id. Here's what it should look like:
+
+```text
+                                   Disk: /dev/nvme0n1
+                 Size: 232.9 GiB, 250059350016 bytes, 488397168 sectors
+              Label: gpt, identifier: B7545E19-CF68-4779-BD95-F12C7DC8DDA6
+
+    Device                 Start          End      Sectors      Size Type
+>>  /dev/nvme0n1p1          2048      1050623      1048576      512M EFI System         
+    /dev/nvme0n1p2       1050624    488397134    487346511    232.4G Linux filesystem
+ ┌────────────────────────────────────────────────────────────────────────────────────┐
+ │  Partition name: primary                                                           │
+ │  Partition UUID: 7761E4D0-5726-45BE-9761-25FC114DE691                              │
+ │  Partition type: EFI System (C12A7328-F81F-11D2-BA4B-00A0C93EC93B)                 │
+ │ Filesystem UUID: 129D-B845                                                         │
+ │Filesystem LABEL: EFI                                                               │
+ └────────────────────────────────────────────────────────────────────────────────────┘
+   [ Delete ]  [ Resize ]  [  Quit  ]  [  Type  ]  [  Help  ]  [  Write ]  [  Dump  ]
+
+```
+
+##### Move the updater to the EFI partition
+As mentioned above, `system76-firmware` installs the updater to
+`/boot/efi/system76-firmware-update`. If that's your EFI root, great, but you
+may need to move the updater to `/boot/efi/EFI/system76-firmware-update` as I
+did.
+
+#### Generate GRUB's new config
+With the new GRUB entry, the final step to get ready for the reboot is to
+generate the new GRUB configs.
+
+```bash
+$ grub-mkconfig --output /boot/grub/grub.cfg
 ```
 
 ```bash
@@ -127,8 +184,6 @@ mount /dev/nvme0n1p1 /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 ```
 
-
-efi install worked once, with some GPT warnings. After a reboot, I still went right to grub.
 
 After starting the update, it'll reboot once. At grub, select the updater entry again.
 
