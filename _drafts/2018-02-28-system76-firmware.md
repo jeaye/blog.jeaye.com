@@ -4,18 +4,18 @@ labels: [linux, tutorial, security, privacy]
 tags: [system76, firmware, ime, arch]
 ---
 
-In the wake of the Intel Management Engine security revelations,
-[System76](https://system76.com/) developed a firmware upgrade for all of its
-machines and released an [update
+In the wake of the [Intel Management
+Engine](https://en.wikipedia.org/wiki/Intel_Management_Engine) security
+revelations, [System76](https://system76.com/) developed a firmware upgrade for
+all of its machines and released an [update
 plan](http://blog.system76.com/post/168050597573/system76-me-firmware-updates-plan)
 in November 2017. In February 2018, owners of the [Oryx
 Pro](https://system76.com/laptops/oryx) were informed that the firmware update
 was available through System76's open source firmware updater. For anyone not on
 Systm76's [Pop!_OS](https://system76.com/pop) or similar Debian-based distros,
 this firmware updater probably didn't do *anything*. After waiting patiently for
-a couple of months for more updates and not seeing any fixes, I dug into why the
-how I could get things going. Herein lies the easiest way, for me, that it can
-be done.
+a couple of months for more updates and not seeing any fixes, I dug into how I
+could get things going. Herein lies the easiest way I found.
 
 ```
 2018-04-08 10:48:51,895  INFO  Verified manifest signature...
