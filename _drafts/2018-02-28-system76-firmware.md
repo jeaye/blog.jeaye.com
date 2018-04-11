@@ -1,3 +1,9 @@
+---
+title: Upgrading System76 firmware on Arch
+labels: [linux, tutorial, security, privacy]
+tags: [system76, firmware, ime, arch]
+---
+
 ```
 2018-04-08 10:48:51,895  INFO  Verified manifest signature...
 2018-04-08 10:48:51,895  INFO  Fetching f7cd3816401c6ab1cd2f0a83285a56ee432a9736b707870fb7aeb34c2750bcefc2adcf0f83952696eb688b9768e93f68 with cache /var/cache/system76-firmware
