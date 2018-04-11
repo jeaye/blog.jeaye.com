@@ -127,7 +127,8 @@ above, deletes the EFI boot entry which was used to boot. As long as there's a
 rescatux image lying around, though, that's not a problem.
 
 #### Add the GRUB entry
-The GRUB entry should look something like this:
+The GRUB entry should look something like this (put it at the bottom of
+`/etc/grub.d/40_custom`):
 
 ```text
 menuentry "System76 Firmware Update" {
@@ -141,8 +142,8 @@ menuentry "System76 Firmware Update" {
 In order for it to work for your machine, you need to do two things.
 
 ##### Find the filesystem UUID
-Run `cfdisk` and select your EFI partition to see its filesystem id. The shape
-should be similar to `129D-B845`. Replace `TODO-ID` in the above GRUB entry with
+Run `cfdisk` and select your EFI partition to see its filesystem id. For
+example, mine is `129D-B845`. Replace `TODO-ID` in the above GRUB entry with
 your id. Here's what it should look like:
 
 ```text
@@ -178,14 +179,57 @@ generate the new GRUB configs.
 $ grub-mkconfig --output /boot/grub/grub.cfg
 ```
 
+### Time to update the firmware
+At this point, a reboot should bring you into GRUB with your new entry. After
+selecting your entry, you should see the updater and you can press enter to
+continue. Remember to have the [System76 docs](TODO) on hand, so you understand
+how the update flow should go.
+
+After a little while, the updater will reboot. Your fans will be on full blast.
+**At the GRUB menu, choose the updater again.** Once you're back in the updater,
+it'll work for a while more, run some checks, and finally power off. Follow the
+System76 docs to jump into BIOS, adopt the defaults, and everything else. When
+you're ready to get back into GNU/Linux, you'll find your EFI boot path is gone.
+
+### Rescatux
+Plug in your rescatux media, reboot your machine, optionally hit F2 to change
+your boot order, if necessary, and make it into the Rescatux menu. The default
+option, to find all bootable OSs, will do the trick, so just hit enter and then
+choose the first Linux boot option to get back into your typical environment.
+
+### Reinstall GRUB
+Since your EFI boot path was wiped by the updater and you probably don't want to
+boot via Rescatux forever, once you're back in a sane GNU/Linux environment,
+just mount your EFI partition and reinstall GRUB. For me, that process looked
+like this.
+
 ```bash
 cfdisk /dev/nvme0n1
 mount /dev/nvme0n1p1 /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 ```
 
+### Cleanup
+Once you're back into GNU/Linux and you've reinstalled GRUB, feel free to remove
+`/boot/efi/EFI/system76-firmware-update` and
+`/boot/efi/system76-firmware-update`, if they're still around. You can also
+remove the GRUB boot entry from `/etc/grub.d/40_custom` and re-generate your
+GRUB config.
 
-After starting the update, it'll reboot once. At grub, select the updater entry again.
 
-Once the update completed, HDMI no longer worked. xrandr doesn't show my
-external monitor as connected.
+```bash
+$ grub-mkconfig --output /boot/grub/grub.cfg
+```
+
+
+### Post-update issues
+In `#system76` on Freenode, which is barren and likely not worth joining, I've
+seen some questions about people losing some fn key functionality after the
+update. For me, HDMI didn't work at all after the update. After unplugging and
+testing the HDMI cable and monitor on another machine, I concluded that the
+firmware update must've borked something related to HDMI. `xrandr` didn't show
+any connections, but I didn't look further into it than that, since it was late
+and I was pleased enough to've finished the update.
+
+In the morning, HDMI worked as expected, without any hiccups. Maybe that machine
+also just need a good night's rest.
