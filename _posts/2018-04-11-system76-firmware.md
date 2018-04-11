@@ -1,5 +1,5 @@
 ---
-title: "Removing IME: upgrading System76 firmware on Arch"
+title: "Removing IME: Upgrading System76 firmware on Arch"
 labels: [linux, tutorial, security, privacy]
 tags: [system76, firmware, ime, arch]
 ---
