@@ -141,7 +141,10 @@ just brought me to GRUB. So, I took a more manual route.
 Very importantly, make sure you have a USB or CD/DVD with a burned image of
 [Rescatux](TODO). Rescatux is an amazing 20MB rescue boot image which can boot
 into most anything. This is not a precaution; if you follow these steps, you
-*will* need Rescatux, so burn it now. TODO: download/burn instructions.
+*will* need Rescatux, so burn it now.
+
+1. Download it [here](https://www.supergrubdisk.org/category/download/rescatuxdownloads/rescatux-beta/)
+2. Burn with `dd` or whatever you prefer
 
 ### Manually loading the updater EFI
 My idea was simple: just add a GRUB entry for the firmware updater, since I can
