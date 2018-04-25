@@ -1,4 +1,16 @@
+== Pros
+
+* Multiline support (table cells, list elements, etc)
+* Code references
+* Styling without html
+
 == Cons
 
+* Vim support is worse
 * Source blocks are harder to write
 * Bulleted lists are spaced more apart
+
+== Notes
+
+* Vim highlighting and link following
+* Jekyll plugin necessary
