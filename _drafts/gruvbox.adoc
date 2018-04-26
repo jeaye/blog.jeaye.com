@@ -3,3 +3,4 @@
 * https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/
 * https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style
 * https://archive.fo/QSYHd
+* http://jonls.dk/redshift/
