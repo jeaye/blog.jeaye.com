@@ -14,9 +14,12 @@ that change and herein lies why.
 I was experiencing regular eye strain, especially at night, even using solarized
 dark and having a low monitor brightness. I use a large font size (large enough
 for people to comment on it regularly) and, as of my recent tests, I have at
-least 20/20 visual and no known ocular issues. After a bit of research, it turns
-out there's a lot of documentation on the affects of blue light on the eyes and
-sleep cycle, specifically when it's viewed at night ([for
+least 20/20 visual and no known ocular issues.
+
+### Hypothesis
+After a bit of research, it turns out there's a lot of documentation on the
+affects of blue light on the eyes and sleep cycle, specifically when it's viewed
+at night ([for
 example](https://en.wikipedia.org/wiki/Effects_of_blue_light_technology)).
 
 ### Alternatives to solarized
@@ -25,8 +28,21 @@ There are too many to list, but one which caught my eye was
 pretty warm palette and minimal emphasis on blue, which is quite a change from
 my old setup. Here are some comparison images.
 
+TODO
 
 
+### Further blue light reduction
+To take things a step further, I also installed
+[Redshift](https://github.com/jonls/redshift), which globally affects the warmth
+of the screen's colors based on the time of day. That is, as the sun goes down,
+Redshift will gradually make the screen have warmer colors, with the least
+amount of blue at night. Redshift is conveniently in the official Arch repos and
+it works out of the box. I just added the following to me `~/.xinitrc`:
+
+```bash
+# Remove blue light at night
+redshift-gtk &
+```
 
 
 
