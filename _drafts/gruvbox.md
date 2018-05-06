@@ -33,8 +33,8 @@ TODO
 
 ### Further blue light reduction
 To take things a step further, I also installed
-[Redshift](https://github.com/jonls/redshift), which globally affects the warmth
-of the screen's colors based on the time of day. That is, as the sun goes down,
+[Redshift](http://jonls.dk/redshift/), which globally affects the warmth of the
+screen's colors based on the time of day. That is, as the sun goes down,
 Redshift will gradually make the screen have warmer colors, with the least
 amount of blue at night. Redshift is conveniently in the official Arch repos and
 it works out of the box. I just added the following to me `~/.xinitrc`:
@@ -44,19 +44,8 @@ it works out of the box. I just added the following to me `~/.xinitrc`:
 redshift-gtk &
 ```
 
-
-
-
-
-<figure>
-  <a href="{% asset vim-qt/vim-qt-stylized.png @path %}" target="_blank">
-    {% asset vim-qt/vim-qt-stylized.png class="figure-2-3" alt:"vim-qt stylized screen shot" %}
-  </a>
-</figure>
-
 * https://github.com/morhetz/gruvbox
 * https://github.com/morhetz/gruvbox-contrib
 * https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/
 * https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style
 * https://archive.fo/QSYHd
-* http://jonls.dk/redshift/
