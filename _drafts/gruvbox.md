@@ -32,14 +32,29 @@ my old setup. Here are some comparison images.
 
 TODO
 
+### Adopting gruvbox everywhere
+gruvbox itself was originally made as just a Vim colorscheme. In its [official
+git repository](https://github.com/morhetz/gruvbox), you won't find support for any
+other programs. However, there is a
+[gruvbox-contrib](https://github.com/morhetz/gruvbox-contrib) repository which
+has support for all sorts of editors, shells, and GUI programs. I'm using the
+following:
+
+* [Vim colorscheme](https://github.com/morhetz/gruvbox)
+* [Firefox tab theme](https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/)
+* [Firefox userstyle](https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style)
+* [tty colors](https://archive.fo/QSYHd)
+* manual i3wm colors 
+* manual [hsetroot](https://aur.archlinux.org/packages/hsetroot) color
 
 ### Further blue light reduction
 To take things a step further, I also installed
 [Redshift](http://jonls.dk/redshift/), which globally affects the warmth of the
 screen's colors based on the time of day. That is, as the sun goes down,
 Redshift will gradually make the screen have warmer colors, with the least
-amount of blue at night. Redshift is conveniently in the official Arch repos and
-it works out of the box. I just added the following to me `~/.xinitrc`:
+amount of blue at night. Redshift is conveniently in the official Arch
+repositories and it works out of the box. I just added the following to my
+`~/.xinitrc`:
 
 ```bash
 # Remove blue light at night
@@ -56,9 +71,3 @@ a definite win.
 
 As for the remaining eye strain, perhaps it's best to just finish computing
 earlier at night and starting my book reading earlier.
-
-* https://github.com/morhetz/gruvbox
-* https://github.com/morhetz/gruvbox-contrib
-* https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/
-* https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style
-* https://archive.fo/QSYHd
