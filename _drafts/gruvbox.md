@@ -6,15 +6,15 @@ tags: [solarized, gruvbox, blue light, fatigue, sleep]
 
 Ever since 2012, I've been using
 [solarized dark](https://github.com/altercation/solarized) for everything I can
-possibly configure. From my window manager to my web browser, terminal, and
-everything in between, I was a solarized user. Only within the past month did
-that change and herein lies why.
+possibly configure. From my web browser to my terminal, and everything in
+between, I was a solarized user. Only within the past month did that change and
+herein lies why.
 
 ### Eye strain
 I was experiencing regular eye strain, especially at night, even using solarized
 dark and having a low monitor brightness. I use a large font size (large enough
 for people to comment on it regularly) and, as of my recent tests, I have at
-least 20/20 visual and no known ocular issues.
+least 20/20 sight and no known ocular issues.
 
 ### Hypothesis
 After a bit of research, it turns out there's a lot of documentation on the
@@ -37,10 +37,11 @@ gruvbox itself was originally made as just a Vim colorscheme. In its [official
 git repository](https://github.com/morhetz/gruvbox), you won't find support for any
 other programs. However, there is a
 [gruvbox-contrib](https://github.com/morhetz/gruvbox-contrib) repository which
-has support for all sorts of editors, shells, and GUI programs. I'm using the
-following:
+has support for all sorts of themes for editors, shells, and GUI programs. I'm
+using the following:
 
 * [Vim colorscheme](https://github.com/morhetz/gruvbox)
+* Vim [airline](https://github.com/vim-airline/vim-airline) theme
 * [Firefox tab theme](https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/)
 * [Firefox userstyle](https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style)
 * [tty colors](https://archive.fo/QSYHd)
@@ -67,7 +68,12 @@ especially at night, my eyes do still feel strained. However, if I disable
 Redshift and switch solarized dark back on, it's very tough to look at the
 screen again! There's such a stark difference between looking at gruvbox +
 Redshift and looking at solarized dark. With that said, I consider this decision
-a definite win.
+a definite win. I'd also note that gruvbox hasn't seemed any more difficult to
+view than solarized during the day as well.
+
+Surprisingly, Redshift works well even while playing games on Steam. While
+playing Rocket League at night, for example, Redshift warms up so much of the
+blue that it's shocking when I temporarily disable it to compare.
 
 As for the remaining eye strain, perhaps it's best to just finish computing
 earlier at night and starting my book reading earlier.
