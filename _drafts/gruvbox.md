@@ -20,7 +20,9 @@ least 20/20 visual and no known ocular issues.
 After a bit of research, it turns out there's a lot of documentation on the
 affects of blue light on the eyes and sleep cycle, specifically when it's viewed
 at night ([for
-example](https://en.wikipedia.org/wiki/Effects_of_blue_light_technology)).
+example](https://en.wikipedia.org/wiki/Effects_of_blue_light_technology)). Could
+it be that the deep blue background I use, due to solarized dark, is
+exacerbating the problem?
 
 ### Alternatives to solarized
 There are too many to list, but one which caught my eye was
@@ -43,6 +45,17 @@ it works out of the box. I just added the following to me `~/.xinitrc`:
 # Remove blue light at night
 redshift-gtk &
 ```
+
+### Verdict
+Has gruvbox with Redshift actually helped? When I'm using the computer,
+especially at night, my eyes do still feel strained. However, if I disable
+Redshift and switch solarized dark back on, it's very tough to look at the
+screen again! There's such a stark difference between looking at gruvbox +
+Redshift and looking at solarized dark. With that said, I consider this decision
+a definite win.
+
+As for the remaining eye strain, perhaps it's best to just finish computing
+earlier at night and starting my book reading earlier.
 
 * https://github.com/morhetz/gruvbox
 * https://github.com/morhetz/gruvbox-contrib
