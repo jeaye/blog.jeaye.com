@@ -3,6 +3,8 @@
 * Multiline support (table cells, list elements, etc)
 * Code references
 * Styling without html
+* Github support
+* Conversion to other formats
 
 == Cons
 
