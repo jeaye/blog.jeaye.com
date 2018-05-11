@@ -8,7 +8,7 @@
 
 * Vim support is worse
 * Source blocks are harder to write
-* Bulleted lists are spaced more apart
+* Bulleted lists are spaced more apart https://github.com/asciidoctor/asciidoctor/issues/1087
 
 == Notes
 
