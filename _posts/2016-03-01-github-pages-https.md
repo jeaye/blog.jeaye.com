@@ -2,7 +2,7 @@
 title: HTTPS for your Github Pages' custom domain
 labels: [security, privacy, tutorial]
 tags: [ssl, github, pages, https, letsencrypt, simp_le, security, privacy, tutorial]
-updated: 2016-05-31
+updated: 2018-05-01
 ---
 
 With the rise of free encryption through [Let's
@@ -12,6 +12,13 @@ unforced HTTPS for its `username.github.io` domains, but that coverage doesn't
 carry over to those using custom domains. The approach I'm using for this blog
 and my [home page](https://jeaye.com/), by way of reverse proxy, is documented
 herein.
+
+### Github behavior change (May 2018)
+Github now officially supports custom domains using HTTPS, due to a partnership
+made with Let's Encrypt. As such, this approach is no longer necessary, but can
+be useful for those who want more control over how the site is served (such as
+TTLs, permissions, etc). See the relevant Github blog post
+[here](https://blog.github.com/2018-05-01-github-pages-custom-domains-https/).
 
 ### Github behavior change (May 2016)
 Github has "fixed a bug" which now causes issues with this setup, since the
