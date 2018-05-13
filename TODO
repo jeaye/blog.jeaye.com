@@ -26,6 +26,7 @@ securing a new android phone
 
 k-9 review
   unable to sign-only
+  unable to disable fetching
 
 vim fuzzy search
   ctrlp, vim-fuzzysearch
