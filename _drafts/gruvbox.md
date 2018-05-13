@@ -48,6 +48,8 @@ using the following:
 * manual i3wm colors 
 * manual [hsetroot](https://aur.archlinux.org/packages/hsetroot) color
 
+TODO: dmenu and i3lock
+
 ### Further blue light reduction
 To take things a step further, I also installed
 [Redshift](http://jonls.dk/redshift/), which globally affects the warmth of the
