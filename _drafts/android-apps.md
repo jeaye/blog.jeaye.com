@@ -4,6 +4,8 @@ labels: [tutorial]
 tags: [security, privacy, android]
 ---
 
+* davdroid, icsdroid
+
 ### Generate a keystore
 
 ```bash
