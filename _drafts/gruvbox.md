@@ -30,7 +30,14 @@ There are too many to list, but one which caught my eye was
 pretty warm palette and minimal emphasis on blue, which is quite a change from
 my old setup. Here are some comparison images.
 
-{% asset gruvbox/gruvbox.png alt:"gruvbox" %} {% asset gruvbox/solarized.png alt:"solarized" %}
+<div style="display:flex">
+  {% asset gruvbox/gruvbox.png
+           alt:"gruvbox"
+           style="flex:50%;width:50%;padding:2px;" %}
+  {% asset gruvbox/solarized.png
+           alt:"solarized"
+           style="flex:50%;width:50%;padding:2px" %}
+</div>
 
 ### Adopting gruvbox everywhere
 gruvbox itself was originally made as just a Vim colorscheme. In its [official
