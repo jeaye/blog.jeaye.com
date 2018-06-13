@@ -78,4 +78,4 @@ playing Rocket League at night, for example, Redshift warms up so much of the
 blue that it's shocking when I temporarily disable it to compare.
 
 As for the remaining eye strain, perhaps it's best to just finish computing
-earlier at night and starting my book reading earlier.
+earlier at night and schedule more time for reading.
