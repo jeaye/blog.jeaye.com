@@ -51,11 +51,13 @@ using the following:
 * Vim [airline](https://github.com/vim-airline/vim-airline) theme
 * [Firefox tab theme](https://addons.mozilla.org/en-US/thunderbird/addon/gruvbox-dark-medium/)
 * [Firefox userstyle](https://userstyles.org/styles/137214/gruvbox-dark-everywhere-global-dark-style)
+  colors](https://www.reddit.com/r/i3wm/comments/78dtn7/how_to_change_dmenus_default_colors/)
 * [tty colors](https://archive.fo/QSYHd)
 * manual i3wm colors 
 * manual [hsetroot](https://aur.archlinux.org/packages/hsetroot) color
+* [dmenu
 
-TODO: dmenu and i3lock
+TODO: i3lock
 
 ### Further blue light reduction
 To take things a step further, I also installed
