@@ -1,5 +1,8 @@
 safepaste v2
 
+versioning scheme
+  including helper script
+
 generating a spritesheet on gnu/linux
   sprity-cli : issues on arch with compiled lwip
   imagemagick?
