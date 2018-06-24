@@ -2,6 +2,25 @@ safepaste v2
 
 heroku submodules and buildpacks
 
+task management
+  android
+  taskwarrior
+    taskserver is nice to set up on NixOS now
+    no official Android app; the two most popular are broken and dead
+    taskwarriorc2
+      same author as taskwarriorandroid, but newer
+      has 8 known vulnerabilities in the npm deps
+      gradle fails to build the project
+    there is taskwarrior-web
+      could run behind basic auth and TLS with Apache
+      ui doesn't work well with mobile
+    twui is another web ui
+      it has stalled and never made it very far
+    inthe.am
+      hosted solution with no docs for self-hosting
+  todo.txt
+    Android app requires Dropbox for synchronization
+
 versioning scheme
   including helper script
 
