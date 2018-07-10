@@ -1,3 +1,24 @@
+## Full setup
+
+* Sign up for Digital Ocean
+* Start a $10 Debian 8 droplet (2GB RAM, 1vCPU, 50GB SSD, 2TB network)
+  * Import SSH key
+  * Give it a good name
+* Log in via SSH, `root@ip`
+* Clone nixos-in-place
+* Create a tmux session
+* `./install -d`
+* Set up nix configs
+* Download tarball and unpack it into http dir
+* Create MySQL db and user https://docs.nextcloud.com/server/13/admin_manual/configuration_database/linux_database_configuration.html
+* Set MySQL root pass
+* View in browser to set things up
+* Configure redis in `config.php`
+* Add pretty urls https://docs.nextcloud.com/server/13/admin_manual/installation/source_installation.html#pretty-urls
+* View admin console
+  * Enable cron job
+  * Check for errors and warning
+
 ### hmm
 * Bring in `/dev/urandom`
 * Redis?
