@@ -73,7 +73,7 @@ of promesa will be available.
         p/await)
 
     (-> driver
-        (ocall :click "~email")
+        (ocall :click "~sign-in")
         js/Promise.resolve
         p/await)
 
@@ -119,7 +119,7 @@ Cleaning up the duplication can be done with a simple `await->` macro.
              (ocall :element "~email") (ocall :setValue "test@example.com"))
 
     (await-> driver
-             (ocall :click "~email"))
+             (ocall :click "~sign-in"))
 
     (await-> driver
              (ocall :pause 1000)
