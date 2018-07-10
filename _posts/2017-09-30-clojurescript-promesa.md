@@ -105,7 +105,7 @@ Cleaning up the duplication can be done with a simple `await->` macro.
   (:require [[oops.core :refer [ocall]]
              [promesa.core :as p]
              [promesa.async-cljs :refer-macros [async]]
-             [my-app.test.util.macro :refer-macros [await!]))
+             [my-app.test.util.macro :refer-macros [await->]))
 
 (defn sign-in []
   (async
