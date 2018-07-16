@@ -23,6 +23,7 @@ task management
 
 versioning scheme
   including helper script
+  build website out with it
 
 generating a spritesheet on gnu/linux
   sprity-cli : issues on arch with compiled lwip
