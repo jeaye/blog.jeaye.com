@@ -47,6 +47,36 @@ as binaries. Even worse, they're not all signed by the developers, they're
 signed by the maintainer of F-Droid.
 
 #### Permissions
+Fortunately, within the Google Play mayhem, at least apps are bound by their
+permissions! …right? Yes, it's true. In fact, it's one of the nicest things
+about smart phones; an app installed on your desktop or laptop pretty much has
+free reign over all your files and other apps. On a smart phone, however, each
+app is bound by some permissions which are either accepted at install or
+dynamically, as they're required. Assuming you're an impervious warden of your
+own phone, you unfortunately still have to worry apps with even the most benign
+permission grants.
+
+Let's say you're an avid note taker with a generally poor sense of direction, so you've installed your favorite notepad app, as well as your favorite chat app. After fastidiously checking the permissions, you've discerned the following.
+
+##### Notepad permissions
+* Read/write disk access (to save your notes)
+
+##### Chat permissions
+* Read disk access (to attach your photos and such)
+* Internet access
+
+How supremely reasonable; each app has only what it needs to serve its purpose.
+Alas, apps are not entirely siloed and, even with the barest of permissions,
+they can talk to each other through intents, links, and any common grants. In
+this case, if the chat app's distributor so desired, you might find it's uploading your saved notes (bank account info, personal details, etc), since it has both disk and network access.
+
+What about a map app which has access to your GPS, but nothing else? That info
+can then be stored and read by the chat app, or something else with internet
+access, so the GPS data can be uploaded.
+
+Sound crazy? Well, [Baidu did it
+already](https://www.virusbulletin.com/blog/2018/03/vb2016-paper-wild-android-collusions/). This is called *app collusion*.
+
 ### Side-loading
 ### F-Droid
 ### Manual build
