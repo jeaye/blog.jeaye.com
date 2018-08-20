@@ -81,8 +81,21 @@ Sound crazy? Well, [Baidu did it
 already](https://www.virusbulletin.com/blog/2018/03/vb2016-paper-wild-android-collusions/). This is called *app collusion* and it's more complicated than the above illustration, but it's very much the same principle.
 
 ### Side-loading
+
 ### Manual build
+
 ### iOS
+The Apple store has a much more thorough review process, but the essential
+problems still remain: apps are distributed as binaries and users have no idea
+whether it's the binary which the developer intended for them, or the binary
+which they'd get if they build directly from the source.
+
+One aspect which makes iOS far worse for security, in this regard, is that the
+Apple culture is one of proprietary paid apps, not open source software. Try
+finding an open source mail app which supports GPG encryption on iOS, for
+example. As a result of never seeing the source, you don't have the option of
+building it yourself, so you're really left without much choice.
+
 ### A path toward reproducibility
 ### A path toward agency
 
