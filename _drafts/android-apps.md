@@ -7,9 +7,9 @@ tags: [security, privacy, android]
 Trust is a difficult issue when it comes to computing, but the ecosystem
 around it is especially bad on mobile. We live our lives within our mobile
 phones, but they're also far less under our control than a typical laptop or
-desktop. When you install an app, how can you know that it's benign? Futhermore,
+desktop. When you install an app, how can you know that it's benign? Furthermore,
 when you upgrade it, how can you ensure it remains so? For the vast majority of
-people, even technical people, these questions never arise. That's not the
+people, even technical people, these questions never arise. That alone isn't the
 problem though; the real problem is that, when considered, the answers aren't very convincing.
 
 ### Google Play
@@ -27,13 +27,25 @@ If you trust a company, you may feel comfortable installing its apps from the
 Play Store. For example, Open Whisper Systems, the company behind
 [Signal](https://signal.org/), may hold your regard. However, *whenever you
 install anything from Google Play*, you also need to [trust
-Google](https://www.expressvpn.com/blog/google-play-targeted-by-nsa/).  Even if
-the company uploads an entirely benign application to Google Play, that doesn't
+Google](https://www.expressvpn.com/blog/google-play-targeted-by-nsa/). Even if
+the Open Whisper Systems uploads an entirely benign application to Google Play, that doesn't
 mean it's what you're downloading. Furthermore, you have absolutely no way of
 verifying the app's integrity, given the existing tech built into Android's app
 installation flow.
 
 #### Open source
+You can find respite in open source apps though, right? Not quite. Even if an
+app is open source, you run into the same exact problem when you install it from
+Google Play.
+
+*Is the binary derived directly from the source you see, or has it
+been modified? What about the updates?*
+
+There are distribution platforms specifically for open source apps, too. The
+most popular is, perhaps, F-Droid.  Alas, apps on F-Droid are still distributed
+as binaries. Even worse, they're not all signed by the developers, they're
+signed by the maintainer of F-Droid.
+
 #### Permissions
 ### Side-loading
 ### F-Droid
