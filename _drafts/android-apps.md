@@ -65,20 +65,22 @@ Let's say you're an avid note taker with a generally poor sense of direction, so
 * Read disk access (to attach your photos and such)
 * Internet access
 
-How supremely reasonable; each app has only what it needs to serve its purpose.
-Alas, apps are not entirely siloed and, even with the barest of permissions,
-they can talk to each other through intents, links, and any common grants. In
-this case, if the chat app's distributor so desired, you might find it's uploading your saved notes (bank account info, personal details, etc), since it has both disk and network access.
+It's reasonable; each app has only what it needs to serve its purpose.  Alas,
+apps are not entirely siloed and, even with the barest of permissions, they can
+talk to each other through intents, links, and any common grants. In this case,
+if the chat app's distributor so desired, you might find it's uploading your
+saved notes (bank account info, personal details, etc), since it has both disk
+and network access. If the developer of the chat app is also the developer of
+the notepad app, you may find they're working together to make this easier.
 
 What about a map app which has access to your GPS, but nothing else? That info
 can then be stored and read by the chat app, or something else with internet
 access, so the GPS data can be uploaded.
 
 Sound crazy? Well, [Baidu did it
-already](https://www.virusbulletin.com/blog/2018/03/vb2016-paper-wild-android-collusions/). This is called *app collusion*.
+already](https://www.virusbulletin.com/blog/2018/03/vb2016-paper-wild-android-collusions/). This is called *app collusion* and it's more complicated than the above illustration, but it's very much the same principle.
 
 ### Side-loading
-### F-Droid
 ### Manual build
 ### iOS
 ### A path toward reproducibility
