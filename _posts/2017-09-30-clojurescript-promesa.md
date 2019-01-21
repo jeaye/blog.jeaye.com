@@ -102,10 +102,10 @@ Cleaning up the duplication can be done with a simple `await->` macro.
 
 ```clojure
 (ns my-app.test.sign-in
-  (:require [[oops.core :refer [ocall]]
-             [promesa.core :as p]
-             [promesa.async-cljs :refer-macros [async]]
-             [my-app.test.util.macro :refer-macros [await->]))
+  (:require [oops.core :refer [ocall]]
+            [promesa.core :as p]
+            [promesa.async-cljs :refer-macros [async]]
+            [my-app.test.util.macro :refer-macros [await->]]))
 
 (defn sign-in []
   (async
