@@ -99,7 +99,7 @@ Unfortunately, after speaking with the developer for a bit, it's clear that
 spectrum isn't yet ready to use.
 
 In preparation for it, [spec your
-functions!]({{ site.blog_url }}/2017/05/31/clojure-spec/)
+functions!]({{ site.blog_url }}2017/05/31/clojure-spec/)
 
 ### Project: [lein-nvd](https://github.com/rm-hull/lein-nvd)
 ```clojure
@@ -130,7 +130,7 @@ source code and can be used during testing, development, and even production.
 ```
 
 I've [written about cloverage
-before]({{ site.blog_url }}/2016/12/29/clojure-test-coverage/) and I'll
+before]({{ site.blog_url }}2016/12/29/clojure-test-coverage/) and I'll
 recommend it again. cloverage will report how much coverage your tests have by
 instrumenting the code to see which functions are called, which branches are
 taken, etc. It works out of the box with this code base and integrates very

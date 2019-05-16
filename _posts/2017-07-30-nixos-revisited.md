@@ -4,7 +4,7 @@ labels: [linux, nixos, nix, review]
 tags: [linux, nixos, nix, review, digital ocean, functional programming]
 ---
 
-Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url }}/2015/11/24/nixos/),
+Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url }}2015/11/24/nixos/),
 as I was using it in my workstation. While I adored the concept of declarative
 OS configuration, it didn't quite fit the workflow I had in mind for my laptop.
 The post was concluded with me considering NixOS for my VPS, but I didn't quite

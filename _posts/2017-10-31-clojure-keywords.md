@@ -170,4 +170,4 @@ keywords. You should now also know their common uses and pitfalls. When in
 doubt, namespace your keywords to convey explicit ownership of data and prevent
 name collisions. When building a DSL without middleware or when using keyword
 arguments, plain old keywords will probably do. Where possible, [use
-clojure.spec]({{ site.blog_url }}/2017/05/31/clojure-spec/)!
+clojure.spec]({{ site.blog_url }}2017/05/31/clojure-spec/)!
