@@ -16,7 +16,7 @@ Such a bot may look something like this.
 Arguably the most well-known apartment finding bot was created and documented by
 Vik Paruchuri [here](https://www.dataquest.io/blog/apartment-finding-slackbot/).
 It takes a very similar approach to what I've done, but uses imperative Python
-and Slack. For those interested in researching such a both in Python, that'd be
+and Slack. For those interested in researching such a bot in Python, that'd be
 a great resource. For my research, a bot in Clojure would prove to be more fun
 to write.
 
