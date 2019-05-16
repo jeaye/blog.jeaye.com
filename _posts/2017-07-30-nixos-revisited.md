@@ -4,13 +4,13 @@ labels: [linux, nixos, nix, review]
 tags: [linux, nixos, nix, review, digital ocean, functional programming]
 ---
 
-Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url
-}}/2015/11/24/nixos/), as I was using it in my workstation. While I adored the
-concept of declarative OS configuration, it didn't quite fit the workflow I had
-in mind for my laptop. The post was concluded with me considering NixOS for my
-VPS, but I didn't quite want to move away from DigitalOcean, which has support
-for only a few distros. What follows details how I've been running NixOS since,
-what it took, and what I've learned.
+Two years ago, I wrote about [my first impression of NixOS]({{ site.blog_url }}/2015/11/24/nixos/),
+as I was using it in my workstation. While I adored the concept of declarative
+OS configuration, it didn't quite fit the workflow I had in mind for my laptop.
+The post was concluded with me considering NixOS for my VPS, but I didn't quite
+want to move away from DigitalOcean, which has support for only a few distros.
+What follows details how I've been running NixOS since, what it took, and what
+I've learned.
 
 ### Dealing with DigitalOcean
 My VPS is hosting this blog, [jeaye.com](https://jeaye.com/), and many other
