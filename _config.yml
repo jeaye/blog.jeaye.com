@@ -29,7 +29,7 @@ blog_url: "/"
 url: "https://blog.jeaye.com/"
 baseurl: ""
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
-tagline: "This is my blog about GNU/Linux, functional programming, safety, and security."
+tagline: "This is my blog about GNU/Linux, functional programming, privacy, and security."
 
 sass:
   sass_dir: _includes/jeaye.com/css-partial
