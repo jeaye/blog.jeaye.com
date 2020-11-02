@@ -24,12 +24,11 @@ port: 4001
 title: "Jeaye's Blog"
 permalink: pretty
 home_url: "https://jeaye.com/"
-#home_url: "http://192.168.0.12:4000/"
 blog_url: "/"
 url: "https://blog.jeaye.com/"
 baseurl: ""
 license_url: "https://github.com/jeaye/blog.jeaye.com/blob/gh-pages/LICENSE"
-tagline: "This is my blog about GNU/Linux, functional programming, privacy, and security."
+short_pitch: "I'm a leader, a problem solver, and a hacker with a passion for privacy and security."
 
 sass:
   sass_dir: _includes/jeaye.com/css-partial
@@ -45,7 +44,7 @@ assets:
     - _includes/jeaye.com/_assets/img
   features:
     automatic_img_size: false
-    automatic_img_alt : false
+    automatic_img_alt: false
 
 feed:
   path: feed.xml

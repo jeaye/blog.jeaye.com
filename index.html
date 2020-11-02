@@ -4,55 +4,55 @@ title: Index
 ---
 
 <div class="posts">
-  <div class="pure-g border-bottom">
-    <h1 class="pure-u-1-2 content-subhead">Posts</h1>
+  <div class="border-bottom blog-header">
+    <h1 class="panel-subhead">Posts</h1>
     <a href="https://blog.jeaye.com/feed.xml"
-      target="_blank"
-      title="https://blog.jeaye.com/feed.xml"
-      class="pure-u-1-2">
-      <div class="content-subhead feed icon icon-feed"></div>
+       target="_blank"
+       title="https://blog.jeaye.com/feed.xml">
+      <div class="panel-subhead feed icon icon-feed"></div>
     </a>
   </div>
 
   {% for post in site.posts %}
-    <section class="post">
-      <header class="post-header">
-        <div class="post-date">
-          {{ post.date | date: "%B %d, %Y" }}
-          {% if post.updated %}
-            <div class="post-updated-date">Updated {{ post.updated | date: "%B %d, %Y" }}</div>
-          {% endif %}
-        </div>
-        <h2 class="post-title">
-          <a href="{{ post.url }}" title="{{ post.url }}">
-            {{ post.title }}
-          </a>
-        </h2>
+  <section class="post">
+    <header class="post-header">
+      <h2 class="post-title">
+        <a href="{{ post.url }}" title="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h2>
 
-        <p class="post-meta">
-          Under:
-          {% assign all_category_html = '' %}
-          {% assign total_count = 1 %}
-          {% for category in post.labels %}
-            {% if total_count > 4 %}
-              {% continue %}
-            {% endif %}
-
-            {% capture category_html %}
-            <span class="post-category post-category-{{ category }}">{{ category }}</span>
-            {% endcapture %}
-            {% assign all_category_html = all_category_html | append: category_html %}
-            {% assign total_count = total_count | plus: 1 %}
-          {% endfor %}
-          {{ all_category_html }}
-        </p>
-      </header>
-
-      <div class="post-description">
-        <p>
-          {{ post.excerpt }}
-        </p>
+      <div class="post-date">
+        {{ post.date | date: "%B %d, %Y" }}
+        {% if post.updated %}
+        <div class="post-updated-date">Updated {{ post.updated | date: "%B %d, %Y" }}</div>
+        {% endif %}
       </div>
-    </section>
+    </header>
+
+    <div class="post-meta">
+      Under:
+      {% assign all_category_html = '' %}
+      {% assign total_count = 1 %}
+      {% for category in post.labels %}
+      {% if total_count > 4 %}
+      {% continue %}
+      {% endif %}
+
+      {% capture category_html %}
+      <span class="post-category post-category-{{ category }}">{{ category }}</span>
+      {% endcapture %}
+      {% assign all_category_html = all_category_html | append: category_html %}
+      {% assign total_count = total_count | plus: 1 %}
+      {% endfor %}
+      {{ all_category_html }}
+    </div>
+
+    <div class="post-description">
+      <p>
+        {{ post.excerpt }}
+      </p>
+    </div>
+  </section>
   {% endfor %}
 </div>
