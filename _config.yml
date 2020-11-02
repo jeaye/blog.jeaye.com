@@ -21,7 +21,6 @@ plugins:
   - jekyll-sitemap
 
 port: 4001
-title: "Jeaye's Blog"
 permalink: pretty
 home_url: "https://jeaye.com/"
 blog_url: "/"
