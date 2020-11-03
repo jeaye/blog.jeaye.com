@@ -1,3 +1,9 @@
+Declarative config for Firefox
+
+nix and nix-shell usage
+
+re-frame chains
+
 vagrant disk size dance
 
 safepaste v2
@@ -71,8 +77,6 @@ sarcastic: writing more code in C
 C++ is too complex
 
 testing with cljs and re-frame
-
-Declarative config for Firefox
 
 Using ClojureScript with Cloud Functions
 
