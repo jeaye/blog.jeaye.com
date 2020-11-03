@@ -1,0 +1,156 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><link rel="icon" type="image/png" href="https://blog.jeaye.com//assets/favicon-c551898801df70b89095c40cbb11f01ff876ecf59bfa153122137abe9459c576.png"><title>Vimb on Slackware</title><meta name="author" content="jeaye"/><meta name="keywords" content="jeaye,jesse,wilkerson,c++,modern,engineering,manager,software,functional,clojure,programming,linux, slackware, vim, review"/><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="I'm a leader, a problem solver, and a hacker with a passion for privacy and security."><style>.icon{background-image:url("/assets/sprite-sheet-f829f47fe9f6353c7c632fee71002c94a29b8341725e19843f2c1b263869e4f2.png") !important}</style><style rel="stylesheet" type="text/css" integrity="sha256-FAEL2/AHw4sy6PSxUkN0Zt4TaPhbApIPciXM8UG6d7c=" crossorigin="anonymous">*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}body{display:flex;flex-flow:column nowrap;margin:0;font-family:sans-serif}a{text-decoration:none}.theme-old a{color:#3d92c9}.theme-red a{color:#c93d7a}.theme-teal a{color:#c2363c}.theme-green a{color:#3dc945}.theme-penny a{color:#ec331a}a:hover,a:focus{text-decoration:underline}.theme-old .gentle-body-color{color:#222}.theme-red .gentle-body-color{color:#222}.theme-teal .gentle-body-color{color:#222}.theme-green .gentle-body-color{color:#222}.theme-penny .gentle-body-color{color:#222}.header{display:flex;flex-flow:column wrap;align-items:center;margin:0;padding:2em 40px 2em 40px;text-align:center}.theme-old .header{background:#3d4f5d;color:#999}.theme-red .header{background:#5d3d4a;color:#999}.theme-teal .header{background:#3d5d5d;color:#999}.theme-green .header{background:#3d5d40;color:#999}.theme-penny .header{background:#812d39;color:#999}.header-inner{display:flex;flex-flow:row wrap}.header-description{flex:2;text-align:left;max-width:700px}.header-icon{display:flex;flex:1;justify-content:flex-end}.header-title,.header-short-pitch{margin:0}.header-short-pitch{font-weight:300}.theme-old .header-short-pitch{color:#b0cadb}.theme-red .header-short-pitch{color:#dbb0c3}.theme-teal .header-short-pitch{color:#b0dbd9}.theme-green .header-short-pitch{color:#b0dbb3}.theme-penny .header-short-pitch{color:#ffbbcb}.header-name{font-size:2.5em}.theme-old .header-name{color:#222}.theme-red .header-name{color:#222}.theme-teal .header-name{color:#222}.theme-green .header-name{color:#222}.theme-penny .header-name{color:#222}.nav{display:flex;flex-flow:row wrap;gap:0.5em;padding-top:0.5em}.nav-item{display:flex;flex:1;white-space:nowrap}.nav-item a{background:transparent;margin-top:1em;padding:6px 14px;letter-spacing:0.05em;font-size:85%}.theme-old .nav-item a{color:#fff;border:2px solid #b0cadb}.theme-red .nav-item a{color:#fff;border:2px solid #dbb0c3}.theme-teal .nav-item a{color:#fff;border:2px solid #b0dbd9}.theme-green .nav-item a{color:#fff;border:2px solid #b0dbb3}.theme-penny .nav-item a{color:#fff;border:2px solid #ffbbcb}.nav-item a:hover,.nav-item a:focus{text-decoration:none}.theme-old .nav-item a:hover,.theme-old .nav-item a:focus{border:2px solid #3d92c9}.theme-red .nav-item a:hover,.theme-red .nav-item a:focus{border:2px solid #c93d7a}.theme-teal .nav-item a:hover,.theme-teal .nav-item a:focus{border:2px solid #3dc9c3}.theme-green .nav-item a:hover,.theme-green .nav-item a:focus{border:2px solid #3dc945}.theme-penny .nav-item a:hover,.theme-penny .nav-item a:focus{border:2px solid #ff1345}.theme-old .special-nav-item a{border:2px solid #c2a086}.theme-red .special-nav-item a{border:2px solid #86c2aa}.theme-teal .special-nav-item a{border:2px solid #c28686}.theme-green .special-nav-item a{border:2px solid #c286bc}.theme-penny .special-nav-item a{border:2px solid #87e200}.theme-old .special-nav-item a:hover,.theme-old .special-nav-item a:focus{border:2px solid #c26d36}.theme-red .special-nav-item a:hover,.theme-red .special-nav-item a:focus{border:2px solid #36c285}.theme-teal .special-nav-item a:hover,.theme-teal .special-nav-item a:focus{border:2px solid #c2363c}.theme-green .special-nav-item a:hover,.theme-green .special-nav-item a:focus{border:2px solid #c236ba}.theme-penny .special-nav-item a:hover,.theme-penny .special-nav-item a:focus{border:2px solid #78af26}.panel-h-box{display:flex;flex:1;flex-flow:row wrap;gap:10em;justify-content:center;margin:0 3em 0 3em}.panel-v-box{display:flex;flex-flow:column wrap}.panel-gap{min-width:10em}.panel-subhead{text-transform:uppercase;padding:0;font-size:80%;font-weight:500;letter-spacing:0.1em}.theme-old .panel-subhead{color:#999}.theme-red .panel-subhead{color:#999}.theme-teal .panel-subhead{color:#999}.theme-green .panel-subhead{color:#999}.theme-penny .panel-subhead{color:#999}.main-panel,.toolbox-panel,.pgp-panel,.what-i-do-panel,.main-blog-panel{margin-top:2em}.main-panel{display:flex;flex:2;max-width:1280px;min-width:400px}.toolbox-panel{display:flex;flex:1;flex-flow:column nowrap;max-width:450px;min-width:200px}.what-i-do-panel{display:flex;flex:2;flex-flow:column nowrap;min-width:400px;max-width:900px}.what-i-do-h-box{display:flex;flex-flow:row nowrap;gap:4em;margin-top:1em}.what-i-do-thing{flex:1}.what-i-do-thing-title{font-size:1.0em;line-height:0.5em}.what-i-do-title{font-size:1.0em;line-height:0.5em;text-transform:uppercase;margin-bottom:2em}.theme-old .what-i-do-title{color:#443843}.theme-red .what-i-do-title{color:#443843}.theme-teal .what-i-do-title{color:#443843}.theme-green .what-i-do-title{color:#443843}.theme-penny .what-i-do-title{color:#443843}.what-i-do-big{font-size:2.5em;line-height:1em;font-weight:bold}.theme-old .what-i-do-big{color:#222}.theme-red .what-i-do-big{color:#222}.theme-teal .what-i-do-big{color:#222}.theme-green .what-i-do-big{color:#222}.theme-penny .what-i-do-big{color:#222}.job-title{font-size:2em;margin-bottom:0.2em}.theme-old .job-title{color:#222}.theme-red .job-title{color:#222}.theme-teal .job-title{color:#222}.theme-green .job-title{color:#222}.theme-penny .job-title{color:#222}.job-at{font-size:80%;font-weight:500}.theme-old .job-at{color:#999}.theme-red .job-at{color:#999}.theme-teal .job-at{color:#999}.theme-green .job-at{color:#999}.theme-penny .job-at{color:#999}.job-company{font-size:90%}.theme-old .job-company{color:#3d92c9}.theme-red .job-company{color:#c93d7a}.theme-teal .job-company{color:#c2363c}.theme-green .job-company{color:#3dc945}.theme-penny .job-company{color:#ec331a}.posts{display:flex;justify-content:center;flex-flow:column nowrap;max-width:1280px}.post{padding-bottom:2em}.post-header{display:flex;justify-content:space-between;align-items:center}.post-title{font-size:2em;margin-bottom:0.2em}.theme-old .post-title{color:#222}.theme-red .post-title{color:#222}.theme-teal .post-title{color:#222}.theme-green .post-title{color:#222}.theme-penny .post-title{color:#222}.theme-old .post-title a{color:#222;text-decoration-color:#222}.theme-red .post-title a{color:#222;text-decoration-color:#222}.theme-teal .post-title a{color:#222;text-decoration-color:#222}.theme-green .post-title a{color:#222;text-decoration-color:#222}.theme-penny .post-title a{color:#222;text-decoration-color:#222}.post-description{font-family:Georgia, "Cambria", serif;line-height:1.8em}.theme-old .post-description{color:#222}.theme-red .post-description{color:#222}.theme-teal .post-description{color:#222}.theme-green .post-description{color:#222}.theme-penny .post-description{color:#222}.post-meta{font-size:90%;margin:0}.theme-old .post-meta{color:#222}.theme-red .post-meta{color:#222}.theme-teal .post-meta{color:#222}.theme-green .post-meta{color:#222}.theme-penny .post-meta{color:#222}.post-date{text-align:right;white-space:nowrap}.theme-old .post-date{color:#222}.theme-red .post-date{color:#222}.theme-teal .post-date{color:#222}.theme-green .post-date{color:#222}.theme-penny .post-date{color:#222}.post-updated-date{font-size:90%;font-style:italic}.theme-old .post-updated-date{color:#5aba59}.theme-red .post-updated-date{color:#5aba59}.theme-teal .post-updated-date{color:#5aba59}.theme-green .post-updated-date{color:#5aba59}.theme-penny .post-updated-date{color:#5aba59}.post-category{margin:0 0.1em;padding:0.3em 1em;font-size:80%}.theme-old .post-category{color:#fff;background:#999}.theme-red .post-category{color:#fff;background:#999}.theme-teal .post-category{color:#fff;background:#999}.theme-green .post-category{color:#fff;background:#999}.theme-penny .post-category{color:#fff;background:#999}.theme-old .post-category-review{background:#61b360}.theme-red .post-category-review{background:#61b360}.theme-teal .post-category-review{background:#61b360}.theme-green .post-category-review{background:#61b360}.theme-penny .post-category-review{background:#61b360}.theme-old .post-category-privacy,.theme-old .post-category-security{background:#4d85d1}.theme-red .post-category-privacy,.theme-red .post-category-security{background:#4d85d1}.theme-teal .post-category-privacy,.theme-teal .post-category-security{background:#4d85d1}.theme-green .post-category-privacy,.theme-green .post-category-security{background:#4d85d1}.theme-penny .post-category-privacy,.theme-penny .post-category-security{background:#4d85d1}.theme-old .post-category-rant{background:#8156a7}.theme-red .post-category-rant{background:#8156a7}.theme-teal .post-category-rant{background:#8156a7}.theme-green .post-category-rant{background:#8156a7}.theme-penny .post-category-rant{background:#8156a7}.theme-old .post-category-tutorial{background:#bd4f64}.theme-red .post-category-tutorial{background:#bd4f64}.theme-teal .post-category-tutorial{background:#bd4f64}.theme-green .post-category-tutorial{background:#bd4f64}.theme-penny .post-category-tutorial{background:#bd4f64}.theme-old .post h1,.theme-old h2,.theme-old h3,.theme-old h4{color:#222}.theme-red .post h1,.theme-red h2,.theme-red h3,.theme-red h4{color:#222}.theme-teal .post h1,.theme-teal h2,.theme-teal h3,.theme-teal h4{color:#222}.theme-green .post h1,.theme-green h2,.theme-green h3,.theme-green h4{color:#222}.theme-penny .post h1,.theme-penny h2,.theme-penny h3,.theme-penny h4{color:#222}.post p,.post ol,.post ul{font-family:Georgia, "Cambria", serif}.theme-old .post p,.theme-old .post ol,.theme-old .post ul{color:#222}.theme-red .post p,.theme-red .post ol,.theme-red .post ul{color:#222}.theme-teal .post p,.theme-teal .post ol,.theme-teal .post ul{color:#222}.theme-green .post p,.theme-green .post ol,.theme-green .post ul{color:#222}.theme-penny .post p,.theme-penny .post ol,.theme-penny .post ul{color:#222}.post p a{font-weight:600}.skills{margin:0;padding:0 3em 0 0}.skill{display:flex;gap:1em;padding:1em 0;border-bottom:1px solid #ccc}.skill:last-child{border:none !important}.skill-name{font-size:0.8em;font-weight:bold;align-self:center}.theme-old .skill-name{color:#222}.theme-red .skill-name{color:#222}.theme-teal .skill-name{color:#222}.theme-green .skill-name{color:#222}.theme-penny .skill-name{color:#222}.main-blog-panel{display:flex;justify-content:center;margin-left:10em;margin-right:10em}.blog-header{display:flex;flex-flow:row nowrap;justify-content:space-between}.border-bottom{border-bottom:1px solid #eee}.related-list{list-style-type:none}.related-list li{padding-bottom:0.5em;border-bottom:1px solid #ccc}.related-list li:last-child{border:none}.related-post-title{font-size:1em;margin-bottom:0.2em}.theme-old .related-post-title{color:#222}.theme-red .related-post-title{color:#222}.theme-teal .related-post-title{color:#222}.theme-green .related-post-title{color:#222}.theme-penny .related-post-title{color:#222}.theme-old .related-post-title a{color:#222;text-decoration-color:#222}.theme-red .related-post-title a{color:#222;text-decoration-color:#222}.theme-teal .related-post-title a{color:#222;text-decoration-color:#222}.theme-green .related-post-title a{color:#222;text-decoration-color:#222}.theme-penny .related-post-title a{color:#222;text-decoration-color:#222}figure{text-align:center;margin:0 auto}figure img{border:1px solid rgba(50,50,50,0.5);border-radius:2px;padding:5px;background:#fff}.figure-2-3{width:66%}figcaption{padding:1em 1em 2em 1em;word-wrap:normal;text-align:center;display:inline-block !important;width:66%}code{overflow:auto}.icon-feed{background-position:0px 0px;width:24px;height:30px}.icon-j{background-position:-24px 0px;width:158px;height:155px}code:not([id='typeans']){padding-left:5px;padding-right:5px;border:1px solid;border-color:lightgrey;border-radius:5px}pre code{padding:5px}.highlight .lineno{color:#ccc;display:inline-block;padding:0 5px;border-right:1px solid #ccc}.highlight pre code{display:block;white-space:pre-wrap;overflow-x:auto;word-wrap:normal}.highlight .hll{background-color:#49483e}.highlight{background:#272822;color:#f8f8f2;border-radius:5px}.highlight .c{color:#75715e}.highlight .err{color:#960050;background-color:#1e0010}.highlight .k{color:#66d9ef}.highlight .l{color:#ae81ff}.highlight .n{color:#f8f8f2}.highlight .o{color:#f92672}.highlight .p{color:#f8f8f2}.highlight .ch{color:#75715e}.highlight .cm{color:#75715e}.highlight .cp{color:#75715e}.highlight .cpf{color:#75715e}.highlight .c1{color:#75715e}.highlight .cs{color:#75715e}.highlight .gd{color:#f92672}.highlight .ge{font-style:italic}.highlight .gi{color:#a6e22e}.highlight .gs{font-weight:bold}.highlight .gu{color:#75715e}.highlight .kc{color:#66d9ef}.highlight .kd{color:#66d9ef}.highlight .kn{color:#f92672}.highlight .kp{color:#66d9ef}.highlight .kr{color:#66d9ef}.highlight .kt{color:#66d9ef}.highlight .ld{color:#e6db74}.highlight .m{color:#ae81ff}.highlight .s{color:#e6db74}.highlight .na{color:#a6e22e}.highlight .nb{color:#f8f8f2}.highlight .nc{color:#a6e22e}.highlight .no{color:#66d9ef}.highlight .nd{color:#a6e22e}.highlight .ni{color:#f8f8f2}.highlight .ne{color:#a6e22e}.highlight .nf{color:#a6e22e}.highlight .nl{color:#f8f8f2}.highlight .nn{color:#f8f8f2}.highlight .nx{color:#a6e22e}.highlight .py{color:#f8f8f2}.highlight .nt{color:#f92672}.highlight .nv{color:#f8f8f2}.highlight .ow{color:#f92672}.highlight .w{color:#f8f8f2}.highlight .mb{color:#ae81ff}.highlight .mf{color:#ae81ff}.highlight .mh{color:#ae81ff}.highlight .mi{color:#ae81ff}.highlight .mo{color:#ae81ff}.highlight .sa{color:#e6db74}.highlight .sb{color:#e6db74}.highlight .sc{color:#e6db74}.highlight .dl{color:#e6db74}.highlight .sd{color:#e6db74}.highlight .s2{color:#e6db74}.highlight .se{color:#ae81ff}.highlight .sh{color:#e6db74}.highlight .si{color:#e6db74}.highlight .sx{color:#e6db74}.highlight .sr{color:#e6db74}.highlight .s1{color:#e6db74}.highlight .ss{color:#e6db74}.highlight .bp{color:#f8f8f2}.highlight .fm{color:#a6e22e}.highlight .vc{color:#f8f8f2}.highlight .vg{color:#f8f8f2}.highlight .vi{color:#f8f8f2}.highlight .vm{color:#f8f8f2}.highlight .il{color:#ae81ff}
+</style><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="/feed.xml"/></head><body class="theme-penny"><div class="header"><div class="header-inner"><div class="header-description"><h1 class="header-title">My name is <span class="header-name">Jeaye</span></h1><h2 class="header-short-pitch">I'm a leader, a problem solver, and a hacker with a passion for privacy and security.</h2></div><div class="header-icon"><div class="icon icon-j"></div></div></div><nav class="nav"><div class="nav-item"> <a href="https://jeaye.com/">About</a></div><div class="nav-item"> <a href="https://github.com/jeaye">Github</a></div><div class="nav-item"> <a href="/">Blog</a></div><div class="nav-item"> <a href="https://jeaye.com/contact">Contact</a></div><div class="nav-item special-nav-item"> <a href="https://jeaye.com/contact">Hire Me!</a></div> </nav></div><div class="main-blog-panel"><div class="posts"> <section class="post"> <header class="post-header"><h2 class="post-title"> <a href="/2015/08/23/vimb/" title="/2015/08/23/vimb/"> Vimb on Slackware </a></h2><div class="post-date"> August 23, 2015</div> </header><p>The popular vim text editor is known for its modal editing, intricate key sequences, and powerful capabilities and extensibility. Vim-style editing and navigation is incorporated deeply into my computing experience, covering:</p><ol><li>(Of course) My text editing (gvim, vim)</li><li>My music playing (cmus)</li><li>My relay chatting (weechat)</li><li>My shell (bash -o vi)</li><li>My PDF viewer (zathura)</li><li>My email viewer (mutt)</li><li>My window manager (i3)</li><li>My torrent client (rtorrent)</li><li>My web browser (firefox with vimfx)</li><li>My volume manager, pager, network manager, etc</li></ol><p>My point should be clear. Still, I’m always on the lookout for new ways I can improve my vim-style interactions with various programs. As firefox is my main browser, I’ve, of course, tried <a href="http://5digits.org/pentadactyl/">pentadactyl</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/vimperator/">vimperator</a>, <a href="http://vimprobable.org/">vimprobable</a> before landing with <a href="https://addons.mozilla.org/en-us/firefox/addon/vimfx/">vimfx</a>.</p><p>Recently, I stumbled across <a href="http://fanglingsu.github.io/vimb/">vimb</a> which is a webkit-based browser designed from the bottom up to work like vim. A possible benefit of this is that vimb is a standalone browser, not just a firefox plugin; this means there’s none of the firefox bloat around. It also means, however, that other firefox plugins and features won’t be available.</p><h3 id="installation">Installation</h3><p>Since I’m running Slackware, I built vimb from source. This wasn’t much of an issue, once the dependencies were sorted out. The key dependency for compilation was <a href="http://slackbuilds.org/repository/14.1/libraries/webkitgtk3/">webkitgtk3</a>. You can actually use webkitgtk2, if you’d like, but I’m not sure why that’d be more desirable, since you’d need to get that from SBo just the same. See <a href="http://blog.jeaye.com/2015/07/09/sbopkg/">my post on sbopkg</a> for more info on building packages from SBo.</p><p><strong>NOTE 1:</strong> webkitgtk3 exposes a bug in GNU Make which requires it to be built with -j1. Combined with it being a huge library, you can expect compilation to take several hours on a modern machine.</p><p><strong>NOTE 2:</strong> The webkitgtk3 build system requires that <code class="highlighter-rouge">/usr/bin/cc</code> exists; if your compiler is custom and installed locally, I’ve found a temporary symbolic link does the trick.</p><p>With webkitgtk3 installed, building and installing vimb is as simple as:</p><div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make <span class="nv">GTK</span><span class="o">=</span>3
+<span class="nv">$ </span>make <span class="nb">install</span>
+</code></pre></div></div><h3 id="configuration">Configuration</h3><h4 id="compile-time">Compile-time</h4><p>You can customize various options, as well as compiler flags by editing <code class="highlighter-rouge">config.mk</code> in the repository’s root directory. Since I’m installing locally and I found there were no optimizations enabled by default, this is a diff of what I supplied:</p><div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/config.mk b/config.mk
+index 79167b7..3163adc 100644
+</span><span class="gd">--- a/config.mk
+</span><span class="gi">+++ b/config.mk
+</span><span class="gu">@@ -2,7 +2,7 @@
+</span> VERSION = 2.9
+
+ PROJECT     = vimb
+<span class="gd">-PREFIX     ?= /usr/local
+</span><span class="gi">+PREFIX     ?= ~/opt/bin/vimb
+</span> BINDIR     ?= $(PREFIX)/bin
+ MANDIR     ?= $(PREFIX)/share/man
+ EXAMPLEDIR ?= $(PREFIX)/share/$(PROJECT)/examples
+<span class="gu">@@ -50,6 +50,7 @@ CFLAGS  += -Wall -pipe -std=c99
+</span> CFLAGS  += -Wno-overlength-strings -Werror=format-security
+ # This is to avoid redifinition warnings caused by glib.
+ CFLAGS  += -Wno-typedef-redefinition
+<span class="gi">+CFLAGS  += -O3
+</span> CFLAGS  += ${CPPFLAGS}
+ LDFLAGS += ${LIBFLAGS}
+</code></pre></div></div><p>You’ll need to recompile, of course, after changing anything in <code class="highlighter-rouge">config.mk</code>.</p><h4 id="run-time">Run-time</h4><p>The runtime configuration, for me, defaulted to <code class="highlighter-rouge">~/.config/vimb</code>. There are a dozen or so files in there, by default, and I only bothered modifying a couple: <code class="highlighter-rouge">config</code> and <code class="highlighter-rouge">style.css</code>.</p><h3 id="html5-video-support">HTML5 Video Support</h3><p>I ran quite a bit of trouble getting HTML5 video (from YouTube, for example) working. Ultimately, I needed these packages:</p><div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-1</span> /var/log/packages/gst<span class="k">*</span>
+/var/log/packages/gst1-libav-1.4.5-x86_64-1_SBo
+/var/log/packages/gst1-plugins-bad-1.4.5-x86_64-1_SBo
+/var/log/packages/gst1-plugins-base-1.4.5-x86_64-1_SBo
+/var/log/packages/gst1-plugins-good-1.4.5-x86_64-1_SBo
+/var/log/packages/gst1-plugins-ugly-1.4.5-x86_64-1_SBo
+/var/log/packages/gst-ffmpeg-0.10.13-x86_64-2_SBo
+/var/log/packages/gst-plugins-bad-0.10.23-x86_64-3_SBo
+/var/log/packages/gst-plugins-base-0.10.36-x86_64-2
+/var/log/packages/gst-plugins-good-0.10.31-x86_64-5
+/var/log/packages/gst-plugins-ugly-0.10.19-x86_64-2_SBo
+/var/log/packages/gstreamer-0.10.36-x86_64-2
+/var/log/packages/gstreamer1-1.4.5-x86_64-1_SBo
+</code></pre></div></div><p>I’ve covered this in a vimb issue <a href="https://github.com/fanglingsu/vimb/issues/69">here</a>.</p><h3 id="comparing-functionality-from-firefox">Comparing Functionality From Firefox</h3><p>In Firefox, I have a few features which I really enjoy:</p><ol><li>Pinned tabs (no vimb support – no tabbing support at all)</li><li>Vim-style navigation (obvious vimb support)</li><li>Color schemes (vimb support through <code class="highlighter-rouge">style.css</code>)</li><li>Adblock (no vimb support – people suggest using privoxy)</li></ol><h4 id="pinned-tabs">Pinned Tabs</h4><p>At first, I wrote a script to do this for me. If I open vimb and no other instances are open, open my stored “pinned” tabs. I found it’s annoying to get right, since vimb doesn’t support tabbing and that’s being handled by my window manager. Alas, the windows don’t get opened in the order I’d like. I ultimately ditched the script and just started using vimb’s bookmark support more judiciously.</p><h4 id="vim-style-navigation">Vim-style Navigation</h4><p>The navigation, as well as the command mode, is superb. I was able to configure everything just as I wanted and it felt very native.</p><h4 id="color-schemes">Color schemes</h4><p>After <a href="https://github.com/fanglingsu/vimb/issues/208">a bit of searching</a>, I found that a custom <code class="highlighter-rouge">style.css</code> can be placed in <code class="highlighter-rouge">~/.config/vimb</code> which can replace the CSS of any webpage. After some tinkering, I cooked up a solarized dark style using the following:</p><div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*,</span><span class="nt">div</span><span class="o">,</span><span class="nt">pre</span><span class="o">,</span><span class="nt">textarea</span><span class="o">,</span><span class="nt">body</span><span class="o">,</span><span class="nt">input</span><span class="o">,</span><span class="nt">td</span><span class="o">,</span><span class="nt">tr</span><span class="o">,</span><span class="nt">p</span>
+<span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#002b36</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#657b83</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span><span class="o">,</span><span class="nt">h2</span><span class="o">,</span><span class="nt">h3</span><span class="o">,</span><span class="nt">h4</span>
+<span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#002b36</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#5f676a</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span>
+<span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#859900</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span><span class="nt">a</span><span class="nd">:focus</span>
+<span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#859900</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="nd">:visited</span>
+<span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#b58900</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">img</span>
+<span class="p">{</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">.5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">img</span><span class="nd">:hover</span>
+<span class="p">{</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">._hintLabel</span>
+<span class="p">{</span>
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#cb4b16</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.0em</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#000</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1.0</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">._hintElem._hintFocus</span>
+<span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f0f070</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">._hintElem._hintFocus</span> <span class="nt">img</span>
+<span class="p">{</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div><h4 id="adblock">Adblock</h4><p>Unfortunately, there’s no adblock in vimb. In fact, vimb itself doesn’t actually have plugin support, ironically. There was <a href="https://www.mail-archive.com/vimb-users@lists.sourceforge.net/msg00049.html">a post</a> on the vimb mailing list which ultimately ended in vimb users claiming to have privoxy setup locally. I have experience with privoxy, but I haven’t bothered setting it up for vimb.</p><h3 id="other-thoughts">Other Thoughts</h3><p>I have some other gripes with vimb which don’t fall into the above categories:</p><ol><li>It’s noticeably slower to load web pages than firefox</li><li>It flickers quite frequently, even after a page has finished loading</li><li>I see a fair amount of crashes, typically half a dozen per day</li><li>It often says that I have no internet connection when I do</li><li>There are some bugs relating to entering insert mode in an input box using the mouse</li><li>Quite randomly, it will get stuck using 100% CPU (on no particular page) and needs to be closed</li></ol><p>I love the idea of vimb; a slick, thin browser that envelops itself in the vim ideals and doesn’t have all the fluff you get in something like firefox or chrome. Unfortunately, it’s not yet usable enough for me.</p><h3 id="my-configuration">My Configuration</h3><p>The contents of my <code class="highlighter-rouge">~/.config/vimb/config</code>:</p><div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Home
+set home-page=http://github.com
+
+# Downloads
+set download-path=~/downloads
+
+# UI
+set hintkeys=asdfglkjh
+set stylesheet=on
+set smooth-scrolling=on
+
+# Status bar
+set statusbar=false
+set status-color-bg=#002b36
+set status-color-fg=#657b83
+set status-font=terminus\ 15
+set status-ssl-color-bg=#002b36
+set status-ssl-color-fg=#657b83
+set status-ssl-font=terminus\ 15
+set status-sslinvalid-color-bg=#002b36
+set status-sslinvalid-color-fg=#657b83
+set status-sslinvalid-font=terminus\ 15
+
+# Input bar
+set input-bg-normal=#002b36
+set input-fg-normal=#657b83
+set input-font-normal=terminus\ 15
+set input-bg-error=#002b36
+set input-fg-error=#5f676a
+set input-font-error=terminus\ 15
+
+# Completion
+set completion-bg-normal=#002b36
+set completion-fg-normal=#657b83
+set completion-bg-active=#002b36
+set completion-fg-active=#5f676a
+set completion-font=terminus\ 15
+
+# Webkit
+set accelerated-compositing=on
+set defaultencoding=utf-8
+set html5-database=on
+set html5-local-storage=on
+set images=on
+set webgl=on
+
+# SSL
+set strict-ssl=false
+
+# JS
+set javascript-can-access-clipboard=off
+set javascript-can-open-windows-automatically=off
+
+# Editing
+set editor-command=gvim -f %s
+
+# Zoom in everything by default
+aug zoom_all
+  au LoadCommited * normal zz|8zI
+aug end
+
+# Try to speed things up
+set proxy=off
+</code></pre></div></div></section><hr/><div><div class="border-bottom"><h1 class="panel-subhead">Related posts</h1><ul class="related-list"><li><h2 class="related-post-title"> <a href="/2018/04/11/system76-firmware/">Removing IME: Upgrading System76 firmware on Arch</a> <span class="post-category post-category-linux">linux</span></h2></li><li><h2 class="related-post-title"> <a href="/2018/02/01/gruvbox/">Switching from solarized to gruvbox</a> <span class="post-category post-category-review">review</span></h2></li><li><h2 class="related-post-title"> <a href="/2017/08/31/clojure-code-quality/">The state of code quality tools in Clojure</a> <span class="post-category post-category-review">review</span></h2></li><li><h2 class="related-post-title"> <a href="/2017/07/30/nixos-revisited/">NixOS: A lasting impression</a> <span class="post-category post-category-linux">linux</span> <span class="post-category post-category-review">review</span></h2></li></ul></div></div></div></div></div> <footer> </footer></body></html>
